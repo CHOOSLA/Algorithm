@@ -22,6 +22,6 @@ print(arr)
 N = int(input())
 print('입력받은 행크기',N)
 
-arr = [list(map(int, input().split())) for _ in range(N)]
+arr = [list(map(int, input())) for _ in range(N)]
 
 print(arr)
