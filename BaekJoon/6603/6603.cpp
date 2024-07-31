@@ -12,7 +12,8 @@ bool isDuplicate(vector<int> seq);
 
 int main(int argc, char const *argv[])
 {
-    freopen("input.txt", "r", stdin);
+    // 제출할때는 이것을 항상 주석처리해주어야 한다.
+    // freopen("input.txt", "r", stdin);
     int k;
     while (true)
     {
