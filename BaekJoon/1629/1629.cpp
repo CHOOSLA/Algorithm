@@ -1,14 +1,16 @@
-#include "bits/stdc++.h"
+#include <iostream>
 
 using namespace std;
 
-int mod(int a, int b, int c)
+long long mod(long long a, long long b, long long c)
 {
-    if (b == 1)
-        return a;
-
-    int half = b / 2;
-    return (mod(a, half, c) * mod(a, b - half, c)) % c;
+    if (b == 0)
+        return 1;
+    long long half = mod(a, b / 2, c);
+    half = (half * half) % c;
+    if (b % 2 != 0)
+        half = (half * a) % c;
+    return half;
 }
 
 int main(int argc, char const *argv[])
