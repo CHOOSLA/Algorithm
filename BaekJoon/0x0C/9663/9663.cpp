@@ -11,22 +11,11 @@ using namespace std;
 // ret로 모두 합쳐서 return
 // 기저 사례 : 남은 퀸의 수가 0 일때 or 둘 곳이 없을 때
 
-bool checkOk(vector<vector<int>> &board)
-{
-    bool ok = false;
-    for (int i = 0; i < board.size(); i++)
-    {
-        for (int j = 0; j < board[0].size(); j++)
-        {
-            if (board[i][j] == 0)
-            {
-                ok = true;
-            }
-        }
-    }
-
-    return ok;
-}
+// ❌ 이 방식 대로면 무한 루프를 걸리며 틀림
+// https://chatgpt.com/share/12c7c5f4-e6c1-4995-bc03-cc5449f05e8f
+// GPT를 이용한 풀이 방식
+// 💡 퀸의 특성상 놓여지면 해당 row는 더이상 쓸 수 없음 즉 col만 검사하면되는 문제임
+// ❌ checkOk 함수는 백트래킹을 함으로 필요하지 않음
 
 void setting(vector<vector<int>> &board, int y, int x, int delta)
 {
@@ -39,11 +28,11 @@ void setting(vector<vector<int>> &board, int y, int x, int delta)
     {
         int ty = y;
         int tx = x;
-
         while (true)
         {
             ty += dy[i];
             tx += dx[i];
+
             // 보드 밖으로 넘어갔을 경우
             if (ty < 0 || ty >= board.size() || tx < 0 || tx >= board[0].size())
             {
@@ -55,58 +44,40 @@ void setting(vector<vector<int>> &board, int y, int x, int delta)
     }
 }
 
-int func(vector<vector<int>> &board, int n)
+int func(vector<vector<int>> &board, int n, int row)
 {
-    // 기저 사례 1 : 퀸을 모두 놓았을 떄
+    // 기저 사례 : 퀸을 모두 놓았을 때
     if (n == 0)
     {
         return 1;
     }
-    // 더 이상 둘 곳이 없을 때
-    // if n == 2 : 두개를 두어야 하지만 2x2 판에는 하나 밖에 두지 못한다
-    if (!checkOk(board))
-    {
-        return 0;
-    }
+
     int ret = 0;
 
-    for (int i = 0; i < board.size(); i++)
+    for (int col = 0; col < board.size(); col++)
     {
-        for (int j = 0; j < board[0].size(); j++)
+        // 백트래킹 방식으로 둘 수 있을 때 둔다
+        if (board[row][col] == 0)
         {
-            // 백 트래킹 방식으로 둘 수 있을 때 둔다
-            if (board[i][j] == 0)
-            {
-                setting(board, i, j, 1);
-                ret += func(board, n - 1);
-                setting(board, i, j, -1);
-            }
+            setting(board, row, col, 1);
+            ret += func(board, n - 1, row + 1);
+            setting(board, row, col, -1);
         }
     }
 
     return ret;
 }
 
-int main(int argc, char const *argv[])
+int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
     int n;
     cin >> n;
-    vector<vector<int>> board;
+    vector<vector<int>> board(n, vector<int>(n, 0));
 
-    // 보드 초기화
-    for (int i = 0; i < n; i++)
-    {
-        vector<int> tmp;
-        for (int j = 0; j < n; j++)
-        {
-            tmp.push_back(0);
-        }
-        board.push_back(tmp);
-    }
-
-    func(board, n);
+    int result = func(board, n, 0);
+    cout << result << '\n';
 
     return 0;
 }
