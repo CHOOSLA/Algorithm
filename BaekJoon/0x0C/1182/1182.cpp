@@ -20,6 +20,9 @@ using namespace std;
 int n, s;
 vector<int> seq;
 
+// idx : 현재 인덱스 번호
+// k : 남은 뽑을 개수
+// sumSeq : 현재 수열의 합
 int func(int idx, int k, int sumSeq)
 {
     // 기저 사례
