@@ -1,48 +1,43 @@
-#include <iostream>
-#include <vector>
+#include "bits/stdc++.h"
 
 using namespace std;
 
-bool is_filled(int x, int y, int n, int k)
+bool func(int y, int x, int s, int n, int k)
 {
-    int size = 1 << (n - 1); // 2^(n-1)
-    if (n == 0)
-        return false;
+    while (s > 0)
+    {
+        int whiteLength = pow(n, s);                      // 현재 스케일의 전체 크기
+        int blackLength = whiteLength / n * k;            // 현재 스케일의 검은색 부분 크기
+        int blackStart = (whiteLength - blackLength) / 2; // 검은색 시작 좌표
+        int blackEnd = blackStart + blackLength;          // 검은색 끝 좌표
 
-    int center_start = size - size / k;
-    int center_end = size + size / k;
+        // 현재 레벨의 검은색 영역에 포함되는지 체크
+        if (y >= blackStart && y < blackEnd && x >= blackStart && x < blackEnd)
+        {
+            return true;
+        }
 
-    if (center_start <= x && x < center_end && center_start <= y && y < center_end)
-    {
-        return true;
-    }
+        // 좌표를 축소시켜 하위 레벨로 이동
+        y %= whiteLength / n;
+        x %= whiteLength / n;
 
-    if (x < size && y < size)
-    {
-        return is_filled(x, y, n - 1, k);
+        s--;
     }
-    if (x < size && y >= size)
-    {
-        return is_filled(x, y - size, n - 1, k);
-    }
-    if (x >= size && y < size)
-    {
-        return is_filled(x - size, y, n - 1, k);
-    }
-    return is_filled(x - size, y - size, n - 1, k);
+    return false;
 }
 
 int main()
 {
-    int n, k, r1, r2, c1, c2;
-
-    cin >> n >> k >> r1 >> r2 >> c1 >> c2;
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int s, n, k, r1, r2, c1, c2;
+    cin >> s >> n >> k >> r1 >> r2 >> c1 >> c2;
 
     for (int i = r1; i <= r2; i++)
     {
         for (int j = c1; j <= c2; j++)
         {
-            if (is_filled(i, j, n, k))
+            if (func(i, j, s, n, k))
             {
                 cout << "1";
             }
@@ -51,7 +46,7 @@ int main()
                 cout << "0";
             }
         }
-        cout << endl;
+        cout << "\n";
     }
 
     return 0;
