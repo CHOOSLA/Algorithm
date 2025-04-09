@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <algorithm>
 
 using namespace std;
 
@@ -30,8 +31,6 @@ int bfs(int start){
 int main(void){
     ios::sync_with_stdio(0);
     cin.tie(0);
-
-    freopen("./input.txt","r",stdin);
     
     cin >> N >> M;
     
