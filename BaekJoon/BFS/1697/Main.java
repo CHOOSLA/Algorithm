@@ -13,6 +13,7 @@ public class Main {
         // N: 바구니 개수, M: 뒤집을 횟수
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
+        
 
         // 바구니 배열 초기화 (1부터 N까지 번호 설정)
         int[] baskets = new int[N + 1]; // 1-based index 사용
