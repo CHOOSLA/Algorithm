@@ -3,11 +3,13 @@
   "configurations": [
     {
       "name": "C/C++ Runner: Debug Session",
-      "type": "lldb",
+      "type": "cppvsdbg",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/choosla/Algorithm/BaekJoon/0x10/2579",
-      "program": "/Users/choosla/Algorithm/BaekJoon/0x10/2579/build/Debug/outDebug"
+      "stopAtEntry": false,
+      "console": "externalTerminal",
+      "cwd": "c:/Users/cnckd/Algorithm/BaekJoon/BFS_DFS/2644",
+      "program": "c:/Users/cnckd/Algorithm/BaekJoon/BFS_DFS/2644/build/Debug/outDebug"
     }
   ]
 }
