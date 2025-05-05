@@ -2,6 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "tree",
+      "request": "launch",
+      "mainClass": "tree",
+      "projectName": "Algorithm_d4a531cd"
+    },
+    {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppvsdbg",
       "request": "launch",
