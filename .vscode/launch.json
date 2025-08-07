@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "BaekJoon.ETC.Main",
+      "projectName": "Algorithm_d4a531cd"
+    },
+    {
+      "type": "java",
       "name": "tree",
       "request": "launch",
       "mainClass": "tree",

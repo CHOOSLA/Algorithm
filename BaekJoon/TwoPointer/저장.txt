@@ -1,0 +1,62 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int idx = 0;
+vector<int> tool;
+vector<string> m;
+
+// 첫 번쨰 idx = 곡괭이
+// 두 번째 idx = 광물
+int tired[3][3] = {{1,1,1},{5,1,1},{25,5,1}};
+
+int pick(int candi){    
+    // 곡괭이 순회
+    while(candi < 3){
+        if(tool[candi] > 0){
+            tool[candi]--;
+            return candi;
+        }else{
+            candi++;
+        }
+    }
+    
+    // 남은 곡괭이가 없을 경우 -1로 종료신호
+    return -1;
+}
+
+// 최대 분포찾기
+int find(int idx){
+    vector<int> tmp(3);
+
+    
+    while(idx < m.size()){
+        if(m[idx] == "diamond"){
+            tmp[0]++;
+        }else if(m[idx] == "iron"){
+            tmp[1]++;
+        }else{
+            tmp[2]++;
+        }
+    }
+    
+    // 최대 분포 인덱스
+    int result = 0;
+    for(int i=0; i < 2; i++){
+        if(tmp[result] < tmp[result+1]){
+            //여기서부터하세요
+        }
+    }
+}
+
+
+int solution(vector<int> picks, vector<string> minerals) {
+    int answer = 0;
+    tool = picks; // 곡괭이 전역화
+    m = minerals; // 미네랄 전역화
+    
+    
+    return pick(1);
+}
