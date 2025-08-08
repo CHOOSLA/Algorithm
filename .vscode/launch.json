@@ -22,8 +22,8 @@
       "args": [],
       "stopAtEntry": false,
       "console": "externalTerminal",
-      "cwd": "c:/Users/cnckd/Algorithm/BaekJoon/BFS_DFS/2644",
-      "program": "c:/Users/cnckd/Algorithm/BaekJoon/BFS_DFS/2644/build/Debug/outDebug"
+      "cwd": "c:/Users/cnckd/Algorithm",
+      "program": "c:/Users/cnckd/Algorithm/build/Debug/outDebug"
     }
   ]
 }

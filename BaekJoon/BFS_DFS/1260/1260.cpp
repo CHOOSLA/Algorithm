@@ -43,7 +43,7 @@ int main(void){
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    freopen("./input.txt","r",stdin);
+    //freopen("./input.txt","r",stdin);
     cin >> N >> M >> V;
 
     graph.resize(N + 1); // 정점 번호는 1부터 시작하므로
