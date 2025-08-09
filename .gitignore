@@ -892,3 +892,6 @@ FodyWeavers.xsd
 
 # Code Runner 실행관련 설정 업로드 막기
 .vscode/
+
+# 자바 관련 설정 무시
+.idea/
