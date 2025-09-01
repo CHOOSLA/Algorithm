@@ -23,13 +23,9 @@ string numToDigi(int num) {
     num = num >> 1;
   }
 
-  string out = "";
+  reverse(result.begin(), result.end());
 
-  for (int i = result.length() - 1; i >= 0; i--) {
-    out += result.at(i);
-  }
-
-  return out;
+  return result;
 }
 
 int rmCount = 0;
