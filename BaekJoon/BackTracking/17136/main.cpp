@@ -80,7 +80,7 @@ bool pruning(int count) {
 }
 
 void func(int count) {
-  // 가지치기
+  // 가지치기 << 넣으니깐 더 느려짐,,,
   // if (pruning(count))
   //   return;
 
