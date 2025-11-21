@@ -113,6 +113,54 @@
 | --- | --- | --- |
 | 1864 | 문어 숫자 (미해결) | Bronze |
 
+## SW Expert Academy 문제 정리
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 1206 | View | D3 |
+| 1208 | Flatten | D3 |
+| 1210 | Ladder1 | D4 |
+| 1954 | 달팽이 숫자 | D2 |
+| 2001 | 파리 퇴치 | D2 |
+| 2805 | 농작물 수확하기 | D3 |
+| 13460 | 구슬 탈출 2 (BOJ) | Gold I |
+| 14557 | Memory (BOJ) | Platinum I |
+| 17301 | NC 문자열 (BOJ) | Platinum IV |
+
+## Algospot 문제 정리
+
+| 문제 ID | 제목 |
+| --- | --- |
+| ALLERGY | 알러지가 심한 친구들 |
+| ARCTIC | 남극 기지 |
+| BOARDCOVER2 | 게임판 덮기 2 |
+| CANADATRIP | 캐나다 여행 |
+| DARPA | DARPA Grand Challenge |
+| JLIS | 합친 LIS |
+| LAUNCHBOX | 도시락 데우기 (LUNCHBOX) |
+| LOAN | 전세금 균등상환 |
+| MATCHORDER | 출전 순서 정하기 |
+| MINASTIRITH | 미나스 아노르 |
+| Quantization | 양자화 (Quantization) |
+| ROOTS | 단변수 다항 방정식 해결하기 |
+| STRJOIN | 문자열 합치기 |
+| WILDCARD | Wildcard |
+| WITHDRAWAL | 수강 철회 |
+
+## Programmers 문제 정리
+
+| 문제 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 12941 | 최솟값 만들기 | Level 2 |
+| 12979 | 기지국 설치 | Level 3 |
+| 138476 | 귤 고르기 | Level 2 |
+| 161988 | 연속 펄스 부분 수열의 합 | Level 3 |
+| 178871 | 달리기 경주 | Level 1 |
+| 18118 | 7-세그먼트 디스플레이 | - |
+| 150370 | 개인정보 수집 유효기간 (2023 KAKAO) | Level 1 |
+| 42895 | N으로 표현 | Level 3 |
+| 70129 | 이진 변환 반복하기 | Level 2 |
+
 ## 바킹독 0x 시리즈 로드맵
 
 ```
