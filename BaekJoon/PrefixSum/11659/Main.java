@@ -33,6 +33,6 @@ class Main {
       sb.append(prefixSum[b] - prefixSum[a - 1]).append("\n");
     }
 
-    System.out.println(sb.toString());
+    System.out.println(sb);
   }
 }
