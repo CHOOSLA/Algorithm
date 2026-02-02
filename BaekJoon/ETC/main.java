@@ -1,9 +1,7 @@
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
-public class main {
+public class Main {
     public static void main(String[] args) throws Exception {
         System.setIn(new FileInputStream("./input.txt"));
         // 입력을 빠르게 받기 위한 BufferedReader 사용
@@ -13,10 +11,9 @@ public class main {
         String a;
         int b;
 
-        a = nextToken();
-        b = nextToken();
+        a = st.nextToken();
+        b = st.nextToken();
 
         BigInteger bigA = new BigInteger(a);
         
     }
-}
