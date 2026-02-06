@@ -896,4 +896,4 @@ FodyWeavers.xsd
 # 자바 관련 설정 무시
 .idea/
 
-**/tempCodeRunnerFile.cpp
+**/tempCodeRunnerFile.**
