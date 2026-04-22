@@ -225,6 +225,7 @@ problems = [
 
 [sw_expert_academy]
 problems = [
+  { folder = "2072", title = "홀수만 더하기", difficulty = "D1" },
   { folder = "1206",  title = "View",                difficulty = "D3" },
   { folder = "1208",  title = "Flatten",             difficulty = "D3" },
   { folder = "1210",  title = "Ladder1",             difficulty = "D4" },

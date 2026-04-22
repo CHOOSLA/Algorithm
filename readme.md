@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-187-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-188-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -19,12 +19,12 @@
 | 플랫폼 | 문제 수 |
 | --- | ---: |
 | BaekJoon | 84 |
-| SW Expert Academy | 17 |
+| SW Expert Academy | 18 |
 | Codetree | 49 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **187** |
+| **합계** | **188** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -383,6 +383,7 @@ xychart-beta
 
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
+| 2072 | 홀수만 더하기 | D1 |
 | 1206 | View | D3 |
 | 1208 | Flatten | D3 |
 | 1210 | Ladder1 | D4 |
