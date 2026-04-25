@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-190-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-191-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -19,12 +19,12 @@
 | 플랫폼 | 문제 수 |
 | --- | ---: |
 | BaekJoon | 84 |
-| SW Expert Academy | 20 |
+| SW Expert Academy | 21 |
 | Codetree | 49 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **190** |
+| **합계** | **191** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -88,7 +88,7 @@ xychart-beta
   title "월별 풀이 완료 commit (최근 9개월)"
   x-axis ["2025-08", "2025-09", "2025-11", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06"]
   y-axis "commit" 0 --> 66
-  line [3, 1, 13, 2, 22, 3, 9, 53, 39]
+  line [3, 1, 13, 2, 22, 3, 10, 53, 39]
 ```
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
@@ -383,6 +383,7 @@ xychart-beta
 
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
+| 1213 | String | D3 |
 | 2071 | 평균값 구하기 | D1 |
 | 1209 | Sum | D3 |
 | 2072 | 홀수만 더하기 | D1 |
@@ -403,7 +404,6 @@ xychart-beta
 | 14557 | Memory (BOJ) | Platinum I |
 | 17301 | NC 문자열 (BOJ) | Platinum IV |
 | 43238 | 입국 심사 (BOJ) | Gold V |
-| 1213 | String | D3 |
 | 1215 | 회문1 | D3 |
 | 1217 | 거듭 제곱 | D3 |
 | 1218 | 괄호 짝짓기 | D4 |
