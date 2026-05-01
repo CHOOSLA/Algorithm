@@ -225,6 +225,7 @@ problems = [
 
 [sw_expert_academy]
 problems = [
+  { folder = "1218", title = "괄호 짝짓기", difficulty = "D4" },
   { folder = "2063", title = "중간값 찾기", difficulty = "D1" },
   { folder = "1217", title = "거듭 제곱", difficulty = "D3" },
   { folder = "2068", title = "최대수 구하기", difficulty = "D1" },
