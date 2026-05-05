@@ -225,6 +225,7 @@ problems = [
 
 [sw_expert_academy]
 problems = [
+  { folder = "1221", title = "GNS", difficulty = "D3" },
   { folder = "1288", title = "새로운 불면증 치료법", difficulty = "D3" },
   { folder = "1219", title = "길찾기", difficulty = "D4" },
   { folder = "2056", title = "연월일 달력", difficulty = "D1" },
