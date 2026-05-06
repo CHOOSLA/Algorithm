@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-201-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-202-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -19,12 +19,12 @@
 | 플랫폼 | 문제 수 |
 | --- | ---: |
 | BaekJoon | 84 |
-| SW Expert Academy | 31 |
+| SW Expert Academy | 32 |
 | Codetree | 49 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **201** |
+| **합계** | **202** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -87,8 +87,8 @@ config:
 xychart-beta
   title "월별 풀이 완료 commit (최근 9개월)"
   x-axis ["2025-08", "2025-09", "2025-11", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06"]
-  y-axis "commit" 0 --> 71
-  line [3, 1, 13, 2, 22, 3, 16, 57, 39]
+  y-axis "commit" 0 --> 72
+  line [3, 1, 13, 2, 22, 3, 16, 58, 39]
 ```
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
@@ -383,6 +383,7 @@ xychart-beta
 
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
+| 1230 | 암호문3 | D3 |
 | 1221 | GNS | D3 |
 | 1288 | 새로운 불면증 치료법 | D3 |
 | 1219 | 길찾기 | D4 |
