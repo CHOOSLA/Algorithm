@@ -225,6 +225,7 @@ problems = [
 
 [sw_expert_academy]
 problems = [
+  { folder = "1224", title = "계산기3", difficulty = "D4" },
   { folder = "1230", title = "암호문3", difficulty = "D3" },
   { folder = "1221", title = "GNS", difficulty = "D3" },
   { folder = "1288", title = "새로운 불면증 치료법", difficulty = "D3" },
