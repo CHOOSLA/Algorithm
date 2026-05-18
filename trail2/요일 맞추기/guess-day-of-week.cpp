@@ -41,6 +41,9 @@ int main() {
         if(d == months[m]){
             m++;
             d = 1;
+        }else if(d == 0){
+            m--;
+            d = months[m];
         }
     }
 
