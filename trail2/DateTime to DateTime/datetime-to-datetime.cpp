@@ -9,6 +9,11 @@ int main() {
 
     // Please write your code here.
     int mon = 11, day = 11, min = 11;
+
+    if(a * 1440 + b * 60 + c < 11 * 1440 + 11 * 60 + 11){
+        cout << -1 << endl;
+    }
+
     int result = 0;
 
     while(true){
