@@ -42,7 +42,7 @@ int main() {
         d = d + dir;
         result = (result + dir + 7) % 7;
 
-        if(d == months[m]){
+        if(d == months[m] + 1){
             m++;
             d = 1;
         }else if(d == 0){
