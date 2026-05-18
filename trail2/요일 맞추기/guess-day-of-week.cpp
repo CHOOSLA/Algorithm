@@ -17,17 +17,21 @@ int main() {
     int m = m1;
     int d = d1;
 
-    // 플러스 , 마이너스를 정함
-    int dir;
-    if(m1 <= m2){
-        if( d1 <= d2){
-            dir = 1; 
-        }else{
-            dir = -1;
-        }
-    }else{
-        dir = -1;
+    // 플러스 , 마이너스를 정리
+    int tmp = 0;
+    for(int sMon = 1; sMon < m1; ++sMon){
+        tmp += months[sMon];
     }
+    tmp += d1;
+
+    for(int sMon = 1; sMon < m2; ++sMon){
+        tmp -= months[sMon];
+    }
+
+    tmp -= d2;
+
+    int dir = tmp < 0 ? 1 : -1;
+    
     
 
     while(true){
@@ -38,10 +42,11 @@ int main() {
         d = d + dir;
         result = (result + dir + 7) % 7;
 
-        if(d == months[m] + 1){
+        if(d == months[m]){
+            cout << m << endl;
             m++;
             d = 1;
-        }else if(d == -1){
+        }else if(d == 0){
             m--;
             d = months[m];
         }
