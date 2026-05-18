@@ -21,7 +21,7 @@ int main() {
     int dir;
     if(m1 <= m2){
         if( d1 <= d2){
-           dir = 1; 
+            dir = 1; 
         }else{
             dir = -1;
         }
@@ -38,7 +38,7 @@ int main() {
         d = d + dir;
         result = (result + dir + 7) % 7;
 
-        if(d == months[m]){
+        if(d == months[m] + 1){
             m++;
             d = 1;
         }else if(d == 0){
