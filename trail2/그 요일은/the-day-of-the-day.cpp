@@ -15,11 +15,10 @@ int main() {
     string weekdays[7] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
     // 달
     int months[13] = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    int startWD = -1;
+    int startWD = 1;
     int tmpWD = -1;
     for(int i=0; i < 7; ++i){
         if(A.compare(weekdays[i]) == 0){
-            startWD = i;
             tmpWD = i;
         }
     }
