@@ -43,7 +43,6 @@ int main() {
         result = (result + dir + 7) % 7;
 
         if(d == months[m]){
-            cout << m << endl;
             m++;
             d = 1;
         }else if(d == 0){
