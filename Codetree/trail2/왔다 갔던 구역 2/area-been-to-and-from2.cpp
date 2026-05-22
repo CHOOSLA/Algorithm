@@ -18,8 +18,9 @@ int main() {
     int now = 249;
     for(int i=0; i < n; ++i){
         int d = dir[i] == 'R' ? 1 : -1;
-        for(int j = 0; j < x[i] ; ++j,now += d){
+        for(int j = 0; j < x[i] ; ++j){
             check[now]++;
+            now += d;
         }
     }
 
