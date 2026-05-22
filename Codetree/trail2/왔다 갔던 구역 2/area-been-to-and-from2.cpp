@@ -14,18 +14,18 @@ int main() {
     }
 
     // Please write your code here.
-    int check[500] = {0,};
-    int now = 249;
+    int check[4000] = {0,};
+    int now = 2000;
     for(int i=0; i < n; ++i){
         int d = dir[i] == 'R' ? 1 : -1;
-        for(int j = 0; j <= x[i] ; ++j){
+        for(int j = 0; j < x[i] ; ++j){
             check[now]++;
             now += d;
         }
     }
 
     int result =0;
-    for(int i=0; i < 500; ++i){
+    for(int i=0; i < 4000; ++i){
         if(check[i] >= 2){
             result++;
         }
