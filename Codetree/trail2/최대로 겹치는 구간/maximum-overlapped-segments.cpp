@@ -17,14 +17,14 @@ int main() {
     int check[201] ={};
 
     for(int i=0; i < n; ++i){
-        for(int j=x1[i] + 100; j <= x2[i] + 100; ++j){
+        for(int j=x1[i] + 100; j < x2[i] + 100; ++j){
             check[j]++;
         }
     }
 
     int result_idx = 0;
     int result = -1;
-    for(int i=1; i < 200; ++i){
+    for(int i=0; i < 201; ++i){
         result = max(result, check[i]);
         result_idx = i;
     }
