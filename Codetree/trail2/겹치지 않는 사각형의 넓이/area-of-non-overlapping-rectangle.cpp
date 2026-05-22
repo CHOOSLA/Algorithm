@@ -18,7 +18,7 @@ int main() {
             for(int k=y1[i]; k < y2[i]; ++k){
                 int s = (i==2) ? -1 : 1;
 
-                map[j][k] += s;
+                map[j + 1000][k + 1000] += s;
             }
         }
     }
