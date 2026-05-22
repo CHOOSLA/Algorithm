@@ -24,7 +24,7 @@ int main() {
 
     int result_idx = 0;
     int result = -1;
-    for(int i=0; i < 201; ++i){
+    for(int i=1; i < 200; ++i){
         result = max(result, check[i]);
         result_idx = i;
     }
