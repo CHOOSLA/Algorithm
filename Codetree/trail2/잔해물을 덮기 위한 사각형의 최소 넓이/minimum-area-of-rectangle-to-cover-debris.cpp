@@ -57,9 +57,15 @@ int main() {
             }
         }
 
-        if(start_row == -1 || start_col == -1) continue;
-        max_row = max(max_row, (end_row - start_row + 1));
-        max_col = max(max_col, (end_col - start_col + 1));
+        if(start_row != -1){
+            max_row = max(max_row, end_row - start_row + 1);
+        }
+
+        if(start_col != -1){
+            max_col = max(max_col, (end_col - start_col + 1));
+        }
+        
+        
         
     }
 
