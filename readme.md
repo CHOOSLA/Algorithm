@@ -1,28 +1,101 @@
+<!--
+  이 파일은 readme.md 의 정적 부분(인트로, 로드맵 등)을 담는 템플릿이다.
+  <!--AUTOGEN:XXX--> 마커 위치에 scripts/generate_readme.py 가 표를 삽입한다.
+  readme.md 를 직접 편집하지 말 것 — 다음 빌드에서 덮어쓰여진다.
+-->
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=header&text=Algorithm%20Lab&fontSize=70&fontColor=ffffff&animation=fadeIn"/>
+</p>
+
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&duration=3000&pause=800&color=4F8BFB&center=true&vCenter=true&width=600&lines=%EB%B0%B1%EC%A4%80%20/%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%20/%20SWEA%20/%20Codetree;%EB%A7%A4%EC%9D%BC%20%ED%95%9C%20%EB%AC%B8%EC%A0%9C%EC%94%A9%2C%20%EA%BE%B8%EC%A4%80%ED%9E%88;BFS%20%E2%86%92%20DP%20%E2%86%92%20Graph%20%E2%86%92%20Beyond" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Total_Problems-149-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
+</p>
+
 # 알고리즘 공부 저장소
 
 여러 온라인 저지에서 푼 문제들을 폴더별로 정리한 저장소입니다.
+README 의 문제 표·통계·배지는 [`scripts/problems.toml`](scripts/problems.toml) 을 단일 소스로 자동 생성됩니다 — 직접 편집하지 마세요.
+
+## 📊 한눈에 보기
+
+| 플랫폼 | 문제 수 |
+| --- | ---: |
+| BaekJoon | 84 |
+| SW Expert Academy | 17 |
+| Codetree | 11 |
+| Algospot | 17 |
+| Programmers | 19 |
+| Softeer | 1 |
+| **합계** | **149** |
+
+### 카테고리 분포
+
+```mermaid
+pie showData
+  title BaekJoon 카테고리별 문제 수
+  "BFS / DFS" : 16
+  "Divide & Conquer" : 8
+  "Implement (시뮬레이션)" : 7
+  "Greedy" : 6
+  "Backtracking" : 5
+  "0x0C · 백트래킹" : 4
+  "기타" : 38
+```
+
+### 난이도 분포
+
+```mermaid
+xychart-beta
+  title "BaekJoon 티어별 문제 수"
+  x-axis [Bronze, Silver, Gold, Platinum]
+  y-axis "문제 수" 0 --> 53
+  bar [1, 35, 43, 4]
+```
 
 ## 폴더 구조
 - **Algospot/**: Algospot 문제 풀이
-- **BaekJoon/**: 백준 온라인 저지 문제. 아래의 바킹독 0x 시리즈 로드맵을 따라 분류되어 있습니다.
+- **BaekJoon/**: 백준 온라인 저지 문제. 바킹독 0x 시리즈 로드맵을 따라 분류.
+- **Codetree/**: 코드트리 문제 (구현·트레일 코스 등)
 - **Programmers/**: 프로그래머스 코딩 테스트 문제
 - **Softeer/**: 현대 Softeer 문제
 - **SW Expert Academy/**: SW Expert Academy 문제
 - **Python Study/**: 파이썬 연습 코드
-- **GasStation.cpp**: 개별 C++ 예제
+- **scripts/**: README 자동 생성 파이프라인
+
+## 자동 갱신
+
+```bash
+# 새 문제 추가 후 메타 한 줄 적고:
+python3 scripts/generate_readme.py
+```
+
+폴더에는 있지만 `problems.toml` 에 없으면 빌드가 경고와 함께 실패하고, 표에는 `TODO` 행이 표시됩니다. PR 단계에서 GitHub Actions 가 동일한 검증을 수행해 누락을 강제합니다.
 
 ## BaekJoon 문제 정리
 
-`BaekJoon/` 폴더는 알고리즘 유형별로 세분화되어 있으며 각 문제는 백준 번호로 된 하위 폴더에 저장되어 있습니다. 폴더 내부에는 번호와 동일한 이름의 소스 파일과 예시 입력(`input.txt`)이 포함되어 있어, 문제 번호만으로도 제목과 난이도를 쉽게 찾아볼 수 있습니다.
+`BaekJoon/` 폴더는 알고리즘 유형별로 세분화되어 있으며 각 문제는 백준 번호로 된 하위 폴더에 저장되어 있습니다.
 
-### 0x0B
+<details>
+<summary><b>0x0B · 재귀</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1074 | Z | Silver I |
 | 1629 | 곱셈 | Silver I |
 | 11729 | 하노이 탑 이동 순서 | Silver I |
 
-### 0x0C
+</details>
+
+<details>
+<summary><b>0x0C · 백트래킹</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1182 | 부분수열의 합 | Silver II |
@@ -30,34 +103,45 @@
 | 9663 | N-Queen | Gold IV |
 | 15649 | N과 M (1) | Silver III |
 
-### 0x10
+</details>
+
+<details>
+<summary><b>0x10 · 다이나믹 프로그래밍</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1149 | RGB거리 | Silver I |
 | 2579 | 계단 오르기 | Silver III |
 
-### BFS / DFS
+</details>
+
+<details open>
+<summary><b>BFS / DFS</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1012 | 유기농 배추 | Silver II |
+| 1194 | 달이 차오른다, 가자 | Gold I |
 | 1260 | DFS와 BFS | Silver II |
 | 1697 | 숨바꼭질 | Silver I |
 | 2023 | 신기한 소수 | Gold IV |
 | 2146 | 다리 만들기 | Gold IV |
 | 2178 | 미로 탐색 | Silver I |
-| 2206 | 벽 부수고 이동하기 (WIP) | Gold III |
+| 2206 | 벽 부수고 이동하기 | Gold III |
 | 2606 | 바이러스 | Silver III |
 | 2644 | 촌수계산 | Silver II |
-| 2667 | 단지번호붙이기 | Silver I |
 | 4179 | 불! | Gold IV |
-| 7562 | 나이트의 이동 | Silver I |
-| 7569 | 토마토 | Gold V |
 | 7576 | 토마토 | Gold V |
 | 11724 | 연결 요소의 개수 | Silver II |
-| 11725 | 트리의 부모 찾기 | Silver II |
 | 13023 | ABCDE | Gold V |
+| 13460 | 구슬 탈출 2 | Gold I |
+| 14503 | 로봇 청소기 | Gold V |
 
-### Backtracking
+</details>
+
+<details>
+<summary><b>Backtracking</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1759 | 암호 만들기 | Gold V |
@@ -66,35 +150,56 @@
 | 15649 | N과 M (1) | Silver III |
 | 17136 | 색종이 붙이기 | Gold II |
 
-### Bellman Ford
+</details>
+
+<details>
+<summary><b>Bellman-Ford</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1219 | 오민식의 고민 | Platinum V |
 | 11657 | 타임머신 | Gold IV |
 
-### Binary Search
+</details>
+
+<details>
+<summary><b>Binary Search</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1822 | 차집합 | Silver IV |
 | 8983 | 사냥꾼 | Gold IV |
 | 16401 | 과자 나눠주기 | Silver II |
 
-### Dynamic Programming
+</details>
+
+<details>
+<summary><b>Dynamic Programming</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1029 | 그림 교환 | Gold I |
+| Kth | 사전 (1256) | Gold II |
 | 10942 | 팰린드롬? | Gold IV |
 | 12869 | 뮤탈리스크 | Gold V |
-| 1256 | 사전 | Gold II |
 
-### Dijkstra
+</details>
+
+<details open>
+<summary><b>Dijkstra</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1753 | 최단경로 | Gold IV |
 | 1854 | K번째 최단경로 찾기 | Platinum V |
 | 1916 | 최소비용 구하기 | Gold V |
+| 11779 | 최소비용 구하기 2 | Gold III |
 
-### Divide & Conquer
+</details>
+
+<details>
+<summary><b>Divide & Conquer</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1030 | 프렉탈 평면 | Gold V |
@@ -106,13 +211,21 @@
 | 6549 | 히스토그램에서 가장 큰 직사각형 | Platinum V |
 | 21870 | 시철이가 사랑한 GCD | Gold IV |
 
-### Floyd Warshall
+</details>
+
+<details>
+<summary><b>Floyd-Warshall</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1389 | 케빈 베이컨의 6단계 법칙 | Silver I |
 | 11404 | 플로이드 | Gold IV |
 
-### Greedy
+</details>
+
+<details>
+<summary><b>Greedy</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1202 | 보석 도둑 | Gold II |
@@ -122,69 +235,120 @@
 | 13305 | 주유소 | Silver IV |
 | 13904 | 과제 | Gold III |
 
-### Hash
+</details>
+
+<details>
+<summary><b>Hash</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 9375 | 패션왕 신해빈 | Silver III |
 
-### Implement
+</details>
+
+<details open>
+<summary><b>Implement (시뮬레이션)</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
+| 1244 | 스위치 켜고 끄기 | Silver IV |
 | 1417 | 국회의원 선거 | Silver III |
+| 16234 | 인구 이동 | Gold IV |
 | 17952 | 과제는 끝나지 않아!! | Silver IV |
+| 19236 | 청소년 상어 | Gold I |
+| 200057 | 마법사 상어와 토네이도 (20057) | Gold III |
 | Mining | 광물 캐기 | - |
 
-### MST
+</details>
+
+<details>
+<summary><b>MST</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1197 | 최소 스패닝 트리 | Gold IV |
 | 1414 | 불우이웃돕기 | Gold III |
 | 17472 | 다리 만들기 2 | Gold I |
 
-### PrefixSum
+</details>
+
+<details>
+<summary><b>Prefix Sum</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
+| 2559 | 수열 | Silver III |
 | 11659 | 구간 합 구하기 4 | Silver III |
 
-### Recursive
+</details>
+
+<details>
+<summary><b>Recursive</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1074 | Z | Silver I |
 | 11729 | 하노이 탑 이동 순서 | Silver I |
 
-### Sort
+</details>
+
+<details>
+<summary><b>Sort</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1181 | 단어 정렬 | Silver V |
 | 11651 | 좌표 정렬하기 2 | Silver V |
 
-### Stack
+</details>
+
+<details>
+<summary><b>Stack</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 9012 | 괄호 | Silver IV |
 
-### Topological Sort
+</details>
+
+<details>
+<summary><b>Topological Sort</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1516 | 게임 개발 | Gold III |
 | 1948 | 임계경로 | Platinum V |
 | 2252 | 줄 세우기 | Gold III |
 
-### Two Pointers
+</details>
+
+<details>
+<summary><b>Two Pointers</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1253 | 좋다 | Gold IV |
 | 2018 | 수들의 합 5 | Silver V |
 
-### Union Find
+</details>
+
+<details>
+<summary><b>Union Find</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1717 | 집합의 표현 | Gold V |
 
-### Unsolved
+</details>
+
+<details>
+<summary><b>Unsolved</b></summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1864 | 문어 숫자 (미해결) | Bronze |
+
+</details>
 
 ## SW Expert Academy 문제 정리
 
@@ -196,6 +360,7 @@
 | 1220 | Magnetic | D3 |
 | 1226 | 미로1 | D4 |
 | 1238 | Contact | D4 |
+| 1244 | 최대 상금 | D3 |
 | 1247 | 최적 경로 | D5 |
 | 1767 | 프로세서 연결하기 | - |
 | 1873 | 상호의 배틀필드 | D3 |
@@ -205,6 +370,23 @@
 | 13460 | 구슬 탈출 2 (BOJ) | Gold I |
 | 14557 | Memory (BOJ) | Platinum I |
 | 17301 | NC 문자열 (BOJ) | Platinum IV |
+| 43238 | 입국 심사 (BOJ) | Gold V |
+
+## Codetree 문제 정리
+
+| 카테고리 | 문제 | 비고 |
+| --- | --- | --- |
+| Implement | 포탑 부수기 | 시뮬레이션 |
+| Trail 2 · 진수 변환 | 2진수로 변환하기 | - |
+| Trail 2 · 진수 변환 | 십진수로 변환하기 | - |
+| Trail 2 · 진수 변환 | 십진수와 이진수 2 | - |
+| Trail 2 · 진수 변환 | 여러가지 진수변환 | - |
+| Trail 2 · 진수 변환 | 진수 to 진수 | - |
+| Trail 2 · 날짜·시간 | Time to Time | - |
+| Trail 2 · 날짜·시간 | Date to Date | - |
+| Trail 2 · 날짜·시간 | DateTime to DateTime | - |
+| Trail 2 · 요일 | 그 요일은 | - |
+| Trail 2 · 요일 | 요일 맞추기 | - |
 
 ## Algospot 문제 정리
 
@@ -236,17 +418,21 @@
 | 12941 | 최솟값 만들기 | Level 2 |
 | 12979 | 기지국 설치 | Level 3 |
 | 18118 | 7-세그먼트 디스플레이 | - |
+| 42577 | 전화번호 목록 | Level 2 |
+| 42578 | 위장 | Level 2 |
+| 42888 | 오픈채팅방 | Level 2 |
 | 42895 | N으로 표현 | Level 3 |
 | 43162 | 네트워크 | Level 3 |
-| 43238 | 입국 심사 | Level 3 |
+| 64065 | 튜플 | Level 2 |
 | 70129 | 이진 변환 반복하기 | Level 2 |
+| 72410 | 신규 아이디 추천 | Level 1 |
 | 72413 | 합승 택시 요금 | Level 3 |
 | 87694 | 아이템 줍기 | Level 3 |
 | 92344 | 파괴되지 않은 건물 | Level 3 |
 | 138476 | 귤 고르기 | Level 2 |
-| 150370 | 개인정보 수집 유효기간 | Level 1 |
 | 161988 | 연속 펄스 부분 수열의 합 | Level 3 |
 | 178871 | 달리기 경주 | Level 1 |
+| 2023 KAKAO BLIND RECRUITMENT | 개인정보 수집 유효기간 (150370) | Level 1 |
 
 ## Softeer 문제 정리
 
@@ -256,42 +442,42 @@
 
 ## 바킹독 0x 시리즈 로드맵
 
-```
-0x00강 - 오리엔테이션
-0x01강 - 기초 코드 작성 요령 I
-0x02강 - 기초 코드 작성 요령 II
-0x03강 - 배열
-0x04강 - 연결 리스트
-0x05강 - 스택
-0x06강 - 큐
-0x07강 - 덱
-0x08강 - 스택의 활용(수식의 괄호 쌍)
-0x09강 - BFS
-0x0A강 - DFS
-0x0B강 - 재귀
-0x0C강 - 백트래킹
-0x0D강 - 시뮬레이션
-0x0E강 - 정렬 I
-0x0F강 - 정렬 II
-0x10강 - 다이나믹 프로그래밍
-0x11강 - 그리디
-0x12강 - 수학
-0x13강 - 이분탐색
-0x14강 - 투 포인터
-0x15강 - 해시
-0x16강 - 이진 검색 트리
-0x17강 - 우선순위 큐
-0x18강 - 그래프
-0x19강 - 트리
-0x1A강 - 위상정렬
-0x1B강 - 최소 신장 트리
-0x1C강 - 플로이드 알고리즘
-0x1D강 - 다익스트라 알고리즘
-0x1E강 - KMP 알고리즘
-0x1F강 - 트라이
-부록 A - 문자열 기초
-부록 B - 동적 배열
-부록 C - 비트마스킹
-부록 D - Union Find
-부록 E - 다이나믹 프로그래밍 심화
-```
+폴더가 존재하면 ✅, 진행 예정이면 ⬜.
+
+- ⬜ 0x00강 - 오리엔테이션
+- ⬜ 0x01강 - 기초 코드 작성 요령 I
+- ⬜ 0x02강 - 기초 코드 작성 요령 II
+- ⬜ 0x03강 - 배열
+- ⬜ 0x04강 - 연결 리스트
+- ⬜ 0x05강 - 스택
+- ⬜ 0x06강 - 큐
+- ⬜ 0x07강 - 덱
+- ⬜ 0x08강 - 스택의 활용(수식의 괄호 쌍)
+- ✅ 0x09강 - BFS
+- ✅ 0x0A강 - DFS
+- ✅ 0x0B강 - 재귀
+- ✅ 0x0C강 - 백트래킹
+- ✅ 0x0D강 - 시뮬레이션
+- ✅ 0x0E강 - 정렬 I
+- ⬜ 0x0F강 - 정렬 II
+- ✅ 0x10강 - 다이나믹 프로그래밍
+- ✅ 0x11강 - 그리디
+- ⬜ 0x12강 - 수학
+- ✅ 0x13강 - 이분탐색
+- ✅ 0x14강 - 투 포인터
+- ✅ 0x15강 - 해시
+- ⬜ 0x16강 - 이진 검색 트리
+- ⬜ 0x17강 - 우선순위 큐
+- ⬜ 0x18강 - 그래프
+- ⬜ 0x19강 - 트리
+- ✅ 0x1A강 - 위상정렬
+- ✅ 0x1B강 - 최소 신장 트리
+- ✅ 0x1C강 - 플로이드 알고리즘
+- ✅ 0x1D강 - 다익스트라 알고리즘
+- ⬜ 0x1E강 - KMP 알고리즘
+- ⬜ 0x1F강 - 트라이
+- ⬜ 부록 A - 문자열 기초
+- ⬜ 부록 B - 동적 배열
+- ⬜ 부록 C - 비트마스킹
+- ✅ 부록 D - Union Find
+- ⬜ 부록 E - 다이나믹 프로그래밍 심화

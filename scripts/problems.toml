@@ -1,0 +1,342 @@
+# 알고리즘 저장소 메타데이터 단일 소스.
+# 이 파일을 갱신하면 `python3 scripts/generate_readme.py` 가 readme.md 를 다시 빌드한다.
+#
+# 새 문제 추가 절차:
+#   1. 문제 폴더 생성 후 소스 커밋
+#   2. 이 파일에 한 줄 추가
+#   3. 스크립트 실행 → readme.md 갱신
+#
+# Baekjoon 카테고리는 폴더명과 일치해야 한다. `display` 는 표 헤더에 표시될 라벨.
+# `open = true` 인 카테고리는 README 에서 기본 펼침 상태.
+
+#######################################
+# BaekJoon
+#######################################
+
+[baekjoon]
+ignored = ["ETC"]  # 문제 폴더가 아닌 디렉토리 (스캔 제외)
+
+[baekjoon."0x0B"]
+display = "0x0B · 재귀"
+problems = [
+  { folder = "1074",  title = "Z",                       difficulty = "Silver I" },
+  { folder = "1629",  title = "곱셈",                    difficulty = "Silver I" },
+  { folder = "11729", title = "하노이 탑 이동 순서",     difficulty = "Silver I" },
+]
+
+[baekjoon."0x0C"]
+display = "0x0C · 백트래킹"
+ignored = ["next_permutation"]  # STL 학습용 보조 디렉토리
+problems = [
+  { folder = "1182",  title = "부분수열의 합", difficulty = "Silver II" },
+  { folder = "6603",  title = "로또",          difficulty = "Silver II" },
+  { folder = "9663",  title = "N-Queen",        difficulty = "Gold IV" },
+  { folder = "15649", title = "N과 M (1)",      difficulty = "Silver III" },
+]
+
+[baekjoon."0x10"]
+display = "0x10 · 다이나믹 프로그래밍"
+problems = [
+  { folder = "1149", title = "RGB거리",     difficulty = "Silver I" },
+  { folder = "2579", title = "계단 오르기", difficulty = "Silver III" },
+]
+
+[baekjoon.BFS_DFS]
+display = "BFS / DFS"
+open = true
+problems = [
+  { folder = "1012",  title = "유기농 배추",         difficulty = "Silver II" },
+  { folder = "1194",  title = "달이 차오른다, 가자", difficulty = "Gold I" },
+  { folder = "1260",  title = "DFS와 BFS",           difficulty = "Silver II" },
+  { folder = "1697",  title = "숨바꼭질",            difficulty = "Silver I" },
+  { folder = "2023",  title = "신기한 소수",         difficulty = "Gold IV" },
+  { folder = "2146",  title = "다리 만들기",         difficulty = "Gold IV" },
+  { folder = "2178",  title = "미로 탐색",           difficulty = "Silver I" },
+  { folder = "2206",  title = "벽 부수고 이동하기",  difficulty = "Gold III" },
+  { folder = "2606",  title = "바이러스",            difficulty = "Silver III" },
+  { folder = "2644",  title = "촌수계산",            difficulty = "Silver II" },
+  { folder = "4179",  title = "불!",                 difficulty = "Gold IV" },
+  { folder = "7576",  title = "토마토",              difficulty = "Gold V" },
+  { folder = "11724", title = "연결 요소의 개수",    difficulty = "Silver II" },
+  { folder = "13023", title = "ABCDE",               difficulty = "Gold V" },
+  { folder = "13460", title = "구슬 탈출 2",         difficulty = "Gold I" },
+  { folder = "14503", title = "로봇 청소기",         difficulty = "Gold V" },
+]
+
+[baekjoon.BackTracking]
+display = "Backtracking"
+problems = [
+  { folder = "1759",  title = "암호 만들기",     difficulty = "Gold V" },
+  { folder = "2023",  title = "신기한 소수",     difficulty = "Gold IV" },
+  { folder = "10971", title = "외판원 순회 2",   difficulty = "Silver II" },
+  { folder = "15649", title = "N과 M (1)",       difficulty = "Silver III" },
+  { folder = "17136", title = "색종이 붙이기",   difficulty = "Gold II" },
+]
+
+[baekjoon.Bellman_Ford]
+display = "Bellman-Ford"
+problems = [
+  { folder = "1219",  title = "오민식의 고민", difficulty = "Platinum V" },
+  { folder = "11657", title = "타임머신",      difficulty = "Gold IV" },
+]
+
+[baekjoon.BinarySearch]
+display = "Binary Search"
+problems = [
+  { folder = "1822",  title = "차집합",         difficulty = "Silver IV" },
+  { folder = "8983",  title = "사냥꾼",         difficulty = "Gold IV" },
+  { folder = "16401", title = "과자 나눠주기",  difficulty = "Silver II" },
+]
+
+[baekjoon.DP]
+display = "Dynamic Programming"
+problems = [
+  { folder = "1029",  title = "그림 교환",  difficulty = "Gold I" },
+  { folder = "Kth",   title = "사전 (1256)", difficulty = "Gold II" },
+  { folder = "10942", title = "팰린드롬?",  difficulty = "Gold IV" },
+  { folder = "12869", title = "뮤탈리스크", difficulty = "Gold V" },
+]
+
+[baekjoon.Dijkstra]
+display = "Dijkstra"
+open = true
+problems = [
+  { folder = "1753",  title = "최단경로",          difficulty = "Gold IV" },
+  { folder = "1854",  title = "K번째 최단경로 찾기", difficulty = "Platinum V" },
+  { folder = "1916",  title = "최소비용 구하기",   difficulty = "Gold V" },
+  { folder = "11779", title = "최소비용 구하기 2", difficulty = "Gold III" },
+]
+
+[baekjoon.Divide_Conquer]
+display = "Divide & Conquer"
+problems = [
+  { folder = "1030",  title = "프렉탈 평면",                       difficulty = "Gold V" },
+  { folder = "2261",  title = "가장 가까운 두 점",                 difficulty = "Gold II" },
+  { folder = "2339",  title = "석판 자르기",                       difficulty = "Gold I" },
+  { folder = "2447",  title = "별 찍기 - 10",                      difficulty = "Gold V" },
+  { folder = "4779",  title = "칸토어 집합",                       difficulty = "Silver III" },
+  { folder = "5904",  title = "Moo 게임",                          difficulty = "Silver III" },
+  { folder = "6549",  title = "히스토그램에서 가장 큰 직사각형",   difficulty = "Platinum V" },
+  { folder = "21870", title = "시철이가 사랑한 GCD",               difficulty = "Gold IV" },
+]
+
+[baekjoon.Floyd_Warshall]
+display = "Floyd-Warshall"
+problems = [
+  { folder = "1389",  title = "케빈 베이컨의 6단계 법칙", difficulty = "Silver I" },
+  { folder = "11404", title = "플로이드",                 difficulty = "Gold IV" },
+]
+
+[baekjoon.Greedy]
+display = "Greedy"
+problems = [
+  { folder = "1202",  title = "보석 도둑",       difficulty = "Gold II" },
+  { folder = "1700",  title = "멀티탭 스케줄링", difficulty = "Gold I" },
+  { folder = "1715",  title = "카드 정렬하기",   difficulty = "Gold IV" },
+  { folder = "1744",  title = "수 묶기",         difficulty = "Gold IV" },
+  { folder = "13305", title = "주유소",          difficulty = "Silver IV" },
+  { folder = "13904", title = "과제",            difficulty = "Gold III" },
+]
+
+[baekjoon.Hash]
+display = "Hash"
+problems = [
+  { folder = "9375", title = "패션왕 신해빈", difficulty = "Silver III" },
+]
+
+[baekjoon.Implement]
+display = "Implement (시뮬레이션)"
+open = true
+problems = [
+  { folder = "1244",   title = "스위치 켜고 끄기",            difficulty = "Silver IV" },
+  { folder = "1417",   title = "국회의원 선거",               difficulty = "Silver III" },
+  { folder = "16234",  title = "인구 이동",                   difficulty = "Gold IV" },
+  { folder = "17952",  title = "과제는 끝나지 않아!!",        difficulty = "Silver IV" },
+  { folder = "19236",  title = "청소년 상어",                 difficulty = "Gold I" },
+  { folder = "200057", title = "마법사 상어와 토네이도 (20057)", difficulty = "Gold III" },
+  { folder = "Mining", title = "광물 캐기",                   difficulty = "-" },
+]
+
+[baekjoon.MST]
+display = "MST"
+problems = [
+  { folder = "1197",  title = "최소 스패닝 트리", difficulty = "Gold IV" },
+  { folder = "1414",  title = "불우이웃돕기",     difficulty = "Gold III" },
+  { folder = "17472", title = "다리 만들기 2",    difficulty = "Gold I" },
+]
+
+[baekjoon.PrefixSum]
+display = "Prefix Sum"
+problems = [
+  { folder = "2559",  title = "수열",             difficulty = "Silver III" },
+  { folder = "11659", title = "구간 합 구하기 4", difficulty = "Silver III" },
+]
+
+[baekjoon.Recursive]
+display = "Recursive"
+problems = [
+  { folder = "1074",  title = "Z",                   difficulty = "Silver I" },
+  { folder = "11729", title = "하노이 탑 이동 순서", difficulty = "Silver I" },
+]
+
+[baekjoon.Sort]
+display = "Sort"
+problems = [
+  { folder = "1181",  title = "단어 정렬",        difficulty = "Silver V" },
+  { folder = "11651", title = "좌표 정렬하기 2",  difficulty = "Silver V" },
+]
+
+[baekjoon.Stack]
+display = "Stack"
+problems = [
+  { folder = "9012", title = "괄호", difficulty = "Silver IV" },
+]
+
+[baekjoon.Topological_Sort]
+display = "Topological Sort"
+problems = [
+  { folder = "1516", title = "게임 개발", difficulty = "Gold III" },
+  { folder = "1948", title = "임계경로",  difficulty = "Platinum V" },
+  { folder = "2252", title = "줄 세우기", difficulty = "Gold III" },
+]
+
+[baekjoon.TwoPointer]
+display = "Two Pointers"
+problems = [
+  { folder = "1253", title = "좋다",        difficulty = "Gold IV" },
+  { folder = "2018", title = "수들의 합 5", difficulty = "Silver V" },
+]
+
+[baekjoon.Union_Find]
+display = "Union Find"
+problems = [
+  { folder = "1717", title = "집합의 표현", difficulty = "Gold V" },
+]
+
+[baekjoon.Unsolved]
+display = "Unsolved"
+problems = [
+  { folder = "1864", title = "문어 숫자 (미해결)", difficulty = "Bronze" },
+]
+
+#######################################
+# SW Expert Academy
+#######################################
+
+[sw_expert_academy]
+problems = [
+  { folder = "1206",  title = "View",                difficulty = "D3" },
+  { folder = "1208",  title = "Flatten",             difficulty = "D3" },
+  { folder = "1210",  title = "Ladder1",             difficulty = "D4" },
+  { folder = "1220",  title = "Magnetic",            difficulty = "D3" },
+  { folder = "1226",  title = "미로1",               difficulty = "D4" },
+  { folder = "1238",  title = "Contact",             difficulty = "D4" },
+  { folder = "1244",  title = "최대 상금",           difficulty = "D3" },
+  { folder = "1247",  title = "최적 경로",           difficulty = "D5" },
+  { folder = "1767",  title = "프로세서 연결하기",   difficulty = "-" },
+  { folder = "1873",  title = "상호의 배틀필드",     difficulty = "D3" },
+  { folder = "1954",  title = "달팽이 숫자",         difficulty = "D2" },
+  { folder = "2001",  title = "파리 퇴치",           difficulty = "D2" },
+  { folder = "2805",  title = "농작물 수확하기",     difficulty = "D3" },
+  { folder = "13460", title = "구슬 탈출 2 (BOJ)",   difficulty = "Gold I" },
+  { folder = "14557", title = "Memory (BOJ)",        difficulty = "Platinum I" },
+  { folder = "17301", title = "NC 문자열 (BOJ)",     difficulty = "Platinum IV" },
+  { folder = "43238", title = "입국 심사 (BOJ)",     difficulty = "Gold V" },
+]
+ignored_dirs = ["Unkown", "cpp_template.cpp", "input.txt"]
+
+#######################################
+# Codetree
+#######################################
+
+[[codetree]]
+category = "Implement"
+items = [
+  { path = "Implement/destroy-the-turret", name = "포탑 부수기", note = "시뮬레이션" },
+]
+
+[[codetree]]
+category = "Trail 2 · 진수 변환"
+items = [
+  { path = "trail2/2진수로 변환하기",  name = "2진수로 변환하기",  note = "" },
+  { path = "trail2/십진수로 변환하기", name = "십진수로 변환하기", note = "" },
+  { path = "trail2/십진수와 이진수 2", name = "십진수와 이진수 2", note = "" },
+  { path = "trail2/여러가지 진수변환", name = "여러가지 진수변환", note = "" },
+  { path = "trail2/진수 to 진수",      name = "진수 to 진수",      note = "" },
+]
+
+[[codetree]]
+category = "Trail 2 · 날짜·시간"
+items = [
+  { path = "trail2/Time to Time",         name = "Time to Time",         note = "" },
+  { path = "trail2/Date to Date",         name = "Date to Date",         note = "" },
+  { path = "trail2/DateTime to DateTime", name = "DateTime to DateTime", note = "" },
+]
+
+[[codetree]]
+category = "Trail 2 · 요일"
+items = [
+  { path = "trail2/그 요일은",   name = "그 요일은",   note = "" },
+  { path = "trail2/요일 맞추기", name = "요일 맞추기", note = "" },
+]
+
+#######################################
+# Algospot
+#######################################
+
+[algospot]
+problems = [
+  { folder = "ALLERGY",     title = "알러지가 심한 친구들" },
+  { folder = "ARCTIC",      title = "남극 기지" },
+  { folder = "BOARDCOVER2", title = "게임판 덮기 2" },
+  { folder = "CANADATRIP",  title = "캐나다 여행" },
+  { folder = "DARPA",       title = "DARPA Grand Challenge" },
+  { folder = "FENCE",       title = "울타리 잘라내기" },
+  { folder = "JLIS",        title = "합친 LIS" },
+  { folder = "JOSEPHUS",    title = "조세푸스 문제" },
+  { folder = "LAUNCHBOX",   title = "도시락 데우기 (LUNCHBOX)" },
+  { folder = "LOAN",        title = "전세금 균등상환" },
+  { folder = "MATCHORDER",  title = "출전 순서 정하기" },
+  { folder = "MINASTIRITH", title = "미나스 아노르" },
+  { folder = "Quantization", title = "양자화 (Quantization)" },
+  { folder = "ROOTS",       title = "단변수 다항 방정식 해결하기" },
+  { folder = "STRJOIN",     title = "문자열 합치기" },
+  { folder = "WILDCARD",    title = "Wildcard" },
+  { folder = "WITHDRAWAL",  title = "수강 철회" },
+]
+
+#######################################
+# Programmers
+#######################################
+
+[programmers]
+problems = [
+  { folder = "1844",    title = "게임 맵 최단 거리",       difficulty = "Level 2" },
+  { folder = "12941",   title = "최솟값 만들기",           difficulty = "Level 2" },
+  { folder = "12979",   title = "기지국 설치",             difficulty = "Level 3" },
+  { folder = "18118",   title = "7-세그먼트 디스플레이",   difficulty = "-" },
+  { folder = "42577",   title = "전화번호 목록",           difficulty = "Level 2" },
+  { folder = "42578",   title = "위장",                    difficulty = "Level 2" },
+  { folder = "42888",   title = "오픈채팅방",              difficulty = "Level 2" },
+  { folder = "42895",   title = "N으로 표현",              difficulty = "Level 3" },
+  { folder = "43162",   title = "네트워크",                difficulty = "Level 3" },
+  { folder = "64065",   title = "튜플",                    difficulty = "Level 2" },
+  { folder = "70129",   title = "이진 변환 반복하기",      difficulty = "Level 2" },
+  { folder = "72410",   title = "신규 아이디 추천",        difficulty = "Level 1" },
+  { folder = "72413",   title = "합승 택시 요금",          difficulty = "Level 3" },
+  { folder = "87694",   title = "아이템 줍기",             difficulty = "Level 3" },
+  { folder = "92344",   title = "파괴되지 않은 건물",      difficulty = "Level 3" },
+  { folder = "138476",  title = "귤 고르기",               difficulty = "Level 2" },
+  { folder = "161988",  title = "연속 펄스 부분 수열의 합", difficulty = "Level 3" },
+  { folder = "178871",  title = "달리기 경주",             difficulty = "Level 1" },
+  { folder = "2023 KAKAO BLIND RECRUITMENT", title = "개인정보 수집 유효기간 (150370)", difficulty = "Level 1" },
+]
+
+#######################################
+# Softeer
+#######################################
+
+[softeer]
+problems = [
+  { folder = "7594", title = "나무 조경", difficulty = "Level 2" },
+]
