@@ -28,16 +28,19 @@ int main() {
     
     for(int i=0; i < 2002; ++i){
         int tmp_row = 0;
-
+        int tmp_col = 0;
         int check = 0;
         for(int j=0; j < 2002; ++j){
             if(map[i][j]) {
                 tmp_row++;
-                check = 1;
+            }
+
+            if(map[j][i]){
+                tmp_col++;
             }
         }
         max_row = max(max_row, tmp_row);
-        if(check)max_col++;
+        max_col = max(max_col, tmp_col);
         
     }
 
