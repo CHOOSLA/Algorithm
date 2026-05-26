@@ -10,7 +10,9 @@ int main() {
     cin >> x1[1] >> y1[1] >> x2[1] >> y2[1];
 
     // Please write your code here.
-    int map[2002][2002] = {0,};
+
+    int MAX_SIZE = 2002;
+    int map[MAX_SIZE][MAX_SIZE] = {0,};
     int offset = 1000;
 
     for(int i=0; i < 2; ++i){
@@ -26,23 +28,39 @@ int main() {
     int max_row = 0;
     
     
-    for(int i=0; i < 2002; ++i){
-        int tmp_row = 0;
-        int tmp_col = 0;
-        int check = 0;
-        for(int j=0; j < 2002; ++j){
-            if(map[i][j]) {
-                tmp_row++;
+    // 시작과 끝을 지정...
+
+
+    for(int i=0; i < MAX_SIZE; ++i){
+    
+        
+        int start_row = -1;
+        int end_row = -1;
+        int start_col = -1;
+        int end_col = -1;
+
+        for(int j=0; j < MAX_SIZE; ++j){
+            if(map[i][j] && start_row == -1) {
+                start_row = j;
             }
 
-            if(map[j][i]){
-                tmp_col++;
+            if(map[i][MAX_SIZE- 1 - j] && end_row == -1){
+                end_row = MAX_SIZE- 1 - j;
+            }
+
+            if(map[j][i] && start_col == -1){
+                start_col = j;
+            }
+
+            if(map[MAX_SIZE - 1 - j][i] && end_col == -1){
+                end_col = MAX_SIZE- 1 - j;
             }
         }
-        max_row = max(max_row, tmp_row);
-        max_col = max(max_col, tmp_col);
+        max_row = max(max_row, (end_row - start_row + 1));
+        max_col = max(max_col, (end_col - start_col + 1));
         
     }
+
 
     cout << (max_col * max_row);
     return 0;
