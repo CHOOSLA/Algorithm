@@ -413,9 +413,9 @@ SWEA_COMMIT_PATTERN = re.compile(
 )
 ATTEMPT_SYMBOLS = {
     "Passed": "✅",
-    "Wrong Answer": "WA",
-    "Time Limit Exceed": "TLE",
-    "WIP": "WIP",
+    "Wrong Answer": "❌",
+    "Time Limit Exceed": "⏱️",
+    "WIP": "🚧",
 }
 
 

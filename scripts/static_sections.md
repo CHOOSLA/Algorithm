@@ -9,9 +9,6 @@
 
 # 알고리즘 공부 저장소
 
-여러 온라인 저지에서 푼 문제들을 폴더별로 정리한 저장소입니다.
-README 의 문제 표·통계·배지는 [`scripts/problems.toml`](scripts/problems.toml) 을 단일 소스로 자동 생성됩니다 — 직접 편집하지 마세요.
-
 ## 📊 한눈에 보기
 
 <!--AUTOGEN:STATS-->
