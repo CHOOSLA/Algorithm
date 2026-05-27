@@ -1,6 +1,7 @@
 <!--
-  이 파일은 readme.md 의 정적 부분(인트로, 로드맵 등)을 담는 템플릿이다.
-  <!--AUTOGEN:XXX--> 마커 위치에 scripts/generate_readme.py 가 표를 삽입한다.
+  static_sections.md — readme.md 생성용 템플릿.
+  AUTOGEN 마커 위치에 scripts/generate_readme.py 가 표를 삽입한다.
+  이 최상단 주석은 빌더가 readme.md 에서 자동으로 제거한다.
   readme.md 를 직접 편집하지 말 것 — 다음 빌드에서 덮어쓰여진다.
 -->
 

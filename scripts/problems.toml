@@ -246,39 +246,25 @@ problems = [
 ignored_dirs = ["Unkown", "cpp_template.cpp", "input.txt"]
 
 #######################################
-# Codetree
+# Codetree (자동 스캔)
 #######################################
+#
+# Codetree 는 폴더명 자체가 한글 문제 제목이므로 메타를 일일이 적지 않는다.
+# 빌더가 Codetree/<trail>/<problem> 구조를 스캔해 표·차트·진도를 자동 생성한다.
+#
+# - codetree_trails: 트레일 폴더의 표시 이름 + (선택) total. total 이 있으면 진도율(%) 계산.
+# - codetree_overrides: 폴더명이 영어 등으로 적힌 경우 표시 이름을 한글로 매핑.
 
-[[codetree]]
-category = "Implement"
-items = [
-  { path = "Implement/destroy-the-turret", name = "포탑 부수기", note = "시뮬레이션" },
-]
+[codetree_trails.Implement]
+display = "Implement"
+# total = 0  # Codetree 의 Implement 트레일 총 문제 수를 알면 채우기
 
-[[codetree]]
-category = "Trail 2 · 진수 변환"
-items = [
-  { path = "trail2/2진수로 변환하기",  name = "2진수로 변환하기",  note = "" },
-  { path = "trail2/십진수로 변환하기", name = "십진수로 변환하기", note = "" },
-  { path = "trail2/십진수와 이진수 2", name = "십진수와 이진수 2", note = "" },
-  { path = "trail2/여러가지 진수변환", name = "여러가지 진수변환", note = "" },
-  { path = "trail2/진수 to 진수",      name = "진수 to 진수",      note = "" },
-]
+[codetree_trails.trail2]
+display = "Trail 2"
+# total = 0  # Codetree 의 Trail 2 총 문제 수
 
-[[codetree]]
-category = "Trail 2 · 날짜·시간"
-items = [
-  { path = "trail2/Time to Time",         name = "Time to Time",         note = "" },
-  { path = "trail2/Date to Date",         name = "Date to Date",         note = "" },
-  { path = "trail2/DateTime to DateTime", name = "DateTime to DateTime", note = "" },
-]
-
-[[codetree]]
-category = "Trail 2 · 요일"
-items = [
-  { path = "trail2/그 요일은",   name = "그 요일은",   note = "" },
-  { path = "trail2/요일 맞추기", name = "요일 맞추기", note = "" },
-]
+[codetree_overrides]
+"Implement/destroy-the-turret" = { display = "포탑 부수기" }
 
 #######################################
 # Algospot

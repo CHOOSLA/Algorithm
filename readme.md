@@ -1,19 +1,13 @@
-<!--
-  이 파일은 readme.md 의 정적 부분(인트로, 로드맵 등)을 담는 템플릿이다.
-  <!--AUTOGEN:XXX--> 마커 위치에 scripts/generate_readme.py 가 표를 삽입한다.
-  readme.md 를 직접 편집하지 말 것 — 다음 빌드에서 덮어쓰여진다.
--->
-
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=header&text=Algorithm%20Lab&fontSize=70&fontColor=ffffff&animation=fadeIn"/>
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&duration=3000&pause=800&color=4F8BFB&center=true&vCenter=true&width=600&lines=%EB%B0%B1%EC%A4%80%20/%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%20/%20SWEA%20/%20Codetree;%EB%A7%A4%EC%9D%BC%20%ED%95%9C%20%EB%AC%B8%EC%A0%9C%EC%94%A9%2C%20%EA%BE%B8%EC%A4%80%ED%9E%88;BFS%20%E2%86%92%20DP%20%E2%86%92%20Graph%20%E2%86%92%20Beyond" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&duration=3000&pause=800&color=4F8BFB&center=true&vCenter=true&width=600&lines=Codetree%20/%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%20/%20SWEA;%EB%A7%A4%EC%9D%BC%20%ED%95%9C%20%EB%AC%B8%EC%A0%9C%EC%94%A9%2C%20%EA%BE%B8%EC%A4%80%ED%9E%88;Implement%20%E2%86%92%20Simulation%20%E2%86%92%20Graph%20%E2%86%92%20Beyond" />
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-149-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-160-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -29,34 +23,46 @@ README 의 문제 표·통계·배지는 [`scripts/problems.toml`](scripts/probl
 | --- | ---: |
 | BaekJoon | 84 |
 | SW Expert Academy | 17 |
-| Codetree | 11 |
+| Codetree | 22 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **149** |
+| **합계** | **160** |
 
-### 카테고리 분포
+### 카테고리 분포 (Codetree)
 
 ```mermaid
 pie showData
-  title BaekJoon 카테고리별 문제 수
-  "BFS / DFS" : 16
-  "Divide & Conquer" : 8
-  "Implement (시뮬레이션)" : 7
-  "Greedy" : 6
-  "Backtracking" : 5
-  "0x0C · 백트래킹" : 4
-  "기타" : 38
+  title Codetree 카테고리별 문제 수
+  "Trail 2" : 21
+  "Implement" : 1
 ```
 
-### 난이도 분포
+### 🛤️ Codetree Trail 진도
+
+| Trail | 진도 | 카운트 |
+| --- | --- | --- |
+| **Implement** | _전체 문제 수 미설정_ | **1** solved |
+| **Trail 2** | _전체 문제 수 미설정_ | **21** solved |
+
+### 🎯 정복한 난관 (Codetree 도전 기록 Top 5)
+
+| 문제 | 시도 | 과정 |
+| --- | ---: | --- |
+| 요일 맞추기 | 7 | TLE×4 → WA×2 → ✅ |
+| 왔다 갔던 구역 2 | 5 | WA×4 → ✅ |
+| 잔해물을 덮기 위한 사각형의 최소 넓이 | 5 | WA×4 → ✅ |
+| DateTime to DateTime | 3 | WA×2 → ✅ |
+| 최대로 겹치는 구간 | 3 | WA×2 → ✅ |
+
+### 📅 학습 타임라인
 
 ```mermaid
 xychart-beta
-  title "BaekJoon 티어별 문제 수"
-  x-axis [Bronze, Silver, Gold, Platinum]
-  y-axis "문제 수" 0 --> 53
-  bar [1, 35, 43, 4]
+  title "월별 풀이 완료 commit (최근 8개월)"
+  x-axis ["2025-08", "2025-09", "2025-11", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05"]
+  y-axis "commit" 0 --> 35
+  line [3, 1, 13, 2, 22, 3, 7, 28]
 ```
 
 ## 폴더 구조
@@ -371,22 +377,39 @@ python3 scripts/generate_readme.py
 | 14557 | Memory (BOJ) | Platinum I |
 | 17301 | NC 문자열 (BOJ) | Platinum IV |
 | 43238 | 입국 심사 (BOJ) | Gold V |
+| 1209 | Sum | D3 |
+| 1213 | String | D3 |
+| 1215 | 회문1 | D3 |
+| 1217 | 거듭 제곱 | D3 |
+| 1225 | 암호생성기 | D3 |
+| 5215 | 햄버거 다이어트 | D3 |
 
 ## Codetree 문제 정리
 
-| 카테고리 | 문제 | 비고 |
-| --- | --- | --- |
-| Implement | 포탑 부수기 | 시뮬레이션 |
-| Trail 2 · 진수 변환 | 2진수로 변환하기 | - |
-| Trail 2 · 진수 변환 | 십진수로 변환하기 | - |
-| Trail 2 · 진수 변환 | 십진수와 이진수 2 | - |
-| Trail 2 · 진수 변환 | 여러가지 진수변환 | - |
-| Trail 2 · 진수 변환 | 진수 to 진수 | - |
-| Trail 2 · 날짜·시간 | Time to Time | - |
-| Trail 2 · 날짜·시간 | Date to Date | - |
-| Trail 2 · 날짜·시간 | DateTime to DateTime | - |
-| Trail 2 · 요일 | 그 요일은 | - |
-| Trail 2 · 요일 | 요일 맞추기 | - |
+| 트레일 | 문제 |
+| --- | --- |
+| Implement | 포탑 부수기 |
+| Trail 2 | 2진수로 변환하기 |
+| Trail 2 | Date to Date |
+| Trail 2 | DateTime to DateTime |
+| Trail 2 | Time to Time |
+| Trail 2 | 겹치지 않는 사각형의 넓이 |
+| Trail 2 | 계속 중첩되는 사각형 |
+| Trail 2 | 그 요일은 |
+| Trail 2 | 블럭쌓는 명령2 |
+| Trail 2 | 사각형의 총 넓이 2 |
+| Trail 2 | 색종이의 총 넓이 |
+| Trail 2 | 신기한 타일 뒤집기 |
+| Trail 2 | 십진수로 변환하기 |
+| Trail 2 | 십진수와 이진수 2 |
+| Trail 2 | 여러가지 진수변환 |
+| Trail 2 | 왔다 갔던 구역 2 |
+| Trail 2 | 요일 맞추기 |
+| Trail 2 | 잔해물을 덮기 위한 사각형의 최소 넓이 |
+| Trail 2 | 진수 to 진수 |
+| Trail 2 | 최대로 겹치는 구간 |
+| Trail 2 | 최대로 겹치는 지점 |
+| Trail 2 | 흰검 칠하기 |
 
 ## Algospot 문제 정리
 
