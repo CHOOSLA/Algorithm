@@ -13,7 +13,7 @@ int main() {
 
     // Please write your code here.
     int result = -1;
-    int tmp = 1;
+    int tmp = -1;
     for(int i=0; i < N; ++i){
         if(i==0 || arr[i] != arr[i-1]){
             result = max(result, tmp);
