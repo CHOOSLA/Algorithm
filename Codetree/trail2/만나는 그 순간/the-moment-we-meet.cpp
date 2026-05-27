@@ -24,13 +24,15 @@ int main() {
     int x2 = 1000000;
     int x2_idx = 0;
     while(time++ <= 1000){
-        if(x1_idx == n) {
-            cout << -1;
-            return 0;
-        }
+        
 
         if(t[x1_idx] <= 0){
             x1_idx++;
+
+            if(x1_idx == n) {
+            cout << -1;
+            return 0;
+            }
         }
 
         x1 += (d[x1_idx] == 'L' ? -1 : 1);
