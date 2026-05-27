@@ -1,27 +1,52 @@
-name: README 동기화 검증
-
-# readme.md 가 scripts/problems.toml 과 실제 폴더 상태에 부합하는지 검증한다.
-# 실패하면 로컬에서 `python3 scripts/generate_readme.py` 를 실행해 갱신 후 다시 push.
+name: README 동기화 및 검증
 
 on:
   push:
     branches: [main, master]
+    paths-ignore:
+      - 'readme.md'
+      - 'scripts/.solvedac-cache.json'
   pull_request:
     branches: [main, master]
 
+permissions:
+  contents: write
+
 jobs:
-  check-readme:
+  update-and-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          # 빌더가 git log 를 분석해 SWEA 메타·타임라인·도전 기록을 만들기 때문에
-          # shallow clone 으로는 결과가 달라진다. 전체 히스토리를 가져온다.
+          # git log 기반 SWEA 추출 및 타임라인 차트를 위해 전체 히스토리를 가져옴
           fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
 
-      - name: readme.md 일관성 검사 (strict)
+      - name: README 빌드
+        run: python3 scripts/generate_readme.py
+
+      - name: 변경사항 감지 및 최근 커밋에 Amend 후 강제 푸시
+        run: |
+          git config --local user.email "cnckddn0146@gmail.com"
+          git config --local user.name "Choo ChangWoo"
+          
+          # Actions 환경에서 특정 브랜치를 확실히 가리키도록 설정
+          git checkout main || git checkout -b main
+          
+          # README와 캐시 변경점 스테이징
+          git add readme.md scripts/.solvedac-cache.json
+          
+          # 변경사항이 존재하는 경우에만 amend 커밋 및 force push
+          if ! git diff --cached --quiet; then
+            echo "[CI] 변경된 README 및 캐시가 감지되었습니다. 최근 커밋에 Amend를 실행합니다."
+            git commit --amend --no-edit
+            git push origin main --force-with-lease
+          else
+            echo "[CI] 변경사항이 없습니다. Amend 단계를 건너뜁니다."
+          fi
+
+      - name: README 최종 일관성 검사 (strict)
         run: python3 scripts/generate_readme.py --check --strict

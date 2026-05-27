@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-159-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-162-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -20,11 +20,11 @@
 | --- | ---: |
 | BaekJoon | 84 |
 | SW Expert Academy | 17 |
-| Codetree | 21 |
+| Codetree | 24 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **159** |
+| **합계** | **162** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -47,24 +47,24 @@ config:
 ---
 pie showData
   title Codetree 카테고리별 문제 수
-  "Trail 2" : 21
+  "Trail 2" : 24
 ```
 
 ### 🛤️ Codetree Trail 진도
 
 | Trail | 진도 | 카운트 |
 | --- | --- | --- |
-| **Trail 2** | _전체 문제 수 미설정_ | **21** solved |
+| **Trail 2** | _전체 문제 수 미설정_ | **24** solved |
 
 ### 🎯 정복한 난관 (Codetree 도전 기록 Top 5)
 
 | 문제 | 시도 | 과정 |
 | --- | ---: | --- |
 | 요일 맞추기 | 7 | ⏱️×4 → ❌×2 → ✅ |
+| 연속되는 수 2 | 5 | ❌×4 → ✅ |
 | 왔다 갔던 구역 2 | 5 | ❌×4 → ✅ |
 | 잔해물을 덮기 위한 사각형의 최소 넓이 | 5 | ❌×4 → ✅ |
 | DateTime to DateTime | 3 | ❌×2 → ✅ |
-| 최대로 겹치는 구간 | 3 | ❌×2 → ✅ |
 
 ### 📅 학습 타임라인
 
@@ -87,8 +87,8 @@ config:
 xychart-beta
   title "월별 풀이 완료 commit (최근 8개월)"
   x-axis ["2025-08", "2025-09", "2025-11", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05"]
-  y-axis "commit" 0 --> 35
-  line [3, 1, 13, 2, 22, 3, 7, 28]
+  y-axis "commit" 0 --> 38
+  line [3, 1, 13, 2, 22, 3, 7, 31]
 ```
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
@@ -425,6 +425,9 @@ xychart-beta
 | Trail 2 | 십진수로 변환하기 |
 | Trail 2 | 십진수와 이진수 2 |
 | Trail 2 | 여러가지 진수변환 |
+| Trail 2 | 연속되는 수 2 |
+| Trail 2 | 연속되는 수 3 |
+| Trail 2 | 연속되는 수 4 |
 | Trail 2 | 왔다 갔던 구역 2 |
 | Trail 2 | 요일 맞추기 |
 | Trail 2 | 잔해물을 덮기 위한 사각형의 최소 넓이 |
