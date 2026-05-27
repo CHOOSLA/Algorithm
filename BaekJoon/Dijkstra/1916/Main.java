@@ -62,7 +62,7 @@ class Main {
           pq.offer(new Node(next.target, distance[next.target]));
         }
       }
-    }
+      }
 
     System.out.println(distance[end]);
 
