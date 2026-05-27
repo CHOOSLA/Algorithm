@@ -23,15 +23,6 @@
 - **Python Study/**: 파이썬 연습 코드
 - **scripts/**: README 자동 생성 파이프라인
 
-## 자동 갱신
-
-```bash
-# 새 문제 추가 후 메타 한 줄 적고:
-python3 scripts/generate_readme.py
-```
-
-폴더에는 있지만 `problems.toml` 에 없으면 빌드가 경고와 함께 실패하고, 표에는 `TODO` 행이 표시됩니다. PR 단계에서 GitHub Actions 가 동일한 검증을 수행해 누락을 강제합니다.
-
 ## BaekJoon 문제 정리
 
 `BaekJoon/` 폴더는 알고리즘 유형별로 세분화되어 있으며 각 문제는 백준 번호로 된 하위 폴더에 저장되어 있습니다.
