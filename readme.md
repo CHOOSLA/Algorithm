@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-162-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-163-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -20,11 +20,11 @@
 | --- | ---: |
 | BaekJoon | 84 |
 | SW Expert Academy | 17 |
-| Codetree | 24 |
+| Codetree | 25 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **162** |
+| **합계** | **163** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -47,14 +47,14 @@ config:
 ---
 pie showData
   title Codetree 카테고리별 문제 수
-  "Trail 2" : 24
+  "Trail 2" : 25
 ```
 
 ### 🛤️ Codetree Trail 진도
 
 | Trail | 진도 | 카운트 |
 | --- | --- | --- |
-| **Trail 2** | _전체 문제 수 미설정_ | **24** solved |
+| **Trail 2** | _전체 문제 수 미설정_ | **25** solved |
 
 ### 🎯 정복한 난관 (Codetree 도전 기록 Top 5)
 
@@ -415,6 +415,7 @@ xychart-beta
 | Trail 2 | Date to Date |
 | Trail 2 | DateTime to DateTime |
 | Trail 2 | Time to Time |
+| Trail 2 | T를 초과하는 연속 부분 수열 |
 | Trail 2 | 겹치지 않는 사각형의 넓이 |
 | Trail 2 | 계속 중첩되는 사각형 |
 | Trail 2 | 그 요일은 |
