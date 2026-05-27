@@ -23,25 +23,25 @@ int main() {
     int x1_idx = 0;
     int x2 = 1000000;
     int x2_idx = 0;
-    while(time++ <= 1000){
-        
-
+    while(++time <= 1000){
+        // 0이 된다면 다음 행동으로
         if(t[x1_idx] <= 0){
             x1_idx++;
-
-            if(x1_idx == n) {
-            cout << -1;
-            return 0;
-            }
         }
-
-        x1 += (d[x1_idx] == 'L' ? -1 : 1);
-        t[x1_idx]--;
-
 
         if(t2[x2_idx] <= 0){
             x2_idx++;
         }
+
+        if(x1_idx == n || x2_idx == m){
+            cout << -1;
+            return 0;
+        }
+
+
+        // 해당 행동에 맞춰 갱신
+        x1 += (d[x1_idx] == 'L' ? -1 : 1);
+        t[x1_idx]--;
 
         x2 += (d2[x2_idx] == 'L' ? -1 : 1);
         t2[x2_idx]--;
