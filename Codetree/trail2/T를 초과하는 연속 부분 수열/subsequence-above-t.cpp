@@ -12,9 +12,9 @@ int main() {
     }
 
     // Please write your code here.
-    int result = 1;
+    int result = 0;
     int cnt = 0;
-    for(int i=0; i < n; ++i){
+    for(int i=0; i <= n; ++i){
         if(i >= 1 && t < arr[i-1]){
             cnt++;
         }else{
