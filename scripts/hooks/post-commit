@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+#
+# post-commit hook — commit 직후 README 를 자동 빌드해 같은 단위에 합친다.
+#
+# 동작:
+#   1. python3 scripts/generate_readme.py 실행
+#   2. readme.md / .solvedac-cache.json 변경이 발생했고
+#   3. 방금 만든 commit 메시지가 '풀이 패턴' 에 매치되면  → amend
+#      매치되지 않으면                                     → 별도 'chore: README 자동 갱신' commit
+#   4. 변경 없으면 아무것도 하지 않음
+#
+# amend / commit 동작이 post-commit 을 재호출하기 때문에 SKIP_README_HOOK
+# 환경 변수로 재진입을 가드한다.
+
+if [ -n "$SKIP_README_HOOK" ]; then
+    exit 0
+fi
+
+set -e
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT"
+
+# 빌드. 실패하면 사용자가 즉시 인지하도록 stderr 그대로 흘려보낸다.
+python3 scripts/generate_readme.py 2>&1 | sed 's/^/[post-commit] /'
+
+# 빌드 후 변경된 추적 파일 목록 (untracked 는 일부러 본다 — 신규 캐시 가능).
+CHANGED=$(git status --porcelain -- readme.md scripts/.solvedac-cache.json 2>/dev/null | awk '{print $2}')
+
+if [ -z "$CHANGED" ]; then
+    exit 0
+fi
+
+echo "[post-commit] 변경 발견:"
+echo "$CHANGED" | sed 's/^/  - /'
+
+# 풀이로 간주할 commit 메시지 패턴 — 매치되면 amend.
+PATTERNS=(
+    '^\[Passed\]'
+    '^\[Wrong Answer\]'
+    '^\[Time Limit Exceed\]'
+    '^\[WIP\]'
+    '^\[(실버|골드|플래티넘|브론즈|Bronze|Silver|Gold|Platinum|Diamond|Ruby)'
+    '^\[Lv ?[0-9]+\]'
+    '^SEA *\(D[0-9]+\)'
+)
+
+LAST_MSG=$(git log -1 --format='%s')
+IS_PROBLEM=0
+for pat in "${PATTERNS[@]}"; do
+    if echo "$LAST_MSG" | grep -qE "$pat" > /dev/null; then
+        IS_PROBLEM=1
+        break
+    fi
+done
+
+git add readme.md scripts/.solvedac-cache.json 2>/dev/null || true
+
+if [ "$IS_PROBLEM" = "1" ]; then
+    SKIP_README_HOOK=1 git commit --amend --no-edit --no-verify
+    echo "[post-commit] 풀이 commit → README 변경을 같은 commit 에 amend 했습니다."
+else
+    SKIP_README_HOOK=1 git commit --no-verify -m "chore: README 자동 갱신"
+    echo "[post-commit] 비풀이 commit → 'chore: README 자동 갱신' 별도 commit 으로 추가."
+fi
