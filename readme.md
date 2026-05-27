@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-160-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-159-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -23,11 +23,11 @@ README 의 문제 표·통계·배지는 [`scripts/problems.toml`](scripts/probl
 | --- | ---: |
 | BaekJoon | 84 |
 | SW Expert Academy | 17 |
-| Codetree | 22 |
+| Codetree | 21 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **160** |
+| **합계** | **159** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -35,14 +35,12 @@ README 의 문제 표·통계·배지는 [`scripts/problems.toml`](scripts/probl
 pie showData
   title Codetree 카테고리별 문제 수
   "Trail 2" : 21
-  "Implement" : 1
 ```
 
 ### 🛤️ Codetree Trail 진도
 
 | Trail | 진도 | 카운트 |
 | --- | --- | --- |
-| **Implement** | _전체 문제 수 미설정_ | **1** solved |
 | **Trail 2** | _전체 문제 수 미설정_ | **21** solved |
 
 ### 🎯 정복한 난관 (Codetree 도전 기록 Top 5)
@@ -388,7 +386,6 @@ python3 scripts/generate_readme.py
 
 | 트레일 | 문제 |
 | --- | --- |
-| Implement | 포탑 부수기 |
 | Trail 2 | 2진수로 변환하기 |
 | Trail 2 | Date to Date |
 | Trail 2 | DateTime to DateTime |

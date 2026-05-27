@@ -14,6 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # 빌더가 git log 를 분석해 SWEA 메타·타임라인·도전 기록을 만들기 때문에
+          # shallow clone 으로는 결과가 달라진다. 전체 히스토리를 가져온다.
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:

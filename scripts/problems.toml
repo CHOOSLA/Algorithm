@@ -264,7 +264,7 @@ display = "Trail 2"
 # total = 0  # Codetree 의 Trail 2 총 문제 수
 
 [codetree_overrides]
-"Implement/destroy-the-turret" = { display = "포탑 부수기" }
+# (현재 override 가 필요한 항목 없음 — 새 영어 폴더가 생기면 여기에 한글 표시명 매핑)
 
 #######################################
 # Algospot
