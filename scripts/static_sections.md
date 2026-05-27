@@ -13,6 +13,8 @@
 
 <!--AUTOGEN:STATS-->
 
+<!--AUTOGEN:DAILY_CHALLENGE-->
+
 ## 폴더 구조
 - **Algospot/**: Algospot 문제 풀이
 - **BaekJoon/**: 백준 온라인 저지 문제. 바킹독 0x 시리즈 로드맵을 따라 분류.

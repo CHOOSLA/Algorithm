@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=header&text=Algorithm%20Lab&fontSize=70&fontColor=ffffff&animation=fadeIn"/>
+  <img src="./assets/header.svg" alt="Algorithm Lab Header" width="800" style="max-width: 100%;" />
 </p>
 
 <p align="center">
@@ -29,6 +29,22 @@
 ### 카테고리 분포 (Codetree)
 
 ```mermaid
+---
+config:
+  theme: base
+  themeVariables:
+    background: '#0d1117'
+    pieTitleTextColor: '#f8fafc'
+    pieLegendTextColor: '#cbd5e1'
+    pieLegendTextSize: '13px'
+    pie1: '#00e5ff'
+    pie2: '#22c55e'
+    pie3: '#f59e0b'
+    pie4: '#a855f7'
+    pie5: '#ec4899'
+    pie6: '#3b82f6'
+    pie7: '#64748b'
+---
 pie showData
   title Codetree 카테고리별 문제 수
   "Trail 2" : 21
@@ -53,12 +69,33 @@ pie showData
 ### 📅 학습 타임라인
 
 ```mermaid
+---
+config:
+  theme: dark
+  themeVariables:
+    background: '#0d1117'
+    xyChart:
+      titleColor: '#f8fafc'
+      xAxisLabelColor: '#cbd5e1'
+      xAxisTitleColor: '#cbd5e1'
+      xAxisLineColor: '#334155'
+      yAxisLabelColor: '#cbd5e1'
+      yAxisTitleColor: '#cbd5e1'
+      yAxisLineColor: '#334155'
+      plotColorPalette: '#00e5ff'
+---
 xychart-beta
   title "월별 풀이 완료 commit (최근 8개월)"
   x-axis ["2025-08", "2025-09", "2025-11", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05"]
   y-axis "commit" 0 --> 35
   line [3, 1, 13, 2, 22, 3, 7, 28]
 ```
+
+> ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
+> **최단경로** (BaekJoon · Gold IV)
+> - **추천 사유**: 정기 학습 복습 및 망각 방지
+> - **풀이 코드**: [BaekJoon/1753](./BaekJoon/Dijkstra/1753)
+
 
 ## 폴더 구조
 - **Algospot/**: Algospot 문제 풀이
