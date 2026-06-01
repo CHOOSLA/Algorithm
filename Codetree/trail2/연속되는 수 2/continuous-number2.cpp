@@ -12,7 +12,7 @@ int main() {
     }
 
     // Please write your code here.
-    int result = 0, cnt = 1;
+    int result = 1, cnt = 1;
     int tmp = -1;
     for(int i=0; i < N; ++i){
         if(tmp != arr[i]){
