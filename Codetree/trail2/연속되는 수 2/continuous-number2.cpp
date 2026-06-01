@@ -12,18 +12,18 @@ int main() {
     }
 
     // Please write your code here.
-    int result = 1;
+    int result = 0, cnt = 1;
     int tmp = -1;
     for(int i=0; i < N; ++i){
-         if (arr[i] == arr[i - 1]) {
-            tmp++;
-        } else {
-            tmp = 1;
+        if(tmp != arr[i]){
+            result = max(result, cnt);
+            tmp = arr[i];
+            cnt = 1;
+        }else{
+            cnt++;
         }
-        result = max(result, tmp);
     }
 
     cout << result;
-
     return 0;
 }
