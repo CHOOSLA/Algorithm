@@ -10,65 +10,46 @@ int main() {
     cin >> x1[1] >> y1[1] >> x2[1] >> y2[1];
 
     // Please write your code here.
-
-    int MAX_SIZE = 2002;
-    int map[MAX_SIZE][MAX_SIZE] = {0,};
     int offset = 1000;
+    int MAX_N = 2001;
 
+    int map[MAX_N][MAX_N]={0,};
     for(int i=0; i < 2; ++i){
         for(int dy = y1[i]; dy < y2[i]; ++dy){
-            for(int dx = x1[i]; dx < x2[i]; ++dx){
-                int dNum = i == 0 ? 1 : 0;
-                map[dy + offset][dx + offset] = dNum; 
+            for(int dx= x1[i]; dx < x2[i]; ++dx){
+                if(i == 0){
+                    map[dy + offset][dx + offset] = 1;
+                }else{
+                    map[dy + offset][dx + offset] = 0;
+                }
             }
         }
     }
 
-    int max_col = 0;
-    int max_row = 0;
-    
-    
-    // 시작과 끝을 지정...
+    // 사각형 세기
+    int min_x = MAX_N, max_x = 0, min_y = MAX_N, max_y = 0;
+    bool check_remain = false;
 
-
-    for(int i=0; i < MAX_SIZE; ++i){
-    
-        
-        int start_row = -1;
-        int end_row = -1;
-        int start_col = -1;
-        int end_col = -1;
-
-        for(int j=0; j < MAX_SIZE; ++j){
-            if(map[i][j] && start_row == -1) {
-                start_row = j;
-            }
-
-            if(map[i][MAX_SIZE- 1 - j] && end_row == -1){
-                end_row = MAX_SIZE- 1 - j;
-            }
-
-            if(map[j][i] && start_col == -1){
-                start_col = j;
-            }
-
-            if(map[MAX_SIZE - 1 - j][i] && end_col == -1){
-                end_col = MAX_SIZE- 1 - j;
+    for(int y=0; y < MAX_N; ++y){
+        for(int x=0; x < MAX_N; ++x){
+            if(map[y][x] == 1){
+                check_remain = true;
+                min_x = min(min_x, x);
+                max_x = max(max_x, x);
+                min_y = min(min_y, y);
+                max_y = max(max_y, y);
             }
         }
-
-        if(start_row != -1){
-            max_row = max(max_row, end_row - start_row + 1);
-        }
-
-        if(start_col != -1){
-            max_col = max(max_col, (end_col - start_col + 1));
-        }
-        
-        
-        
     }
 
-    cout << (max_col * max_row);
+    int result;
+    if(!check_remain){
+        result = 0;
+    }else{
+        result = (max_x - min_x + 1) * (max_y - min_y + 1);
+    }
+    
+    cout << result;
+    
     return 0;
 }
