@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-206-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-207-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -19,12 +19,12 @@
 | 플랫폼 | 문제 수 |
 | --- | ---: |
 | BaekJoon | 84 |
-| SW Expert Academy | 36 |
+| SW Expert Academy | 37 |
 | Codetree | 49 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **206** |
+| **합계** | **207** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -88,7 +88,7 @@ xychart-beta
   title "월별 풀이 완료 commit (최근 9개월)"
   x-axis ["2025-08", "2025-09", "2025-11", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06"]
   y-axis "commit" 0 --> 77
-  line [3, 1, 13, 2, 22, 3, 16, 62, 39]
+  line [3, 1, 13, 2, 22, 3, 16, 62, 40]
 ```
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
@@ -383,6 +383,7 @@ xychart-beta
 
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
+| 2007 | 패턴 마디의 길이 | D2 |
 | 2817 | 부분 수열의 합 | D3 |
 | 1225 | 암호생성기 | D3 |
 | 1228 | 암호문1 | D3 |
