@@ -225,6 +225,7 @@ problems = [
 
 [sw_expert_academy]
 problems = [
+  { folder = "2005", title = "파스칼의 삼각형", difficulty = "D2" },
   { folder = "2007", title = "패턴 마디의 길이", difficulty = "D2" },
   { folder = "2817", title = "부분 수열의 합", difficulty = "D3" },
   { folder = "1225", title = "암호생성기", difficulty = "D3" },
