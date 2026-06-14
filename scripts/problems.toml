@@ -225,6 +225,7 @@ problems = [
 
 [sw_expert_academy]
 problems = [
+  { folder = "1926", title = "간단한 369게임", difficulty = "D2" },
   { folder = "1989", title = "초심자의 회문 검사", difficulty = "D2" },
   { folder = "2005", title = "파스칼의 삼각형", difficulty = "D2" },
   { folder = "2007", title = "패턴 마디의 길이", difficulty = "D2" },
