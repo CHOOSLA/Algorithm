@@ -26,6 +26,8 @@ int main() {
         }
     }
 
+    int total_time = idx - 1;
+
     idx = 1;
     for(int i=0; i < m; ++i){
         for(int time = 0; time < t2[i]; ++time){
@@ -37,7 +39,7 @@ int main() {
     int result = -1;
 
 
-    for(int i=1; i <= 1000001; ++i){
+    for(int i=1; i <= total_time; ++i){
         if(p1[i] == p2[i]){
             result = i;
             break;
