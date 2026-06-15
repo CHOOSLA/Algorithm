@@ -16,42 +16,27 @@ int main() {
     for (int i = 0; i < m; i++) cin >> d2[i] >> t2[i];
 
     // Please write your code here.
-    int map[2000001] = {0,};
     int time = 0;
-    
-    int x1 = 1000000;
-    int x1_idx = 0;
-    int x2 = 1000000;
-    int x2_idx = 0;
-    while(++time <= 1000){
-        // 0이 된다면 다음 행동으로
-        if(t[x1_idx] <= 0){
-            x1_idx++;
+    int p1 = 0 , p2 = 0;
+    int result = -1;
+    while(time < n || time < m){
+        if(time < n){
+            p1 += t[time] * (d[time] == 'L' ? -1 : 1);
         }
 
-        if(t2[x2_idx] <= 0){
-            x2_idx++;
+        if(time < m){
+            p2 += t2[time] * (d2[time] == 'L' ? -1 : 1);
         }
 
-        if(x1_idx == n || x2_idx == m){
-            cout << -1;
-            return 0;
-        }
+        time++;
 
-
-        // 해당 행동에 맞춰 갱신
-        x1 += (d[x1_idx] == 'L' ? -1 : 1);
-        t[x1_idx]--;
-
-        x2 += (d2[x2_idx] == 'L' ? -1 : 1);
-        t2[x2_idx]--;
-
-        if(time !=0 && x1 == x2){
+        if(p1 == p2){
+            result = p1 + 1;
             break;
         }
     }
 
-    cout << time;
+    cout << result;
 
     return 0;
 }

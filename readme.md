@@ -64,7 +64,7 @@ pie showData
 | 요일 맞추기 | 7 | ⏱️×4 → ❌×2 → ✅ |
 | 잔해물을 덮기 위한 사각형의 최소 넓이 | 6 | ❌×4 → ✅×2 |
 | 왔다 갔던 구역 2 | 5 | ❌×4 → ✅ |
-| DateTime to DateTime | 3 | ❌×2 → ✅ |
+| 만나는 그 순간 | 4 | ❌×4 |
 
 ### 📅 학습 타임라인
 
@@ -87,14 +87,14 @@ config:
 xychart-beta
   title "월별 풀이 완료 commit (최근 9개월)"
   x-axis ["2025-08", "2025-09", "2025-11", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06"]
-  y-axis "commit" 0 --> 45
-  line [3, 1, 13, 2, 22, 3, 7, 36, 2]
+  y-axis "commit" 0 --> 66
+  line [3, 1, 13, 2, 22, 3, 7, 53, 12]
 ```
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **DateTime to DateTime** (Codetree · Trail 2)
-> - **추천 사유**: 이전 풀이 시 3회 실패/재시도 기록 있음 (❌×2 → ✅)
-> - **풀이 코드**: [Codetree/DateTime to DateTime](./Codetree/trail2/DateTime%20to%20DateTime)
+> **잔해물을 덮기 위한 사각형의 최소 넓이** (Codetree · Trail 2)
+> - **추천 사유**: 이전 풀이 시 6회 실패/재시도 기록 있음 (❌×4 → ✅×2)
+> - **풀이 코드**: [Codetree/잔해물을 덮기 위한 사각형의 최소 넓이](./Codetree/trail2/%EC%9E%94%ED%95%B4%EB%AC%BC%EC%9D%84%20%EB%8D%AE%EA%B8%B0%20%EC%9C%84%ED%95%9C%20%EC%82%AC%EA%B0%81%ED%98%95%EC%9D%98%20%EC%B5%9C%EC%86%8C%20%EB%84%93%EC%9D%B4)
 
 
 ## 폴더 구조
