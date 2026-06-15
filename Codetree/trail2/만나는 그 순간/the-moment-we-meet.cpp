@@ -8,6 +8,7 @@ int t[1000];
 char d2[1000];
 int t2[1000];
 
+int p1[1000001], p2[1000001];
 int main() {
     cin >> n >> m;
 
@@ -16,10 +17,7 @@ int main() {
     for (int i = 0; i < m; i++) cin >> d2[i] >> t2[i];
 
     // Please write your code here.
-    int p1[1000001], p2[1000001];
-    fill(p1, p1 + 1000001, 0);
-    fill(p2, p2 + 1000001, 0);
-    
+
     int idx = 1;
     for(int i=0; i < n; ++i){
         for(int time = 0; time < t[i]; ++time){
