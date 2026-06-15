@@ -16,9 +16,9 @@ int main() {
     for (int i = 0; i < m; i++) cin >> d2[i] >> t2[i];
 
     // Please write your code here.
-    int p1[1001], p2[1001];
-    fill(p1, p1 + 1001, 0);
-    fill(p2, p2 + 1001, 0);
+    int p1[1000001], p2[1000001];
+    fill(p1, p1 + 1000001, 0);
+    fill(p2, p2 + 1000001, 0);
     
     int idx = 1;
     for(int i=0; i < n; ++i){
@@ -39,7 +39,7 @@ int main() {
     int result = -1;
 
 
-    for(int i=1; i <= 1000; ++i){
+    for(int i=1; i <= 1000001; ++i){
         if(p1[i] == p2[i]){
             result = i;
             break;
