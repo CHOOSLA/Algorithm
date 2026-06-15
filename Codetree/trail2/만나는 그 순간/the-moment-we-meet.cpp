@@ -16,22 +16,32 @@ int main() {
     for (int i = 0; i < m; i++) cin >> d2[i] >> t2[i];
 
     // Please write your code here.
-    int time = 0;
-    int p1 = 0 , p2 = 0;
+    int p1[1001], p2[1001];
+    fill(p1, p1 + 1001, 0);
+    fill(p2, p2 + 1001, 0);
+    
+    int idx = 1;
+    for(int i=0; i < n; ++i){
+        for(int time = 0; time < t[i]; ++time){
+            p1[idx] = p1[idx - 1] + (d[i] == 'L' ? -1 : 1);
+            idx++;
+        }
+    }
+
+    idx = 1;
+    for(int i=0; i < m; ++i){
+        for(int time = 0; time < t2[i]; ++time){
+            p2[idx] = p2[idx - 1] + (d2[i] == 'L' ? -1 : 1);
+            idx++;
+        }
+    }
+
     int result = -1;
-    while(time < n || time < m){
-        if(time < n){
-            p1 += t[time] * (d[time] == 'L' ? -1 : 1);
-        }
 
-        if(time < m){
-            p2 += t2[time] * (d2[time] == 'L' ? -1 : 1);
-        }
 
-        time++;
-
-        if(p1 == p2){
-            result = p1 + 1;
+    for(int i=1; i <= 1000; ++i){
+        if(p1[i] == p2[i]){
+            result = i;
             break;
         }
     }
