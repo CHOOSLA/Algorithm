@@ -45,8 +45,6 @@ int main() {
 
     int result = 0;
 
-    //바로 직전의 같은 위치를 계산
-    int last_pos = -1;
     // 각 로봇이 움직인 위치는 기록이됨
     int max_time = max(time_a, time_b);
     // 두 로봇이 모두 멈출 때 까지 움직임
@@ -55,20 +53,28 @@ int main() {
         int now_a = now_time;
         int now_b = now_time;
 
-        if(now_time >= time_a){
+        if(now_a >= time_a){
             now_a = time_a - 1;
         }
 
-        if(now_time >= time_b){
+        if(now_b >= time_b){
             now_b = time_b - 1;
         }
 
         // 바로 직전에는 다른 위치에 있다가 그 다음번에 같은 위치에 오게
+        int prev_a = now_time - 1;
+        int prev_b = now_time - 1;
+
+        if(prev_a >= time_a){
+            prev_a = time_a - 1;
+        }
+        if(prev_b >= time_b){
+            prev_b = time_b - 1;
+        }
+
+        
         if(pos1[now_a] == pos2[now_b]){
-            if(last_pos == pos1[now_a]){
-                
-            }else{
-                last_pos = pos1[now_a];
+            if(pos1[prev_a] != pos2[prev_b]){
                 result++;
             }
         }
