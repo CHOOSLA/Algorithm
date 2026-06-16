@@ -15,7 +15,7 @@ int main() {
 
     // Please write your code here.
     // 그냥 각각의 위치를 미리 기록해서 그 다음에 한번에 계산하는걸로
-    int pos1[10000005] = {0,};
+    int pos1[10000005] = {0};
     int pos2[10000005] = {0};
 
     // 1시간 부터의 위치를 나타냄
@@ -39,21 +39,19 @@ int main() {
 
     // 기록된 값을 가지고 바뀐것을 계산
     int result = 0;
-    int faster = pos1[1] > pos2[1] ? 1 : 2;
-    for(int i=2; i <= total_hour; ++i){
-        // pos1 이 선두인 경우
-        if(faster == 1){
-            if(pos1[i] < pos2[i]){
-                faster = 2;
+    int faster = 0;
+    for(int i=1; i <= total_hour; ++i){
+        if(pos1[i] > pos2[i]){
+            if(faster == 2){
                 result++;
             }
-        }
-        // pos2가 선두인 경우
-        else if(faster == 2){
-            if(pos1[i] > pos2[i]){
-                faster = 1;
+
+            faster = 1;
+        }else if(pos1[i] < pos2[i]){
+            if(faster == 1){
                 result++;
             }
+            faster = 2;
         }
     }
 
