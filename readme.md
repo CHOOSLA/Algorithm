@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-166-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-167-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -20,11 +20,11 @@
 | --- | ---: |
 | BaekJoon | 84 |
 | SW Expert Academy | 17 |
-| Codetree | 28 |
+| Codetree | 29 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **166** |
+| **합계** | **167** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -47,14 +47,14 @@ config:
 ---
 pie showData
   title Codetree 카테고리별 문제 수
-  "Trail 2" : 28
+  "Trail 2" : 29
 ```
 
 ### 🛤️ Codetree Trail 진도
 
 | Trail | 진도 | 카운트 |
 | --- | --- | --- |
-| **Trail 2** | _전체 문제 수 미설정_ | **28** solved |
+| **Trail 2** | _전체 문제 수 미설정_ | **29** solved |
 
 ### 🎯 정복한 난관 (Codetree 도전 기록 Top 5)
 
@@ -439,6 +439,7 @@ xychart-beta
 | Trail 2 | 왔다 갔던 구역 2 |
 | Trail 2 | 요일 맞추기 |
 | Trail 2 | 잔해물을 덮기 위한 사각형의 최소 넓이 |
+| Trail 2 | 좌우로 움직이는 로봇 |
 | Trail 2 | 진수 to 진수 |
 | Trail 2 | 최대로 겹치는 구간 |
 | Trail 2 | 최대로 겹치는 지점 |
