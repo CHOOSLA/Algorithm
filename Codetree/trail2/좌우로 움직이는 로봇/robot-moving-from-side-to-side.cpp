@@ -49,7 +49,7 @@ int main() {
     int max_time = max(time_a, time_b);
     // 두 로봇이 모두 멈출 때 까지 움직임
     int now_time = 1;
-    while(now_time < max_time){
+    while(now_time <= max_time){
         int now_a = now_time;
         int now_b = now_time;
 
