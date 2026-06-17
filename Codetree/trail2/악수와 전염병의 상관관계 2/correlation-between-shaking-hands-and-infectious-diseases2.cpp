@@ -8,8 +8,8 @@ int x[250];
 int y[250];
 
 int time_line[251];
-int infect[250];
-int count[250];
+int infect[251];
+int count[251];
 
 int main() {
     cin >> N >> K >> P >> T;
@@ -38,14 +38,22 @@ int main() {
             // 확인하고 둘 중 하나라도 감염이 되어있으면 감염
             int idx = time_line[time];
 
+            // 둘이 감염 되어 있으면
+            if(infect[x[idx]] & infect[y[idx]] == 1){
+                count[x[idx]]++;
+                count[y[idx]]++;
+                continue;
+            }
+
             // 둘중 하나라도 감염되어 있으면
             if(infect[x[idx]] | infect[y[idx]] == 1){
-                if(infect[x[idx]] == 1 && count[x[idx]] <= K){
+                if(infect[x[idx]] == 1 && count[x[idx]] < K){
                     infect[y[idx]] = 1;
                     count[x[idx]]++;
+                    continue;
                 }
 
-                if(infect[y[idx]] == 1 && count[y[idx]] <= K){
+                if(infect[y[idx]] == 1 && count[y[idx]] < K){
                     infect[x[idx]] = 1;
                     count[y[idx]]++;
                 }
@@ -53,7 +61,7 @@ int main() {
         }
     }
 
-    for(int i = 0 ; i < N; ++i){
+    for(int i = 1 ; i <= N; ++i){
         if(infect[i] == 1){
             cout << '1';
         }else{
