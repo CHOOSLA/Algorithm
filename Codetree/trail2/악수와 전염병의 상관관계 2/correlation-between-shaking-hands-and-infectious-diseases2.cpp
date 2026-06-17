@@ -22,7 +22,7 @@ int main() {
 
     fill(time_line, time_line + 251, -1);
 
-    // 각 시간에 따른 i를 저장함 , 0초면 아무것도 없다는 뜻
+    // 각 시간에 따른 i를 저장함 , -1초면 아무것도 사건도 없다는 뜻
     for(int i=0; i < T; ++i){
         time_line[t[i]] = i;
     }
