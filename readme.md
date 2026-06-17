@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-167-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-168-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -20,11 +20,11 @@
 | --- | ---: |
 | BaekJoon | 84 |
 | SW Expert Academy | 17 |
-| Codetree | 29 |
+| Codetree | 30 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **167** |
+| **합계** | **168** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -47,14 +47,14 @@ config:
 ---
 pie showData
   title Codetree 카테고리별 문제 수
-  "Trail 2" : 29
+  "Trail 2" : 30
 ```
 
 ### 🛤️ Codetree Trail 진도
 
 | Trail | 진도 | 카운트 |
 | --- | --- | --- |
-| **Trail 2** | _전체 문제 수 미설정_ | **29** solved |
+| **Trail 2** | _전체 문제 수 미설정_ | **30** solved |
 
 ### 🎯 정복한 난관 (Codetree 도전 기록 Top 5)
 
@@ -92,9 +92,9 @@ xychart-beta
 ```
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **잔해물을 덮기 위한 사각형의 최소 넓이** (Codetree · Trail 2)
-> - **추천 사유**: 이전 풀이 시 6회 실패/재시도 기록 있음 (❌×4 → ✅×2)
-> - **풀이 코드**: [Codetree/잔해물을 덮기 위한 사각형의 최소 넓이](./Codetree/trail2/%EC%9E%94%ED%95%B4%EB%AC%BC%EC%9D%84%20%EB%8D%AE%EA%B8%B0%20%EC%9C%84%ED%95%9C%20%EC%82%AC%EA%B0%81%ED%98%95%EC%9D%98%20%EC%B5%9C%EC%86%8C%20%EB%84%93%EC%9D%B4)
+> **시철이가 사랑한 GCD** (BaekJoon · Gold IV)
+> - **추천 사유**: 정기 학습 복습 및 망각 방지
+> - **풀이 코드**: [BaekJoon/21870](./BaekJoon/Divide_Conquer/21870)
 
 
 ## 폴더 구조
@@ -432,6 +432,7 @@ xychart-beta
 | Trail 2 | 신기한 타일 뒤집기 |
 | Trail 2 | 십진수로 변환하기 |
 | Trail 2 | 십진수와 이진수 2 |
+| Trail 2 | 악수와 전염병의 상관관계 2 |
 | Trail 2 | 여러가지 진수변환 |
 | Trail 2 | 연속되는 수 2 |
 | Trail 2 | 연속되는 수 3 |
