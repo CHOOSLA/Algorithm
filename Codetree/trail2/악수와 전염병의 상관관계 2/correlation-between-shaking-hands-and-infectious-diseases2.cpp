@@ -34,32 +34,27 @@ int main() {
     for(int time = 1; time <= 250; ++time){
         // 사건 발생을 했을떄
         if(time_line[time] != -1){
-            // 둘중 아무나 감염이 되었나 아니었나
-            // 확인하고 둘 중 하나라도 감염이 되어있으면 감염
-            int idx = time_line[time];
+            int time_idx = time_line[time];
 
-            // 둘이 감염 되어 있으면
-            if(infect[x[idx]] & infect[y[idx]] == 1){
-                count[x[idx]]++;
-                count[y[idx]]++;
-                continue;
+            int person1 = x[time_idx];
+            int person2 = y[time_idx];
+            
+            // 감염이 되어있다면 count에 ++
+            if(infect[person1] == 1) count[person1]++;
+            if(infect[person2] == 1) count[person2]++;
+
+
+            // 감염자가 상대를 감염시킴
+            if(infect[person1] == 1 && count[person1] <= K){
+                infect[person2] = 1;
             }
 
-            // 둘중 하나라도 감염되어 있으면
-            if(infect[x[idx]] | infect[y[idx]] == 1){
-                if(infect[x[idx]] == 1 && count[x[idx]] < K){
-                    infect[y[idx]] = 1;
-                    count[x[idx]]++;
-                    continue;
-                }
-
-                if(infect[y[idx]] == 1 && count[y[idx]] < K){
-                    infect[x[idx]] = 1;
-                    count[y[idx]]++;
-                }
+            if(infect[person2] == 1 && count[person2] <= K){
+                infect[person1] = 1;
             }
         }
     }
+
 
     for(int i = 1 ; i <= N; ++i){
         if(infect[i] == 1){
