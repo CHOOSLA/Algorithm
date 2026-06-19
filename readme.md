@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-172-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-173-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -20,11 +20,11 @@
 | --- | ---: |
 | BaekJoon | 84 |
 | SW Expert Academy | 17 |
-| Codetree | 34 |
+| Codetree | 35 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **172** |
+| **합계** | **173** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -47,14 +47,14 @@ config:
 ---
 pie showData
   title Codetree 카테고리별 문제 수
-  "Trail 2" : 34
+  "Trail 2" : 35
 ```
 
 ### 🛤️ Codetree Trail 진도
 
 | Trail | 진도 | 카운트 |
 | --- | --- | --- |
-| **Trail 2** | _전체 문제 수 미설정_ | **34** solved |
+| **Trail 2** | _전체 문제 수 미설정_ | **35** solved |
 
 ### 🎯 정복한 난관 (Codetree 도전 기록 Top 5)
 
@@ -92,9 +92,9 @@ xychart-beta
 ```
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **요일 맞추기** (Codetree · Trail 2)
-> - **추천 사유**: 이전 풀이 시 7회 실패/재시도 기록 있음 (⏱️×4 → ❌×2 → ✅)
-> - **풀이 코드**: [Codetree/요일 맞추기](./Codetree/trail2/%EC%9A%94%EC%9D%BC%20%EB%A7%9E%EC%B6%94%EA%B8%B0)
+> **네트워크** (Programmers · Level 3)
+> - **추천 사유**: 정기 학습 복습 및 망각 방지
+> - **풀이 코드**: [Programmers/43162](./Programmers/43162)
 
 
 ## 폴더 구조
@@ -443,6 +443,7 @@ xychart-beta
 | Trail 2 | 연속되는 수 4 |
 | Trail 2 | 왔다 갔던 구역 2 |
 | Trail 2 | 요일 맞추기 |
+| Trail 2 | 작은 구슬의 이동 |
 | Trail 2 | 잔해물을 덮기 위한 사각형의 최소 넓이 |
 | Trail 2 | 좌우로 움직이는 로봇 |
 | Trail 2 | 진수 to 진수 |
