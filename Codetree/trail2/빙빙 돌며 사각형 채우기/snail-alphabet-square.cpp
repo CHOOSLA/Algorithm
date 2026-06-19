@@ -9,7 +9,7 @@ char map[100][100];
 int dirs[4][2] = {{0,1}, {1,0}, {0,-1}, {-1,0}};
 
 char itoc(int num){
-    return num + 65;
+    return (num + 65) % 91;
 }
 
 bool inRange(int y, int x){
