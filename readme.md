@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-179-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-180-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -20,11 +20,11 @@
 | --- | ---: |
 | BaekJoon | 84 |
 | SW Expert Academy | 17 |
-| Codetree | 41 |
+| Codetree | 42 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **179** |
+| **합계** | **180** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -47,14 +47,14 @@ config:
 ---
 pie showData
   title Codetree 카테고리별 문제 수
-  "Trail 2" : 41
+  "Trail 2" : 42
 ```
 
 ### 🛤️ Codetree Trail 진도
 
 | Trail | 진도 | 카운트 |
 | --- | --- | --- |
-| **Trail 2** | _전체 문제 수 미설정_ | **41** solved |
+| **Trail 2** | _전체 문제 수 미설정_ | **42** solved |
 
 ### 🎯 정복한 난관 (Codetree 도전 기록 Top 5)
 
@@ -433,6 +433,7 @@ xychart-beta
 | Trail 2 | 방향에 맞춰 이동 |
 | Trail 2 | 벌금은 누구에게 |
 | Trail 2 | 블럭쌓는 명령2 |
+| Trail 2 | 빙빙 돌며 사각형 채우기 |
 | Trail 2 | 빙빙 돌며 숫자 사각형 채우기 |
 | Trail 2 | 빙빙 돌며 숫자 사각형 채우기 2 |
 | Trail 2 | 사각형의 총 넓이 2 |
