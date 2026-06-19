@@ -16,7 +16,7 @@ int main() {
     for(int i=0; i < commands.length(); ++i){
         switch(commands[i]){
             case 'L':
-                dir = (dir - 1 + 3) % 4;
+                dir = (dir - 1 + 4) % 4;
                 break;
 
             case 'R':
