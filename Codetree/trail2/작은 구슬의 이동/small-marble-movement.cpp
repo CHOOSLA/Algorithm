@@ -31,7 +31,7 @@ int main() {
             dir = 3;
             break;
         case 'D':
-            dir = 1;
+            dir = 0;
             break;
     }
 
