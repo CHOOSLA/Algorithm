@@ -1,29 +1,34 @@
 #include <iostream>
-#include <vector>
-#include <cmath>
 #include <climits>
 
 using namespace std;
 
-int main() {
-    int N;
-    if (!(cin >> N)) return 0;
+int n;
+int A[100];
 
-    vector<int> A(N);
-    for (int i = 0; i < N; ++i) {
+int main() {
+    cin >> n;
+    for (int i = 0; i < n; i++) {
         cin >> A[i];
     }
 
-    long long ans = LLONG_MAX;
+    // Please write your code here.
+    int result = INT_MAX;
 
-    for (int j = 0; j < N; ++j) {
-        long long sum = 0;
-        for (int i = 0; i < N; ++i) {
-            sum += (long long)A[i] * abs(i - j);
+    for(int i=0; i < n; ++i){
+        int idx = i;
+        int pre_sum = 0;
+        for(int now = 0; now < n; ++now){
+            int dis = abs(now - idx);
+
+            pre_sum += A[now] * dis;
         }
-        if (sum < ans) ans = sum;
+
+        result = min(result, pre_sum);
     }
 
-    cout << ans << "\n";
+    cout << result;
+    
+
     return 0;
 }
