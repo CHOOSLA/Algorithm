@@ -19,18 +19,17 @@ int main() {
     for(int i=1; i < R; ++i){
         for(int j=1; j < C; ++j){
             if(now_color != grid[i][j]){
-                now_color = grid[i][j]; // B
-                for(int k=i+1; k < R; ++k){
-                    for(int l=j+1; l < C; ++l){
+                //cout << i << " , " << j << endl;
+                for(int k=i+1; k < R-1; ++k){
+                    for(int l=j+1; l < C-1; ++l){
                         // W 검사 
-                        if(now_color != grid[k][l]){
+                        if(now_color == grid[k][l]){
                             //W 면
-                            now_color = grid[k][l];
                             
                             // 마지막 검사
+                            // 한줄 이상과 한칸 옆이라는사실
                             if(now_color != grid[R-1][C-1]){
                                 max_cnt++;
-                                cout<< "Test" << endl;
                             }
                         }
 
