@@ -44,6 +44,10 @@ int main() {
             a[i] = '1';
             result = max(result, btoi(a));
             a[i] = '0';
+        }else{
+            a[i] = '0';
+            result = max(result, btoi(a));
+            a[i] = '1';
         }
     }
 
