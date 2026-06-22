@@ -11,7 +11,10 @@ from __future__ import annotations
 import argparse
 import re
 import sys
-import tomllib
+try:
+    import tomllib
+except ImportError:
+    import tomli as tomllib
 from pathlib import Path
 
 # scripts 디렉토리를 sys.path에 추가하여 lib 패키지를 발견할 수 있도록 함
