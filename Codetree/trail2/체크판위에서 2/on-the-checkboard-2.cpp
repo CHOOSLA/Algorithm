@@ -15,13 +15,12 @@ int main() {
 
     // Please write your code here.
     int max_cnt = 0;
-    int first = grid[0][0];
     for(int i=0; i < R; ++i){
-        for(int j=0; j < C; ++j){
+        for(int j=0; j < C - 1; ++j){
             for(int k = i+1; k < R; ++k){
-                for(int l=0; l < C; ++l){
-                    int check1 = (first != grid[i][j] ? 1 : 0);
-                    int check2 = (first != grid[l][k] ? 1 : 0);
+                for(int l=0; l < C - 1; ++l){
+                    int check1 = grid[i][j] != grid[i][j+1] ? 1 : 0;
+                    int check2 = grid[k][l] != grid[k][l+1] ? 1 : 0;
                     max_cnt = max(max_cnt, check1+check2);
                 }
             }
