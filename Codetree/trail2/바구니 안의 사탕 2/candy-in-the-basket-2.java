@@ -1,6 +1,6 @@
 import java.util.Scanner;
 public class Main {
-    public static int[] arr = new int[200];
+    public static int[] arr = new int[101];
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -19,7 +19,7 @@ public class Main {
         }
 
         int result = 0;
-        for(int i = 0 + k; i <= 101 - k; ++i){
+        for(int i = 0 + k; i <= 101 - k - 1; ++i){
             int pre_sum = 0;
             for(int j=i - k; j <= i + k; ++j){
                 pre_sum += arr[j];
