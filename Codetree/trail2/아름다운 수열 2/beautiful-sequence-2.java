@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -11,27 +11,25 @@ public class Main {
         for (int i = 0; i < M; i++)
             B[i] = sc.nextInt();
         // Please write your code here.
-        int result = 0;
-        for(int i=0; i <= N - M; ++i){
-            int num_count = 0;
-            for(int j=i; j < i + M; ++j){
-                int tmp = A[j];
-
-                boolean hasNum = false;
-                for(int k=0; k < M; ++k){
-                    if(B[k] == tmp){
-                        hasNum = true;
-                    }
-                }
-                
-                if(hasNum) num_count++;
-            }
-
-            if(num_count == M){
-                result++;
+        Arrays.sort(B);
+        
+        int beautifulCount = 0;
+        
+        // 수열 A에서 길이가 M인 모든 연속 부분 수열 탐색
+        for (int i = 0; i <= N - M; i++) {
+            // A의 i번째부터 i + m전까지 복사
+            int[] subSequence = Arrays.copyOfRange(A, i, i + M);
+            
+            // 부분 수열 정렬
+            Arrays.sort(subSequence);
+            
+            // 정렬된 두 배열의 원소가 모두 일치하는지 확인
+            if (Arrays.equals(subSequence, B)) {
+                beautifulCount++;
             }
         }
-
-        System.out.println(result);
+        
+        // 결과 출력
+        System.out.println(beautifulCount);
     }
 }
