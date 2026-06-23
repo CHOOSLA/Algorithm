@@ -1,6 +1,6 @@
 import java.util.Scanner;
 public class Main {
-    public static char[] arr = new char[10000];
+    public static char[] arr = new char[10001];
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -15,7 +15,7 @@ public class Main {
         
         int result = 0;
 
-        for(int i=1; i < 10000 - k; ++i){
+        for(int i=1; i < 10001 - k; ++i){
             int cal = 0;
             for(int j=i; j <= i + k; ++j){
                 if(arr[j] == 'G'){
