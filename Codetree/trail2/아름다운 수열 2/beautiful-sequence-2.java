@@ -27,7 +27,7 @@ public class Main {
                 if(hasNum) num_count++;
             }
 
-            if(num_count >= M){
+            if(num_count == M){
                 result++;
             }
         }
