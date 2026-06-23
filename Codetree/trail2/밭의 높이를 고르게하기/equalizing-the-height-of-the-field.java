@@ -16,13 +16,13 @@ public class Main {
             for(int j=i; j < n; ++j){
 
                 // t번 이상의 문제
-                if(j - i < t){
+                if(j - i + 1 < t){
                     continue;
                 }
 
                 // 해당 i,j 구간에서 시행
                 int total_cost = 0;
-                for(int k=i; k < j; ++k){
+                for(int k=i; k <= j; ++k){
                     total_cost += Math.abs(h - arr[k]);
                 }
 
