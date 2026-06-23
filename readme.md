@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-225-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-226-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -20,11 +20,11 @@
 | --- | ---: |
 | BaekJoon | 84 |
 | SW Expert Academy | 42 |
-| Codetree | 62 |
+| Codetree | 63 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **225** |
+| **합계** | **226** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -47,14 +47,14 @@ config:
 ---
 pie showData
   title Codetree 카테고리별 문제 수
-  "Trail 2" : 62
+  "Trail 2" : 63
 ```
 
 ### 🛤️ Codetree Trail 진도
 
 | Trail | 진도 | 카운트 |
 | --- | --- | --- |
-| **Trail 2** | _전체 문제 수 미설정_ | **62** solved |
+| **Trail 2** | _전체 문제 수 미설정_ | **63** solved |
 
 ### 🎯 정복한 난관 (Codetree 도전 기록 Top 5)
 
@@ -490,6 +490,7 @@ xychart-beta
 | Trail 2 | 최고의 13위치 2 |
 | Trail 2 | 최대로 겹치는 구간 |
 | Trail 2 | 최대로 겹치는 지점 |
+| Trail 2 | 특정 구간의 원소 평균값 |
 | Trail 2 | 특정 수와 근접한 합 |
 | Trail 2 | 흰검 칠하기 |
 
