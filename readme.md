@@ -92,9 +92,9 @@ xychart-beta
 ```
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **잔해물을 덮기 위한 사각형의 최소 넓이** (Codetree · Trail 2)
-> - **추천 사유**: 이전 풀이 시 6회 실패/재시도 기록 있음 (❌×4 → ✅×2)
-> - **풀이 코드**: [Codetree/잔해물을 덮기 위한 사각형의 최소 넓이](./Codetree/trail2/%EC%9E%94%ED%95%B4%EB%AC%BC%EC%9D%84%20%EB%8D%AE%EA%B8%B0%20%EC%9C%84%ED%95%9C%20%EC%82%AC%EA%B0%81%ED%98%95%EC%9D%98%20%EC%B5%9C%EC%86%8C%20%EB%84%93%EC%9D%B4)
+> **요일 맞추기** (Codetree · Trail 2)
+> - **추천 사유**: 이전 풀이 시 7회 실패/재시도 기록 있음 (⏱️×4 → ❌×2 → ✅)
+> - **풀이 코드**: [Codetree/요일 맞추기](./Codetree/trail2/%EC%9A%94%EC%9D%BC%20%EB%A7%9E%EC%B6%94%EA%B8%B0)
 
 
 ## 폴더 구조
