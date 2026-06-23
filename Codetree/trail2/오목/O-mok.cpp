@@ -47,13 +47,15 @@ int main() {
                     if(dis == 4){
                         cout << now_color << endl;
 
-                        // 가운데를 찾는 문제 
+                        // 가운데를 찾는 문제
+                        int real_y = y + 1;
+                        int real_x = x + 1;
                         if(dir == 0 || dir == 4){
-                            cout << (y + 1) << " " << ((x + (x+dis)) / 2) + 1;
+                            cout << (real_y) << " " << ((real_x + (real_x+dis)) / 2);
                         }else if(dir == 2 || dir == 6){
-                            cout << ((y + (y+dis))/2) + 1 << " " << x + 1;
+                            cout << ((real_y + (real_y+dis))/2) << " " << real_x;
                         }else{
-                            cout << ((y + (y+dis))/2) + 1 << " " << ((x + (x+dis)) / 2) + 1;
+                            cout << ((real_y + (real_y+dis))/2) << " " << ((real_x + (real_x+dis)) / 2);
                         }
                         
 
