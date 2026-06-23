@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-226-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-227-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -20,11 +20,11 @@
 | --- | ---: |
 | BaekJoon | 84 |
 | SW Expert Academy | 42 |
-| Codetree | 63 |
+| Codetree | 64 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **226** |
+| **합계** | **227** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -47,14 +47,14 @@ config:
 ---
 pie showData
   title Codetree 카테고리별 문제 수
-  "Trail 2" : 63
+  "Trail 2" : 64
 ```
 
 ### 🛤️ Codetree Trail 진도
 
 | Trail | 진도 | 카운트 |
 | --- | --- | --- |
-| **Trail 2** | _전체 문제 수 미설정_ | **63** solved |
+| **Trail 2** | _전체 문제 수 미설정_ | **64** solved |
 
 ### 🎯 정복한 난관 (Codetree 도전 기록 Top 5)
 
@@ -468,6 +468,7 @@ xychart-beta
 | Trail 2 | 십진수로 변환하기 |
 | Trail 2 | 십진수와 이진수 2 |
 | Trail 2 | 씨 오 더블유 2 |
+| Trail 2 | 아름다운 수열 2 |
 | Trail 2 | 악수와 전염병의 상관관계 2 |
 | Trail 2 | 여러가지 진수변환 |
 | Trail 2 | 연속되는 수 2 |
