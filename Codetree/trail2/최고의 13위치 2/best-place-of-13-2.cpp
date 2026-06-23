@@ -14,26 +14,24 @@ int main() {
     int result = 0;
     for(int i=0; i < N; ++i){
         for(int j=0; j < N - 2; ++j){
-            if(N < 6){
-                for(int k=i+1; k < N; ++k){
-                    for(int l=0; l < N - 2; ++l){
-                        int coin_sum = arr[i][j] + arr[i][j + 1] + arr[i][j + 2]
-                            + arr[k][l] + arr[k][l + 1] + arr[k][l + 2];
+            // 같은 줄에 있는 것도 검사
+            if(N >= 6){
+                for(int t=j+3; t < N-2; ++t){
+                    int coin_sum = arr[i][j] + arr[i][j + 1] + arr[i][j + 2]
+                        + arr[i][t] + arr[i][t + 1] + arr[i][t + 2];
 
-                        result = max(result, coin_sum);
-                    }
-                }
-            }else{
-                for(int k=i; k < N; ++k){
-                    for(int l=j+3; l < N - 2; ++l){
-                        int coin_sum = arr[i][j] + arr[i][j + 1] + arr[i][j + 2]
-                            + arr[k][l] + arr[k][l + 1] + arr[k][l + 2];
-
-                        result = max(result, coin_sum);
-                    }
+                    result = max(result, coin_sum);
                 }
             }
-            
+
+            for(int k=i+1; k < N; ++k){
+                for(int l=0; l < N - 2; ++l){
+                    int coin_sum = arr[i][j] + arr[i][j + 1] + arr[i][j + 2]
+                        + arr[k][l] + arr[k][l + 1] + arr[k][l + 2];
+
+                    result = max(result, coin_sum);
+                }
+            }
         }
     }
 
