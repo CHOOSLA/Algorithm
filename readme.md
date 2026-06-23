@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-219-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-220-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -20,11 +20,11 @@
 | --- | ---: |
 | BaekJoon | 84 |
 | SW Expert Academy | 42 |
-| Codetree | 56 |
+| Codetree | 57 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **219** |
+| **합계** | **220** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -47,14 +47,14 @@ config:
 ---
 pie showData
   title Codetree 카테고리별 문제 수
-  "Trail 2" : 56
+  "Trail 2" : 57
 ```
 
 ### 🛤️ Codetree Trail 진도
 
 | Trail | 진도 | 카운트 |
 | --- | --- | --- |
-| **Trail 2** | _전체 문제 수 미설정_ | **56** solved |
+| **Trail 2** | _전체 문제 수 미설정_ | **57** solved |
 
 ### 🎯 정복한 난관 (Codetree 도전 기록 Top 5)
 
@@ -92,9 +92,9 @@ xychart-beta
 ```
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **악수와 전염병의 상관관계 2** (Codetree · Trail 2)
-> - **추천 사유**: 이전 풀이 시 4회 실패/재시도 기록 있음 (❌ → ✅×3)
-> - **풀이 코드**: [Codetree/악수와 전염병의 상관관계 2](./Codetree/trail2/%EC%95%85%EC%88%98%EC%99%80%20%EC%A0%84%EC%97%BC%EB%B3%91%EC%9D%98%20%EC%83%81%EA%B4%80%EA%B4%80%EA%B3%84%202)
+> **연속되는 수 2** (Codetree · Trail 2)
+> - **추천 사유**: 이전 풀이 시 8회 실패/재시도 기록 있음 (❌×4 → ✅ → ❌×2 → ✅)
+> - **풀이 코드**: [Codetree/연속되는 수 2](./Codetree/trail2/%EC%97%B0%EC%86%8D%EB%90%98%EB%8A%94%20%EC%88%98%202)
 
 
 ## 폴더 구조
@@ -470,6 +470,7 @@ xychart-beta
 | Trail 2 | 연속되는 수 2 |
 | Trail 2 | 연속되는 수 3 |
 | Trail 2 | 연속되는 수 4 |
+| Trail 2 | 오목 |
 | Trail 2 | 왔다 갔던 구역 2 |
 | Trail 2 | 요일 맞추기 |
 | Trail 2 | 원 모양으로 되어있는 방 |
