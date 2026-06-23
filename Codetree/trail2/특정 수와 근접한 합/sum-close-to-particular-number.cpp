@@ -21,7 +21,7 @@ int main() {
     int result = INT_MAX;
 
     for(int i=0; i < N; ++i){
-        for(int j=0; j < N; ++j){
+        for(int j=i; j < N; ++j){
             if(i == j && (j - i) == 0) continue;
 
             int S = arr[i] + arr[j];
