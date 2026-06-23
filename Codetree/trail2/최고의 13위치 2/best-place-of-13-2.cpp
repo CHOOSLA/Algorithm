@@ -14,16 +14,38 @@ int main() {
     int result = 0;
     for(int i=0; i < N; ++i){
         for(int j=0; j < N - 2; ++j){
-            for(int k=i+1; k < N; ++k){
-                for(int l=0; l < N - 2; ++l){
-                    int coin_sum = arr[i][j] + arr[i][j + 1] + arr[i][j + 2]
-                        + arr[k][l] + arr[k][l + 1] + arr[k][l + 2];
+            if(N < 6){
+                for(int k=i+1; k < N; ++k){
+                    for(int l=0; l < N - 2; ++l){
+                        int coin_sum = arr[i][j] + arr[i][j + 1] + arr[i][j + 2]
+                            + arr[k][l] + arr[k][l + 1] + arr[k][l + 2];
 
-                    result = max(result, coin_sum);
+                        result = max(result, coin_sum);
+                    }
+                }
+            }else{
+                for(int k=i; k < N; ++k){
+                    for(int l=j+3; l < N - 2; ++l){
+                        int coin_sum = arr[i][j] + arr[i][j + 1] + arr[i][j + 2]
+                            + arr[k][l] + arr[k][l + 1] + arr[k][l + 2];
+
+                        result = max(result, coin_sum);
+                    }
                 }
             }
+            
         }
     }
+
+    // for(int i=0; i < 20; ++i){
+    //     for(int j=0; j < 20; ++j){
+    //         cout << "0";
+
+    //         if(j != 19) cout << " ";
+    //     }
+
+    //     cout << endl;
+    // }
 
     cout << result;
 
