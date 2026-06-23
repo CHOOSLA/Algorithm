@@ -21,11 +21,10 @@ int main() {
     int result = INT_MAX;
 
     for(int i=0; i < N; ++i){
-        for(int j=i; j < N; ++j){
+        for(int j=i+1; j < N; ++j){
             if(i == j && (j - i) == 0) continue;
 
-            int S = arr[i] + arr[j];
-            int T = pre_sum - S;
+            int T = pre_sum - (arr[i] + arr[j]);
 
             
             result = min(result, abs(T-S));
