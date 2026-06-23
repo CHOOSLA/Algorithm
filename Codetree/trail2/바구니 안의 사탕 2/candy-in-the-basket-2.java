@@ -21,7 +21,7 @@ public class Main {
         int result = 0;
         for(int i=0; i <= 101 - 2 * k - 1; ++i){
             int pre_sum = 0;
-            for(int j=i; j < i + 2 * k + 1; ++j){
+            for(int j=i; j <= i + 2 * k; ++j){
                 pre_sum += arr[j];
             }
 
