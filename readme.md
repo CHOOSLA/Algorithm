@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-223-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-224-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -20,11 +20,11 @@
 | --- | ---: |
 | BaekJoon | 84 |
 | SW Expert Academy | 42 |
-| Codetree | 60 |
+| Codetree | 61 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **223** |
+| **합계** | **224** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -47,14 +47,14 @@ config:
 ---
 pie showData
   title Codetree 카테고리별 문제 수
-  "Trail 2" : 60
+  "Trail 2" : 61
 ```
 
 ### 🛤️ Codetree Trail 진도
 
 | Trail | 진도 | 카운트 |
 | --- | --- | --- |
-| **Trail 2** | _전체 문제 수 미설정_ | **60** solved |
+| **Trail 2** | _전체 문제 수 미설정_ | **61** solved |
 
 ### 🎯 정복한 난관 (Codetree 도전 기록 Top 5)
 
@@ -88,7 +88,7 @@ xychart-beta
   title "월별 풀이 완료 commit (최근 9개월)"
   x-axis ["2025-08", "2025-09", "2025-11", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06"]
   y-axis "commit" 0 --> 77
-  line [3, 1, 13, 2, 22, 3, 16, 62, 57]
+  line [3, 1, 13, 2, 22, 3, 16, 62, 58]
 ```
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
@@ -444,6 +444,7 @@ xychart-beta
 | Trail 2 | 계속 중첩되는 사각형 |
 | Trail 2 | 괄호 쌍 만들어주기 2 |
 | Trail 2 | 괄호 쌍 만들어주기 3 |
+| Trail 2 | 구간 중 최대 합 |
 | Trail 2 | 그 요일은 |
 | Trail 2 | 되돌아오기 |
 | Trail 2 | 되돌아오기 2 |
