@@ -51,11 +51,11 @@ int main() {
                         int real_y = y + 1;
                         int real_x = x + 1;
                         if(dir == 0 || dir == 4){
-                            cout << (real_y) << " " << ((real_x + (real_x+dis)) / 2);
+                            cout << (real_y) << " " << ((real_x + (real_x+ dis * dirs[dir][1])) / 2);
                         }else if(dir == 2 || dir == 6){
-                            cout << ((real_y + (real_y+dis))/2) << " " << real_x;
+                            cout << ((real_y + (real_y+dis * dirs[dir][0]))/2) << " " << real_x;
                         }else{
-                            cout << ((real_y + (real_y+dis))/2) << " " << ((real_x + (real_x+dis)) / 2);
+                            cout << ((real_y + (real_y+dis * dirs[dir][0]))/2) << " " << ((real_x + (real_x+dis * dirs[dir][1])) / 2);
                         }
                         
 
