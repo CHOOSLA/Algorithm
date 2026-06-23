@@ -19,7 +19,7 @@ public class Main {
         }
 
         int result = 0;
-        for(int i = 0 + k; i <= 100; ++i){
+        for(int i = 0; i <= 100; ++i){
             int pre_sum = 0;
             for(int j=i - k; j <= i + k; ++j){
                 if(j < 0 || j > 100) continue;
