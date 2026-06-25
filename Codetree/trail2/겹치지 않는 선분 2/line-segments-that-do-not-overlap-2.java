@@ -10,7 +10,7 @@ public class Main {
             x2[i] = sc.nextInt();
         }
         // Please write your code here.
-        int count = 0;
+        int[] arr = new int[n];
         for(int i=0; i < n; ++i){
             for(int j=i + 1; j < n; ++j){
                 // 다른 선분과 검사
@@ -22,11 +22,17 @@ public class Main {
                 int max_x = Math.max(x2[i], x2[j]);
 
                 if((x1[i] == min_x && x2[i] == max_x) || (x1[j] == min_x && x2[j] == max_x)){
-                    ++count;
+                    arr[i]++;
+                    arr[j]++;
                 }
             }
         }
+        
+        int result = 0;
+        for(int i=0; i < n; ++i){
+            if(arr[i] == 1) result++;
+        }
 
-        System.out.println(n - count * 2);
+        System.out.println(result);
     }
 }
