@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-240-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-241-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -20,11 +20,11 @@
 | --- | ---: |
 | BaekJoon | 84 |
 | SW Expert Academy | 42 |
-| Codetree | 77 |
+| Codetree | 78 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **240** |
+| **합계** | **241** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -47,14 +47,14 @@ config:
 ---
 pie showData
   title Codetree 카테고리별 문제 수
-  "Trail 2" : 77
+  "Trail 2" : 78
 ```
 
 ### 🛤️ Codetree Trail 진도
 
 | Trail | 진도 | 카운트 |
 | --- | --- | --- |
-| **Trail 2** | _전체 문제 수 미설정_ | **77** solved |
+| **Trail 2** | _전체 문제 수 미설정_ | **78** solved |
 
 ### 🎯 정복한 난관 (Codetree 도전 기록 Top 5)
 
@@ -447,6 +447,7 @@ xychart-beta
 | Trail 2 | 거울에 레이저 쏘기 2 |
 | Trail 2 | 격자 위의 편안한 상태 |
 | Trail 2 | 겹치지 않는 사각형의 넓이 |
+| Trail 2 | 겹치지 않는 선분 2 |
 | Trail 2 | 계속 중첩되는 사각형 |
 | Trail 2 | 괄호 쌍 만들어주기 2 |
 | Trail 2 | 괄호 쌍 만들어주기 3 |
