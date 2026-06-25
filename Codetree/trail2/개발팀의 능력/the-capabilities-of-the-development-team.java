@@ -12,7 +12,7 @@ public class Main {
 
         if(sum1 == sum2 || sum2 == sum3 || sum3 == sum1) return Integer.MAX_VALUE;
 
-
+        // Math.max의 이유는 최대 차이가 최대 능력과 최소 능력간의 차이기 때문임
         int result = Math.abs(sum1 - sum2);
         result = Math.max(result, Math.abs(sum2 - sum3));
         result = Math.max(result, Math.abs(sum3 - sum1));
