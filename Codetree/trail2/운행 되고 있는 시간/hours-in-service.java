@@ -12,16 +12,14 @@ public class Main {
         // Please write your code here.
         int result = 0;
         for(int i=0; i < N; ++i){
-            int low_time = 1000;
-            int high_time = 1;
+            int working = 0;
             for(int j=i; j < N; ++j){
                 if(i == j) continue;
 
-                low_time = Math.min(low_time, A[j]);
-                high_time = Math.max(high_time, B[j]);
+                working += B[j] - A[j];
             }
 
-            result = Math.max(result, high_time - low_time + 1);
+            result = Math.max(result, working);
         }
 
         System.out.println(result);
