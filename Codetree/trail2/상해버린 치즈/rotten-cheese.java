@@ -80,7 +80,17 @@ public class Main {
             }
 
             if(isValid){
-                int count = eat_log.get(i).size();
+                int count =0;
+                int[] s_p = new int[N + 1];
+                for(int j=0; j < eat_log.get(i).size(); ++j){
+                    int person = eat_log.get(i).get(j).p;
+                    s_p[person] = 1;
+                }
+
+                for(int j=1; j <= N; ++j){
+                    if(s_p[j] == 1) count++;
+                }
+
                 result = Math.max(result, count);
             }
 
