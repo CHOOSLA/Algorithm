@@ -14,28 +14,28 @@ public class Main {
         Arrays.sort(p);
         for(int i=0; i < n; ++i){
             // 한명을 정해서 반값
-            for(int j=0; j < n; ++j){
-                if(i == j){
-                    p[j] /= 2;
-                }
+
+       
+            p[i] /= 2;
+    
 
 
-                int count = 0;
-                int p_sum = 0;
-                for(int k=0; k < n; ++k){
-                    if(p_sum + p[k] > b) break;
+            int count = 0;
+            int p_sum = 0;
+            for(int k=0; k < n; ++k){
+                if(p_sum + p[k] > b) break;
 
-                    count++;
-                    p_sum += p[k];
-                }
-                
-                result = Math.max(result, count);
-
-                if(i==j){
-                    p[j] *= 2;
-                }
+                count++;
+                p_sum += p[k];
             }
+                
+            result = Math.max(result, count);
+
+  
+            p[i] *= 2;
+
         }
+        
 
         System.out.println(result);
     }
