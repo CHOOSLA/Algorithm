@@ -10,26 +10,30 @@ public class Main {
         }
         // Please write your code here.
         int result = 0;
+
+        Arrays.sort(p);
         for(int i=0; i < n; ++i){
-            int[] p_c = p.clone();
             // 한명을 정해서 반값
             for(int j=0; j < n; ++j){
                 if(i == j){
-                    p_c[j] /= 2;
+                    p[j] /= 2;
                 }
 
-                Arrays.sort(p_c);
 
                 int count = 0;
                 int p_sum = 0;
                 for(int k=0; k < n; ++k){
-                    if(p_sum + p_c[k] > b) break;
+                    if(p_sum + p[k] > b) break;
 
                     count++;
-                    p_sum += p_c[k];
+                    p_sum += p[k];
                 }
                 
                 result = Math.max(result, count);
+
+                if(i==j){
+                    p[j] *= 2;
+                }
             }
         }
 
