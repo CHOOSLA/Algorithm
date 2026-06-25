@@ -19,7 +19,12 @@ public class Main {
                 // 범위 안에 있으면 두개 제외
 
                 int min_x = Math.min(x1[i], x1[j]);
+                min_x = Math.min(min_x, x2[i]);
+                min_x = Math.min(min_x, x2[j]);
+
                 int max_x = Math.max(x2[i], x2[j]);
+                max_x = Math.max(max_x, x1[i]);
+                max_x = Math.max(max_x, x1[j]);
 
                 if((x1[i] == min_x && x2[i] == max_x) || (x1[j] == min_x && x2[j] == max_x)){
                     arr[i]++;
@@ -33,6 +38,6 @@ public class Main {
             if(arr[i] == 1) result++;
         }
 
-        System.out.println(result);
+        System.out.println(n - result);
     }
 }
