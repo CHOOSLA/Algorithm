@@ -1,4 +1,20 @@
-import java.util.Scanner;
+import java.util.*;
+
+class Coordi implements Comparable<Coordi>{
+    int x1;
+    int x2;
+
+    Coordi(int x1, int x2){
+        this.x1 = x1;
+        this.x2 = x2;
+    }
+
+    @Override
+    public int compareTo(Coordi other){
+        return this.x1 - other.x1;
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -10,34 +26,31 @@ public class Main {
             x2[i] = sc.nextInt();
         }
         // Please write your code here.
-        int[] arr = new int[n];
+        // 정렬
+        ArrayList<Coordi> arr = new ArrayList<>();
+
+        for(int i=0; i < n; ++i){
+            arr.add(new Coordi(x1[i], x2[i]));
+        }
+
+        Collections.sort(arr);
+
+
+        int[] check = new int[n];
         for(int i=0; i < n; ++i){
             for(int j=i + 1; j < n; ++j){
-                // 다른 선분과 검사
-                // i 선분과 j 선분
-                // min max를 구해서
-                // 범위 안에 있으면 두개 제외
-
-                int min_x = Math.min(x1[i], x1[j]);
-                min_x = Math.min(min_x, x2[i]);
-                min_x = Math.min(min_x, x2[j]);
-
-                int max_x = Math.max(x2[i], x2[j]);
-                max_x = Math.max(max_x, x1[i]);
-                max_x = Math.max(max_x, x1[j]);
-
-                if((x1[i] == min_x && x2[i] == max_x) || (x1[j] == min_x && x2[j] == max_x)){
-                    arr[i]++;
-                    arr[j]++;
+                if(x2[i] > x2[j]){
+                    check[i] = 1;
+                    check[j] = 1;
                 }
             }
         }
-        
+
         int result = 0;
         for(int i=0; i < n; ++i){
-            if(arr[i] == 1) result++;
+            if(check[i] == 0) result++;
         }
 
-        System.out.println(n - result);
+        System.out.println(result);
     }
 }
