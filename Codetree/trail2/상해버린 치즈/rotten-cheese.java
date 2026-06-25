@@ -43,7 +43,7 @@ public class Main {
             eat_log.get(m).add(new Eat(p, t));
         }
 
-        sick_log = new ArrayList<>(S);
+        sick_log = new ArrayList<>();
 
         int[] sick_person = new int[N+1];
         for (int i = 0; i < S; i++) {
@@ -55,13 +55,12 @@ public class Main {
         }
 
         int result = 0;
-        int[] candi = new int[N + 1];
         for(int i=1; i <= M; ++i){
             // 후보군을 담아두는 배열
             int[] s_candi = new int[N + 1];
 
             // S를 기준으로 각 m 치즈를 판단
-            for(int j=0; j < S; ++j){
+            for(int j=0; j < sick_log.size(); ++j){
                 // 아픈사람이 m의 치즈를 먹었는지 판단
                 for(int k=0; k < eat_log.get(i).size(); ++k){
                     if(eat_log.get(i).get(k).t < sick_log.get(j).t 
