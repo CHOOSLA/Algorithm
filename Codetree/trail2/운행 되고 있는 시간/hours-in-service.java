@@ -12,11 +12,20 @@ public class Main {
         // Please write your code here.
         int result = 0;
         for(int i=0; i < N; ++i){
-            int working = 0;
-            for(int j=i; j < N; ++j){
+            int[] arr = new int[1001];
+            for(int j=0; j < N; ++j){
                 if(i == j) continue;
 
-                working += B[j] - A[j];
+                for(int k=A[j]; k < B[j]; ++k){
+                    arr[k]++;
+                }
+            }
+
+            int working = 0;
+            for(int j=1; j <= 1000; ++j){
+                if(arr[j] >= 1){
+                    working++;
+                }
             }
 
             result = Math.max(result, working);
