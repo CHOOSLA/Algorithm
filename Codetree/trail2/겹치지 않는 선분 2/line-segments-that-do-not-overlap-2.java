@@ -1,8 +1,8 @@
 import java.util.*;
 
 class Coordi implements Comparable<Coordi>{
-    int x1;
-    int x2;
+    public int x1;
+    public int x2;
 
     Coordi(int x1, int x2){
         this.x1 = x1;
@@ -36,10 +36,12 @@ public class Main {
         Collections.sort(arr);
 
 
+
         int[] check = new int[n];
         for(int i=0; i < n; ++i){
             for(int j=i + 1; j < n; ++j){
-                if(x2[i] > x2[j]){
+                
+                if(arr.get(i).x2 > arr.get(j).x2){
                     check[i] = 1;
                     check[j] = 1;
                 }
