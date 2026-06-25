@@ -43,9 +43,9 @@ public class Main {
             eat_log.get(m).add(new Eat(p, t));
         }
 
-        sick_log = new ArrayList<>(S + 1);
+        sick_log = new ArrayList<>(S);
 
-        int[] sick_person = new int[102];
+        int[] sick_person = new int[N+1];
         for (int i = 0; i < S; i++) {
             int p = sc.nextInt();
             int t = sc.nextInt();
