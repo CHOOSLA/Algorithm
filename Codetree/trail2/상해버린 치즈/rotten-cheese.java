@@ -44,42 +44,49 @@ public class Main {
         }
 
         sick_log = new ArrayList<>(S + 1);
+
+        int[] sick_person = new int[102];
         for (int i = 0; i < S; i++) {
             int p = sc.nextInt();
             int t = sc.nextInt();
 
             sick_log.add(new Sick(p,t));
+            sick_person[p] = 1;
         }
 
+        int result = 0;
         int[] candi = new int[N + 1];
         for(int i=1; i <= M; ++i){
             // 후보군을 담아두는 배열
             int[] s_candi = new int[N + 1];
-            int checkEat = 0;
+
+            // S를 기준으로 각 m 치즈를 판단
             for(int j=0; j < S; ++j){
+                // 아픈사람이 m의 치즈를 먹었는지 판단
                 for(int k=0; k < eat_log.get(i).size(); ++k){
-                    if(eat_log.get(i).get(k).t < sick_log.get(j).t){
+                    if(eat_log.get(i).get(k).t < sick_log.get(j).t 
+                    && eat_log.get(i).get(k).p == sick_log.get(j).p){
                         int person = eat_log.get(i).get(k).p;
                         s_candi[person] = 1;
                     }
-
-                    if(eat_log.get(i).get(k).p == sick_log.get(j).p){
-                        checkEat = 1;
-                    }
                 }
             }
 
-            if(checkEat == 1){
-                for(int j=1; j <= N; ++j){
-                    candi[j] = s_candi[j];
+            // 해당 치즈에 후보군이 모두 있는지 판단
+            boolean isValid = true;
+            for(int j=1; j <= N; ++j){
+                if(sick_person[j] != s_candi[j]){
+                    isValid = false;
                 }
             }
+
+            if(isValid){
+                int count = eat_log.get(i).size();
+                result = Math.max(result, count);
+            }
+
         }
         
-        int result = 0;
-        for(int i=1; i <= N; ++i){
-            ++result;
-        }
 
         System.out.println(result);
         
