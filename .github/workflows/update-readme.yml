@@ -29,6 +29,8 @@ jobs:
         run: python3 scripts/generate_readme.py
 
       - name: 변경사항 감지 및 최근 커밋에 Amend 후 강제 푸시
+        # PR 이벤트에서는 main 을 force-push 하지 않는다. main 에 직접 push 될 때만 실행.
+        if: github.event_name == 'push'
         run: |
           git config --local user.email "cnckddn0146@gmail.com"
           git config --local user.name "Choo ChangWoo"
