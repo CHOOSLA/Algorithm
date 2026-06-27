@@ -11,7 +11,7 @@ public class Main {
         }
         // Please write your code here.
         // 조합으로 탐색
-        int result = 0;
+        int result = -1;
         for(int i=0; i < n; ++i){
             int pick_number = bombs[i];
             for(int j=i+1; j < n; ++j){
