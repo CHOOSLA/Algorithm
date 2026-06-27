@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-244-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-245-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -20,11 +20,11 @@
 | --- | ---: |
 | BaekJoon | 84 |
 | SW Expert Academy | 42 |
-| Codetree | 81 |
+| Codetree | 82 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **244** |
+| **합계** | **245** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -47,14 +47,14 @@ config:
 ---
 pie showData
   title Codetree 카테고리별 문제 수
-  "Trail 2" : 81
+  "Trail 2" : 82
 ```
 
 ### 🛤️ Codetree Trail 진도
 
 | Trail | 진도 | 카운트 |
 | --- | --- | --- |
-| **Trail 2** | _전체 문제 수 미설정_ | **81** solved |
+| **Trail 2** | _전체 문제 수 미설정_ | **82** solved |
 
 ### 🎯 정복한 난관 (Codetree 도전 기록 Top 5)
 
@@ -495,6 +495,7 @@ xychart-beta
 | Trail 2 | 원 모양으로 되어있는 방 |
 | Trail 2 | 이동경로상에 있는 모든 숫자 더하기 |
 | Trail 2 | 이상한 진수 2 |
+| Trail 2 | 이상한 폭탄 2 |
 | Trail 2 | 인접하지 않은 2개의 수 |
 | Trail 2 | 일렬로 서있는 소 2 |
 | Trail 2 | 작은 구슬의 이동 |
