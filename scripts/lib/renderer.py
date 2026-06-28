@@ -89,15 +89,13 @@ def render_flat(
         config.warnings.append(f"problems.toml 의 {display_label}/{f} 가 실제 폴더에 없음")
 
     cols = len(header)
-    lines: list[str] = []
-    lines.append("| " + " | ".join(header) + " |")
-    lines.append("| " + " | ".join(["---"] * cols) + " |")
+    rows: list[str] = []
     for p in problems:
         if cols == 2:
             cells = [p["folder"], p.get("title", "")]
         else:
             cells = [p["folder"], p.get("title", ""), p.get("difficulty", "-")]
-        lines.append("| " + " | ".join(cells) + " |")
+        rows.append("| " + " | ".join(cells) + " |")
     for f in sorted(actual_folders - yaml_folders):
         m = auto_meta.get(f)
         if m:
@@ -107,21 +105,96 @@ def render_flat(
                 cells = [f, m.get("title", ""), m.get("difficulty", "-")]
         else:
             cells = [f] + ["_TODO_"] * (cols - 1)
-        lines.append("| " + " | ".join(cells) + " |")
-    return "\n".join(lines)
+        rows.append("| " + " | ".join(cells) + " |")
+
+    head = "| " + " | ".join(header) + " |"
+    sep = "| " + " | ".join(["---"] * cols) + " |"
+    table = "\n".join([head, sep, *rows])
+
+    # 표가 길면 <details> 로 접어 페이지 길이를 줄인다. 짧은 표는 그대로 노출.
+    if len(rows) > 12:
+        return (
+            "<details>\n"
+            f"<summary>📂 전체 {len(rows)}문제 펼쳐보기</summary>\n\n"
+            f"{table}\n\n"
+            "</details>"
+        )
+    return table
+
+
+def _summarize_attempts(seq: list[str]) -> str:
+    """['Wrong Answer','Passed'] → '❌ → ✅' (연속 동일 상태는 ×N 압축)."""
+    parts: list[str] = []
+    for status, group in groupby(seq):
+        count = sum(1 for _ in group)
+        sym = config.ATTEMPT_SYMBOLS.get(status, status)
+        parts.append(f"{sym}×{count}" if count > 1 else sym)
+    return " → ".join(parts)
+
+
+def _codetree_commit_stats() -> dict[str, dict]:
+    """Codetree commit([Passed]/[Wrong Answer]…) → 문제명: {시도열, 최종 ms, mb}."""
+    stats: dict[str, dict] = {}
+    for line in reversed(_git_log("%s")):  # 오래된 → 최신
+        m = config.CODETREE_COMMIT_PATTERN.match(line)
+        if not m:
+            continue
+        status, name, ms, mb = m.groups()
+        e = stats.setdefault(name.strip(), {"seq": [], "ms": None, "mb": None})
+        e["seq"].append(status)
+        if status == "Passed" and ms is not None:
+            e["ms"], e["mb"] = int(ms), int(mb)  # 최종 정답의 perf 로 갱신
+    return stats
+
+
+def _codetree_analysis_card(seqs: list[list[str]]) -> str:
+    """첫 시도 정답률·평균 시도·총 재도전 요약."""
+    if not seqs:
+        return ""
+    n = len(seqs)
+    one_shot = sum(1 for s in seqs if s == ["Passed"])
+    avg = sum(len(s) for s in seqs) / n
+    retries = sum(max(0, len(s) - 1) for s in seqs)
+    return (
+        "> ### 📈 Codetree 학습 분석\n"
+        f"> - **첫 시도 정답률**: {round(one_shot / n * 100)}% ({one_shot}/{n})\n"
+        f"> - **평균 시도 수**: {avg:.1f}회\n"
+        f"> - **총 재도전**: {retries}회"
+    )
 
 
 def render_codetree(data: dict) -> str:
-    """Codetree 문제 정리 표 — 폴더 스캔 결과 그대로."""
+    """Codetree — 트레일별 <details> + commit 기반 시도·시간·메모리 + 분석 카드."""
     sections = scan_codetree(data)
     if not sections:
         return "_Codetree 폴더가 없습니다._"
 
-    lines = ["| 트레일 | 문제 |", "| --- | --- |"]
+    stats = _codetree_commit_stats()
+    matched_seqs: list[list[str]] = []
+    blocks: list[str] = []
     for trail_display, items in sections.items():
+        rows: list[str] = []
         for item in items:
-            lines.append(f"| {trail_display} | {item['display']} |")
-    return "\n".join(lines)
+            e = stats.get(item["display"].strip())
+            if e and e["seq"]:
+                matched_seqs.append(e["seq"])
+                tries = _summarize_attempts(e["seq"])
+                t = f"{e['ms']}ms" if e["ms"] is not None else "-"
+                mem = f"{e['mb']}MB" if e["mb"] is not None else "-"
+            else:
+                tries, t, mem = "✅", "-", "-"
+            rows.append(f"| {item['display']} | {tries} | {t} | {mem} |")
+        blocks.append(
+            "<details>\n"
+            f"<summary><b>{trail_display}</b> · {len(items)}문제</summary>\n\n"
+            "| 문제 | 시도 | 시간 | 메모리 |\n| --- | --- | ---: | ---: |\n"
+            f"{chr(10).join(rows)}\n\n"
+            "</details>"
+        )
+
+    card = _codetree_analysis_card(matched_seqs)
+    detail = "\n\n".join(blocks)
+    return f"{card}\n\n{detail}" if card else detail
 
 
 def compute_stats(data: dict) -> dict:

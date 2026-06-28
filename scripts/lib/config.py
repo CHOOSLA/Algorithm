@@ -76,6 +76,12 @@ ATTEMPT_PATTERN = re.compile(
     r"^\[(Passed|Wrong Answer|Time Limit Exceed|WIP)\]\s+(.+?)(?:\s*\([^)]*\))?\s*$"
 )
 
+# Codetree commit: "[Passed] 문제명 (12ms, 3MB)" → status, 이름, ms, mb (perf 는 선택)
+CODETREE_COMMIT_PATTERN = re.compile(
+    r"^\[(Passed|Wrong Answer|Time Limit Exceed|WIP)\]\s+(.+?)\s*"
+    r"(?:\((\d+)\s*ms,\s*(\d+)\s*MB\))?\s*$"
+)
+
 SWEA_COMMIT_PATTERN = re.compile(
     r"^SEA\s*\(D(\d+)\)\s*:\s*(?:(\d+)\.\s*)?(.+?)(?:\s*-\s*(.+))?\s*$"
 )
