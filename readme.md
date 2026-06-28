@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-251-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-252-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -20,11 +20,11 @@
 | --- | ---: |
 | BaekJoon | 84 |
 | SW Expert Academy | 42 |
-| Codetree | 88 |
+| Codetree | 89 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **251** |
+| **합계** | **252** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -47,14 +47,14 @@ config:
 ---
 pie showData
   title Codetree 카테고리별 문제 수
-  "Trail 2" : 88
+  "Trail 2" : 89
 ```
 
 ### 🛤️ Codetree Trail 진도
 
 | Trail | 진도 | 카운트 |
 | --- | --- | --- |
-| **Trail 2** | _전체 문제 수 미설정_ | **88** solved |
+| **Trail 2** | _전체 문제 수 미설정_ | **89** solved |
 
 ### 🎯 정복한 난관 (Codetree 도전 기록 Top 5)
 
@@ -458,6 +458,7 @@ xychart-beta
 | Trail 2 | 되돌아오기 |
 | Trail 2 | 되돌아오기 2 |
 | Trail 2 | 두 가지로 열리는 자물쇠 |
+| Trail 2 | 등차수열 |
 | Trail 2 | 마라톤 중간에 택시타기 2 |
 | Trail 2 | 만나는 그 순간 |
 | Trail 2 | 모이자 |
