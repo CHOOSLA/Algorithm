@@ -1,148 +1,54 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="100%" height="220" style="background: transparent;">
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="200" viewBox="0 0 860 200" role="img"
+     font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Apple SD Gothic Neo','Malgun Gothic',sans-serif">
   <defs>
-    <!-- Background Gradient -->
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0a0f1d"/>
-      <stop offset="100%" stop-color="#070a14"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#161b22"/><stop offset="1" stop-color="#0d1117"/>
     </linearGradient>
-    
-    <!-- Title Gradient -->
-    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00f2fe"/>
-      <stop offset="50%" stop-color="#4facfe"/>
-      <stop offset="100%" stop-color="#9b51e0"/>
+    <linearGradient id="tg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2ee6d6"/><stop offset="1" stop-color="#58a6ff"/>
     </linearGradient>
+    <linearGradient id="ul" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2ee6d6"/><stop offset="1" stop-color="#2ee6d6" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#2ee6d6" stop-opacity="0.20"/><stop offset="1" stop-color="#2ee6d6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#a371f7" stop-opacity="0.16"/><stop offset="1" stop-color="#a371f7" stop-opacity="0"/>
+    </radialGradient>
   </defs>
 
-  <style>
-    @keyframes pulseCyan {
-      0%, 100% { stroke: #1e293b; stroke-width: 1.5; filter: none; }
-      50% { stroke: #00e5ff; stroke-width: 2.5; filter: drop-shadow(0 0 3px #00e5ff); }
-    }
-    @keyframes pulseGreen {
-      0%, 100% { stroke: #1e293b; stroke-width: 1.5; filter: none; }
-      50% { stroke: #22c55e; stroke-width: 2.5; filter: drop-shadow(0 0 3px #22c55e); }
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-    @keyframes flowEdge {
-      0% { stroke-dashoffset: 20; }
-      100% { stroke-dashoffset: 0; }
-    }
-    
-    .node {
-      fill: #0d1326;
-      stroke: #2b354a;
-      stroke-width: 1.5;
-      transition: all 0.3s ease;
-    }
-    .node-active-cyan { animation: pulseCyan 3.5s infinite; }
-    .node-active-green { animation: pulseGreen 3.5s infinite; }
-    
-    .edge {
-      stroke: #1e293b;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-    }
-    .edge-flow-cyan {
-      stroke: #00e5ff;
-      stroke-width: 2;
-      stroke-dasharray: 6 4;
-      animation: flowEdge 1.5s linear infinite;
-      opacity: 0.7;
-    }
-    .edge-flow-green {
-      stroke: #22c55e;
-      stroke-width: 2;
-      stroke-dasharray: 6 4;
-      animation: flowEdge 1.5s linear infinite reverse;
-      opacity: 0.7;
-    }
-    .cursor {
-      animation: blink 1s step-end infinite;
-      fill: #00e5ff;
-    }
-    .title-text {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      font-weight: 800;
-      font-size: 36px;
-      letter-spacing: 1.5px;
-    }
-    .code-text {
-      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Fira Code", "JetBrains Mono", monospace;
-      font-size: 13px;
-    }
-  </style>
+  <rect x="0.5" y="0.5" width="859" height="199" rx="16" fill="url(#bg)" stroke="#30363d"/>
+  <circle cx="110" cy="20" r="170" fill="url(#glowA)"/>
+  <circle cx="720" cy="210" r="200" fill="url(#glowB)"/>
 
-  <!-- Container Box -->
-  <rect width="800" height="220" rx="12" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="1.5"/>
-
-  <!-- Window Header -->
-  <path d="M 0 12 A 12 12 0 0 1 12 0 L 788 0 A 12 12 0 0 1 800 12 L 800 36 L 0 36 Z" fill="#0f1424" />
-  <circle cx="20" cy="18" r="5" fill="#ff5f56"/>
-  <circle cx="36" cy="18" r="5" fill="#ffbd2e"/>
-  <circle cx="52" cy="18" r="5" fill="#27c93f"/>
-  <text x="400" y="22" fill="#64748b" font-family="monospace" font-size="11" text-anchor="middle" letter-spacing="0.5">algorithm-lab.env</text>
-  <line x1="0" y1="36" x2="800" y2="36" stroke="#1e293b" stroke-width="1"/>
-
-  <!-- LEFT PANEL: Data Structure Tree Visualizer -->
-  <!-- Background Connections -->
-  <line x1="150" y1="75" x2="95" y2="130" class="edge"/>
-  <line x1="150" y1="75" x2="205" y2="130" class="edge"/>
-  <line x1="95" y1="130" x2="65" y2="180" class="edge"/>
-  <line x1="95" y1="130" x2="125" y2="180" class="edge"/>
-  <line x1="205" y1="130" x2="175" y2="180" class="edge"/>
-  <line x1="205" y1="130" x2="235" y2="180" class="edge"/>
-
-  <!-- Active Flow Paths (Dashed & Moving) -->
-  <line x1="150" y1="75" x2="205" y2="130" class="edge-flow-cyan"/>
-  <line x1="205" y1="130" x2="175" y2="180" class="edge-flow-cyan"/>
-  <line x1="150" y1="75" x2="95" y2="130" class="edge-flow-green"/>
-  <line x1="95" y1="130" x2="125" y2="180" class="edge-flow-green"/>
-
-  <!-- Tree Nodes -->
-  <!-- Level 0 -->
-  <circle cx="150" cy="75" r="10" class="node node-active-cyan" style="animation-delay: 0s;"/>
-  <!-- Level 1 -->
-  <circle cx="95" cy="130" r="9" class="node node-active-green" style="animation-delay: 1.16s;"/>
-  <circle cx="205" cy="130" r="9" class="node node-active-cyan" style="animation-delay: 1.16s;"/>
-  <!-- Level 2 -->
-  <circle cx="65" cy="180" r="8" class="node"/>
-  <circle cx="125" cy="180" r="8" class="node node-active-green" style="animation-delay: 2.33s;"/>
-  <circle cx="175" cy="180" r="8" class="node node-active-cyan" style="animation-delay: 2.33s;"/>
-  <circle cx="235" cy="180" r="8" class="node"/>
-
-  <!-- Glowing Search Dots -->
-  <!-- Cyan Dot (DFS/BFS Right Branch) -->
-  <circle r="4" fill="#00e5ff">
-    <animateMotion dur="3.5s" repeatCount="indefinite" path="M 150 75 L 205 130 L 175 180" calcMode="linear"/>
-  </circle>
-  <!-- Green Dot (DFS/BFS Left Branch) -->
-  <circle r="4" fill="#22c55e">
-    <animateMotion dur="3.5s" begin="0.8s" repeatCount="indefinite" path="M 150 75 L 95 130 L 125 180" calcMode="linear"/>
-  </circle>
-
-
-  <!-- RIGHT PANEL: Logo & Code Console -->
-  <!-- Title -->
-  <text x="320" y="95" fill="url(#titleGrad)" class="title-text">ALGORITHM LAB</text>
-  
-  <!-- Subtitle / Meta -->
-  <text x="320" y="122" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13" font-weight="500">Systematic Data Structures &amp; Problem Solving</text>
-
-  <!-- Console Code Panel -->
-  <rect x="320" y="142" width="440" height="62" rx="6" fill="#080b12" stroke="#1e293b" stroke-width="1"/>
-  
-  <g class="code-text" xml:space="preserve">
-    <text x="335" y="160" fill="#cbd5e1">
-      <tspan fill="#f43f5e">const</tspan> <tspan fill="#38bdf8">solve</tspan> = (<tspan fill="#fbbf24">problem</tspan>) =&gt; {
-    </text>
-    <text x="335" y="178" fill="#cbd5e1">
-      <tspan fill="#f43f5e">return</tspan> problem.<tspan fill="#34d399">analyze</tspan>().<tspan fill="#34d399">optimize</tspan>(); <tspan fill="#64748b">// O(log N)</tspan>
-    </text>
-    <text x="335" y="196" fill="#cbd5e1">};</text>
+  <!-- 우측 회전 링 (카드 도넛 모티프) -->
+  <g transform="translate(742 100)" fill="none" stroke-linecap="round">
+    <circle r="76" stroke="#1f6feb" stroke-width="2" opacity="0.20" stroke-dasharray="70 400"/>
+    <circle r="56" stroke="#2ee6d6" stroke-width="3" opacity="0.6" stroke-dasharray="120 260">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="16s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="38" stroke="#a371f7" stroke-width="2.5" opacity="0.5" stroke-dasharray="80 160">
+      <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="11s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="4" fill="#2ee6d6" stroke="none"/>
   </g>
-  <rect x="702" y="168" width="6" height="12" class="cursor"/>
+
+  <text x="42" y="52" font-size="12" font-weight="700" letter-spacing="3" fill="#2ee6d6">DAILY PROBLEM SOLVING</text>
+  <text x="40" y="104" font-size="46" font-weight="800" fill="url(#tg)">Algorithm Lab</text>
+  <rect x="42" y="118" width="150" height="3" rx="1.5" fill="url(#ul)"/>
+
+  <!-- 사이클링 태그라인 (9s 루프, 3줄 크로스페이드) -->
+  <text x="42" y="156" font-size="15" fill="#7d8590" font-weight="500">&#8250;</text>
+  <g font-size="15" font-weight="600">
+    <text x="56" y="156" fill="#c9d1d9" opacity="0">Codetree &#183; 프로그래머스 &#183; SWEA &#183; BaekJoon
+      <animate attributeName="opacity" values="1;1;0;0;0;1" keyTimes="0;0.30;0.35;0.95;0.99;1" dur="9s" repeatCount="indefinite"/>
+    </text>
+    <text x="56" y="156" fill="#c9d1d9" opacity="0">매일 한 문제씩, 꾸준히
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.32;0.37;0.63;0.68;1" dur="9s" repeatCount="indefinite"/>
+    </text>
+    <text x="56" y="156" fill="#c9d1d9" opacity="0">Implement &#8594; Simulation &#8594; Graph &#8594; Beyond
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.65;0.70;0.97;1" dur="9s" repeatCount="indefinite"/>
+    </text>
+  </g>
 </svg>
