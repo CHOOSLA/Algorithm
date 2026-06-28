@@ -35,7 +35,12 @@ public class Main {
         for(int i=0; i < n; ++i){
             // sort를 해버리면 위치가 바뀌어버림
             // 복사본이 필요함
-            ArrayList<Student> arr_c = new ArrayList<>(arr);
+            // 얕은 복사 말고 깊은 복사가 필요함
+            ArrayList<Student> arr_c = new ArrayList<>();
+            for(int j=0; j < n; ++j){
+                arr_c.add(new Student(arr.get(j).p, arr.get(j).s));
+            }
+
             arr_c.get(i).p /= 2;
 
             Collections.sort(arr_c);
