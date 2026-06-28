@@ -1,12 +1,10 @@
 import java.util.*;
 
 class Student implements Comparable<Student>{
-    public int origin_idx;
     public int p;
     public int s;
     
-    Student(int origin_idx, int p, int s){
-        this.origin_idx = origin_idx;
+    Student(int p, int s){
         this.p = p;
         this.s = s;
     }
@@ -28,7 +26,7 @@ public class Main {
             int p = sc.nextInt();
             int s = sc.nextInt();
 
-            arr.add(new Student(i, p, s));
+            arr.add(new Student(p, s));
         }
         // Please write your code here.
         // 이건 price만으로 내림 차순을 하면 틀림
@@ -36,15 +34,14 @@ public class Main {
         int result = 0;
         for(int i=0; i < n; ++i){
             // sort를 해버리면 위치가 바뀌어버림
-            // 복사 = 반복문 비용이 같다고 생각해서 그냥 반복문으로
-            // 나눈 것을 복구하기로함
-            int og_idx = arr.get(i).origin_idx;
-            arr.get(og_idx).p /= 2;
+            // 복사본이 필요함
+            ArrayList<Student> arr_c = new ArrayList<>(arr);
+            arr_c.get(i).p /= 2;
 
-            Collections.sort(arr);
+            Collections.sort(arr_c);
             int pre_sum = 0;
             for(int j=0; j < n; ++j){
-                int tmp = arr.get(j).p + arr.get(j).s;
+                int tmp = arr_c.get(j).p + arr_c.get(j).s;
                 if(pre_sum + tmp > b){
                     break;
                 }
@@ -52,14 +49,6 @@ public class Main {
                 result = Math.max(result, j + 1);
                 pre_sum += tmp;
             }
-
-            for(int j=0; j <n; ++j){
-                if(arr.get(j).origin_idx == og_idx){
-                    arr.get(j).p *= 2;
-                }
-            }
-
-            
         }
 
         System.out.println(result);
