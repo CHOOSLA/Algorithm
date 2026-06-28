@@ -92,9 +92,9 @@ xychart-beta
 ```
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **주유소** (BaekJoon · Silver IV)
+> **문자열 합치기** (Algospot)
 > - **추천 사유**: 정기 학습 복습 및 망각 방지
-> - **풀이 코드**: [BaekJoon/13305](./BaekJoon/Greedy/13305)
+> - **풀이 코드**: [Algospot/STRJOIN](./Algospot/STRJOIN)
 
 
 ## 폴더 구조
