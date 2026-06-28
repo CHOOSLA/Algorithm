@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-248-4F8BFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Total_Problems-249-4F8BFB?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
 </p>
@@ -20,11 +20,11 @@
 | --- | ---: |
 | BaekJoon | 84 |
 | SW Expert Academy | 42 |
-| Codetree | 85 |
+| Codetree | 86 |
 | Algospot | 17 |
 | Programmers | 19 |
 | Softeer | 1 |
-| **합계** | **248** |
+| **합계** | **249** |
 
 ### 카테고리 분포 (Codetree)
 
@@ -47,14 +47,14 @@ config:
 ---
 pie showData
   title Codetree 카테고리별 문제 수
-  "Trail 2" : 85
+  "Trail 2" : 86
 ```
 
 ### 🛤️ Codetree Trail 진도
 
 | Trail | 진도 | 카운트 |
 | --- | --- | --- |
-| **Trail 2** | _전체 문제 수 미설정_ | **85** solved |
+| **Trail 2** | _전체 문제 수 미설정_ | **86** solved |
 
 ### 🎯 정복한 난관 (Codetree 도전 기록 Top 5)
 
@@ -454,6 +454,7 @@ xychart-beta
 | Trail 2 | 괄호 쌍 만들어주기 3 |
 | Trail 2 | 구간 중 최대 합 |
 | Trail 2 | 그 요일은 |
+| Trail 2 | 데이터센터의 온도 조정 2 |
 | Trail 2 | 되돌아오기 |
 | Trail 2 | 되돌아오기 2 |
 | Trail 2 | 두 가지로 열리는 자물쇠 |
