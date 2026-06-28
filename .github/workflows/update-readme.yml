@@ -5,6 +5,7 @@ on:
     branches: [main, master]
     paths-ignore:
       - 'readme.md'
+      - 'assets/cards/**'
       - 'scripts/.solvedac-cache.json'
   pull_request:
     branches: [main, master]
@@ -38,8 +39,8 @@ jobs:
           # Actions 환경에서 특정 브랜치를 확실히 가리키도록 설정
           git checkout main || git checkout -b main
           
-          # README와 캐시 변경점 스테이징
-          git add readme.md scripts/.solvedac-cache.json
+          # README·생성 카드·캐시 변경점 스테이징
+          git add readme.md assets/cards scripts/.solvedac-cache.json
           
           # 변경사항이 존재하는 경우에만 amend 커밋 및 force push
           if ! git diff --cached --quiet; then
