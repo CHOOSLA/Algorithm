@@ -24,7 +24,7 @@ public class Main {
         // Please write your code here.
         // 우리가 적용할 범위 max(b) + 10까지
         int result = 0;
-        for(int temp=0; temp <= 1000; ++temp){
+        for(int temp=-1000; temp <= 1100; ++temp){
             int cal = 0;
             for(int i=0; i < n; ++i){
                 cal += getScore(temp, ta[i], tb[i]);
