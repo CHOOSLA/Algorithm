@@ -25,9 +25,8 @@ from lib import config
 from lib.client import _load_solvedac_cache, _save_solvedac_cache, _fetch_solvedac_one
 from lib.extractor import auto_extract_swea_meta
 from lib.repetition import select_daily_challenge
+from lib import cardgen
 from lib.renderer import (
-    render_hero,
-    render_stats,
     render_baekjoon,
     render_flat,
     render_codetree,
@@ -41,9 +40,11 @@ def build(data: dict, template: str) -> str:
     sf = data["softeer"]
     al = data["algospot"]
 
+    meta = cardgen.render_all(data)
+
     replacements = {
-        "<!--AUTOGEN:HERO-->": render_hero(data),
-        "<!--AUTOGEN:STATS-->": render_stats(data),
+        "<!--AUTOGEN:CODETREE_CARDS-->": cardgen.codetree_md(meta),
+        "<!--AUTOGEN:OVERVIEW_CARDS-->": cardgen.overview_md(),
         "<!--AUTOGEN:DAILY_CHALLENGE-->": select_daily_challenge(data),
         "<!--AUTOGEN:BAEKJOON-->": render_baekjoon(data),
         "<!--AUTOGEN:SWEA-->": render_flat(

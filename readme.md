@@ -1,100 +1,24 @@
 <p align="center">
-  <img src="./assets/header.svg" alt="Algorithm Lab Header" width="800" style="max-width: 100%;" />
-</p>
-
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&duration=3000&pause=800&color=4F8BFB&center=true&vCenter=true&width=600&lines=Codetree%20/%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%20/%20SWEA;%EB%A7%A4%EC%9D%BC%20%ED%95%9C%20%EB%AC%B8%EC%A0%9C%EC%94%A9%2C%20%EA%BE%B8%EC%A4%80%ED%9E%88;Implement%20%E2%86%92%20Simulation%20%E2%86%92%20Graph%20%E2%86%92%20Beyond" />
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Total_Problems-256-4F8BFB?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Platforms-6-22C55E?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Roadmap-16%2F37-F59E0B?style=for-the-badge"/>
+  <img src="./assets/header.svg" width="860" alt="Algorithm Lab" />
 </p>
 
 # 알고리즘 공부 저장소
 
-## 📊 한눈에 보기
+## 🌳 Codetree (메인 트랙)
 
-| 플랫폼 | 문제 수 |
-| --- | ---: |
-| BaekJoon | 84 |
-| SW Expert Academy | 42 |
-| Codetree | 93 |
-| Algospot | 17 |
-| Programmers | 19 |
-| Softeer | 1 |
-| **합계** | **256** |
+<p><img src="./assets/cards/ct_summary.svg" alt="summary"/> <img src="./assets/cards/ct_streak.svg" alt="streak"/></p>
+<p><img src="./assets/cards/ct_course_0.svg" alt="trail 0"/><img src="./assets/cards/ct_course_1.svg" alt="trail 1"/><img src="./assets/cards/ct_course_2.svg" alt="trail 2"/><img src="./assets/cards/ct_course_3.svg" alt="trail 3"/><img src="./assets/cards/ct_course_4.svg" alt="trail 4"/><img src="./assets/cards/ct_course_5.svg" alt="trail 5"/><img src="./assets/cards/ct_course_6.svg" alt="trail 6"/></p>
+<p><img src="./assets/cards/ct_xp.svg" alt="daily xp"/> <img src="./assets/cards/ct_types.svg" alt="by type"/></p>
 
-### 카테고리 분포 (Codetree)
+## 📊 전체 현황
 
-```mermaid
----
-config:
-  theme: base
-  themeVariables:
-    background: '#0d1117'
-    pieTitleTextColor: '#f8fafc'
-    pieLegendTextColor: '#cbd5e1'
-    pieLegendTextSize: '13px'
-    pie1: '#00e5ff'
-    pie2: '#22c55e'
-    pie3: '#f59e0b'
-    pie4: '#a855f7'
-    pie5: '#ec4899'
-    pie6: '#3b82f6'
-    pie7: '#64748b'
----
-pie showData
-  title Codetree 카테고리별 문제 수
-  "Trail 2" : 93
-```
-
-### 🛤️ Codetree Trail 진도
-
-| Trail | 진도 | 카운트 |
-| --- | --- | --- |
-| **Trail 2** | _전체 문제 수 미설정_ | **93** solved |
-
-### 🎯 정복한 난관 (Codetree 도전 기록 Top 5)
-
-| 문제 | 시도 | 과정 |
-| --- | ---: | --- |
-| 만나는 그 순간 | 8 | ❌×7 → ✅ |
-| 연속되는 수 2 | 8 | ❌×4 → ✅ → ❌×2 → ✅ |
-| 요일 맞추기 | 7 | ⏱️×4 → ❌×2 → ✅ |
-| 바구니 안의 사탕 2 | 6 | ❌×5 → ✅ |
-| 잔해물을 덮기 위한 사각형의 최소 넓이 | 6 | ❌×4 → ✅×2 |
-
-### 📅 학습 타임라인
-
-```mermaid
----
-config:
-  theme: dark
-  themeVariables:
-    background: '#0d1117'
-    xyChart:
-      titleColor: '#f8fafc'
-      xAxisLabelColor: '#cbd5e1'
-      xAxisTitleColor: '#cbd5e1'
-      xAxisLineColor: '#334155'
-      yAxisLabelColor: '#cbd5e1'
-      yAxisTitleColor: '#cbd5e1'
-      yAxisLineColor: '#334155'
-      plotColorPalette: '#00e5ff'
----
-xychart-beta
-  title "월별 풀이 완료 commit (최근 9개월)"
-  x-axis ["2025-08", "2025-09", "2025-11", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06"]
-  y-axis "commit" 0 --> 115
-  line [3, 1, 13, 2, 22, 3, 16, 62, 92]
-```
+<p><img src="./assets/cards/platforms.svg" alt="platforms"/> <img src="./assets/cards/activity.svg" alt="monthly activity"/></p>
+<p><img src="./assets/cards/attempts.svg" alt="toughest"/></p>
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **문자열 합치기** (Algospot)
-> - **추천 사유**: 정기 학습 복습 및 망각 방지
-> - **풀이 코드**: [Algospot/STRJOIN](./Algospot/STRJOIN)
+> **특정 수와 근접한 합** (Codetree · Trail 2)
+> - **추천 사유**: 이전 풀이 시 3회 실패/재시도 기록 있음 (❌×2 → ✅)
+> - **풀이 코드**: [Codetree/특정 수와 근접한 합](./Codetree/trail2/%ED%8A%B9%EC%A0%95%20%EC%88%98%EC%99%80%20%EA%B7%BC%EC%A0%91%ED%95%9C%20%ED%95%A9)
 
 
 ## 폴더 구조
@@ -381,6 +305,9 @@ xychart-beta
 
 ## SW Expert Academy 문제 정리
 
+<details>
+<summary>📂 전체 42문제 펼쳐보기</summary>
+
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 5215 | 햄버거 다이어트 | D3 |
@@ -426,105 +353,111 @@ xychart-beta
 | 17301 | NC 문자열 (BOJ) | Platinum IV |
 | 43238 | 입국 심사 (BOJ) | Gold V |
 
+</details>
+
 ## Codetree 문제 정리
 
-| 트레일 | 문제 |
-| --- | --- |
-| Trail 2 | 1이 3개 이상 있는 위치 |
-| Trail 2 | 2진수로 변환하기 |
-| Trail 2 | Carry 피하기 2 |
-| Trail 2 | Date to Date |
-| Trail 2 | DateTime to DateTime |
-| Trail 2 | G or H 2 |
-| Trail 2 | G or H 3 |
-| Trail 2 | Time to Time |
-| Trail 2 | T를 초과하는 연속 부분 수열 |
-| Trail 2 | 가운데에서 시작하여 빙빙 돌기 |
-| Trail 2 | 가장 가까운 두 점 사이의 거리 |
-| Trail 2 | 개발자의 능력 2 |
-| Trail 2 | 개발자의 능력 3 |
-| Trail 2 | 개발자의 순위 |
-| Trail 2 | 개발팀의 능력 |
-| Trail 2 | 거울에 레이저 쏘기 2 |
-| Trail 2 | 격자 위의 편안한 상태 |
-| Trail 2 | 겹치지 않는 사각형의 넓이 |
-| Trail 2 | 겹치지 않는 선분 2 |
-| Trail 2 | 계속 중첩되는 사각형 |
-| Trail 2 | 괄호 쌍 만들어주기 2 |
-| Trail 2 | 괄호 쌍 만들어주기 3 |
-| Trail 2 | 구간 중 최대 합 |
-| Trail 2 | 그 요일은 |
-| Trail 2 | 데이터센터의 온도 조정 2 |
-| Trail 2 | 되돌아오기 |
-| Trail 2 | 되돌아오기 2 |
-| Trail 2 | 두 가지로 열리는 자물쇠 |
-| Trail 2 | 등차수열 |
-| Trail 2 | 마라톤 중간에 택시타기 2 |
-| Trail 2 | 만나는 그 순간 |
-| Trail 2 | 모이자 |
-| Trail 2 | 문자에 따른 명령 2 |
-| Trail 2 | 바구니 안의 사탕 2 |
-| Trail 2 | 방향에 맞춰 이동 |
-| Trail 2 | 밭의 높이를 고르게하기 |
-| Trail 2 | 벌금은 누구에게 |
-| Trail 2 | 블럭쌓는 명령2 |
-| Trail 2 | 빙빙 돌며 사각형 채우기 |
-| Trail 2 | 빙빙 돌며 숫자 사각형 채우기 |
-| Trail 2 | 빙빙 돌며 숫자 사각형 채우기 2 |
-| Trail 2 | 빙산의 일각 2 |
-| Trail 2 | 사각형의 총 넓이 2 |
-| Trail 2 | 삼각형 만들기 |
-| Trail 2 | 상해버린 치즈 |
-| Trail 2 | 색종이의 총 넓이 |
-| Trail 2 | 선두를 지켜라 |
-| Trail 2 | 선두를 지켜라 3 |
-| Trail 2 | 선분 3개 지우기 |
-| Trail 2 | 숨은 단어 찾기 2 |
-| Trail 2 | 숫자 2배 후 하나 제거하기 |
-| Trail 2 | 숫자 카운트 |
-| Trail 2 | 숫자들의 합 중 최대 |
-| Trail 2 | 스승의 은혜 2 |
-| Trail 2 | 스승의 은혜 3 |
-| Trail 2 | 신기한 타일 뒤집기 |
-| Trail 2 | 십진수로 변환하기 |
-| Trail 2 | 십진수와 이진수 2 |
-| Trail 2 | 씨 오 더블유 2 |
-| Trail 2 | 아름다운 수열 2 |
-| Trail 2 | 악수와 전염병의 상관관계 2 |
-| Trail 2 | 야바위 |
-| Trail 2 | 여러가지 진수변환 |
-| Trail 2 | 연속되는 수 2 |
-| Trail 2 | 연속되는 수 3 |
-| Trail 2 | 연속되는 수 4 |
-| Trail 2 | 오목 |
-| Trail 2 | 왔다 갔던 구역 2 |
-| Trail 2 | 요일 맞추기 |
-| Trail 2 | 운행 되고 있는 시간 |
-| Trail 2 | 원 모양으로 되어있는 방 |
-| Trail 2 | 이동경로상에 있는 모든 숫자 더하기 |
-| Trail 2 | 이상한 진수 2 |
-| Trail 2 | 이상한 폭탄 2 |
-| Trail 2 | 인접하지 않은 2개의 수 |
-| Trail 2 | 일렬로 서있는 소 2 |
-| Trail 2 | 작은 구슬의 이동 |
-| Trail 2 | 잔해물을 덮기 위한 사각형의 최소 넓이 |
-| Trail 2 | 정보에 따른 수 2 |
-| Trail 2 | 좌우로 움직이는 로봇 |
-| Trail 2 | 좌표평면 위의 특정 구역 2 |
-| Trail 2 | 진수 to 진수 |
-| Trail 2 | 체크판위에서 2 |
-| Trail 2 | 최고의 13위치 |
-| Trail 2 | 최고의 13위치 2 |
-| Trail 2 | 최대로 겹치는 구간 |
-| Trail 2 | 최대로 겹치는 지점 |
-| Trail 2 | 특정 구간의 원소 평균값 |
-| Trail 2 | 특정 수와 근접한 합 |
-| Trail 2 | 팰린드롬 수 찾기 |
-| Trail 2 | 한 가지로 열리는 자물쇠 |
-| Trail 2 | 흥미로운 숫자 2 |
-| Trail 2 | 흰검 칠하기 |
+> ### 📈 Codetree 학습 분석
+> - **첫 시도 정답률**: 57% (48/84)
+> - **평균 시도 수**: 2.0회
+> - **총 재도전**: 84회
+
+<details>
+<summary><b>Trail 2</b> · 84문제</summary>
+
+| 문제 | 시도 | 시간 | 메모리 |
+| --- | --- | ---: | ---: |
+| 1이 3개 이상 있는 위치 | ✅ | 3ms | 0MB |
+| 2진수로 변환하기 | ✅ | 2ms | 0MB |
+| Carry 피하기 2 | ❌ → ✅ | 2ms | 0MB |
+| Date to Date | ✅ | 8ms | 0MB |
+| DateTime to DateTime | ❌×2 → ✅ | 1ms | 0MB |
+| G or H 2 | ✅ | 129ms | 10MB |
+| G or H 3 | ✅ | 133ms | 10MB |
+| Time to Time | ✅ | 9ms | 0MB |
+| T를 초과하는 연속 부분 수열 | ❌ → ✅ | 2ms | 0MB |
+| 가운데에서 시작하여 빙빙 돌기 | ✅ | 3ms | 0MB |
+| 가장 가까운 두 점 사이의 거리 | ✅ | 131ms | 10MB |
+| 개발자의 능력 2 | ✅ | 130ms | 10MB |
+| 개발자의 능력 3 | ✅ | 163ms | 10MB |
+| 개발자의 순위 | ✅ | 149ms | 11MB |
+| 개발팀의 능력 | ✅×2 | 132ms | 10MB |
+| 거울에 레이저 쏘기 2 | ✅ | 2ms | 0MB |
+| 격자 위의 편안한 상태 | ✅ | 16ms | 0MB |
+| 겹치지 않는 사각형의 넓이 | ❌ → ✅ | 24ms | 16MB |
+| 겹치지 않는 선분 2 | ❌×4 → ✅ | 131ms | 10MB |
+| 계속 중첩되는 사각형 | ✅ | 2ms | 1MB |
+| 괄호 쌍 만들어주기 2 | ✅ | 2ms | 0MB |
+| 괄호 쌍 만들어주기 3 | ✅ | 2ms | 0MB |
+| 구간 중 최대 합 | ✅ | 145ms | 10MB |
+| 그 요일은 | ❌ → ✅ | 2ms | 0MB |
+| 되돌아오기 | ✅ | 2ms | 0MB |
+| 되돌아오기 2 | ❌ → ✅ | 4ms | 0MB |
+| 두 가지로 열리는 자물쇠 | ✅ | 170ms | 11MB |
+| 마라톤 중간에 택시타기 2 | ✅ | 2ms | 0MB |
+| 만나는 그 순간 | ❌×7 → ✅ | 4ms | 2MB |
+| 모이자 | ✅×2 | 2ms | 0MB |
+| 문자에 따른 명령 2 | ✅ | 3ms | 0MB |
+| 바구니 안의 사탕 2 | ❌×5 → ✅ | 153ms | 10MB |
+| 방향에 맞춰 이동 | ✅ | 2ms | 0MB |
+| 밭의 높이를 고르게하기 | ❌ → ✅ | 152ms | 10MB |
+| 벌금은 누구에게 | ✅ | 2ms | 0MB |
+| 블럭쌓는 명령2 | ✅ | 2ms | 0MB |
+| 빙빙 돌며 사각형 채우기 | ❌×2 → ✅ | 2ms | 0MB |
+| 빙빙 돌며 숫자 사각형 채우기 | ✅ | 2ms | 0MB |
+| 빙빙 돌며 숫자 사각형 채우기 2 | ✅ | 2ms | 0MB |
+| 사각형의 총 넓이 2 | ✅ | 2ms | 1MB |
+| 삼각형 만들기 | ✅ | 168ms | 11MB |
+| 상해버린 치즈 | ❌×4 → ✅ | 192ms | 13MB |
+| 색종이의 총 넓이 | ✅ | 2ms | 1MB |
+| 선두를 지켜라 | ❌ → ✅ | 73ms | 77MB |
+| 선두를 지켜라 3 | ✅ | 4ms | 2MB |
+| 선분 3개 지우기 | ✅ | 133ms | 10MB |
+| 숨은 단어 찾기 2 | ✅ | 2ms | 0MB |
+| 숫자 카운트 | ✅ | 131ms | 10MB |
+| 스승의 은혜 2 | ✅×2 | 167ms | 11MB |
+| 스승의 은혜 3 | ❌ | - | - |
+| 신기한 타일 뒤집기 | ✅ | 3ms | 1MB |
+| 십진수로 변환하기 | ✅ | 2ms | 0MB |
+| 십진수와 이진수 2 | ✅ | 2ms | 0MB |
+| 씨 오 더블유 2 | ✅ | 2ms | 0MB |
+| 아름다운 수열 2 | ❌×2 → ✅ | 135ms | 10MB |
+| 악수와 전염병의 상관관계 2 | ❌ → ✅×3 | 2ms | 0MB |
+| 여러가지 진수변환 | ✅ | 2ms | 0MB |
+| 연속되는 수 2 | ❌×4 → ✅ → ❌×2 → ✅ | 2ms | 0MB |
+| 연속되는 수 3 | ❌ → ✅ | 2ms | 0MB |
+| 연속되는 수 4 | ✅ | 2ms | 0MB |
+| 오목 | ❌×2 → ✅ | 2ms | 0MB |
+| 왔다 갔던 구역 2 | ❌×4 → ✅ | 2ms | 0MB |
+| 요일 맞추기 | ⏱️×4 → ❌×2 → ✅ | 8ms | 0MB |
+| 운행 되고 있는 시간 | ❌×2 → ✅ | 158ms | 11MB |
+| 원 모양으로 되어있는 방 | ✅ | 8ms | 0MB |
+| 이동경로상에 있는 모든 숫자 더하기 | ✅ | 4ms | 0MB |
+| 이상한 진수 2 | ❌ → ✅ | 2ms | 0MB |
+| 이상한 폭탄 2 | ❌ → ✅ | 145ms | 10MB |
+| 인접하지 않은 2개의 수 | ✅ | 2ms | 0MB |
+| 일렬로 서있는 소 2 | ✅ | 2ms | 1MB |
+| 작은 구슬의 이동 | ❌ → ✅ | 2ms | 0MB |
+| 잔해물을 덮기 위한 사각형의 최소 넓이 | ❌×4 → ✅×2 | 21ms | 16MB |
+| 좌우로 움직이는 로봇 | ❌×3 → ✅ | 43ms | 8MB |
+| 좌표평면 위의 특정 구역 2 | ✅ | 126ms | 10MB |
+| 진수 to 진수 | ✅ | 2ms | 0MB |
+| 체크판위에서 2 | ❌×3 → ✅ | 2ms | 0MB |
+| 최고의 13위치 | ✅ | 2ms | 0MB |
+| 최고의 13위치 2 | ❌×2 → ✅ | 2ms | 0MB |
+| 최대로 겹치는 구간 | ❌×2 → ✅ | 2ms | 0MB |
+| 최대로 겹치는 지점 | ✅×3 | 2ms | 0MB |
+| 특정 구간의 원소 평균값 | ❌ → ✅ | 148ms | 10MB |
+| 특정 수와 근접한 합 | ❌×2 → ✅ | 2ms | 0MB |
+| 한 가지로 열리는 자물쇠 | ✅ | 133ms | 10MB |
+| 흰검 칠하기 | ✅ | 4ms | 3MB |
+
+</details>
 
 ## Algospot 문제 정리
+
+<details>
+<summary>📂 전체 17문제 펼쳐보기</summary>
 
 | 문제 ID | 제목 |
 | --- | --- |
@@ -546,7 +479,12 @@ xychart-beta
 | WILDCARD | Wildcard |
 | WITHDRAWAL | 수강 철회 |
 
+</details>
+
 ## Programmers 문제 정리
+
+<details>
+<summary>📂 전체 19문제 펼쳐보기</summary>
 
 | 문제 번호 | 제목 | 난이도 |
 | --- | --- | --- |
@@ -569,6 +507,8 @@ xychart-beta
 | 161988 | 연속 펄스 부분 수열의 합 | Level 3 |
 | 178871 | 달리기 경주 | Level 1 |
 | 2023 KAKAO BLIND RECRUITMENT | 개인정보 수집 유효기간 (150370) | Level 1 |
+
+</details>
 
 ## Softeer 문제 정리
 

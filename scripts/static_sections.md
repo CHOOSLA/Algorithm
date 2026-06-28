@@ -1,17 +1,23 @@
 <!--
   static_sections.md — readme.md 생성용 템플릿.
-  AUTOGEN 마커 위치에 scripts/generate_readme.py 가 표를 삽입한다.
+  AUTOGEN 마커 위치에 scripts/generate_readme.py 가 카드/표를 삽입한다.
   이 최상단 주석은 빌더가 readme.md 에서 자동으로 제거한다.
   readme.md 를 직접 편집하지 말 것 — 다음 빌드에서 덮어쓰여진다.
 -->
 
-<!--AUTOGEN:HERO-->
+<p align="center">
+  <img src="./assets/header.svg" width="860" alt="Algorithm Lab" />
+</p>
 
 # 알고리즘 공부 저장소
 
-## 📊 한눈에 보기
+## 🌳 Codetree (메인 트랙)
 
-<!--AUTOGEN:STATS-->
+<!--AUTOGEN:CODETREE_CARDS-->
+
+## 📊 전체 현황
+
+<!--AUTOGEN:OVERVIEW_CARDS-->
 
 <!--AUTOGEN:DAILY_CHALLENGE-->
 
