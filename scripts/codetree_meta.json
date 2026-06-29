@@ -1,32 +1,127 @@
 {
-  "profile": {"username": "cnckddn0146"},
+  "schema": 2,
+  "generated_at": "2026-06-29T05:38:09+00:00",
+  "profile": {
+    "username": "cnckddn0146"
+  },
   "summary": {
-    "solved": 124, "total": 1437,
-    "solved_by_type": {"Introduction": 44, "Problem": 69, "Test": 11},
-    "total_by_type": {"Introduction": 405, "Problem": 810, "Test": 222}
+    "solved": 129,
+    "total": 1437,
+    "solved_by_type": {
+      "Introduction": 46,
+      "Problem": 71,
+      "Test": 12
+    },
+    "total_by_type": {
+      "Introduction": 405,
+      "Problem": 810,
+      "Test": 222
+    }
   },
   "courses": [
-    {"name": "Introduction to Coding", "alias": "codetree-101", "order": 0, "solved": 36, "total": 103},
-    {"name": "Foundations of Coding", "alias": "novice-low", "order": 1, "solved": 0, "total": 396},
-    {"name": "Algorithmic Foundations", "alias": "novice-mid", "order": 2, "solved": 88, "total": 241},
-    {"name": "Data Structures Fundamentals", "alias": "novice-high", "order": 3, "solved": 0, "total": 242},
-    {"name": "Practical Algorithm Design", "alias": "intermediate-low", "order": 4, "solved": 0, "total": 130},
-    {"name": "Advanced Algorithms I", "alias": "intermediate-mid", "order": 5, "solved": 0, "total": 176},
-    {"name": "Advanced Algorithms II", "alias": "intermediate-high", "order": 6, "solved": 0, "total": 149}
+    {
+      "name": "프로그래밍 시작",
+      "alias": "codetree-101",
+      "order": 0,
+      "solved": 36,
+      "total": 103
+    },
+    {
+      "name": "프로그래밍 기초",
+      "alias": "novice-low",
+      "order": 1,
+      "solved": 0,
+      "total": 396
+    },
+    {
+      "name": "프로그래밍 연습",
+      "alias": "novice-mid",
+      "order": 2,
+      "solved": 93,
+      "total": 241
+    },
+    {
+      "name": "자료구조 알고리즘",
+      "alias": "novice-high",
+      "order": 3,
+      "solved": 0,
+      "total": 242
+    },
+    {
+      "name": "알고리즘 입문",
+      "alias": "intermediate-low",
+      "order": 4,
+      "solved": 0,
+      "total": 130
+    },
+    {
+      "name": "알고리즘 기본",
+      "alias": "intermediate-mid",
+      "order": 5,
+      "solved": 0,
+      "total": 176
+    },
+    {
+      "name": "알고리즘 실전",
+      "alias": "intermediate-high",
+      "order": 6,
+      "solved": 0,
+      "total": 149
+    }
   ],
   "streak": {
-    "current": 7,
+    "current": 8,
     "history": [
-      {"gained_at": "2026-06-28", "exp": 150, "goal": 140},
-      {"gained_at": "2026-06-27", "exp": 70, "goal": 140},
-      {"gained_at": "2026-06-26", "exp": 230, "goal": 140},
-      {"gained_at": "2026-06-25", "exp": 150, "goal": 140},
-      {"gained_at": "2026-06-24", "exp": 150, "goal": 140},
-      {"gained_at": "2026-06-23", "exp": 490, "goal": 140},
-      {"gained_at": "2026-06-22", "exp": 60, "goal": 140},
-      {"gained_at": "2026-06-21", "exp": 0, "goal": 140},
-      {"gained_at": "2026-06-20", "exp": 20, "goal": 140},
-      {"gained_at": "2026-06-19", "exp": 440, "goal": 140}
+      {
+        "gained_at": "2026-06-29",
+        "exp": 130,
+        "goal": 140
+      },
+      {
+        "gained_at": "2026-06-28",
+        "exp": 150,
+        "goal": 140
+      },
+      {
+        "gained_at": "2026-06-27",
+        "exp": 70,
+        "goal": 140
+      },
+      {
+        "gained_at": "2026-06-26",
+        "exp": 230,
+        "goal": 140
+      },
+      {
+        "gained_at": "2026-06-25",
+        "exp": 150,
+        "goal": 140
+      },
+      {
+        "gained_at": "2026-06-24",
+        "exp": 150,
+        "goal": 140
+      },
+      {
+        "gained_at": "2026-06-23",
+        "exp": 490,
+        "goal": 140
+      },
+      {
+        "gained_at": "2026-06-22",
+        "exp": 60,
+        "goal": 140
+      },
+      {
+        "gained_at": "2026-06-21",
+        "exp": 0,
+        "goal": 140
+      },
+      {
+        "gained_at": "2026-06-20",
+        "exp": 20,
+        "goal": 140
+      }
     ]
   }
 }
