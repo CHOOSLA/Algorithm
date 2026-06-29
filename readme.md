@@ -25,9 +25,9 @@
 <div align="center"><img src="./assets/cards/attempts.svg" alt="toughest"/></div>
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **최고의 13위치 2** (Codetree · Trail 2)
-> - **추천 사유**: 이전 풀이 시 3회 실패/재시도 기록 있음 (❌×2 → ✅)
-> - **풀이 코드**: [Codetree/최고의 13위치 2](./Codetree/trail2/%EC%B5%9C%EA%B3%A0%EC%9D%98%2013%EC%9C%84%EC%B9%98%202)
+> **Date to Date** (Codetree · Trail 2)
+> - **추천 사유**: 이전 풀이 시도 이력 있음 (✅)
+> - **풀이 코드**: [Codetree/Date to Date](./Codetree/trail2/Date%20to%20Date)
 
 
 ## 폴더 구조
