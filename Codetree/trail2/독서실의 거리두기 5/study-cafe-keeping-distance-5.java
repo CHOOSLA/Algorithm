@@ -7,6 +7,8 @@ public class Main {
         // Please write your code here.
         int result = 0;
         for(int i=0; i < n; ++i){
+            if(seat.charAt(i) != '0') continue;
+            
             int dis = Integer.MAX_VALUE;
             for(int j=0; j < n; ++j){
                 if(seat.charAt(j)== '1'){
