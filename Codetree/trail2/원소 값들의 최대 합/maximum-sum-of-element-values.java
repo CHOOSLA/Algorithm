@@ -11,9 +11,10 @@ public class Main {
         }
         // Please write your code here.
         int result = 0;
-        for(int j=0; j < n; ++j){
+        for(int j=1; j <= n; ++j){
             int count = m;
             int next_idx = j;
+
             int pre_sum = 0;
             while(count > 0){
                 pre_sum += arr[next_idx];
