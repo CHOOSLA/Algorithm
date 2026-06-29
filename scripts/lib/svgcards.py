@@ -27,8 +27,6 @@ PLATFORM_COLORS = {
     "Softeer": "#f778ba",
 }
 STATUS_COLOR = {"P": PASS, "W": WA, "T": TLE, "X": WIP}
-# 히트맵 강도(시안 스케일)
-HEAT = ["#161b22", "#0b3d3a", "#13746c", "#1fb3a6", "#2ee6d6"]
 
 
 def _esc(s):
@@ -60,47 +58,52 @@ def _flame(x, y, scale):
     )
 
 
-def heatmap_card(daily, streak, weeks=18):
-    # daily: {"YYYY-MM-DD": count} (코드트리 풀이 일수). 오른쪽에 잔디, 왼쪽에 연속일.
+def _runs(dates):
+    # dates: set[date] → (최장 연속일, 총 일수)
+    if not dates:
+        return 0, 0
+    ds = sorted(dates)
+    longest = run = 1
+    for i in range(1, len(ds)):
+        if (ds[i] - ds[i - 1]).days == 1:
+            run += 1
+            longest = max(longest, run)
+        else:
+            run = 1
+    return longest, len(ds)
+
+
+def streak_stat_card(daily, current):
+    # current: 코드트리 연속일(권위값). 최고·총은 git 풀이일에서 산출.
+    # 하단 점은 current 길이만큼만 점등 → 숫자와 점 개수가 항상 일치.
     defs = (
         '<linearGradient id="flame" x1="0" y1="0" x2="0" y2="1">'
         f'<stop offset="0" stop-color="{FLAME1}"/><stop offset="1" stop-color="{FLAME2}"/></linearGradient>'
     )
-    today = datetime.date.today()
-    # 그리드 끝(이번 주) → 시작 일요일
-    end_sun = today + datetime.timedelta(days=(6 - today.weekday()) % 7)
-    start = end_sun - datetime.timedelta(weeks=weeks - 1, days=6)
+    dates = {datetime.date.fromisoformat(k) for k, v in daily.items() if v}
+    git_best, total = _runs(dates)
+    best = max(current, git_best)
+    total = max(total, current)
 
-    cell, gap = 13, 3
-    gx, gy = 150, 44
-    cells = ""
-    mx = max(list(daily.values()) + [1])
-    for w in range(weeks):
-        for d in range(7):
-            day = start + datetime.timedelta(days=w * 7 + d)
-            if day > today:
-                continue
-            cnt = daily.get(day.isoformat(), 0)
-            lvl = 0 if cnt == 0 else 1 + min(3, int(cnt / max(1, mx) * 3.999))
-            x = gx + w * (cell + gap)
-            y = gy + d * (cell + gap)
-            cells += f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="3" fill="{HEAT[lvl]}"/>'
+    cols = [(current, "현재 연속", CYAN), (best, "최고 연속", TEXT), (total, "총 학습일", TEXT)]
+    xs = [130, 265, 400]
+    body = _flame(xs[0] - 13, 38, 1.15)
+    for (val, label, color), x in zip(cols, xs):
+        body += (
+            f'<text x="{x}" y="94" text-anchor="middle" font-size="44" font-weight="800" fill="{color}">{val}</text>'
+            f'<text x="{x}" y="115" text-anchor="middle" font-size="11" font-weight="600" fill="{MUTED}">{label}</text>'
+        )
 
-    # 범례
-    lx = gx + weeks * (cell + gap) - 5 * (cell + gap) - 24
-    ly = gy + 7 * (cell + gap) + 8
-    legend = f'<text x="{lx-26}" y="{ly+11}" font-size="9" fill="{MUTED}">less</text>'
-    for i, c in enumerate(HEAT):
-        legend += f'<rect x="{lx + i*16}" y="{ly+2}" width="{cell}" height="{cell}" rx="3" fill="{c}"/>'
-    legend += f'<text x="{lx + 5*16 + 2}" y="{ly+11}" font-size="9" fill="{MUTED}">more</text>'
-
-    left = (
-        _flame(36, 36, 1.7)
-        + f'<text x="56" y="86" text-anchor="middle" font-size="44" font-weight="800" fill="{TEXT}">{streak}</text>'
-        + f'<text x="56" y="106" text-anchor="middle" font-size="11" font-weight="600" fill="{FLAME1}">DAY STREAK</text>'
-    )
-    body = left + cells + legend
-    return _frame(150 + weeks * (cell + gap) + 16, 150, body, extra_defs=defs)
+    n, dot, gap = 14, 11, 5
+    total_w = n * dot + (n - 1) * gap
+    sx = (460 - total_w) / 2
+    dy = 132
+    lit = min(current, n)
+    for i in range(n):
+        on = i >= n - lit
+        body += f'<rect x="{sx + i*(dot+gap):.1f}" y="{dy}" width="{dot}" height="{dot}" rx="3" fill="{CYAN if on else TRACK}"/>'
+    body += f'<text x="230" y="{dy+26}" text-anchor="middle" font-size="9" fill="{MUTED}">최근 {n}일 · 연속 {current}일</text>'
+    return _frame(460, 166, body, title="STREAK", extra_defs=defs)
 
 
 def _bar(x, y, w, h, pct, fill):

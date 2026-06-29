@@ -79,7 +79,7 @@ def render_all(data):
         for i in range(len(meta.get("courses", []))):
             (ASSETS / f"ct_course_{i}.svg").write_text(cc.course_card(meta, i), encoding="utf-8")
         streak = meta.get("streak", {}).get("current", 0)
-        (ASSETS / "ct_heatmap.svg").write_text(sv.heatmap_card(_daily_passed(), streak), encoding="utf-8")
+        (ASSETS / "ct_streak.svg").write_text(sv.streak_stat_card(_daily_passed(), streak), encoding="utf-8")
 
     rows, total = _platform_rows(data)
     (ASSETS / "platforms.svg").write_text(sv.platforms_card(rows, total), encoding="utf-8")
@@ -101,18 +101,20 @@ def codetree_md(meta):
         f'<img src="./assets/cards/ct_course_{i}.svg" alt="trail {i}"/>'
         for i in range(len(meta.get("courses", [])))
     )
-    return (
-        _center("ct_summary.svg", "summary") + "\n"
-        + _center("ct_heatmap.svg", "streak heatmap") + "\n"
-        + f'<div align="center">{courses}</div>' + "\n"
-        + _center("ct_xp.svg", "daily xp") + "\n"
-        + _center("ct_types.svg", "by type")
-    )
+    parts = [
+        _center("ct_summary.svg", "summary"),
+        _center("ct_streak.svg", "streak"),
+        f'<div align="center">{courses}</div>',
+        _center("ct_xp.svg", "daily xp"),
+        _center("ct_types.svg", "by type"),
+    ]
+    return "\n<br/>\n".join(parts)
 
 
 def overview_md():
-    return (
-        _center("platforms.svg", "platforms") + "\n"
-        + _center("activity.svg", "monthly activity") + "\n"
-        + _center("attempts.svg", "toughest")
-    )
+    parts = [
+        _center("platforms.svg", "platforms"),
+        _center("activity.svg", "monthly activity"),
+        _center("attempts.svg", "toughest"),
+    ]
+    return "\n<br/>\n".join(parts)

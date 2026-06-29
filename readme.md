@@ -7,21 +7,27 @@
 ## 🌳 Codetree (메인 트랙)
 
 <div align="center"><img src="./assets/cards/ct_summary.svg" alt="summary"/></div>
-<div align="center"><img src="./assets/cards/ct_heatmap.svg" alt="streak heatmap"/></div>
+<br/>
+<div align="center"><img src="./assets/cards/ct_streak.svg" alt="streak"/></div>
+<br/>
 <div align="center"><img src="./assets/cards/ct_course_0.svg" alt="trail 0"/><img src="./assets/cards/ct_course_1.svg" alt="trail 1"/><img src="./assets/cards/ct_course_2.svg" alt="trail 2"/><img src="./assets/cards/ct_course_3.svg" alt="trail 3"/><img src="./assets/cards/ct_course_4.svg" alt="trail 4"/><img src="./assets/cards/ct_course_5.svg" alt="trail 5"/><img src="./assets/cards/ct_course_6.svg" alt="trail 6"/></div>
+<br/>
 <div align="center"><img src="./assets/cards/ct_xp.svg" alt="daily xp"/></div>
+<br/>
 <div align="center"><img src="./assets/cards/ct_types.svg" alt="by type"/></div>
 
 ## 📊 전체 현황
 
 <div align="center"><img src="./assets/cards/platforms.svg" alt="platforms"/></div>
+<br/>
 <div align="center"><img src="./assets/cards/activity.svg" alt="monthly activity"/></div>
+<br/>
 <div align="center"><img src="./assets/cards/attempts.svg" alt="toughest"/></div>
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **Date to Date** (Codetree · Trail 2)
-> - **추천 사유**: 이전 풀이 시도 이력 있음 (✅)
-> - **풀이 코드**: [Codetree/Date to Date](./Codetree/trail2/Date%20to%20Date)
+> **최대로 겹치는 구간** (Codetree · Trail 2)
+> - **추천 사유**: 이전 풀이 시 3회 실패/재시도 기록 있음 (❌×2 → ✅)
+> - **풀이 코드**: [Codetree/최대로 겹치는 구간](./Codetree/trail2/%EC%B5%9C%EB%8C%80%EB%A1%9C%20%EA%B2%B9%EC%B9%98%EB%8A%94%20%EA%B5%AC%EA%B0%84)
 
 
 ## 폴더 구조
