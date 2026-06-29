@@ -14,11 +14,12 @@ public class Main {
         }
 
 
+
         // 조합으로
         int result = 0;
         for(int i=1; i <= 9; ++i){
             for(int j=i+1; j <= 9; ++j){
-                int[] count = new int[8];
+                
                 for(int y=0; y < 3; ++y){
                     for(int x=0; x < 3; ++x){
                         if(map[y][x] == i){
@@ -52,15 +53,17 @@ public class Main {
                     }
                 }
 
-                int tmp = 0;
+                boolean is_win = false;
                 for(int start=0; start < 8; start += 2){
                     if(count[start] >= 1 && count[start+1] >=1 
                     && count[start] + count[start+1] == 3){
-                        tmp++;
+                        is_win = true;
                     }
                 }
 
-                result = Math.max(result, tmp);
+                if(is_win){
+                    result++;
+                }
             }
         }
 
