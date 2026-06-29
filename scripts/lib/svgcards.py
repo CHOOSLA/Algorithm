@@ -86,24 +86,23 @@ def streak_stat_card(daily, current):
     total = max(total, current)
 
     cols = [(current, "현재 연속", CYAN), (best, "최고 연속", TEXT), (total, "총 학습일", TEXT)]
-    xs = [130, 265, 400]
-    body = _flame(xs[0] - 13, 38, 1.15)
+    xs = [105, 230, 355]  # 460 폭 대칭 3분할
+    body = _flame(86, 19, 0.95)  # 타이틀 'STREAK' 우측
     for (val, label, color), x in zip(cols, xs):
         body += (
-            f'<text x="{x}" y="94" text-anchor="middle" font-size="44" font-weight="800" fill="{color}">{val}</text>'
-            f'<text x="{x}" y="115" text-anchor="middle" font-size="11" font-weight="600" fill="{MUTED}">{label}</text>'
+            f'<text x="{x}" y="88" text-anchor="middle" font-size="44" font-weight="800" fill="{color}">{val}</text>'
+            f'<text x="{x}" y="109" text-anchor="middle" font-size="11.5" font-weight="600" fill="{MUTED}">{label}</text>'
         )
 
     n, dot, gap = 14, 11, 5
-    total_w = n * dot + (n - 1) * gap
-    sx = (460 - total_w) / 2
-    dy = 132
+    sx = (460 - (n * dot + (n - 1) * gap)) / 2
+    dy = 128
     lit = min(current, n)
     for i in range(n):
         on = i >= n - lit
         body += f'<rect x="{sx + i*(dot+gap):.1f}" y="{dy}" width="{dot}" height="{dot}" rx="3" fill="{CYAN if on else TRACK}"/>'
-    body += f'<text x="230" y="{dy+26}" text-anchor="middle" font-size="9" fill="{MUTED}">최근 {n}일 · 연속 {current}일</text>'
-    return _frame(460, 166, body, title="STREAK", extra_defs=defs)
+    body += f'<text x="230" y="{dy+27}" text-anchor="middle" font-size="9.5" fill="{MUTED}">최근 {n}일 · 연속 {current}일</text>'
+    return _frame(460, 168, body, title="STREAK", extra_defs=defs)
 
 
 def _bar(x, y, w, h, pct, fill):
@@ -116,7 +115,7 @@ def _bar(x, y, w, h, pct, fill):
 
 def platforms_card(rows, total):
     # rows: [(label, count)] → 도넛 + 범례 (촘촘한 막대 대신)
-    cx, cy, r, sw = 92, 96, 54, 20
+    cx, cy, r, sw = 92, 108, 54, 20  # 타이틀과 안 겹치게 도넛을 아래로
     c = 2 * math.pi * r
     offset = 0.0
     arcs = ""
@@ -131,10 +130,10 @@ def platforms_card(rows, total):
         )
         offset += dash
     center = (
-        f'<text x="{cx}" y="{cy-4}" text-anchor="middle" font-size="30" font-weight="800" fill="{TEXT}">{total}</text>'
-        f'<text x="{cx}" y="{cy+15}" text-anchor="middle" font-size="10" fill="{MUTED}">problems</text>'
+        f'<text x="{cx}" y="{cy+2}" text-anchor="middle" font-size="30" font-weight="800" fill="{TEXT}">{total}</text>'
+        f'<text x="{cx}" y="{cy+19}" text-anchor="middle" font-size="10" fill="{MUTED}">problems</text>'
     )
-    ly = 50
+    ly = cy - (len(rows) - 1) * 13 + 4  # 범례 블록을 도넛 세로중앙에 맞춤
     legend = ""
     for label, count in rows:
         color = PLATFORM_COLORS.get(label, "#58a6ff")
@@ -145,7 +144,7 @@ def platforms_card(rows, total):
             f'<text x="448" y="{ly}" text-anchor="end" font-size="11.5" fill="{MUTED}">{count} · {pctf:.0f}%</text>'
         )
         ly += 26
-    return _frame(460, 192, arcs + center + legend, title="PLATFORMS")
+    return _frame(460, 200, arcs + center + legend, title="PLATFORMS")
 
 
 def activity_card(months):

@@ -89,14 +89,15 @@ def summary_card(m):
     cx, cy, r = 78, 80, 46
     body = (
         _ring(cx, cy, r, 11, pct, "url(#ring)")
-        + f'<text x="{cx}" y="{cy-2}" text-anchor="middle" font-size="26" font-weight="800" fill="{TEXT}">{pct*100:.1f}%</text>'
-        + f'<text x="{cx}" y="{cy+16}" text-anchor="middle" font-size="10" fill="{MUTED}">complete</text>'
-        # 우측 텍스트
-        + f'<text x="150" y="34" font-size="13" font-weight="700" fill="{CYAN}" letter-spacing="0.5">CODETREE</text>'
-        + f'<text x="150" y="58" font-size="17" font-weight="700" fill="{TEXT}">@{_esc(user)}</text>'
-        + f'<text x="150" y="92" font-size="30" font-weight="800" fill="{TEXT}">{solved}'
+        + f'<text x="{cx}" y="{cy+2}" text-anchor="middle" font-size="26" font-weight="800" fill="{TEXT}">{pct*100:.1f}%</text>'
+        + f'<text x="{cx}" y="{cy+18}" text-anchor="middle" font-size="10" fill="{MUTED}">complete</text>'
+        # 우측 텍스트 + 전체 진척 바
+        + f'<text x="150" y="30" font-size="13" font-weight="700" fill="{CYAN}" letter-spacing="0.5">CODETREE</text>'
+        + f'<text x="150" y="54" font-size="17" font-weight="700" fill="{TEXT}">@{_esc(user)}</text>'
+        + f'<text x="150" y="86" font-size="30" font-weight="800" fill="{TEXT}">{solved}'
         + f'<tspan font-size="15" font-weight="600" fill="{MUTED}"> / {total} solved</tspan></text>'
-        + f'<text x="150" y="118" font-size="12" fill="{MUTED}">'
+        + _bar(150, 98, 290, 8, pct, CYAN)
+        + f'<text x="150" y="132" font-size="12" fill="{MUTED}">'
         + f'<tspan fill="{CYAN}">●</tspan> Problem {sbt.get("Problem",0)}   '
         + f'<tspan fill="{AMBER}">●</tspan> Test {sbt.get("Test",0)}   '
         + f'<tspan fill="#a371f7">●</tspan> Intro {sbt.get("Introduction",0)}</text>'
@@ -203,13 +204,13 @@ def types_card(m):
         sv, tt = sbt.get(name, 0), tbt.get(name, 0)
         pct = _pct(sv, tt)
         body += (
-            f'<text x="20" y="{y-4}" font-size="12" font-weight="600" fill="{TEXT}">{name}</text>'
-            f'<text x="200" y="{y-4}" text-anchor="end" font-size="11" fill="{MUTED}">{sv}/{tt}</text>'
-            + _bar(20, y, 180, 8, pct, col)
-            + f'<text x="20" y="{y+22}" font-size="9.5" fill="{MUTED}">{pct*100:.0f}%</text>'
+            f'<text x="20" y="{y-7}" font-size="13" font-weight="600" fill="{TEXT}">{name}</text>'
+            f'<text x="440" y="{y-7}" text-anchor="end" font-size="11.5" fill="{MUTED}">'
+            f'{sv} / {tt} · {pct*100:.0f}%</text>'
+            + _bar(20, y, 420, 10, pct, col)
         )
-        y += 44
-    return _frame(220, 184, body, title="BY TYPE")
+        y += 42
+    return _frame(460, y - 2, body, title="BY TYPE")
 
 
 # 코스 alias → (트레일 한글명, 트레일 번호). 코드트리 UI 의 실제 명칭을 따른다.
@@ -246,7 +247,7 @@ def course_card(m, idx):
         + f'<text x="{cx}" y="26" text-anchor="middle" font-size="9" font-weight="700" '
           f'fill="{color}" letter-spacing="1">{lv}</text>'
         + _ring(cx, cy, r, 7, pct if not done else 1.0, "url(#%s)" % gid)
-        + f'<text x="{cx}" y="{cy+2}" text-anchor="middle" font-size="19" font-weight="800" fill="{TEXT}">'
+        + f'<text x="{cx}" y="{cy+7}" text-anchor="middle" font-size="19" font-weight="800" fill="{TEXT}">'
           f'{pct*100:.0f}<tspan font-size="10" fill="{MUTED}">%</tspan></text>'
         + f'<text x="{cx}" y="117" text-anchor="middle" font-size="11" font-weight="700" fill="{TEXT}">{_esc(label)}</text>'
         + f'<text x="{cx}" y="135" text-anchor="middle" font-size="10" fill="{MUTED}">{c["solved"]} / {c["total"]}</text>'
