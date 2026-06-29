@@ -19,8 +19,11 @@ public class Main {
         int result = 0;
         for(int i=1; i <= 9; ++i){
             for(int j=i+1; j <= 9; ++j){
-                
+                boolean is_win = false;
+
+                // 가로줄 , 세로줄 검사
                 for(int y=0; y < 3; ++y){
+                    int[] count = new int[4];
                     for(int x=0; x < 3; ++x){
                         if(map[y][x] == i){
                             count[0]++;
@@ -34,27 +37,36 @@ public class Main {
                             count[3]++;
                         }
                     }
+
+                    for(int start=0; start < 4; start += 2){
+                        if(count[start] >= 1 && count[start+1] >=1 
+                            && count[start] + count[start+1] == 3){
+                        is_win = true;
+                        }
+                    }
+                    
                 }
 
+                int[] count = new int[4];
                 for(int xy = 0; xy < 3; ++xy){
                     if(map[xy][xy] == i){
-                            count[4]++;
+                            count[0]++;
                         }else if(map[xy][xy] == j){
-                            count[5]++;
+                            count[1]++;
                     }
                 }
 
                 int[][] dirs = {{2,0},{1,1},{0,2}};
                 for(int k = 0; k < 3; ++k){
                     if(map[dirs[k][0]][dirs[k][1]] == i){
-                            count[6]++;
+                            count[2]++;
                         }else if(map[dirs[k][0]][dirs[k][1]] == j){
-                            count[7]++;
+                            count[3]++;
                     }
                 }
 
-                boolean is_win = false;
-                for(int start=0; start < 8; start += 2){
+                
+                for(int start=0; start < 4; start += 2){
                     if(count[start] >= 1 && count[start+1] >=1 
                     && count[start] + count[start+1] == 3){
                         is_win = true;
