@@ -34,9 +34,6 @@ public class Main {
             for(int j=0; j <=10; ++j){
                 for(int k=0; k <=10; ++k){
                     for(int l=0; l <= 10; ++l){
-                        // 순서상관이 있기때문에 순열로
-                        if(j==k || k == l || l == j) continue;
-
                         // 해당 선을 맵에 그림
                         int[][] map = new int[11][11];
                         int[] height = {j,k,l};
