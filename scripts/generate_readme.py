@@ -29,6 +29,7 @@ from lib import cardgen
 from lib.renderer import (
     render_baekjoon,
     render_flat,
+    render_by_difficulty,
     render_codetree,
     render_roadmap,
 )
@@ -46,10 +47,10 @@ def build(data: dict, template: str) -> str:
         "<!--AUTOGEN:OVERVIEW_CARDS-->": cardgen.overview_md(),
         "<!--AUTOGEN:DAILY_CHALLENGE-->": select_daily_challenge(data),
         "<!--AUTOGEN:BAEKJOON-->": render_baekjoon(data),
-        "<!--AUTOGEN:SWEA-->": render_flat(
+        "<!--AUTOGEN:SWEA-->": render_by_difficulty(
             sw["problems"],
-            ("번호", "제목", "난이도"),
             config.ROOT / "SW Expert Academy",
+            "번호",
             sw.get("ignored_dirs"),
             label="SW Expert Academy",
             auto_meta=auto_extract_swea_meta(),
@@ -61,10 +62,10 @@ def build(data: dict, template: str) -> str:
             config.ROOT / "Algospot",
             label="Algospot",
         ),
-        "<!--AUTOGEN:PROGRAMMERS-->": render_flat(
+        "<!--AUTOGEN:PROGRAMMERS-->": render_by_difficulty(
             pg["problems"],
-            ("문제 번호", "제목", "난이도"),
             config.ROOT / "Programmers",
+            "문제 번호",
             label="Programmers",
         ),
         "<!--AUTOGEN:ROADMAP-->": render_roadmap(),

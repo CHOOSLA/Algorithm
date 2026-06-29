@@ -25,9 +25,9 @@
 <div align="center"><img src="./assets/cards/attempts.svg" alt="toughest"/></div>
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **Date to Date** (Codetree · Trail 2)
-> - **추천 사유**: 이전 풀이 시도 이력 있음 (✅)
-> - **풀이 코드**: [Codetree/Date to Date](./Codetree/trail2/Date%20to%20Date)
+> **최고의 13위치 2** (Codetree · Trail 2)
+> - **추천 사유**: 이전 풀이 시 3회 실패/재시도 기록 있음 (❌×2 → ✅)
+> - **풀이 코드**: [Codetree/최고의 13위치 2](./Codetree/trail2/%EC%B5%9C%EA%B3%A0%EC%9D%98%2013%EC%9C%84%EC%B9%98%202)
 
 
 ## 폴더 구조
@@ -44,175 +44,363 @@
 `BaekJoon/` 폴더는 알고리즘 유형별로 세분화되어 있으며 각 문제는 백준 번호로 된 하위 폴더에 저장되어 있습니다.
 
 <details>
-<summary>📁 <b>BaekJoon</b> · 총 80문제 (난이도별)</summary>
+<summary>📁 <b>0x0B · 재귀</b> · 3문제</summary>
 
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 1074 | Z | Silver I |
+| 1629 | 곱셈 | Silver I |
+| 11729 | 하노이 탑 이동 순서 | Silver I |
+
+</details>
 <details>
-<summary><b>Bronze</b> · 1문제</summary>
+<summary>📁 <b>0x0C · 백트래킹</b> · 4문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 15649 | N과 M (1) | Silver III |
+| 1182 | 부분수열의 합 | Silver II |
+| 6603 | 로또 | Silver II |
+| 9663 | N-Queen | Gold IV |
+
+</details>
+<details>
+<summary>📁 <b>0x10 · 다이나믹 프로그래밍</b> · 2문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 2579 | 계단 오르기 | Silver III |
+| 1149 | RGB거리 | Silver I |
+
+</details>
+<details>
+<summary>📁 <b>BFS / DFS</b> · 16문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 2606 | 바이러스 | Silver III |
+| 1012 | 유기농 배추 | Silver II |
+| 1260 | DFS와 BFS | Silver II |
+| 2644 | 촌수계산 | Silver II |
+| 11724 | 연결 요소의 개수 | Silver II |
+| 1697 | 숨바꼭질 | Silver I |
+| 2178 | 미로 탐색 | Silver I |
+| 7576 | 토마토 | Gold V |
+| 13023 | ABCDE | Gold V |
+| 14503 | 로봇 청소기 | Gold V |
+| 2023 | 신기한 소수 | Gold IV |
+| 2146 | 다리 만들기 | Gold IV |
+| 4179 | 불! | Gold IV |
+| 2206 | 벽 부수고 이동하기 | Gold III |
+| 1194 | 달이 차오른다, 가자 | Gold I |
+| 13460 | 구슬 탈출 2 | Gold I |
+
+</details>
+<details>
+<summary>📁 <b>Backtracking</b> · 5문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 15649 | N과 M (1) | Silver III |
+| 10971 | 외판원 순회 2 | Silver II |
+| 1759 | 암호 만들기 | Gold V |
+| 2023 | 신기한 소수 | Gold IV |
+| 17136 | 색종이 붙이기 | Gold II |
+
+</details>
+<details>
+<summary>📁 <b>Bellman-Ford</b> · 2문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 11657 | 타임머신 | Gold IV |
+| 1219 | 오민식의 고민 | Platinum V |
+
+</details>
+<details>
+<summary>📁 <b>Binary Search</b> · 3문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 1822 | 차집합 | Silver IV |
+| 16401 | 과자 나눠주기 | Silver II |
+| 8983 | 사냥꾼 | Gold IV |
+
+</details>
+<details>
+<summary>📁 <b>Dynamic Programming</b> · 4문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 12869 | 뮤탈리스크 | Gold V |
+| 10942 | 팰린드롬? | Gold IV |
+| Kth | 사전 (1256) | Gold II |
+| 1029 | 그림 교환 | Gold I |
+
+</details>
+<details>
+<summary>📁 <b>Dijkstra</b> · 4문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 1916 | 최소비용 구하기 | Gold V |
+| 1753 | 최단경로 | Gold IV |
+| 11779 | 최소비용 구하기 2 | Gold III |
+| 1854 | K번째 최단경로 찾기 | Platinum V |
+
+</details>
+<details>
+<summary>📁 <b>Divide & Conquer</b> · 8문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 4779 | 칸토어 집합 | Silver III |
+| 5904 | Moo 게임 | Silver III |
+| 1030 | 프렉탈 평면 | Gold V |
+| 2447 | 별 찍기 - 10 | Gold V |
+| 21870 | 시철이가 사랑한 GCD | Gold IV |
+| 2261 | 가장 가까운 두 점 | Gold II |
+| 2339 | 석판 자르기 | Gold I |
+| 6549 | 히스토그램에서 가장 큰 직사각형 | Platinum V |
+
+</details>
+<details>
+<summary>📁 <b>Floyd-Warshall</b> · 2문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 1389 | 케빈 베이컨의 6단계 법칙 | Silver I |
+| 11404 | 플로이드 | Gold IV |
+
+</details>
+<details>
+<summary>📁 <b>Greedy</b> · 6문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 13305 | 주유소 | Silver IV |
+| 1715 | 카드 정렬하기 | Gold IV |
+| 1744 | 수 묶기 | Gold IV |
+| 13904 | 과제 | Gold III |
+| 1202 | 보석 도둑 | Gold II |
+| 1700 | 멀티탭 스케줄링 | Gold I |
+
+</details>
+<details>
+<summary>📁 <b>Hash</b> · 1문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 9375 | 패션왕 신해빈 | Silver III |
+
+</details>
+<details>
+<summary>📁 <b>Implement (시뮬레이션)</b> · 7문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 1244 | 스위치 켜고 끄기 | Silver IV |
+| 17952 | 과제는 끝나지 않아!! | Silver IV |
+| 1417 | 국회의원 선거 | Silver III |
+| 16234 | 인구 이동 | Gold IV |
+| 200057 | 마법사 상어와 토네이도 (20057) | Gold III |
+| 19236 | 청소년 상어 | Gold I |
+| Mining | 광물 캐기 | - |
+
+</details>
+<details>
+<summary>📁 <b>MST</b> · 3문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 1197 | 최소 스패닝 트리 | Gold IV |
+| 1414 | 불우이웃돕기 | Gold III |
+| 17472 | 다리 만들기 2 | Gold I |
+
+</details>
+<details>
+<summary>📁 <b>Prefix Sum</b> · 2문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 2559 | 수열 | Silver III |
+| 11659 | 구간 합 구하기 4 | Silver III |
+
+</details>
+<details>
+<summary>📁 <b>Recursive</b> · 2문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 1074 | Z | Silver I |
+| 11729 | 하노이 탑 이동 순서 | Silver I |
+
+</details>
+<details>
+<summary>📁 <b>Sort</b> · 2문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 1181 | 단어 정렬 | Silver V |
+| 11651 | 좌표 정렬하기 2 | Silver V |
+
+</details>
+<details>
+<summary>📁 <b>Stack</b> · 1문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 9012 | 괄호 | Silver IV |
+
+</details>
+<details>
+<summary>📁 <b>Topological Sort</b> · 3문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 1516 | 게임 개발 | Gold III |
+| 2252 | 줄 세우기 | Gold III |
+| 1948 | 임계경로 | Platinum V |
+
+</details>
+<details>
+<summary>📁 <b>Two Pointers</b> · 2문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 2018 | 수들의 합 5 | Silver V |
+| 1253 | 좋다 | Gold IV |
+
+</details>
+<details>
+<summary>📁 <b>Union Find</b> · 1문제</summary>
+
+| 번호 | 제목 | 난이도 |
+| --- | --- | --- |
+| 1717 | 집합의 표현 | Gold V |
+
+</details>
+<details>
+<summary>📁 <b>Unsolved</b> · 1문제</summary>
 
 | 번호 | 제목 | 난이도 |
 | --- | --- | --- |
 | 1864 | 문어 숫자 (미해결) | Bronze |
 
 </details>
-<details>
-<summary><b>Silver</b> · 32문제</summary>
-
-| 번호 | 제목 | 난이도 |
-| --- | --- | --- |
-| 1012 | 유기농 배추 | Silver II |
-| 1074 | Z | Silver I |
-| 1149 | RGB거리 | Silver I |
-| 1181 | 단어 정렬 | Silver V |
-| 1182 | 부분수열의 합 | Silver II |
-| 1244 | 스위치 켜고 끄기 | Silver IV |
-| 1260 | DFS와 BFS | Silver II |
-| 1389 | 케빈 베이컨의 6단계 법칙 | Silver I |
-| 1417 | 국회의원 선거 | Silver III |
-| 1629 | 곱셈 | Silver I |
-| 1697 | 숨바꼭질 | Silver I |
-| 1822 | 차집합 | Silver IV |
-| 2018 | 수들의 합 5 | Silver V |
-| 2178 | 미로 탐색 | Silver I |
-| 2559 | 수열 | Silver III |
-| 2579 | 계단 오르기 | Silver III |
-| 2606 | 바이러스 | Silver III |
-| 2644 | 촌수계산 | Silver II |
-| 4779 | 칸토어 집합 | Silver III |
-| 5904 | Moo 게임 | Silver III |
-| 6603 | 로또 | Silver II |
-| 9012 | 괄호 | Silver IV |
-| 9375 | 패션왕 신해빈 | Silver III |
-| 10971 | 외판원 순회 2 | Silver II |
-| 11651 | 좌표 정렬하기 2 | Silver V |
-| 11659 | 구간 합 구하기 4 | Silver III |
-| 11724 | 연결 요소의 개수 | Silver II |
-| 11729 | 하노이 탑 이동 순서 | Silver I |
-| 13305 | 주유소 | Silver IV |
-| 15649 | N과 M (1) | Silver III |
-| 16401 | 과자 나눠주기 | Silver II |
-| 17952 | 과제는 끝나지 않아!! | Silver IV |
-
-</details>
-<details>
-<summary><b>Gold</b> · 42문제</summary>
-
-| 번호 | 제목 | 난이도 |
-| --- | --- | --- |
-| 1029 | 그림 교환 | Gold I |
-| 1030 | 프렉탈 평면 | Gold V |
-| 1194 | 달이 차오른다, 가자 | Gold I |
-| 1197 | 최소 스패닝 트리 | Gold IV |
-| 1202 | 보석 도둑 | Gold II |
-| 1253 | 좋다 | Gold IV |
-| 1414 | 불우이웃돕기 | Gold III |
-| 1516 | 게임 개발 | Gold III |
-| 1700 | 멀티탭 스케줄링 | Gold I |
-| 1715 | 카드 정렬하기 | Gold IV |
-| 1717 | 집합의 표현 | Gold V |
-| 1744 | 수 묶기 | Gold IV |
-| 1753 | 최단경로 | Gold IV |
-| 1759 | 암호 만들기 | Gold V |
-| 1916 | 최소비용 구하기 | Gold V |
-| 2023 | 신기한 소수 | Gold IV |
-| 2146 | 다리 만들기 | Gold IV |
-| 2206 | 벽 부수고 이동하기 | Gold III |
-| 2252 | 줄 세우기 | Gold III |
-| 2261 | 가장 가까운 두 점 | Gold II |
-| 2339 | 석판 자르기 | Gold I |
-| 2447 | 별 찍기 - 10 | Gold V |
-| 4179 | 불! | Gold IV |
-| 7576 | 토마토 | Gold V |
-| 8983 | 사냥꾼 | Gold IV |
-| 9663 | N-Queen | Gold IV |
-| 10942 | 팰린드롬? | Gold IV |
-| 11404 | 플로이드 | Gold IV |
-| 11657 | 타임머신 | Gold IV |
-| 11779 | 최소비용 구하기 2 | Gold III |
-| 12869 | 뮤탈리스크 | Gold V |
-| 13023 | ABCDE | Gold V |
-| 13460 | 구슬 탈출 2 | Gold I |
-| 13904 | 과제 | Gold III |
-| 14503 | 로봇 청소기 | Gold V |
-| 16234 | 인구 이동 | Gold IV |
-| 17136 | 색종이 붙이기 | Gold II |
-| 17472 | 다리 만들기 2 | Gold I |
-| 19236 | 청소년 상어 | Gold I |
-| 21870 | 시철이가 사랑한 GCD | Gold IV |
-| 200057 | 마법사 상어와 토네이도 (20057) | Gold III |
-| Kth | 사전 (1256) | Gold II |
-
-</details>
-<details>
-<summary><b>Platinum</b> · 4문제</summary>
-
-| 번호 | 제목 | 난이도 |
-| --- | --- | --- |
-| 1219 | 오민식의 고민 | Platinum V |
-| 1854 | K번째 최단경로 찾기 | Platinum V |
-| 1948 | 임계경로 | Platinum V |
-| 6549 | 히스토그램에서 가장 큰 직사각형 | Platinum V |
-
-</details>
-<details>
-<summary><b>기타</b> · 1문제</summary>
-
-| 번호 | 제목 | 난이도 |
-| --- | --- | --- |
-| Mining | 광물 캐기 | - |
-
-</details>
-
-</details>
 
 ## SW Expert Academy 문제 정리
 
 <details>
-<summary>📂 전체 42문제 펼쳐보기</summary>
+<summary>📁 <b>Gold V</b> · 1문제</summary>
 
-| 번호 | 제목 | 난이도 |
-| --- | --- | --- |
-| 5215 | 햄버거 다이어트 | D3 |
-| 1859 | 백만 장자 프로젝트 | D2 |
-| 1926 | 간단한 369게임 | D2 |
-| 1989 | 초심자의 회문 검사 | D2 |
-| 2005 | 파스칼의 삼각형 | D2 |
-| 2007 | 패턴 마디의 길이 | D2 |
-| 2817 | 부분 수열의 합 | D3 |
-| 1225 | 암호생성기 | D3 |
-| 1228 | 암호문1 | D3 |
-| 1224 | 계산기3 | D4 |
-| 1230 | 암호문3 | D3 |
-| 1221 | GNS | D3 |
-| 1288 | 새로운 불면증 치료법 | D3 |
-| 1219 | 길찾기 | D4 |
-| 2056 | 연월일 달력 | D1 |
-| 1218 | 괄호 짝짓기 | D4 |
-| 2063 | 중간값 찾기 | D1 |
-| 1217 | 거듭 제곱 | D3 |
-| 2068 | 최대수 구하기 | D1 |
-| 1215 | 회문1 | D3 |
-| 2070 | 큰 놈, 작은 놈, 같은 놈 | D1 |
-| 1213 | String | D3 |
-| 2071 | 평균값 구하기 | D1 |
-| 1209 | Sum | D3 |
-| 2072 | 홀수만 더하기 | D1 |
-| 1206 | View | D3 |
-| 1208 | Flatten | D3 |
-| 1210 | Ladder1 | D4 |
-| 1220 | Magnetic | D3 |
-| 1226 | 미로1 | D4 |
-| 1238 | Contact | D4 |
-| 1244 | 최대 상금 | D3 |
-| 1247 | 최적 경로 | D5 |
-| 1767 | 프로세서 연결하기 | - |
-| 1873 | 상호의 배틀필드 | D3 |
-| 1954 | 달팽이 숫자 | D2 |
-| 2001 | 파리 퇴치 | D2 |
-| 2805 | 농작물 수확하기 | D3 |
-| 13460 | 구슬 탈출 2 (BOJ) | Gold I |
-| 14557 | Memory (BOJ) | Platinum I |
-| 17301 | NC 문자열 (BOJ) | Platinum IV |
-| 43238 | 입국 심사 (BOJ) | Gold V |
+| 번호 | 제목 |
+| --- | --- |
+| 43238 | 입국 심사 (BOJ) |
+
+</details>
+<details>
+<summary>📁 <b>Gold I</b> · 1문제</summary>
+
+| 번호 | 제목 |
+| --- | --- |
+| 13460 | 구슬 탈출 2 (BOJ) |
+
+</details>
+<details>
+<summary>📁 <b>Platinum IV</b> · 1문제</summary>
+
+| 번호 | 제목 |
+| --- | --- |
+| 17301 | NC 문자열 (BOJ) |
+
+</details>
+<details>
+<summary>📁 <b>Platinum I</b> · 1문제</summary>
+
+| 번호 | 제목 |
+| --- | --- |
+| 14557 | Memory (BOJ) |
+
+</details>
+<details>
+<summary>📁 <b>D1</b> · 6문제</summary>
+
+| 번호 | 제목 |
+| --- | --- |
+| 2056 | 연월일 달력 |
+| 2063 | 중간값 찾기 |
+| 2068 | 최대수 구하기 |
+| 2070 | 큰 놈, 작은 놈, 같은 놈 |
+| 2071 | 평균값 구하기 |
+| 2072 | 홀수만 더하기 |
+
+</details>
+<details>
+<summary>📁 <b>D2</b> · 7문제</summary>
+
+| 번호 | 제목 |
+| --- | --- |
+| 1859 | 백만 장자 프로젝트 |
+| 1926 | 간단한 369게임 |
+| 1954 | 달팽이 숫자 |
+| 1989 | 초심자의 회문 검사 |
+| 2001 | 파리 퇴치 |
+| 2005 | 파스칼의 삼각형 |
+| 2007 | 패턴 마디의 길이 |
+
+</details>
+<details>
+<summary>📁 <b>D3</b> · 17문제</summary>
+
+| 번호 | 제목 |
+| --- | --- |
+| 1206 | View |
+| 1208 | Flatten |
+| 1209 | Sum |
+| 1213 | String |
+| 1215 | 회문1 |
+| 1217 | 거듭 제곱 |
+| 1220 | Magnetic |
+| 1221 | GNS |
+| 1225 | 암호생성기 |
+| 1228 | 암호문1 |
+| 1230 | 암호문3 |
+| 1244 | 최대 상금 |
+| 1288 | 새로운 불면증 치료법 |
+| 1873 | 상호의 배틀필드 |
+| 2805 | 농작물 수확하기 |
+| 2817 | 부분 수열의 합 |
+| 5215 | 햄버거 다이어트 |
+
+</details>
+<details>
+<summary>📁 <b>D4</b> · 6문제</summary>
+
+| 번호 | 제목 |
+| --- | --- |
+| 1210 | Ladder1 |
+| 1218 | 괄호 짝짓기 |
+| 1219 | 길찾기 |
+| 1224 | 계산기3 |
+| 1226 | 미로1 |
+| 1238 | Contact |
+
+</details>
+<details>
+<summary>📁 <b>D5</b> · 1문제</summary>
+
+| 번호 | 제목 |
+| --- | --- |
+| 1247 | 최적 경로 |
+
+</details>
+<details>
+<summary>📁 <b>-</b> · 1문제</summary>
+
+| 번호 | 제목 |
+| --- | --- |
+| 1767 | 프로세서 연결하기 |
 
 </details>
 
@@ -365,29 +553,50 @@
 ## Programmers 문제 정리
 
 <details>
-<summary>📂 전체 19문제 펼쳐보기</summary>
+<summary>📁 <b>Level 1</b> · 3문제</summary>
 
-| 문제 번호 | 제목 | 난이도 |
-| --- | --- | --- |
-| 1844 | 게임 맵 최단 거리 | Level 2 |
-| 12941 | 최솟값 만들기 | Level 2 |
-| 12979 | 기지국 설치 | Level 3 |
-| 18118 | 7-세그먼트 디스플레이 | - |
-| 42577 | 전화번호 목록 | Level 2 |
-| 42578 | 위장 | Level 2 |
-| 42888 | 오픈채팅방 | Level 2 |
-| 42895 | N으로 표현 | Level 3 |
-| 43162 | 네트워크 | Level 3 |
-| 64065 | 튜플 | Level 2 |
-| 70129 | 이진 변환 반복하기 | Level 2 |
-| 72410 | 신규 아이디 추천 | Level 1 |
-| 72413 | 합승 택시 요금 | Level 3 |
-| 87694 | 아이템 줍기 | Level 3 |
-| 92344 | 파괴되지 않은 건물 | Level 3 |
-| 138476 | 귤 고르기 | Level 2 |
-| 161988 | 연속 펄스 부분 수열의 합 | Level 3 |
-| 178871 | 달리기 경주 | Level 1 |
-| 2023 KAKAO BLIND RECRUITMENT | 개인정보 수집 유효기간 (150370) | Level 1 |
+| 문제 번호 | 제목 |
+| --- | --- |
+| 178871 | 달리기 경주 |
+| 2023 KAKAO BLIND RECRUITMENT | 개인정보 수집 유효기간 (150370) |
+| 72410 | 신규 아이디 추천 |
+
+</details>
+<details>
+<summary>📁 <b>Level 2</b> · 8문제</summary>
+
+| 문제 번호 | 제목 |
+| --- | --- |
+| 12941 | 최솟값 만들기 |
+| 138476 | 귤 고르기 |
+| 1844 | 게임 맵 최단 거리 |
+| 42577 | 전화번호 목록 |
+| 42578 | 위장 |
+| 42888 | 오픈채팅방 |
+| 64065 | 튜플 |
+| 70129 | 이진 변환 반복하기 |
+
+</details>
+<details>
+<summary>📁 <b>Level 3</b> · 7문제</summary>
+
+| 문제 번호 | 제목 |
+| --- | --- |
+| 12979 | 기지국 설치 |
+| 161988 | 연속 펄스 부분 수열의 합 |
+| 42895 | N으로 표현 |
+| 43162 | 네트워크 |
+| 72413 | 합승 택시 요금 |
+| 87694 | 아이템 줍기 |
+| 92344 | 파괴되지 않은 건물 |
+
+</details>
+<details>
+<summary>📁 <b>-</b> · 1문제</summary>
+
+| 문제 번호 | 제목 |
+| --- | --- |
+| 18118 | 7-세그먼트 디스플레이 |
 
 </details>
 
