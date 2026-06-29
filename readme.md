@@ -19,9 +19,9 @@
 <div align="center"><img src="./assets/cards/attempts.svg" alt="toughest"/></div>
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **최대로 겹치는 구간** (Codetree · Trail 2)
-> - **추천 사유**: 이전 풀이 시 3회 실패/재시도 기록 있음 (❌×2 → ✅)
-> - **풀이 코드**: [Codetree/최대로 겹치는 구간](./Codetree/trail2/%EC%B5%9C%EB%8C%80%EB%A1%9C%20%EA%B2%B9%EC%B9%98%EB%8A%94%20%EA%B5%AC%EA%B0%84)
+> **Date to Date** (Codetree · Trail 2)
+> - **추천 사유**: 이전 풀이 시도 이력 있음 (✅)
+> - **풀이 코드**: [Codetree/Date to Date](./Codetree/trail2/Date%20to%20Date)
 
 
 ## 폴더 구조
