@@ -33,8 +33,9 @@ public class Main {
         // Please write your code here.
         // 1번과 N번은 필수로 접근해야함
         // 최댓값이 최소가 되게끔할려면
-        // 숫자의 범위가 0, n - 1 중 min값부터 시작해야함
-        // min > 숫자라면 이미 모순생김
+        // 숫자의 범위가 0, n - 1 중 max값부터 시작해야함
+        // max < arr[i]라면 이미 모순생김
+        // 간단히 말했을 때 -> 내가 정한 임의의 max가 arr[0]과 arr[n-1]은 무조건 통과해야한다는소리
         // 즉, 범위는 Math.max(arr[0], arr[n-1]) <= num <= 100
         // 넘어가는 숫자들은 회피
         int result = 100;
