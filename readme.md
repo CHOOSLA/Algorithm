@@ -25,9 +25,9 @@
 <div align="center"><img src="./assets/cards/attempts.svg" alt="toughest"/></div>
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **최대로 겹치는 구간** (Codetree · Trail 2)
+> **최고의 13위치 2** (Codetree · Trail 2)
 > - **추천 사유**: 이전 풀이 시 3회 실패/재시도 기록 있음 (❌×2 → ✅)
-> - **풀이 코드**: [Codetree/최대로 겹치는 구간](./Codetree/trail2/%EC%B5%9C%EB%8C%80%EB%A1%9C%20%EA%B2%B9%EC%B9%98%EB%8A%94%20%EA%B5%AC%EA%B0%84)
+> - **풀이 코드**: [Codetree/최고의 13위치 2](./Codetree/trail2/%EC%B5%9C%EA%B3%A0%EC%9D%98%2013%EC%9C%84%EC%B9%98%202)
 
 
 ## 폴더 구조
@@ -221,7 +221,7 @@
 > ### 📈 Codetree 학습 분석
 > - **첫 시도 정답률**: 57% (57/100)
 > - **평균 시도 수**: 2.0회
-> - **총 재도전**: 96회
+> - **총 재도전**: 97회
 
 <details>
 <summary><b>Trail 2</b> · 100문제</summary>
@@ -254,7 +254,7 @@
 | 구간 중 최대 합 | ✅ | 145ms | 10MB |
 | 그 요일은 | ❌ → ✅ | 2ms | 0MB |
 | 데이터센터의 온도 조정 2 | ❌ → ✅ | 143ms | 10MB |
-| 독서실의 거리두기 5 | ❌×2 | - | - |
+| 독서실의 거리두기 5 | ❌×2 → ✅ | 129ms | 11MB |
 | 되돌아오기 | ✅ | 2ms | 0MB |
 | 되돌아오기 2 | ❌ → ✅ | 4ms | 0MB |
 | 두 가지로 열리는 자물쇠 | ✅ | 170ms | 11MB |
