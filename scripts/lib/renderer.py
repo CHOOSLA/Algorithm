@@ -32,39 +32,58 @@ def render_baekjoon(data: dict) -> str:
     for c in sorted(yaml_cats - folder_cats):
         config.warnings.append(f"problems.toml 의 baekjoon.{c} 가 실제 폴더에 없음")
 
-    lines: list[str] = []
+    # 모든 문제를 (folder, title, difficulty) 로 수집 (폴더 중복은 1회).
+    seen: set[str] = set()
+    items: list[tuple[str, str, str]] = []
     for cat_name, cat_data in categories.items():
-        display = cat_data.get("display", cat_name)
-        is_open = cat_data.get("open", False)
         yaml_folders = {p["folder"] for p in cat_data["problems"]}
         folder_folders = actual_cats.get(cat_name, set())
-
+        for p in cat_data["problems"]:
+            if p["folder"] in seen:
+                continue
+            seen.add(p["folder"])
+            items.append((p["folder"], p["title"], p.get("difficulty", "-")))
         for f in sorted(folder_folders - yaml_folders):
-            if f not in auto_meta:
-                config.warnings.append(
-                    f"BaekJoon/{cat_name}/{f} 가 problems.toml 에 미등록 (solved.ac 에서도 조회 실패)"
-                )
+            if f in seen:
+                continue
+            seen.add(f)
+            m = auto_meta.get(f)
+            if m:
+                items.append((f, m["title"], m["difficulty"]))
+            else:
+                config.warnings.append(f"BaekJoon/{cat_name}/{f} 가 problems.toml 에 미등록 (solved.ac 조회 실패)")
+                items.append((f, "_TODO_", "-"))
         for f in sorted(yaml_folders - folder_folders):
             config.warnings.append(f"problems.toml 의 BaekJoon/{cat_name}/{f} 가 실제 폴더에 없음")
 
-        open_attr = " open" if is_open else ""
-        lines.append(f"<details{open_attr}>")
-        lines.append(f"<summary><b>{display}</b></summary>")
-        lines.append("")
-        lines.append("| 번호 | 제목 | 난이도 |")
-        lines.append("| --- | --- | --- |")
-        for p in cat_data["problems"]:
-            lines.append(f"| {p['folder']} | {p['title']} | {p.get('difficulty', '-')} |")
-        for f in sorted(folder_folders - yaml_folders):
-            m = auto_meta.get(f)
-            if m:
-                lines.append(f"| {f} | {m['title']} | {m['difficulty']} |")
-            else:
-                lines.append(f"| {f} | _TODO_ | _TODO_ |")
-        lines.append("")
-        lines.append("</details>")
-        lines.append("")
-    return "\n".join(lines).rstrip()
+    # 난이도(티어)별 그룹핑
+    TIERS = ["Bronze", "Silver", "Gold", "Platinum", "Diamond", "Ruby"]
+    groups: dict[str, list] = {t: [] for t in TIERS}
+    groups["기타"] = []
+    for folder, title, diff in items:
+        tier = next((t for t in TIERS if str(diff).startswith(t)), "기타")
+        groups[tier].append((folder, title, diff))
+
+    def _key(x):
+        return (0, int(x[0]), "") if x[0].isdigit() else (1, 0, x[0])
+
+    inner: list[str] = []
+    for tier in TIERS + ["기타"]:
+        g = groups[tier]
+        if not g:
+            continue
+        g.sort(key=_key)
+        rows = "\n".join(f"| {f} | {t} | {d} |" for f, t, d in g)
+        inner.append(
+            f"<details>\n<summary><b>{tier}</b> · {len(g)}문제</summary>\n\n"
+            f"| 번호 | 제목 | 난이도 |\n| --- | --- | --- |\n{rows}\n\n</details>"
+        )
+
+    return (
+        f"<details>\n<summary>📁 <b>BaekJoon</b> · 총 {len(items)}문제 (난이도별)</summary>\n\n"
+        + "\n".join(inner)
+        + "\n\n</details>"
+    )
 
 
 def render_flat(

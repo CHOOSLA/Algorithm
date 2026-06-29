@@ -14,7 +14,6 @@ PLATFORM_LABELS = {
     "codetree": "Codetree",
     "algospot": "Algospot",
     "programmers": "Programmers",
-    "softeer": "Softeer",
 }
 STATUS_CHAR = {"Passed": "P", "Wrong Answer": "W", "Time Limit Exceed": "T", "WIP": "X"}
 
@@ -60,15 +59,27 @@ def _attempts(top_n=5):
     return [(name, "".join(seq)) for name, seq in top]
 
 
+def _daily_passed():
+    # 코드트리 풀이([Passed]) 일별 건수 → 히트맵용
+    daily = {}
+    for line in _git_log("%as|%s"):
+        parts = line.split("|", 1)
+        if len(parts) == 2 and parts[1].startswith("[Passed]"):
+            daily[parts[0]] = daily.get(parts[0], 0) + 1
+    return daily
+
+
 def render_all(data):
     """모든 카드 SVG 를 assets/cards/ 에 쓴다. 코드트리 메타(dict|None)를 돌려준다."""
     ASSETS.mkdir(parents=True, exist_ok=True)
     meta = _load_meta()
     if meta:
-        for name in ("summary", "streak", "xp", "types"):
+        for name in ("summary", "xp", "types"):
             (ASSETS / f"ct_{name}.svg").write_text(cc.render(meta, name), encoding="utf-8")
         for i in range(len(meta.get("courses", []))):
             (ASSETS / f"ct_course_{i}.svg").write_text(cc.course_card(meta, i), encoding="utf-8")
+        streak = meta.get("streak", {}).get("current", 0)
+        (ASSETS / "ct_heatmap.svg").write_text(sv.heatmap_card(_daily_passed(), streak), encoding="utf-8")
 
     rows, total = _platform_rows(data)
     (ASSETS / "platforms.svg").write_text(sv.platforms_card(rows, total), encoding="utf-8")
@@ -79,6 +90,10 @@ def render_all(data):
     return meta
 
 
+def _center(img, alt):
+    return f'<div align="center"><img src="./assets/cards/{img}" alt="{alt}"/></div>'
+
+
 def codetree_md(meta):
     if not meta:
         return "_코드트리 메타가 없습니다 (scripts/codetree_meta.json)._"
@@ -87,23 +102,17 @@ def codetree_md(meta):
         for i in range(len(meta.get("courses", [])))
     )
     return (
-        '<p>'
-        '<img src="./assets/cards/ct_summary.svg" alt="summary"/> '
-        '<img src="./assets/cards/ct_streak.svg" alt="streak"/>'
-        '</p>\n'
-        f'<p>{courses}</p>\n'
-        '<p>'
-        '<img src="./assets/cards/ct_xp.svg" alt="daily xp"/> '
-        '<img src="./assets/cards/ct_types.svg" alt="by type"/>'
-        '</p>'
+        _center("ct_summary.svg", "summary") + "\n"
+        + _center("ct_heatmap.svg", "streak heatmap") + "\n"
+        + f'<div align="center">{courses}</div>' + "\n"
+        + _center("ct_xp.svg", "daily xp") + "\n"
+        + _center("ct_types.svg", "by type")
     )
 
 
 def overview_md():
     return (
-        '<p>'
-        '<img src="./assets/cards/platforms.svg" alt="platforms"/> '
-        '<img src="./assets/cards/activity.svg" alt="monthly activity"/>'
-        '</p>\n'
-        '<p><img src="./assets/cards/attempts.svg" alt="toughest"/></p>'
+        _center("platforms.svg", "platforms") + "\n"
+        + _center("activity.svg", "monthly activity") + "\n"
+        + _center("attempts.svg", "toughest")
     )

@@ -26,7 +26,6 @@
 - **BaekJoon/**: 백준 온라인 저지 문제. 바킹독 0x 시리즈 로드맵을 따라 분류.
 - **Codetree/**: 코드트리 문제 (구현·트레일 코스 등)
 - **Programmers/**: 프로그래머스 코딩 테스트 문제
-- **Softeer/**: 현대 Softeer 문제
 - **SW Expert Academy/**: SW Expert Academy 문제
 - **Python Study/**: 파이썬 연습 코드
 - **scripts/**: README 자동 생성 파이프라인
@@ -52,10 +51,6 @@
 ## Programmers 문제 정리
 
 <!--AUTOGEN:PROGRAMMERS-->
-
-## Softeer 문제 정리
-
-<!--AUTOGEN:SOFTEER-->
 
 ## 바킹독 0x 시리즈 로드맵
 

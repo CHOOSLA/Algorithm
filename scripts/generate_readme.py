@@ -37,7 +37,6 @@ from lib.renderer import (
 def build(data: dict, template: str) -> str:
     sw = data["sw_expert_academy"]
     pg = data["programmers"]
-    sf = data["softeer"]
     al = data["algospot"]
 
     meta = cardgen.render_all(data)
@@ -67,12 +66,6 @@ def build(data: dict, template: str) -> str:
             ("문제 번호", "제목", "난이도"),
             config.ROOT / "Programmers",
             label="Programmers",
-        ),
-        "<!--AUTOGEN:SOFTEER-->": render_flat(
-            sf["problems"],
-            ("문제 번호", "제목", "난이도"),
-            config.ROOT / "Softeer",
-            label="Softeer",
         ),
         "<!--AUTOGEN:ROADMAP-->": render_roadmap(),
     }
