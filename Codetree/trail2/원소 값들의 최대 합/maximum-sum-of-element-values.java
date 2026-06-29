@@ -11,21 +11,20 @@ public class Main {
         }
         // Please write your code here.
         int result = 0;
-        for(int i=1; i <= m; ++i){
-            for(int j=0; j < n; ++j){
-                int count = i;
-                int next_idx = j;
-                int pre_sum = 0;
-                while(count > 0){
-                    pre_sum += arr[next_idx];
-                    next_idx = arr[next_idx];
+        for(int j=0; j < n; ++j){
+            int count = m;
+            int next_idx = j;
+            int pre_sum = 0;
+            while(count > 0){
+                pre_sum += arr[next_idx];
+                next_idx = arr[next_idx];
 
-                    count--;
-                }
-
-                result = Math.max(result, pre_sum);
+                count--;
             }
+
+            result = Math.max(result, pre_sum);
         }
+        
 
         System.out.println(result);
     }
