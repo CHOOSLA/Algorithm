@@ -8,9 +8,9 @@ public class Main {
         // Please write your code here.
         int[][] map = new int[3][3];
         for(int i=0; i < 3; ++i){
-            map[i][0] = inp1.charAt(i) - '0';
-            map[i][1] = inp2.charAt(i) - '0';
-            map[i][2] = inp3.charAt(i) - '0';
+            map[0][i] = inp1.charAt(i) - '0';
+            map[1][i] = inp2.charAt(i) - '0';
+            map[2][i] = inp3.charAt(i) - '0';
         }
 
 
