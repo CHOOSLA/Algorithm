@@ -26,6 +26,18 @@ jobs:
         with:
           python-version: '3.13'
 
+      - name: 코드트리 메타 가져오기 (서비스 엔드포인트, 실패 시 샘플 폴백)
+        env:
+          META_URL: ${{ secrets.META_URL }}
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+        run: |
+          if [ -n "$META_URL" ]; then
+            curl -fsSL -H "Authorization: Bearer $META_TOKEN" "$META_URL" \
+              -o scripts/codetree_meta.json && echo "메타 받음" || echo "fetch 실패 — 샘플 사용"
+          else
+            echo "META_URL 미설정 — 샘플 사용"
+          fi
+
       - name: README 빌드
         run: python3 scripts/generate_readme.py
 

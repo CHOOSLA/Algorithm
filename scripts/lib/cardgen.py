@@ -4,7 +4,8 @@ from lib import config, codetree_cards as cc, svgcards as sv
 from lib.extractor import _git_log
 from lib.renderer import compute_stats
 
-META_FILE = config.ROOT / "scripts" / "codetree_meta.json"
+META_FILE = config.ROOT / "scripts" / "codetree_meta.json"          # CI 가 서비스서 받아옴(gitignore)
+SAMPLE_FILE = config.ROOT / "scripts" / "codetree_meta.sample.json"  # 폴백(로컬·서비스다운)
 ASSETS = config.ROOT / "assets" / "cards"
 
 PLATFORM_LABELS = {
@@ -19,10 +20,13 @@ STATUS_CHAR = {"Passed": "P", "Wrong Answer": "W", "Time Limit Exceed": "T", "WI
 
 
 def _load_meta():
-    try:
-        return json.loads(META_FILE.read_text(encoding="utf-8"))
-    except OSError:
-        return None
+    # 라이브(fetch) 우선, 없으면 샘플 폴백.
+    for f in (META_FILE, SAMPLE_FILE):
+        try:
+            return json.loads(f.read_text(encoding="utf-8"))
+        except OSError:
+            continue
+    return None
 
 
 def _platform_rows(data):

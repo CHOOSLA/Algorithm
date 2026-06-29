@@ -900,3 +900,5 @@ FodyWeavers.xsd
 **/tempCodeRunnerFile.**
 
 test/
+# 런타임 fetch (CI가 서비스서 받아옴, 커밋 안 함)
+scripts/codetree_meta.json
