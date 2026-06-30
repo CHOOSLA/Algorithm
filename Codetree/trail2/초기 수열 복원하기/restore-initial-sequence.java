@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -44,6 +44,8 @@ public class Main {
             }
         }
 
+        ArrayList<ArrayList<Integer>> tmp = new ArrayList<>();
+
         for(int i = 0; i < cnt; ++i){
             int[] check_count = new int[n + 1];
             
@@ -61,12 +63,33 @@ public class Main {
             }
 
             if(isValid){
+                tmp.add(new ArrayList<Integer>());
                 for(int j=0; j < n; ++j){
-                    System.out.print(arr[i][j] + " ");
+                    tmp.get(tmp.size() - 1).add(arr[i][j]);
                 }
-
-                System.out.println();
             }
+        }
+
+        ArrayList<Integer> minList = tmp.get(0);
+
+        for (int i = 1; i < tmp.size(); i++) {
+            ArrayList<Integer> current = tmp.get(i);
+
+            for (int j = 0; j < current.size(); j++) {
+                int curVal = current.get(j);
+                int minVal = minList.get(j);
+
+                if (curVal < minVal) {
+                    minList = current;
+                    break; 
+                } else if (curVal > minVal) {
+                    break; 
+                }
+            }
+        }
+
+        for(int i=0; i < n; ++i){
+            System.out.print(minList.get(i) + " ");
         }
     }
 }
