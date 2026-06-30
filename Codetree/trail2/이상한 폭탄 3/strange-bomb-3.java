@@ -22,7 +22,7 @@ public class Main {
             for(int j=0; j < n; ++j){
                 if(bombs[j] == i){
                     for(int q=j + 1; q < n; ++q){
-                        if(bombs[q] == i && q - j < k){
+                        if(bombs[q] == i && q - j <= k){
                             check_exp[j] = 1;
                             check_exp[q] = 1;
                         }
