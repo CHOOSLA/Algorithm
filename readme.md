@@ -25,9 +25,9 @@
 <div align="center"><img src="./assets/cards/attempts.svg" alt="toughest"/></div>
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **최고의 13위치 2** (Codetree · Trail 2)
-> - **추천 사유**: 이전 풀이 시 3회 실패/재시도 기록 있음 (❌×2 → ✅)
-> - **풀이 코드**: [Codetree/최고의 13위치 2](./Codetree/trail2/%EC%B5%9C%EA%B3%A0%EC%9D%98%2013%EC%9C%84%EC%B9%98%202)
+> **Carry 피하기 2** (Codetree · Trail 2)
+> - **추천 사유**: 이전 풀이 시도 이력 있음 (❌ → ✅)
+> - **풀이 코드**: [Codetree/Carry 피하기 2](./Codetree/trail2/Carry%20%ED%94%BC%ED%95%98%EA%B8%B0%202)
 
 
 ## 폴더 구조
@@ -407,18 +407,19 @@
 ## Codetree 문제 정리
 
 > ### 📈 Codetree 학습 분석
-> - **첫 시도 정답률**: 58% (60/104)
+> - **첫 시도 정답률**: 58% (61/105)
 > - **평균 시도 수**: 1.9회
 > - **총 재도전**: 98회
 
 <details>
-<summary><b>Trail 2</b> · 104문제</summary>
+<summary><b>Trail 2</b> · 105문제</summary>
 
 | 문제 | 시도 | 시간 | 메모리 |
 | --- | --- | ---: | ---: |
 | 1이 3개 이상 있는 위치 | ✅ | 3ms | 0MB |
 | 2진수로 변환하기 | ✅ | 2ms | 0MB |
 | 3개의 선 2 | ❌ → ✅ | 189ms | 19MB |
+| A, B, C, D 찾기 2 | ✅ | 182ms | 33MB |
 | Carry 피하기 2 | ❌ → ✅ | 2ms | 0MB |
 | Date to Date | ✅ | 8ms | 0MB |
 | DateTime to DateTime | ❌×2 → ✅ | 1ms | 0MB |
