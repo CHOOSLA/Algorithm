@@ -13,23 +13,34 @@ public class Main {
         Arrays.sort(arr);
         
         // 이게 폭탄의 최소범위값
-        int result = 0;
+        int bomb_num = -1;
+        int max_count = 0;
+        // 폭탄 번호를 정함
         for(int i=arr[0]; i <= arr[n-1]; ++i){
-            int max_count = 0;
+            int[] arr2 = new int[n];
 
-            for(int j=0; j < n - k; ++j){
-                int count = 0;
-                for(int q = j; q < j + k; ++q){
-                    if(bombs[q] == i) count++;
+            // 터지게함
+            for(int j=0; j <= n - k; ++j){
+                if(bombs[j] == i){
+                    arr2[j]++;
+                    for(int q = j; q < j + k; ++q){
+                        if(bombs[q] == i) arr2[q]++;
+                    }
                 }
-
-                max_count = Math.max(max_count, count);
             }
 
-            result = Math.max(result, max_count);
+            int count = 0;
+            for(int j=0; j < n; ++j){
+                if(arr2[j] >= 1) count++;
+            }
+
+            if(max_count < count){
+                max_count = count;
+                bomb_num = i;
+            }
         }
 
-        System.out.println(result);
+        System.out.println(bomb_num);
         
     }
 }
