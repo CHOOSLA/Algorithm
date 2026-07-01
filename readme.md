@@ -25,9 +25,9 @@
 <div align="center"><img src="./assets/cards/attempts.svg" alt="toughest"/></div>
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **울타리 잘라내기** (Algospot)
+> **DARPA Grand Challenge** (Algospot)
 > - **추천 사유**: 정기 학습 복습 및 망각 방지
-> - **풀이 코드**: [Algospot/FENCE](./Algospot/FENCE)
+> - **풀이 코드**: [Algospot/DARPA](./Algospot/DARPA)
 
 
 ## 폴더 구조
@@ -337,7 +337,7 @@
 
 </details>
 <details>
-<summary>📁 <b>D2</b> · 8문제</summary>
+<summary>📁 <b>D2</b> · 9문제</summary>
 
 | 번호 | 제목 |
 | --- | --- |
@@ -345,6 +345,7 @@
 | 1926 | 간단한 369게임 |
 | 1954 | 달팽이 숫자 |
 | 1984 | 중간 평균값 구하기 |
+| 1986 | 지그재그 숫자 |
 | 1989 | 초심자의 회문 검사 |
 | 2001 | 파리 퇴치 |
 | 2005 | 파스칼의 삼각형 |
@@ -397,12 +398,11 @@
 
 </details>
 <details>
-<summary>📁 <b>-</b> · 2문제</summary>
+<summary>📁 <b>-</b> · 1문제</summary>
 
 | 번호 | 제목 |
 | --- | --- |
 | 1767 | 프로세서 연결하기 |
-| 4012 | _TODO_ |
 
 </details>
 
@@ -412,15 +412,6 @@
 > - **첫 시도 정답률**: 57% (62/109)
 > - **평균 시도 수**: 2.0회
 > - **총 재도전**: 104회
-
-<details>
-<summary><b>Implement</b> · 1문제</summary>
-
-| 문제 | 시도 | 시간 | 메모리 |
-| --- | --- | ---: | ---: |
-| destroy-the-turret | ✅ | - | - |
-
-</details>
 
 <details>
 <summary><b>Trail 2</b> · 109문제</summary>

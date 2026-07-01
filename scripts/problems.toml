@@ -225,6 +225,7 @@ problems = [
 
 [sw_expert_academy]
 problems = [
+  { folder = "1986", title = "지그재그 숫자", difficulty = "D2" },
   { folder = "1984", title = "중간 평균값 구하기", difficulty = "D2" },
   { folder = "5215", title = "햄버거 다이어트", difficulty = "D3" },
   { folder = "1859", title = "백만 장자 프로젝트", difficulty = "D2" },
