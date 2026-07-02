@@ -1,12 +1,14 @@
 import json
 
-from lib import config, codetree_cards as cc, svgcards as sv
+from lib import config, svgcards as sv
 from lib.extractor import _git_log
 from lib.renderer import compute_stats
 
 META_FILE = config.ROOT / "scripts" / "codetree_meta.json"          # CI 가 서비스서 받아옴(gitignore)
 SAMPLE_FILE = config.ROOT / "scripts" / "codetree_meta.sample.json"  # 폴백(로컬·서비스다운)
 ASSETS = config.ROOT / "assets" / "cards"
+# 코드트리 지표 카드는 서비스가 라이브로 서빙 → 커밋 없이도 최신 유지
+CARD_BASE = "https://codetreemeta.duckdns.org/codetree/cards"
 
 PLATFORM_LABELS = {
     "baekjoon": "BaekJoon",
@@ -74,10 +76,8 @@ def render_all(data):
     ASSETS.mkdir(parents=True, exist_ok=True)
     meta = _load_meta()
     if meta:
-        for name in ("summary", "xp", "types"):
-            (ASSETS / f"ct_{name}.svg").write_text(cc.render(meta, name), encoding="utf-8")
-        for i in range(len(meta.get("courses", []))):
-            (ASSETS / f"ct_course_{i}.svg").write_text(cc.course_card(meta, i), encoding="utf-8")
+        # summary/xp/types/course 는 서비스가 라이브 서빙(로컬 생성 안 함).
+        # streak 만 git 풀이일 기반이라 로컬에서 렌더한다.
         streak = meta.get("streak", {}).get("current", 0)
         (ASSETS / "ct_streak.svg").write_text(sv.streak_stat_card(_daily_passed(), streak), encoding="utf-8")
 
@@ -94,19 +94,23 @@ def _center(img, alt):
     return f'<div align="center"><img src="./assets/cards/{img}" alt="{alt}"/></div>'
 
 
+def _live(name, alt):
+    return f'<div align="center"><img src="{CARD_BASE}/{name}.svg" alt="{alt}"/></div>'
+
+
 def codetree_md(meta):
     if not meta:
         return "_코드트리 메타가 없습니다 (scripts/codetree_meta.json)._"
     courses = "".join(
-        f'<img src="./assets/cards/ct_course_{i}.svg" alt="trail {i}"/>'
+        f'<img src="{CARD_BASE}/course/{i}.svg" alt="trail {i}"/>'
         for i in range(len(meta.get("courses", [])))
     )
     parts = [
-        _center("ct_summary.svg", "summary"),
-        _center("ct_streak.svg", "streak"),
+        _live("summary", "summary"),
+        _center("ct_streak.svg", "streak"),  # git 풀이일 기반 → 로컬 카드
         f'<div align="center">{courses}</div>',
-        _center("ct_xp.svg", "daily xp"),
-        _center("ct_types.svg", "by type"),
+        _live("xp", "daily xp"),
+        _live("types", "by type"),
     ]
     return "\n<br/>\n".join(parts)
 

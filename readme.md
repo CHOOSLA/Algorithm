@@ -6,15 +6,15 @@
 
 ## 🌳 Codetree (메인 트랙)
 
-<div align="center"><img src="./assets/cards/ct_summary.svg" alt="summary"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg" alt="summary"/></div>
 <br/>
 <div align="center"><img src="./assets/cards/ct_streak.svg" alt="streak"/></div>
 <br/>
-<div align="center"><img src="./assets/cards/ct_course_0.svg" alt="trail 0"/><img src="./assets/cards/ct_course_1.svg" alt="trail 1"/><img src="./assets/cards/ct_course_2.svg" alt="trail 2"/><img src="./assets/cards/ct_course_3.svg" alt="trail 3"/><img src="./assets/cards/ct_course_4.svg" alt="trail 4"/><img src="./assets/cards/ct_course_5.svg" alt="trail 5"/><img src="./assets/cards/ct_course_6.svg" alt="trail 6"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg" alt="trail 5"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/6.svg" alt="trail 6"/></div>
 <br/>
-<div align="center"><img src="./assets/cards/ct_xp.svg" alt="daily xp"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg" alt="daily xp"/></div>
 <br/>
-<div align="center"><img src="./assets/cards/ct_types.svg" alt="by type"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg" alt="by type"/></div>
 
 ## 📊 전체 현황
 
