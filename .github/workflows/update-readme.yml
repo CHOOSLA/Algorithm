@@ -26,6 +26,17 @@ jobs:
         with:
           python-version: '3.13'
 
+      - name: 코드트리 메타 강제 갱신 (커밋 시점 최신화)
+        env:
+          META_URL: ${{ secrets.META_URL }}
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+        run: |
+          if [ -n "$META_URL" ]; then
+            BASE="${META_URL%/codetree/meta}"
+            curl -fsS -X POST -H "Authorization: Bearer $META_TOKEN" "$BASE/refresh" \
+              && echo "서비스 갱신 요청 완료" || echo "refresh 실패 — 직전 캐시 사용"
+          fi
+
       - name: 코드트리 메타 가져오기 (서비스 엔드포인트, 실패 시 샘플 폴백)
         env:
           META_URL: ${{ secrets.META_URL }}

@@ -1,4 +1,5 @@
 import json
+import re
 
 from lib import config, svgcards as sv
 from lib.extractor import _git_log
@@ -94,23 +95,26 @@ def _center(img, alt):
     return f'<div align="center"><img src="./assets/cards/{img}" alt="{alt}"/></div>'
 
 
-def _live(name, alt):
-    return f'<div align="center"><img src="{CARD_BASE}/{name}.svg" alt="{alt}"/></div>'
+def _live(name, alt, ver):
+    # ?v=generated_at → 커밋(=데이터 갱신) 때 URL 이 바뀌어 camo 캐시를 즉시 무효화.
+    # 커밋 사이엔 같은 URL 을 camo 가 재검증하며 서비스 라이브값을 계속 가져온다.
+    return f'<div align="center"><img src="{CARD_BASE}/{name}.svg?v={ver}" alt="{alt}"/></div>'
 
 
 def codetree_md(meta):
     if not meta:
         return "_코드트리 메타가 없습니다 (scripts/codetree_meta.json)._"
+    ver = re.sub(r"[^0-9A-Za-z]", "", str(meta.get("generated_at", "")))[:14] or "0"
     courses = "".join(
-        f'<img src="{CARD_BASE}/course/{i}.svg" alt="trail {i}"/>'
+        f'<img src="{CARD_BASE}/course/{i}.svg?v={ver}" alt="trail {i}"/>'
         for i in range(len(meta.get("courses", [])))
     )
     parts = [
-        _live("summary", "summary"),
+        _live("summary", "summary", ver),
         _center("ct_streak.svg", "streak"),  # git 풀이일 기반 → 로컬 카드
         f'<div align="center">{courses}</div>',
-        _live("xp", "daily xp"),
-        _live("types", "by type"),
+        _live("xp", "daily xp", ver),
+        _live("types", "by type", ver),
     ]
     return "\n<br/>\n".join(parts)
 
