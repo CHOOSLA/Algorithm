@@ -94,14 +94,19 @@ def streak_stat_card(daily, current):
             f'<text x="{x}" y="109" text-anchor="middle" font-size="11.5" font-weight="600" fill="{MUTED}">{label}</text>'
         )
 
+    # 점은 '실제 풀이한 날'(최근 n일)을 표시 → streak 이 끊겨도 푼 날은 계속 켜짐
     n, dot, gap = 14, 11, 5
     sx = (460 - (n * dot + (n - 1) * gap)) / 2
     dy = 128
-    lit = min(current, n)
+    today = datetime.date.today()
+    solved_recent = 0
     for i in range(n):
-        on = i >= n - lit
+        day = today - datetime.timedelta(days=n - 1 - i)
+        on = day in dates
+        if on:
+            solved_recent += 1
         body += f'<rect x="{sx + i*(dot+gap):.1f}" y="{dy}" width="{dot}" height="{dot}" rx="3" fill="{CYAN if on else TRACK}"/>'
-    body += f'<text x="230" y="{dy+27}" text-anchor="middle" font-size="9.5" fill="{MUTED}">최근 {n}일 · 연속 {current}일</text>'
+    body += f'<text x="230" y="{dy+27}" text-anchor="middle" font-size="9.5" fill="{MUTED}">최근 {n}일 · {solved_recent}일 풀이</text>'
     return _frame(460, 168, body, title="STREAK", extra_defs=defs)
 
 
