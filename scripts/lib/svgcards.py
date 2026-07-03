@@ -15,8 +15,6 @@ WA = "#f85149"
 PASS = "#3fb950"
 TLE = "#d29922"
 WIP = "#8b949e"
-FLAME1 = "#ffb84d"
-FLAME2 = "#ff6b35"
 
 PLATFORM_COLORS = {
     "BaekJoon": "#2ee6d6",
@@ -51,63 +49,7 @@ def _frame(w, h, body, title=None, extra_defs=""):
     )
 
 
-def _flame(x, y, scale):
-    return (
-        f'<path transform="translate({x} {y}) scale({scale})" fill="url(#flame)" '
-        'd="M12 0c2 4 6 5 6 10a6 6 0 1 1-12 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-2-4 0-9z"/>'
-    )
 
-
-def _runs(dates):
-    # dates: set[date] → (최장 연속일, 총 일수)
-    if not dates:
-        return 0, 0
-    ds = sorted(dates)
-    longest = run = 1
-    for i in range(1, len(ds)):
-        if (ds[i] - ds[i - 1]).days == 1:
-            run += 1
-            longest = max(longest, run)
-        else:
-            run = 1
-    return longest, len(ds)
-
-
-def streak_stat_card(daily, current):
-    # current: 코드트리 연속일(권위값). 최고·총은 git 풀이일에서 산출.
-    # 하단 점은 current 길이만큼만 점등 → 숫자와 점 개수가 항상 일치.
-    defs = (
-        '<linearGradient id="flame" x1="0" y1="0" x2="0" y2="1">'
-        f'<stop offset="0" stop-color="{FLAME1}"/><stop offset="1" stop-color="{FLAME2}"/></linearGradient>'
-    )
-    dates = {datetime.date.fromisoformat(k) for k, v in daily.items() if v}
-    git_best, total = _runs(dates)
-    best = max(current, git_best)
-    total = max(total, current)
-
-    cols = [(current, "현재 연속", CYAN), (best, "최고 연속", TEXT), (total, "총 학습일", TEXT)]
-    xs = [105, 230, 355]  # 460 폭 대칭 3분할
-    body = _flame(86, 19, 0.95)  # 타이틀 'STREAK' 우측
-    for (val, label, color), x in zip(cols, xs):
-        body += (
-            f'<text x="{x}" y="88" text-anchor="middle" font-size="44" font-weight="800" fill="{color}">{val}</text>'
-            f'<text x="{x}" y="109" text-anchor="middle" font-size="11.5" font-weight="600" fill="{MUTED}">{label}</text>'
-        )
-
-    # 점은 '실제 풀이한 날'(최근 n일)을 표시 → streak 이 끊겨도 푼 날은 계속 켜짐
-    n, dot, gap = 14, 11, 5
-    sx = (460 - (n * dot + (n - 1) * gap)) / 2
-    dy = 128
-    today = datetime.date.today()
-    solved_recent = 0
-    for i in range(n):
-        day = today - datetime.timedelta(days=n - 1 - i)
-        on = day in dates
-        if on:
-            solved_recent += 1
-        body += f'<rect x="{sx + i*(dot+gap):.1f}" y="{dy}" width="{dot}" height="{dot}" rx="3" fill="{CYAN if on else TRACK}"/>'
-    body += f'<text x="230" y="{dy+27}" text-anchor="middle" font-size="9.5" fill="{MUTED}">최근 {n}일 · {solved_recent}일 풀이</text>'
-    return _frame(460, 168, body, title="STREAK", extra_defs=defs)
 
 
 def _bar(x, y, w, h, pct, fill):

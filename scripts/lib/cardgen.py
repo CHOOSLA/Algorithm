@@ -62,25 +62,13 @@ def _attempts(top_n=5):
     return [(name, "".join(seq)) for name, seq in top]
 
 
-def _daily_passed():
-    # 코드트리 풀이([Passed]) 일별 건수 → 히트맵용
-    daily = {}
-    for line in _git_log("%as|%s"):
-        parts = line.split("|", 1)
-        if len(parts) == 2 and parts[1].startswith("[Passed]"):
-            daily[parts[0]] = daily.get(parts[0], 0) + 1
-    return daily
-
 
 def render_all(data):
     """모든 카드 SVG 를 assets/cards/ 에 쓴다. 코드트리 메타(dict|None)를 돌려준다."""
     ASSETS.mkdir(parents=True, exist_ok=True)
+    # 코드트리 카드(summary/streak/xp/types/course)는 전부 서비스가 라이브 서빙.
+    # 서비스는 학습일을 캐시에 누적해 최고 연속·총 학습일까지 계산한다.
     meta = _load_meta()
-    if meta:
-        # summary/xp/types/course 는 서비스가 라이브 서빙(로컬 생성 안 함).
-        # streak 만 git 풀이일 기반이라 로컬에서 렌더한다.
-        streak = meta.get("streak", {}).get("current", 0)
-        (ASSETS / "ct_streak.svg").write_text(sv.streak_stat_card(_daily_passed(), streak), encoding="utf-8")
 
     rows, total = _platform_rows(data)
     (ASSETS / "platforms.svg").write_text(sv.platforms_card(rows, total), encoding="utf-8")
@@ -111,7 +99,7 @@ def codetree_md(meta):
     )
     parts = [
         _live("summary", "summary", ver),
-        _center("ct_streak.svg", "streak"),  # git 풀이일 기반 → 로컬 카드
+        _live("streak", "streak", ver),
         f'<div align="center">{courses}</div>',
         _live("xp", "daily xp", ver),
         _live("types", "by type", ver),
