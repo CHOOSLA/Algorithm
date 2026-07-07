@@ -4,24 +4,21 @@ public class Main {
     public static int[] nums;
     public static boolean isPossible(int max_num){
         boolean isValid = false;
-        int d_cnt = 0;
+        int d_cnt = 1;
         int s_num = 0;
         for(int i=0; i < n; ++i){
-            int tmp = s_num + nums[i];
+            if(nums[i] > max_num) return false;
 
-            if(tmp == max_num){
-                isValid = true;
-            }
 
-            if(tmp > max_num){
+            if(s_num + nums[i] > max_num){
                 d_cnt++;
                 s_num = 0;
             }
 
-            s_num = s_num + nums[i];
+            s_num += nums[i];
         }
 
-        if(isValid && d_cnt == m - 1){
+        if(d_cnt <= m){
             return true;
         }
 
@@ -39,13 +36,14 @@ public class Main {
         // 임의의 최대값을 기준으로 나눈다
         // 넘으면 cnt++ , 같으면 충족, 미만이면 +
         // cnt == M - 1
-        int result = Integer.MAX_VALUE;
-        for(int i=1; i <= 9900; ++i){
+
+        for(int i=1; i <= 10000; ++i){
             if(isPossible(i)){
-                result = Math.min(result, i);
+                System.out.println(i);
+                break;
             }
         }
 
-        System.out.println(result);
+        
     }
 }
