@@ -7,10 +7,15 @@ public class Main {
         int c = sc.nextInt();
         int d = sc.nextInt();
         // Please write your code here.
-        int intersect = Math.max(c - b, d - a);
-        
-        int length_sum = b-a +  d-c;
-        
-        System.out.println(length_sum - intersect);
+        // 겹치는 것과 겹치치 않은 것을 고려함
+        // 겹치치않았을 경우
+        if(b < c || d < a){
+            System.out.println(b-a + d-c);
+        }else{
+            //겹쳤을 경우
+            
+                System.out.println(Math.max(b,d)-Math.min(a,c));
+            
+        }
     }
 }
