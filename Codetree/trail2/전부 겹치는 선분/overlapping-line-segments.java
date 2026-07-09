@@ -17,7 +17,7 @@ public class Main {
             int noninter = 0;
             for(int j=i+1; j < n; ++j){
                 // 겹치지 않는 것을 검사하는 것이 편함
-                if(y[i] < x[j] || y[j] < x[i]){
+                if(y[i] < x[j] || y[i] < x[j]){
                     noninter++;
                 }
             }
