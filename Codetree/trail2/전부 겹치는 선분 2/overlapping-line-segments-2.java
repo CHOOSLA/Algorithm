@@ -11,9 +11,10 @@ public class Main {
             x2[i] = sc.nextInt();
         }
         // Please write your code here.
+        // 시작점의 최대값과 종료점의 최소값
         for(int i=0; i < n; ++i){
-            int maxL = 1;
-            int minR = 100;
+            int maxL = 0;
+            int minR = 101;
             for(int j=0; j < n; ++j){
                 if(i == j) continue;
                 
@@ -22,7 +23,7 @@ public class Main {
             }
 
             // 없앴을 떄 가능한가?
-            if(minR <= maxL){
+            if(maxL <= minR){
                 System.out.println("Yes");
                 return;
             }
