@@ -5,26 +5,33 @@ public class Main {
         int n = sc.nextInt();
         // Please write your code here.
         // 완전탐색 + 선분검사
-        int[] x = new int[n];
-        int[] y = new int[n];
+        int[] a = new int[n];
+        int[] b = new int[n];
 
         for(int i=0; i < n; ++i){
-            x[i] = sc.nextInt();
-            y[i] = sc.nextInt();
+            a[i] = sc.nextInt();
+            b[i] = sc.nextInt();
         }
         
         for(int i=0; i < n; ++i){
             int noninter = 0;
-            for(int j=i+1; j < n; ++j){
+            for(int j=0; j < n; ++j){
+                // 자기 자신을 빼는 순열
+                if(i==j) continue;
                 // 겹치지 않는 것을 검사하는 것이 편함
-                if(y[i] < x[j] || y[i] < x[j]){
+                if(b[i] < a[j] || b[j] < a[i]){
                     noninter++;
+                    //System.out.println("check");
                 }
+
+                //System.out.println(noninter);
             }
 
-            if(noninter == n) {
+            if(noninter >= 1) {
                 System.out.println("No");
+                return;
             }
+            
         }
 
         System.out.println("Yes");
