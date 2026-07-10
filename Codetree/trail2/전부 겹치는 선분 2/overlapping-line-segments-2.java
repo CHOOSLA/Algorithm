@@ -12,7 +12,7 @@ public class Main {
         }
         // Please write your code here.
         for(int i=0; i < n; ++i){
-            int maxL = 0;
+            int maxL = 1;
             int minR = 100;
             for(int j=0; j < n; ++j){
                 if(i == j) continue;
