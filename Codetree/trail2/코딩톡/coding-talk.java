@@ -27,27 +27,20 @@ public class Main {
             
         }
 
-        // 확실한놈 출력
-        //System.out.println(coordi_cnt);
-        int person_cnt = 0;
-        for(int i=0; i < N; ++i){
-            if(person[i] != 1 && person_cnt < coordi_cnt){
-                System.out.printf("%c ", i + 'A');
-                person_cnt++;
-            }
-            
-        }
-
         // 확실한 놈 빼고도 부족하다면
-        
-        if(coordi_cnt < (M - u[p])){
-            int remain = (M - u[p]) - coordi_cnt;
-            for(int i=0; i < remain; ++i){
-                person[i + 1] = 1;
+        //System.out.println(coordi_cnt);
+        // 1명 남았을 경우 확정 가능
+        int remain = N - coordi_cnt;
+        if(remain == 1){
+            System.out.println("");
+        }else{
+            for(int i=0; i < N;++i){
+                if(person[i] == 0){
+                    System.out.printf("%c ", i + 'A');
+                }
+            
             }
         }
-
-        
 
     }
 }
