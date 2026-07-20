@@ -6,15 +6,15 @@
 
 ## 🌳 Codetree (메인 트랙)
 
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20260720T13364" alt="summary"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20260720T13502" alt="summary"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20260720T13364" alt="streak"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20260720T13502" alt="streak"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20260720T13364" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20260720T13364" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20260720T13364" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20260720T13364" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20260720T13364" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20260720T13364" alt="trail 5"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/6.svg?v=20260720T13364" alt="trail 6"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20260720T13502" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20260720T13502" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20260720T13502" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20260720T13502" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20260720T13502" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20260720T13502" alt="trail 5"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/6.svg?v=20260720T13502" alt="trail 6"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20260720T13364" alt="daily xp"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20260720T13502" alt="daily xp"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20260720T13364" alt="by type"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20260720T13502" alt="by type"/></div>
 
 ## 📊 전체 현황
 
@@ -412,8 +412,8 @@
 
 > ### 📈 Codetree 학습 분석
 > - **첫 시도 정답률**: 56% (67/120)
-> - **평균 시도 수**: 1.9회
-> - **총 재도전**: 114회
+> - **평균 시도 수**: 2.0회
+> - **총 재도전**: 115회
 
 <details>
 <summary><b>Trail 2</b> · 120문제</summary>
@@ -531,7 +531,7 @@
 | 최대 최소간의 차 | ✅×2 | 151ms | 10MB |
 | 최대로 겹치는 구간 | ❌×2 → ✅ | 2ms | 0MB |
 | 최대로 겹치는 지점 | ✅×3 | 2ms | 0MB |
-| 코딩톡 | ❌×2 | - | - |
+| 코딩톡 | ❌×3 | - | - |
 | 특정 구간의 원소 평균값 | ❌ → ✅ | 148ms | 10MB |
 | 특정 수와 근접한 합 | ❌×2 → ✅ | 2ms | 0MB |
 | 팀으로 하는 틱택토 2 | ❌×2 → ✅ | 147ms | 10MB |

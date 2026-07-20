@@ -34,8 +34,16 @@ public class Main {
         if(remain == 1){
             System.out.println("");
         }else{
+            // 뒤쪽에도 숫자가 같다면 확정가능
+            if(u[p-1] == u[p-2]){
+                int idx = c[p-2] - 'A';
+                person[idx] = 1;
+            }
+
+
             for(int i=0; i < N;++i){
                 if(person[i] == 0){
+                    
                     System.out.printf("%c ", i + 'A');
                 }
             
