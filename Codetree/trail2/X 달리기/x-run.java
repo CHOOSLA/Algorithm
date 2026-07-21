@@ -1,25 +1,36 @@
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int x = sc.nextInt();
-        // Please write your code here.
-        // 최고의 속도를 기점으로 좌우
-        // 10이라고 가정하고 일반화
-        // speed = 1
-        // 3초때 3 최고 속력
-        // 속도가 줄어드기 전까지 계속 증가하는게 최적
-        // 줄였을때 x가 된다면 그게 정답
-        int speed = 1;
-        int dis = 0;
-        for(int speed = 1; speed < x; ++speed){
-            dis += speed;
-
-            // 각 speed를 최고속도라고 치고
-            // 거기서 하강
-            for(int down=speed; down > 1; --down){
-                
-            }
+        
+        int[] timePerDis = new int[x + 1];
+        for (int i = 1; i <= x; ++i) {
+            timePerDis[i] = timePerDis[i - 1] + i;
         }
+        
+        int result = Integer.MAX_VALUE;
+        
+        // 최고 속력을 1부터 x까지 가정하며 완전 탐색 진행
+        for (int i = 1; i <= x; ++i) {
+            int sumDis = timePerDis[i] + timePerDis[i - 1];
+            
+            int remainDis = x - sumDis;
+            
+            // 남은 거리가 음수이면 그냥 종료
+            if (remainDis < 0) {
+                break;
+            }
+            
+            // 남은 거리를 최고 속력으로 나눈 후 시간 검사
+            int extraTime = (remainDis + i - 1) / i;
+            
+            int time = i + (i - 1) + extraTime;
+            
+            result = Math.min(result, time);
+        }
+        
+        System.out.println(result);
     }
 }
