@@ -10,21 +10,15 @@ public class Main {
         // 3초때 3 최고 속력
         // 속도가 줄어드기 전까지 계속 증가하는게 최적
         // 줄였을때 x가 된다면 그게 정답
-        int distance = 1;
-        for(int s=1; s < x; ++s){
-            distance += s;
-            
-            // 만약 현재 속력에서 줄이게 된다면 도착이 가능한가판단
-            int pre_dis = distance;
-            for(int down_s = s-1; down_s >= 1; --down_s){
-                pre_dis += down_s;
-            }
+        int speed = 1;
+        int dis = 0;
+        for(int speed = 1; speed < x; ++speed){
+            dis += speed;
 
-
-            // 현재 지점이 최고 속력이 맞다면
-            if(pre_dis == x){
-                System.out.println(s * 2);
-                return;
+            // 각 speed를 최고속도라고 치고
+            // 거기서 하강
+            for(int down=speed; down > 1; --down){
+                
             }
         }
     }
