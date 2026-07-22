@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# 커밋 메시지 컨벤션 검사 훅.
+#
+# SWEA(SEA) 풀이 커밋의 난이도 태그 누락을 커밋 시점에 차단한다. 잘못된 형식은
+# README 자동 추출을 깨뜨려 CI strict 검사를 매 커밋마다 실패시키기 때문이다.
+#
+# 활성화: make install-hooks (core.hooksPath 를 scripts/hooks 로 설정)
+set -euo pipefail
+
+repo_root="$(git rev-parse --show-toplevel)"
+python3 "$repo_root/scripts/validate_commit_msg.py" "$1"
