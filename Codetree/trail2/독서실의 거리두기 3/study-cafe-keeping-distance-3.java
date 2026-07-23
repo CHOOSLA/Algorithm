@@ -24,7 +24,22 @@ public class Main {
             }
         }
 
+        int minDis = Integer.MAX_VALUE;
+        for(int i=0; i < N - 1; ++i){
+            for(int j=i+1; j < N; ++j){
+                char first = seats.charAt(i);
+                char second = seats.charAt(j);
 
-        System.out.println(maxDis);
+                if(first == '1' && second == '1'){
+                    minDis = Math.min(minDis, j-i);
+                    //System.out.println(i+" "+j);
+                    break;
+                }
+                
+            }
+        }
+
+
+        System.out.println(Math.min(maxDis, minDis));
     }
 }

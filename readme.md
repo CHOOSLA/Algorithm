@@ -6,15 +6,15 @@
 
 ## 🌳 Codetree (메인 트랙)
 
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20260723T05574" alt="summary"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20260723T06081" alt="summary"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20260723T05574" alt="streak"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20260723T06081" alt="streak"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20260723T05574" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20260723T05574" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20260723T05574" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20260723T05574" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20260723T05574" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20260723T05574" alt="trail 5"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/6.svg?v=20260723T05574" alt="trail 6"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20260723T06081" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20260723T06081" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20260723T06081" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20260723T06081" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20260723T06081" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20260723T06081" alt="trail 5"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/6.svg?v=20260723T06081" alt="trail 6"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20260723T05574" alt="daily xp"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20260723T06081" alt="daily xp"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20260723T05574" alt="by type"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20260723T06081" alt="by type"/></div>
 
 ## 📊 전체 현황
 
@@ -413,7 +413,7 @@
 > ### 📈 Codetree 학습 분석
 > - **첫 시도 정답률**: 55% (68/124)
 > - **평균 시도 수**: 2.0회
-> - **총 재도전**: 118회
+> - **총 재도전**: 119회
 
 <details>
 <summary><b>Trail 2</b> · 124문제</summary>
@@ -453,7 +453,7 @@
 | 그 요일은 | ❌ → ✅ | 2ms | 0MB |
 | 달리자 | ✅ | 133ms | 10MB |
 | 데이터센터의 온도 조정 2 | ❌ → ✅ | 143ms | 10MB |
-| 독서실의 거리두기 3 | ❌ | - | - |
+| 독서실의 거리두기 3 | ❌ → ✅ | 158ms | 11MB |
 | 독서실의 거리두기 4 | ✅ | 149ms | 10MB |
 | 독서실의 거리두기 5 | ❌×2 → ✅ | 129ms | 11MB |
 | 되돌아오기 | ✅ | 2ms | 0MB |
