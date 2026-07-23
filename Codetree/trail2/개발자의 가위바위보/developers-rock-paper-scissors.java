@@ -18,20 +18,22 @@ public class Main {
         // 이렇게 3가지 경우의 수로 검사하게됨
         // 즉 만약에 1인 경우 1을 제외한 3,2의 개수
         int maxWin = 0;
-        for(int num=1; num <= 3; ++num){
-            int win = 0;
-            for(int i=0; i < n; ++i){
-                if(a[i] == num){
-                    if(b[i] != num){
-                        win++;
-                    }
-                }
-            }
 
-            maxWin = Math.max(maxWin, win);
+        int win1 = 0;
+        for (int i = 0; i < n; i++) {
+            if ((a[i] == 1 && b[i] == 2) || (a[i] == 2 && b[i] == 3) || (a[i] == 3 && b[i] == 1)) {
+                win1++;
+            }
         }
         
+        int win2 = 0;
+        for (int i = 0; i < n; i++) {
+            if ((a[i] == 1 && b[i] == 3) || (a[i] == 3 && b[i] == 2) || (a[i] == 2 && b[i] == 1)) {
+                win2++;
+            }
+        }
+
+        maxWin = Math.max(win1, win2);
         System.out.println(maxWin);
-        
     }
 }
