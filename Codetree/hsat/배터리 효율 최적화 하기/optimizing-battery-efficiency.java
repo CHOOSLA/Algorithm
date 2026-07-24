@@ -5,7 +5,7 @@ public class Main {
     public static int N,M;
     public static int[][] board;
 
-    public static int maxScore = 0;
+    public static int maxScore = Integer.MIN_VALUE;
 
     public static void back(boolean[][][] visited, int y1, int x1, int y2, int x2, int count){
         // 탈출 
