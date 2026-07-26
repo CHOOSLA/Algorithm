@@ -44,7 +44,8 @@ public class Main {
         result = Math.max(result, (int)Math.ceil(maxDis / 2.0));
         result = Math.max(result, firstOne);
         result = Math.max(result, (n-1) - lastOne);
-        result = Math.min(result, minDis + 1);
+        if(minDis != Integer.MAX_VALUE) result = Math.min(result, minDis + 1);
+        
 
         System.out.println(result);
     }
