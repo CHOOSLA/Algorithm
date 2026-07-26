@@ -13,6 +13,7 @@ public class Main {
         int lastOne = -1;
         int saveIdx = -1;
         int maxDis = 0;
+        int minDis = Integer.MAX_VALUE;
         for(int i=0; i < n; ++i){
             int nowNum = seats.charAt(i) - '0';
             boolean isOne = nowNum == 1 ? true : false;
@@ -31,6 +32,7 @@ public class Main {
                     // 짝수 , 홀수 
                     // 어차피 올림하면똑같음
                     maxDis = Math.max(maxDis, i - saveIdx - 1);
+                    minDis = Math.min(minDis , i - saveIdx - 1);
                 }
 
                 saveIdx = i;
@@ -42,6 +44,7 @@ public class Main {
         result = Math.max(result, (int)Math.ceil(maxDis / 2.0));
         result = Math.max(result, firstOne);
         result = Math.max(result, (n-1) - lastOne);
+        result = Math.min(result, minDis + 1);
 
         System.out.println(result);
     }
