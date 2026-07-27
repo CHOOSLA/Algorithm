@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -11,16 +11,18 @@ public class Main {
         // 버블솔트,,?
         int count = 0;
         for(int i=1; i < n; ++i){
-            for(int j=i; j < n; ++j){
+            for(int j=1; j < n; ++j){
                 if(arr[j] < arr[j-1]){
                     char tmp = arr[j];
                     arr[j] = arr[j-1];
-                    arr[j-1] = arr[j];
+                    arr[j-1] = tmp;
 
                     count++;
                 }
             }
         }
+
+        //System.out.println(Arrays.toString(arr));
         
         System.out.println(count);
     }
