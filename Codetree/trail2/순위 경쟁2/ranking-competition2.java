@@ -6,8 +6,8 @@ public class Main {
 
         // 0 = A , 1 = B , 2 = A,B
         int honor = -1;
-        int a = 0;
-        int b = 0;
+        int a = -1;
+        int b = -1;
         
         int result = 0;
 
@@ -24,6 +24,8 @@ public class Main {
             //System.out.print(a + " " + b);
 
             int nxtHonor = -1;
+            if( a == -1 || b == -1) continue;
+            
             if(a > b){
                 nxtHonor = 0;
             }else if(b > a){
