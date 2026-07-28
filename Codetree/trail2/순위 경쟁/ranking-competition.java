@@ -9,7 +9,7 @@ public class Main {
         // A = 0 , B = 1 , C = 2
         // 제일 큰것을 ㅂ
         int a = 0, b = 0, c = 0;
-        int honor = (1 << 3) - 1;
+        int honor = 0 << 2;
 
         int result = 0;
         for (int i = 0; i < n; i++) {
@@ -25,14 +25,19 @@ public class Main {
             }
 
             int maxAl = Math.max(a,b);
-            maxAl = Math.max(b,c);
+            maxAl = Math.max(maxAl,c);
 
             int newHonor = (0 << 2);
-            if(a == maxAl) newHonor = newHonor | (1 << 2);
-            if(b == maxAl) newHonor = newHonor | (1 << 1);
-            if(c == maxAl) newHonor = newHonor | 1;
+            if(a == maxAl) newHonor |= 1 << 2;
+            if(b == maxAl) newHonor |= 1 << 1;
+            if(c == maxAl) newHonor |= 1;
 
-            if(honor != newHonor) result++;
+            //System.out.printf("%d %d %d |%s| |%s| ",a,b,c,Integer.toBinaryString(honor),Integer.toBinaryString(newHonor));
+            if(honor != newHonor) {
+                //System.out.print("바뀜!");
+                result++;
+            }
+            //System.out.println();
 
             honor = newHonor;
         }
