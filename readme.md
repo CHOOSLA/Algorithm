@@ -6,15 +6,15 @@
 
 ## 🌳 Codetree (메인 트랙)
 
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20260727T10553" alt="summary"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20260728T10412" alt="summary"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20260727T10553" alt="streak"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20260728T10412" alt="streak"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20260727T10553" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20260727T10553" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20260727T10553" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20260727T10553" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20260727T10553" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20260727T10553" alt="trail 5"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/6.svg?v=20260727T10553" alt="trail 6"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20260728T10412" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20260728T10412" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20260728T10412" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20260728T10412" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20260728T10412" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20260728T10412" alt="trail 5"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/6.svg?v=20260728T10412" alt="trail 6"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20260727T10553" alt="daily xp"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20260728T10412" alt="daily xp"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20260727T10553" alt="by type"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20260728T10412" alt="by type"/></div>
 
 ## 📊 전체 현황
 
@@ -25,9 +25,9 @@
 <div align="center"><img src="./assets/cards/attempts.svg" alt="toughest"/></div>
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **운행 되고 있는 시간** (Codetree · Trail 2)
-> - **추천 사유**: 이전 풀이 시 3회 실패/재시도 기록 있음 (❌×2 → ✅)
-> - **풀이 코드**: [Codetree/운행 되고 있는 시간](./Codetree/trail2/%EC%9A%B4%ED%96%89%20%EB%90%98%EA%B3%A0%20%EC%9E%88%EB%8A%94%20%EC%8B%9C%EA%B0%84)
+> **계산기3** (SW Expert Academy · D4)
+> - **추천 사유**: 정기 학습 복습 및 망각 방지
+> - **풀이 코드**: [SW Expert Academy/1224](./SW%20Expert%20Academy/1224)
 
 
 ## 폴더 구조
@@ -411,7 +411,7 @@
 ## Codetree 문제 정리
 
 > ### 📈 Codetree 학습 분석
-> - **첫 시도 정답률**: 54% (71/132)
+> - **첫 시도 정답률**: 53% (71/133)
 > - **평균 시도 수**: 2.0회
 > - **총 재도전**: 129회
 
@@ -425,7 +425,7 @@
 </details>
 
 <details>
-<summary><b>Trail 2</b> · 131문제</summary>
+<summary><b>Trail 2</b> · 132문제</summary>
 
 | 문제 | 시도 | 시간 | 메모리 |
 | --- | --- | ---: | ---: |
@@ -501,6 +501,7 @@
 | 수들의 최대 차 | ✅ | 228ms | 15MB |
 | 수를 여러번 사용하여 특정 수 만들기 | ✅ | 137ms | 10MB |
 | 순 간 이 동 | ✅ | 129ms | 10MB |
+| 순위 경쟁 | ❌ | - | - |
 | 순위 경쟁2 | ❌×3 → ✅ | 136ms | 10MB |
 | 숨은 단어 찾기 2 | ✅ | 2ms | 0MB |
 | 숫자 2배 후 하나 제거하기 | ✅ | 180ms | 15MB |
