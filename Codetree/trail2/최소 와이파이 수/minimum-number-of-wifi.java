@@ -15,11 +15,11 @@ public class Main {
         // start < --- > end 잡아서 / ceil해서 
         int count = 0;
         int start = -1, end = -1;
-        for(int i=0; i < n; ++i){
+        for(int i=0; i <= n; ++i){
             // 0이면 초기화하고 /2
-            if(arr[i] == 0 || i == n -1){
+            if(i == n || arr[i] == 0 ){
                 int length = end - start + 1;
-                count += (int)Math.ceil(length / 2.0);
+                count += (int)Math.ceil(length / (double)(2 * m + 1));
                 start = -1;
                 end = -1;
 
