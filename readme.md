@@ -6,15 +6,15 @@
 
 ## 🌳 Codetree (메인 트랙)
 
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20260731T01034" alt="summary"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20260731T01165" alt="summary"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20260731T01034" alt="streak"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20260731T01165" alt="streak"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20260731T01034" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20260731T01034" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20260731T01034" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20260731T01034" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20260731T01034" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20260731T01034" alt="trail 5"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/6.svg?v=20260731T01034" alt="trail 6"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20260731T01165" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20260731T01165" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20260731T01165" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20260731T01165" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20260731T01165" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20260731T01165" alt="trail 5"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/6.svg?v=20260731T01165" alt="trail 6"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20260731T01034" alt="daily xp"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20260731T01165" alt="daily xp"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20260731T01034" alt="by type"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20260731T01165" alt="by type"/></div>
 
 ## 📊 전체 현황
 
@@ -413,7 +413,7 @@
 > ### 📈 Codetree 학습 분석
 > - **첫 시도 정답률**: 53% (72/137)
 > - **평균 시도 수**: 2.0회
-> - **총 재도전**: 134회
+> - **총 재도전**: 135회
 
 <details>
 <summary><b>hsat</b> · 1문제</summary>
@@ -561,7 +561,7 @@
 | 팀으로 하는 틱택토 2 | ❌×2 → ✅ | 147ms | 10MB |
 | 팰린드롬 수 찾기 | ✅ | 184ms | 15MB |
 | 한 가지로 열리는 자물쇠 | ✅ | 133ms | 10MB |
-| 홀수 짝수의 묶음 | ❌ | - | - |
+| 홀수 짝수의 묶음 | ❌ → ✅ | 138ms | 10MB |
 | 훌륭한 점프 | ✅×2 | 143ms | 10MB |
 | 흥미로운 숫자 2 | ✅ | 186ms | 20MB |
 | 흰검 칠하기 | ✅ | 4ms | 3MB |

@@ -36,6 +36,7 @@ public class Main {
                     if(oddCount < 2){
                         result--;
                         oddCount = 0;
+                        isEvenTime = false;
                         continue;
                     }
 
@@ -46,8 +47,8 @@ public class Main {
                 isEvenTime = false;
             }else{
                 if(oddCount == 0){
-                    System.out.println("모순");
-                    return;
+                    // 짝수가 남았다면 + a 로 잡아서 묶으면 되니깐 그냥 종료 
+                    break;
                 }
 
                 oddCount--;
