@@ -10,9 +10,9 @@ public class Main {
         // Please write your code here.
         Arrays.sort(arr);
 
-        int result = 0;
-        for(int i=0; i < (n); ++i){
-            result = Math.max(result, arr[n - 1 + i] - arr[i]);
+        long result = Long.MAX_VALUE;
+        for(int i=0; i < n; ++i){
+            result = Math.min(result, arr[n + i] - arr[i]);
         }
 
         System.out.println(result);
