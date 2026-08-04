@@ -4,22 +4,25 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        int[] leftArr = new int[n];
-        int[] rightArr = new int[n];
+        int[] left = new int[n];
+        int[] right = new int[n];
         for (int i = 0; i < n; i++) {
-            leftArr[i] = sc.nextInt();
-            rightArr[i] = sc.nextInt();
+            left[i] = sc.nextInt();
+            right[i] = sc.nextInt();
         }
 
-        Arrays.sort(leftArr);
-        Arrays.sort(rightArr);
-
-        int result = Math.min(rightArr[n-1] - leftArr[1], rightArr[n-2] - leftArr[0]);
-
+        int result = Integer.MAX_VALUE;
+        for (int skip = 0; skip < n; skip++) {
+            int lo = Integer.MAX_VALUE;
+            int hi = Integer.MIN_VALUE;
+            for (int i = 0; i < n; i++) {
+                if (i == skip) continue;
+                lo = Math.min(lo, left[i]);
+                hi = Math.max(hi, right[i]);
+            }
+            result = Math.min(result, hi - lo);
+        }
 
         System.out.println(result);
-        
-        
-        
     }
 }

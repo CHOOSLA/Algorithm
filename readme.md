@@ -6,15 +6,15 @@
 
 ## 🌳 Codetree (메인 트랙)
 
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20260804T06583" alt="summary"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20260804T07081" alt="summary"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20260804T06583" alt="streak"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20260804T07081" alt="streak"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20260804T06583" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20260804T06583" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20260804T06583" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20260804T06583" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20260804T06583" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20260804T06583" alt="trail 5"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/6.svg?v=20260804T06583" alt="trail 6"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20260804T07081" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20260804T07081" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20260804T07081" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20260804T07081" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20260804T07081" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20260804T07081" alt="trail 5"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/6.svg?v=20260804T07081" alt="trail 6"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20260804T06583" alt="daily xp"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20260804T07081" alt="daily xp"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20260804T06583" alt="by type"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20260804T07081" alt="by type"/></div>
 
 ## 📊 전체 현황
 
@@ -413,7 +413,7 @@
 > ### 📈 Codetree 학습 분석
 > - **첫 시도 정답률**: 53% (76/144)
 > - **평균 시도 수**: 2.0회
-> - **총 재도전**: 137회
+> - **총 재도전**: 138회
 
 <details>
 <summary><b>hsat</b> · 1문제</summary>
@@ -547,7 +547,7 @@
 | 잔해물을 덮기 위한 사각형의 최소 넓이 | ❌×4 → ✅×2 | 21ms | 16MB |
 | 전부 겹치는 선분 | ❌×2 → ✅ | 156ms | 11MB |
 | 전부 겹치는 선분 2 | ❌×2 → ✅ | 156ms | 10MB |
-| 전부 포함하는 선분 | ❌ | - | - |
+| 전부 포함하는 선분 | ❌ → ✅ | 154ms | 10MB |
 | 정보에 따른 수 2 | ✅ | 153ms | 10MB |
 | 좌우로 움직이는 로봇 | ❌×3 → ✅ | 43ms | 8MB |
 | 좌표평면 위의 균형 2 | ✅ | 168ms | 11MB |
