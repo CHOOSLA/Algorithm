@@ -15,7 +15,7 @@ public class Main {
             int[][] arr_tmp = new int[10][n];
             int[] idx_tmp = new int[10];
 
-            int div =  (int)Math.pow(1,pos);
+            int div =  (int)Math.pow(10,pos);
 
             for(int i=0; i < n; ++i){
                 int digi = (arr[i]/div) % 10;
