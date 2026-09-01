@@ -6,15 +6,15 @@
 
 ## 🌳 Codetree (메인 트랙)
 
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20260901T01294" alt="summary"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20260901T01332" alt="summary"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20260901T01294" alt="streak"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20260901T01332" alt="streak"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20260901T01294" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20260901T01294" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20260901T01294" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20260901T01294" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20260901T01294" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20260901T01294" alt="trail 5"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20260901T01332" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20260901T01332" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20260901T01332" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20260901T01332" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20260901T01332" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20260901T01332" alt="trail 5"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20260901T01294" alt="daily xp"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20260901T01332" alt="daily xp"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20260901T01294" alt="by type"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20260901T01332" alt="by type"/></div>
 
 ## 📊 전체 현황
 
@@ -411,7 +411,7 @@
 ## Codetree 문제 정리
 
 > ### 📈 Codetree 학습 분석
-> - **첫 시도 정답률**: 57% (137/240)
+> - **첫 시도 정답률**: 57% (138/241)
 > - **평균 시도 수**: 1.6회
 > - **총 재도전**: 140회
 
@@ -576,7 +576,7 @@
 </details>
 
 <details>
-<summary><b>trail3</b> · 97문제</summary>
+<summary><b>trail3</b> · 98문제</summary>
 
 | 문제 | 시도 | 시간 | 메모리 |
 | --- | --- | ---: | ---: |
@@ -658,6 +658,7 @@
 | 적합한 기수정렬 | ❌ | - | - |
 | 정렬 | ❌ | - | - |
 | 정렬과 정렬 | ❌ | - | - |
+| 정렬되지 않았어 | ✅ | - | - |
 | 정렬된 배열 | ✅ | - | - |
 | 정수 명령 처리 5 | ✅ | 352ms | 20MB |
 | 정수 명령 처리 8 | ✅ | 234ms | 12MB |
