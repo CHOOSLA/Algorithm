@@ -6,15 +6,15 @@
 
 ## 🌳 Codetree (메인 트랙)
 
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20260902T15023" alt="summary"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20260902T15275" alt="summary"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20260902T15023" alt="streak"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20260902T15275" alt="streak"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20260902T15023" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20260902T15023" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20260902T15023" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20260902T15023" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20260902T15023" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20260902T15023" alt="trail 5"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20260902T15275" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20260902T15275" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20260902T15275" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20260902T15275" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20260902T15275" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20260902T15275" alt="trail 5"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20260902T15023" alt="daily xp"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20260902T15275" alt="daily xp"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20260902T15023" alt="by type"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20260902T15275" alt="by type"/></div>
 
 ## 📊 전체 현황
 
@@ -411,7 +411,7 @@
 ## Codetree 문제 정리
 
 > ### 📈 Codetree 학습 분석
-> - **첫 시도 정답률**: 57% (141/247)
+> - **첫 시도 정답률**: 57% (141/248)
 > - **평균 시도 수**: 1.6회
 > - **총 재도전**: 140회
 
@@ -576,7 +576,7 @@
 </details>
 
 <details>
-<summary><b>trail3</b> · 104문제</summary>
+<summary><b>trail3</b> · 105문제</summary>
 
 | 문제 | 시도 | 시간 | 메모리 |
 | --- | --- | ---: | ---: |
@@ -591,6 +591,7 @@
 | Stable한 생각 | ✅ | - | - |
 | for와 while | ❌ | - | - |
 | head로부터의 삭제 메서드 | ❌ | - | - |
+| lower bound | ❌ | - | - |
 | tail로부터의 삭제 메서드 | ✅ | - | - |
 | 개선된 피벗 | ❌ | - | - |
 | 거품 정렬 | ❌ | - | - |
