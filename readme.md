@@ -6,15 +6,15 @@
 
 ## 🌳 Codetree (메인 트랙)
 
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20260910T14303" alt="summary"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20260916T14303" alt="summary"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20260910T14303" alt="streak"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20260916T14303" alt="streak"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20260910T14303" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20260910T14303" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20260910T14303" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20260910T14303" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20260910T14303" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20260910T14303" alt="trail 5"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20260916T14303" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20260916T14303" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20260916T14303" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20260916T14303" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20260916T14303" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20260916T14303" alt="trail 5"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20260910T14303" alt="daily xp"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20260916T14303" alt="daily xp"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20260910T14303" alt="by type"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20260916T14303" alt="by type"/></div>
 
 ## 📊 전체 현황
 
@@ -25,9 +25,9 @@
 <div align="center"><img src="./assets/cards/attempts.svg" alt="toughest"/></div>
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **이상한 폭탄 3** (Codetree · Trail 2)
-> - **추천 사유**: 이전 풀이 시 5회 실패/재시도 기록 있음 (❌×4 → ✅)
-> - **풀이 코드**: [Codetree/이상한 폭탄 3](./Codetree/trail2/%EC%9D%B4%EC%83%81%ED%95%9C%20%ED%8F%AD%ED%83%84%203)
+> **병합 정렬** (Codetree · trail3)
+> - **추천 사유**: 이전 풀이 시도 이력 있음 (✅)
+> - **풀이 코드**: [Codetree/병합 정렬](./Codetree/trail3/%EB%B3%91%ED%95%A9%20%EC%A0%95%EB%A0%AC)
 
 
 ## 폴더 구조
@@ -384,7 +384,7 @@
 
 </details>
 <details>
-<summary>📁 <b>D4</b> · 10문제</summary>
+<summary>📁 <b>D4</b> · 11문제</summary>
 
 | 번호 | 제목 |
 | --- | --- |
@@ -397,6 +397,7 @@
 | 1238 | Contact |
 | 1486 | 장훈이의 높은 선반 |
 | 4796 | 의석이의 우뚝 선 산 |
+| 7733 | 치즈 도둑 |
 | 8275 | 햄스터 |
 
 </details>
