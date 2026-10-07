@@ -25,9 +25,9 @@
 <div align="center"><img src="./assets/cards/attempts.svg" alt="toughest"/></div>
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **블럭쌓는 명령2** (Codetree · Trail 2)
-> - **추천 사유**: 이전 풀이 시도 이력 있음 (✅)
-> - **풀이 코드**: [Codetree/블럭쌓는 명령2](./Codetree/trail2/%EB%B8%94%EB%9F%AD%EC%8C%93%EB%8A%94%20%EB%AA%85%EB%A0%B92)
+> **팀으로 하는 틱택토 2** (Codetree · Trail 2)
+> - **추천 사유**: 이전 풀이 시 3회 실패/재시도 기록 있음 (❌×2 → ✅)
+> - **풀이 코드**: [Codetree/팀으로 하는 틱택토 2](./Codetree/trail2/%ED%8C%80%EC%9C%BC%EB%A1%9C%20%ED%95%98%EB%8A%94%20%ED%8B%B1%ED%83%9D%ED%86%A0%202)
 
 
 ## 폴더 구조
@@ -384,7 +384,7 @@
 
 </details>
 <details>
-<summary>📁 <b>D4</b> · 14문제</summary>
+<summary>📁 <b>D4</b> · 15문제</summary>
 
 | 번호 | 제목 |
 | --- | --- |
@@ -395,6 +395,7 @@
 | 1226 | 미로1 |
 | 1233 | 사칙연산 유효성 검사 |
 | 1238 | Contact |
+| 1251 | 하나로 |
 | 1486 | 장훈이의 높은 선반 |
 | 1868 | 파핑파핑 지뢰찾기 |
 | 3289 | 서로소 집합 |
