@@ -4,17 +4,23 @@
 
 # 알고리즘 공부 저장소
 
+## SSAFY 날짜별 다시 풀기
+
+[제출 날짜별 복습 목록 열기](./Review/SSAFY/README.md)
+
+Lab에 제출한 본인 풀이를 날짜별로 다시 풉니다. 문제별 빈 Java 파일과 재풀이 기록을 준비했습니다.
+
 ## 🌳 Codetree (메인 트랙)
 
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20261025T03483" alt="summary"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20261105T14381" alt="summary"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20261025T03483" alt="streak"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20261105T14381" alt="streak"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20261025T03483" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20261025T03483" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20261025T03483" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20261025T03483" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20261025T03483" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20261025T03483" alt="trail 5"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20261105T14381" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20261105T14381" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20261105T14381" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20261105T14381" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20261105T14381" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20261105T14381" alt="trail 5"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20261025T03483" alt="daily xp"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20261105T14381" alt="daily xp"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20261025T03483" alt="by type"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20261105T14381" alt="by type"/></div>
 
 ## 📊 전체 현황
 
@@ -25,9 +31,9 @@
 <div align="center"><img src="./assets/cards/attempts.svg" alt="toughest"/></div>
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **원소 값들의 최대 합** (Codetree · Trail 2)
+> **전부 겹치는 선분** (Codetree · Trail 2)
 > - **추천 사유**: 이전 풀이 시 3회 실패/재시도 기록 있음 (❌×2 → ✅)
-> - **풀이 코드**: [Codetree/원소 값들의 최대 합](./Codetree/trail2/%EC%9B%90%EC%86%8C%20%EA%B0%92%EB%93%A4%EC%9D%98%20%EC%B5%9C%EB%8C%80%20%ED%95%A9)
+> - **풀이 코드**: [Codetree/전부 겹치는 선분](./Codetree/trail2/%EC%A0%84%EB%B6%80%20%EA%B2%B9%EC%B9%98%EB%8A%94%20%EC%84%A0%EB%B6%84)
 
 
 ## 폴더 구조
@@ -37,6 +43,7 @@
 - **Programmers/**: 프로그래머스 코딩 테스트 문제
 - **SW Expert Academy/**: SW Expert Academy 문제
 - **Python Study/**: 파이썬 연습 코드
+- **Review/SSAFY/**: SSAFY 제출 날짜별 재풀이와 복습 기록
 - **scripts/**: README 자동 생성 파이프라인
 
 ## BaekJoon 문제 정리

@@ -11,6 +11,12 @@
 
 # 알고리즘 공부 저장소
 
+## SSAFY 날짜별 다시 풀기
+
+[제출 날짜별 복습 목록 열기](./Review/SSAFY/README.md)
+
+Lab에 제출한 본인 풀이를 날짜별로 다시 풉니다. 문제별 빈 Java 파일과 재풀이 기록을 준비했습니다.
+
 ## 🌳 Codetree (메인 트랙)
 
 <!--AUTOGEN:CODETREE_CARDS-->
@@ -28,6 +34,7 @@
 - **Programmers/**: 프로그래머스 코딩 테스트 문제
 - **SW Expert Academy/**: SW Expert Academy 문제
 - **Python Study/**: 파이썬 연습 코드
+- **Review/SSAFY/**: SSAFY 제출 날짜별 재풀이와 복습 기록
 - **scripts/**: README 자동 생성 파이프라인
 
 ## BaekJoon 문제 정리
