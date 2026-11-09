@@ -4,9 +4,10 @@
 #   make build        동일
 #   make check        빌드 결과가 commit 된 readme.md 와 일치하는지 검증 (CI 와 동일)
 #   make verify ID=N  solved.ac 에서 특정 백준 문제 메타 조회
+#   make commit       바뀐 풀이를 문제별로 플랫폼 형식에 맞춰 커밋 (N=1 은 메시지만 출력)
 #   make help         사용법 출력
 
-.PHONY: build check verify help install-hooks uninstall-hooks lint-commit
+.PHONY: build check verify help install-hooks uninstall-hooks lint-commit commit
 .DEFAULT_GOAL := build
 
 PY := python3
@@ -23,6 +24,9 @@ verify:
 
 lint-commit:
 	@$(PY) scripts/validate_commit_msg.py --string "$(MSG)"
+
+commit:
+	@$(PY) scripts/auto_commit.py $(if $(N),--dry-run)
 
 install-hooks:
 	@chmod +x scripts/hooks/*
@@ -42,6 +46,7 @@ help:
 	@echo "  make check             빌드 결과가 readme.md 와 일치하는지 검증"
 	@echo "  make verify ID=N       solved.ac 에서 특정 백준 문제 메타 조회"
 	@echo "  make lint-commit MSG=  커밋 메시지 형식 검사 (SWEA 컨벤션)"
+	@echo "  make commit            바뀐 풀이를 문제별로 커밋 (N=1 이면 메시지만 출력)"
 	@echo "  make install-hooks     commit-msg 검사 hook 설치"
 	@echo "  make uninstall-hooks   hook 해제"
 	@echo ""
