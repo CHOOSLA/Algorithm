@@ -84,13 +84,19 @@ def is_tracked(folder):
     return bool(git("ls-files", "--", folder).strip())
 
 
+answered = 0  # 직접 입력한 값이 들어간 메시지는 커밋 전에 한 번 확인받는다
+
+
 def ask(prompt):
+    global answered
     if not sys.stdin.isatty():
         return ""
     try:
-        return input(prompt).strip()
+        value = input(prompt).strip()
     except EOFError:
         return ""
+    answered += bool(value)
+    return value
 
 
 class Meta:
@@ -117,9 +123,14 @@ class Meta:
         if not title:
             title = next((r["title"] for r in self.review.values() if r["number"] == num), "")
         if interactive and not title:
-            title = ask(f"  SWEA {num} 제목: ")
-        if interactive and not level.isdigit():
-            level = ask(f"  SWEA {num} 난이도 D 숫자 (모의 역량테스트도 숫자로): ").lstrip("Dd")
+            title = ask(f"  SWEA {num} 제목 (건너뛰려면 엔터): ")
+        while interactive and not level.isdigit():
+            raw = ask(f"  SWEA {num} 난이도 D 숫자, 모의 역량테스트도 숫자로 (건너뛰려면 엔터): ")
+            if not raw:
+                break
+            level = raw.lstrip("Dd")
+            if not level.isdigit():
+                print(f"  숫자로 읽지 못했어요: {raw!r}")
         if interactive and not category and level.isdigit():
             category = ask(f"  SWEA {num} 분류 (없으면 엔터): ")
         return title, level if level.isdigit() else "", category
@@ -139,7 +150,7 @@ class Meta:
             return self.solvedac[num]["title"], self.solvedac[num]["difficulty"]
         if not interactive:
             return "", ""
-        title = ask(f"  백준 {num} 제목: ")
+        title = ask(f"  백준 {num} 제목 (건너뛰려면 엔터): ")
         tier = ask(f"  백준 {num} 티어 (예: Gold IV): ")
         return title, tier
 
@@ -161,7 +172,7 @@ class Meta:
             pass
         if not interactive:
             return "", ""
-        title = ask(f"  프로그래머스 {num} 제목: ")
+        title = ask(f"  프로그래머스 {num} 제목 (건너뛰려면 엔터): ")
         level = ask(f"  프로그래머스 {num} 레벨 숫자: ")
         return title, f"Level {level}" if level.isdigit() else ""
 
@@ -255,6 +266,7 @@ def main() -> int:
     meta = Meta()
     done = 0
     for kind, folder in sorted(groups, key=lambda k: k[1]):
+        before = answered
         message, entry = plan(kind, folder, meta, interactive=not args.dry_run)
         if message is None:
             if args.dry_run:
@@ -267,6 +279,9 @@ def main() -> int:
             continue
         print(message + ("  (+ problems.toml)" if entry else ""))
         if args.dry_run:
+            continue
+        if answered > before and ask("  이 메시지로 커밋할까요? (엔터=예, n=건너뜀) ").lower() == "n":
+            print(f"[보류] {folder} - 커밋하지 않음")
             continue
         targets = [folder]
         if entry:
@@ -291,4 +306,8 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except KeyboardInterrupt:
+        print("\n중단했습니다. 그 전에 만든 커밋은 그대로 있습니다 (git log 로 확인).")
+        sys.exit(130)
