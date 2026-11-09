@@ -896,6 +896,15 @@ FodyWeavers.xsd
 
 # 자바 관련 설정 무시
 .idea/
+.classpath
+.project
+.settings/
+
+# 이클립스 실행용 입력 (문제 폴더의 input.txt는 올림)
+/input.txt
+
+# Claude Code 로컬 설정
+.claude/
 
 **/tempCodeRunnerFile.**
 
