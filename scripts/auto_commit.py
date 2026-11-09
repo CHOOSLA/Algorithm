@@ -257,7 +257,12 @@ def main() -> int:
     for kind, folder in sorted(groups, key=lambda k: k[1]):
         message, entry = plan(kind, folder, meta, interactive=not args.dry_run)
         if message is None:
-            note = "실행하면 물어봄" if args.dry_run else "제목이나 난이도를 몰라 건너뜀"
+            if args.dry_run:
+                note = "실행하면 물어봄"
+            elif not sys.stdin.isatty():
+                note = "입력을 받을 수 없는 창이라 건너뜀. 터미널에서 직접 실행하면 제목·난이도를 물어봄"
+            else:
+                note = "제목이나 난이도를 입력하지 않아 건너뜀"
             print(f"[보류] {folder} - {note}")
             continue
         print(message + ("  (+ problems.toml)" if entry else ""))
