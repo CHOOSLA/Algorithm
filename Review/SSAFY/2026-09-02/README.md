@@ -6,8 +6,8 @@
 
 | 구분 | 문제 | 과제 폴더 날짜 | 복습 기록 |
 | --- | --- | --- | --- |
-| HW | SWEA_1226 · 미로1 BFS 풀이 | 09-02 | [열기](HW_SWEA_1226_0902/README.md) |
-| WS | SWEA_1233 · [S/W 문제해결 기본] 9일차 | 09-02 | [열기](WS_SWEA_1233_0902/README.md) |
+| HW | SWEA_1226 · 미로1 | 09-02 | [열기](HW_SWEA_1226_0902/README.md) |
+| WS | SWEA_1233 · 사칙연산 유효성 검사 | 09-02 | [열기](WS_SWEA_1233_0902/README.md) |
 | WS | SWEA_2001 · 파리 퇴치 | 09-02 | [열기](WS_SWEA_2001_0902/README.md) |
 
 <!-- END PROBLEMS -->

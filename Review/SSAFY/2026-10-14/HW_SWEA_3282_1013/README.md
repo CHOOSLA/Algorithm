@@ -1,4 +1,4 @@
-# SWEA_3282 · 0/1 knapsack
+# SWEA_3282 · 0/1 Knapsack
 
 [문제 열기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWBJAVpqrzQDFAWr)
 

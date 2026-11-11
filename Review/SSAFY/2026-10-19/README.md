@@ -6,7 +6,7 @@
 
 | 구분 | 문제 | 과제 폴더 날짜 | 복습 기록 |
 | --- | --- | --- | --- |
-| HW | SWEA_5643 · 키 순서 | 10-15 | [열기](HW_SWEA_5643_1015/README.md) |
+| HW | SWEA_5643 · [Professional] 키 순서 | 10-15 | [열기](HW_SWEA_5643_1015/README.md) |
 | HW | SWEA_1494 · 사랑의 카운슬러 | 10-19 | [열기](HW_SWEA_1494_1019/README.md) |
 | WS | SWEA_1263 · 사람 네트워크2 | 10-15 | [열기](WS_SWEA_1263_1015/README.md) |
 | WS | SWEA_4014 · 활주로 건설 | 10-15 | [열기](WS_SWEA_4014_1015/README.md) |

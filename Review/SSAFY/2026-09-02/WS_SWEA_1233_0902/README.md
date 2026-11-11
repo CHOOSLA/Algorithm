@@ -1,4 +1,4 @@
-# SWEA_1233 · [S/W 문제해결 기본] 9일차
+# SWEA_1233 · 사칙연산 유효성 검사
 
 [문제 열기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV141176AIwCFAYD)
 

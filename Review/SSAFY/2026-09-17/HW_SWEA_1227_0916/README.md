@@ -1,4 +1,4 @@
-# SWEA_1217 · 미로 2
+# SWEA_1227 · 미로2
 
 [문제 열기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14wL9KAGkCFAYD)
 

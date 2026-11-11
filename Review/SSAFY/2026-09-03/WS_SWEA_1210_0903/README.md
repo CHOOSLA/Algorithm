@@ -1,4 +1,4 @@
-# SWEA_1210 · [S/W 문제해결 기본] 2일차
+# SWEA_1210 · Ladder1
 
 [문제 열기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14ABYKADACFAYh)
 

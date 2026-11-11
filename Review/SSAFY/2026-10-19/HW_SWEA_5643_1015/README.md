@@ -1,4 +1,4 @@
-# SWEA_5643 · 키 순서
+# SWEA_5643 · [Professional] 키 순서
 
 [문제 열기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWXQsLWKd5cDFAUo)
 

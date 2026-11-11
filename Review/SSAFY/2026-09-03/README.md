@@ -7,7 +7,7 @@
 | 구분 | 문제 | 과제 폴더 날짜 | 복습 기록 |
 | --- | --- | --- | --- |
 | HW | SWEA_9229 · 한빈이와 Spot Mart | 09-03 | [열기](HW_SWEA_9229_0903/README.md) |
-| WS | SWEA_1210 · [S/W 문제해결 기본] 2일차 | 09-03 | [열기](WS_SWEA_1210_0903/README.md) |
+| WS | SWEA_1210 · Ladder1 | 09-03 | [열기](WS_SWEA_1210_0903/README.md) |
 
 <!-- END PROBLEMS -->
 

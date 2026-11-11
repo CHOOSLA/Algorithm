@@ -1,4 +1,4 @@
-# SWEA_1267 · 작업 순서
+# SWEA_1267 · 작업순서
 
 [문제 열기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV18TrIqIwUCFAZN)
 

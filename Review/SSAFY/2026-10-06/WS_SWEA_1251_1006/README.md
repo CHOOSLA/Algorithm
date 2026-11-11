@@ -1,4 +1,4 @@
-# SWEA_1251 · 하나로 (프림)
+# SWEA_1251 · 하나로
 
 [문제 열기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15StKqAQkCFAYD)
 

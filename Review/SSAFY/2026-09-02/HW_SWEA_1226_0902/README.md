@@ -1,4 +1,4 @@
-# SWEA_1226 · 미로1 BFS 풀이
+# SWEA_1226 · 미로1
 
 [문제 열기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14vXUqAGMCFAYD)
 
