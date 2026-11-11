@@ -2,13 +2,13 @@ name: README 동기화 및 검증
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
     paths-ignore:
       - 'readme.md'
       - 'assets/cards/**'
       - 'scripts/.solvedac-cache.json'
   pull_request:
-    branches: [main, master]
+    branches: [main]
 
 permissions:
   contents: write
