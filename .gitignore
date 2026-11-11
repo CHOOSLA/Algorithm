@@ -900,6 +900,15 @@ FodyWeavers.xsd
 .project
 .settings/
 
+# 이클립스 작업공간·플러그인 산출물
+.metadata/
+.factorypath
+.externalToolBuilders/
+.loadpath
+.recommenders/
+*.launch
+RemoteSystemsTempFiles/
+
 # 이클립스 실행용 입력 (문제 폴더의 input.txt는 올림)
 /input.txt
 
