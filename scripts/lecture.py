@@ -9,6 +9,7 @@ import html
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -22,6 +23,9 @@ STYLE = ("body{font:15px/1.6 system-ui,'Malgun Gothic',sans-serif;max-width:960p
          "h1,h2{border-bottom:1px solid #d0d7de;padding-bottom:4px}a{color:#0969da;text-decoration:none}"
          "details{margin-top:4px;font-size:13px}summary{cursor:pointer;color:#57606a}"
          "details ul{margin:4px 0 0;padding-left:18px}")
+# 맥의 브라우저 앱 이름 -> 그 안의 실행 파일 이름. 사파리는 내 컴퓨터 파일끼리의 링크를 막아서 뺐다.
+MAC_BROWSERS = {"Google Chrome": "Google Chrome", "Microsoft Edge": "Microsoft Edge", "Brave Browser": "Brave Browser",
+                "Arc": "Arc", "Firefox": "firefox"}
 
 
 def subtitles(guide: Path) -> dict:
@@ -111,11 +115,53 @@ def view(guide: Path) -> Path:
     return out
 
 
+def mac_browser():
+    """맥에 깔린 브라우저 앱. 없으면 None."""
+    apps = [base / f"{name}.app" for name in MAC_BROWSERS for base in (Path("/Applications"), Path.home() / "Applications")]
+    return next((a for a in apps if a.exists()), None)
+
+
 def start(path: Path):
+    """보기 화면이나 파일을 기본 프로그램으로 연다."""
     if os.name == "nt":
         os.startfile(str(path))
+    elif sys.platform == "darwin":
+        # 사파리에서는 보기 화면의 쪽 번호를 눌러도 아무 일이 없다. 링크를 따라가는 브라우저가 있으면 그쪽으로 연다.
+        app = mac_browser() if path.suffix == ".html" else None
+        subprocess.run(["open", *(["-a", str(app)] if app else []), str(path)], check=False)
     else:
-        subprocess.run(["open" if sys.platform == "darwin" else "xdg-open", str(path)], check=False)
+        subprocess.run(["xdg-open", str(path)], check=False)
+
+
+def page_browser():
+    """주소 끝의 #page=N 을 받아 PDF를 그 쪽에서 여는 브라우저의 실행 파일. 못 찾으면 None."""
+    if sys.platform == "darwin":
+        # open 명령은 파일 주소의 # 뒤를 버려서 앱 안의 실행 파일을 직접 부른다
+        app = mac_browser()
+        return app / "Contents" / "MacOS" / MAC_BROWSERS[app.stem] if app else None
+    if os.name == "nt":
+        import winreg
+        for exe in ("chrome.exe", "msedge.exe", "brave.exe", "firefox.exe"):
+            for hive in (winreg.HKEY_CURRENT_USER, winreg.HKEY_LOCAL_MACHINE):
+                try:
+                    return Path(winreg.QueryValue(hive, rf"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\{exe}"))
+                except OSError:
+                    pass
+        return None
+    hit = next(filter(None, map(shutil.which, ("google-chrome", "chromium", "firefox"))), None)
+    return Path(hit) if hit else None
+
+
+def open_page(pdf: Path, page: int) -> bool:
+    """강의 PDF를 그 쪽에서 연다. 쪽 번호를 받는 브라우저가 없으면 기본 프로그램으로 첫 쪽부터 열고 False 를 돌려준다."""
+    exe = page_browser()
+    if exe is None or not exe.exists():
+        start(pdf)
+        return False
+    flags = subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP if os.name == "nt" else 0
+    subprocess.Popen([str(exe), f"{pdf.resolve().as_uri()}#page={page}"], creationflags=flags,
+                     stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    return True
 
 
 def main():

@@ -259,8 +259,7 @@ def record(entry, paths):
     if not any(p.endswith("Solution.java") for p in paths) or not sys.stdin.isatty():
         return []
     state = rlog.read_state()
-    mine = state.get("id") == entry["id"]  # review 로 시작한 문제면 시작 시각과 힌트 단계를 안다
-    level = state.get("hint", 0) if mine else 0
+    level = state.get("hint", 0) if state.get("id") == entry["id"] else 0  # review 로 시작한 문제면 힌트 단계를 안다
     default = "1" if level == 0 else "3" if level >= 3 else "2"
     try:
         raw = input(f"  결과 (1 혼자 해결, 2 힌트 사용, 3 풀이 확인, s 기록 안 함, 엔터={default}): ").strip().lower() or default
@@ -269,20 +268,51 @@ def record(entry, paths):
         note = input("  막힌 지점 한마디 (없으면 엔터): ").strip()
     except EOFError:
         return []
-    minutes = None
-    if mine:
-        spent = int((datetime.now(rlog.KST) - datetime.fromisoformat(state["started"])).total_seconds() // 60)
-        minutes = spent if 0 < spent <= 600 else None  # 창을 켜 둔 채 하루를 넘긴 시간은 버린다
-        rlog.clear_state()
     result = ("solo", "hint", "solution")[int(raw) - 1]
-    rlog.add(entry["id"], result, minutes, note)
-    refresh()
-    when = rlog.due(rlog.load()[entry["id"]])
+    targets, when = log_result(entry, result, note)
     print(f"  다음 복습: {when.isoformat()}" if when else "  혼자 풀어서 이 문제는 복습을 마쳤습니다.")
     if result == "solution":
         print("  풀이를 봤다면 닫고 빈 파일에서 한 번 더 짜 보는 것까지가 한 번입니다.")
+    return targets
+
+
+def log_result(entry, result, note):
+    """결과를 log.json 에 적고 README 를 다시 만든다. (같은 커밋에 넣을 경로, 다시 풀 날짜)를 돌려준다.
+    혼자 풀어 끝난 문제는 날짜가 None 이다."""
+    state = rlog.read_state()
+    minutes = None
+    if state.get("id") == entry["id"]:  # review 로 시작한 문제면 시작 시각을 안다
+        spent = rlog.spent(state) // 60  # 잠깐 멈춘 동안은 빠진다
+        minutes = spent if 0 < spent <= 600 else None  # 창을 켜 둔 채 하루를 넘긴 시간은 버린다
+        rlog.clear_state()
+    rlog.add(entry["id"], result, minutes, note)
+    refresh()
     day = entry["folder"].split("/")[0]
-    return [f"{REVIEW}/log.json", f"{REVIEW}/README.md", f"{REVIEW}/{day}/README.md"]
+    return ([f"{REVIEW}/log.json", f"{REVIEW}/README.md", f"{REVIEW}/{day}/README.md"],
+            rlog.due(rlog.load()[entry["id"]]))
+
+
+def finish(entry, result, note):
+    """review 화면에서 문제 하나를 마칠 때 부른다. 결과를 적고 그 문제만 커밋해 (커밋 제목, 다시 풀 날짜)를 돌려준다.
+    커밋까지 가지 못하면 기록을 적기 전으로 되돌리고 오류를 그대로 올린다. 그대로 두면 다시 마칠 때 같은 기록이 두 번 남는다."""
+    folder = f"{REVIEW}/{entry['folder']}"
+    message, _ = plan("review", folder, Meta(), interactive=False)
+    day = entry["folder"].split("/")[0]
+    targets = [f"{REVIEW}/log.json", f"{REVIEW}/README.md", f"{REVIEW}/{day}/README.md"]
+    written = [ROOT / p for p in (*targets, f"{folder}/README.md")]
+    before, state = {p: p.read_bytes() for p in written if p.exists()}, rlog.read_state()
+    try:
+        _, when = log_result(entry, result, note)
+        git("add", "-A", "--", folder, *targets)
+        git("commit", "-q", "-m", message, "--", folder, *targets)
+    except Exception:
+        subprocess.run(["git", "-C", str(ROOT), "reset", "-q", "--", folder, *targets], capture_output=True)
+        for p in written:
+            p.write_bytes(before[p]) if p in before else p.unlink(missing_ok=True)
+        if state:
+            rlog.write_state(state)
+        raise
+    return message, when
 
 
 def main() -> int:

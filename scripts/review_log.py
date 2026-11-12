@@ -79,3 +79,18 @@ def write_state(state):
 
 def clear_state():
     STATE.unlink(missing_ok=True)
+
+
+def spent(state):
+    """푼 시간(초). 잠깐 멈춘 동안은 세지 않는다."""
+    end = datetime.fromisoformat(state["paused"]) if state.get("paused") else datetime.now(KST)
+    return max(0, int((end - datetime.fromisoformat(state["started"])).total_seconds()))
+
+
+def toggle_pause(state):
+    """타이머를 멈추거나 다시 돌린 상태를 돌려준다. 다시 돌릴 때는 멈춰 있던 만큼 시작 시각을 뒤로 민다."""
+    now = datetime.now(KST)
+    if not state.get("paused"):
+        return {**state, "paused": now.isoformat(timespec="seconds")}
+    started = datetime.fromisoformat(state["started"]) + (now - datetime.fromisoformat(state["paused"]))
+    return {**{k: v for k, v in state.items() if k != "paused"}, "started": started.isoformat(timespec="seconds")}
