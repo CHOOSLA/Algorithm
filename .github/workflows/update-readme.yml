@@ -49,6 +49,10 @@ jobs:
             echo "META_URL 미설정 — 샘플 사용"
           fi
 
+      - name: Codetree 폴더 이름 정리 (윈도우 금지 문자, 제목의 /)
+        # 확장이 문제 제목을 그대로 폴더 이름으로 쓴다. '?' 가 들어가면 윈도우에서 체크아웃이 안 된다.
+        run: python3 scripts/fix_codetree_paths.py
+
       - name: README 빌드
         run: python3 scripts/generate_readme.py
 
@@ -62,8 +66,9 @@ jobs:
           # Actions 환경에서 특정 브랜치를 확실히 가리키도록 설정
           git checkout main || git checkout -b main
           
-          # README·생성 카드·캐시 변경점 스테이징
+          # README·생성 카드·캐시와 Codetree 폴더 이름 정리분 스테이징
           git add readme.md assets/cards scripts/.solvedac-cache.json
+          git add -A Codetree scripts/problems.toml
           
           # 변경사항이 존재하는 경우에만 amend 커밋 및 force push
           if ! git diff --cached --quiet; then

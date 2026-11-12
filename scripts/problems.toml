@@ -292,7 +292,8 @@ display = "Trail 2"
 # total = 0  # Codetree 의 Trail 2 총 문제 수
 
 [codetree_overrides]
-# 윈도우는 파일 이름에 ? 를 쓸 수 없어 폴더는 전각 ？ 로 바꿨다. 커밋 제목과 맞춰 시도 기록이 붙도록 표시 이름은 원래대로 둔다.
+# 제목의 윈도우 금지 문자(<>:"\|?*)와 / 는 fix_codetree_paths.py 가 전각 문자로 바꾼다(CI 가 README 빌드 전에 실행).
+# 커밋 제목과 맞춰 시도 기록이 붙도록 표시 이름은 원래 제목으로 둔다.
 "trail3/왜 O를 쓸까？" = { display = "왜 O를 쓸까?" }
 "trail3/이진탐색？" = { display = "이진탐색?" }
 "trail3/이진？ 순차？" = { display = "이진? 순차?" }

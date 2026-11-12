@@ -12,15 +12,15 @@ Lab에 제출한 본인 풀이를 날짜별로 다시 풉니다. 문제별 빈 J
 
 ## 🌳 Codetree (메인 트랙)
 
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20261112T00243" alt="summary"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20261112T00321" alt="summary"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20261112T00243" alt="streak"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20261112T00321" alt="streak"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20261112T00243" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20261112T00243" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20261112T00243" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20261112T00243" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20261112T00243" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20261112T00243" alt="trail 5"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20261112T00321" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20261112T00321" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20261112T00321" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20261112T00321" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20261112T00321" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20261112T00321" alt="trail 5"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20261112T00243" alt="daily xp"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20261112T00321" alt="daily xp"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20261112T00243" alt="by type"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20261112T00321" alt="by type"/></div>
 
 ## 📊 전체 현황
 
@@ -449,7 +449,7 @@ Lab에 제출한 본인 풀이를 날짜별로 다시 풉니다. 문제별 빈 J
 ## Codetree 문제 정리
 
 > ### 📈 Codetree 학습 분석
-> - **첫 시도 정답률**: 58% (157/269)
+> - **첫 시도 정답률**: 58% (157/270)
 > - **평균 시도 수**: 1.5회
 > - **총 재도전**: 143회
 
@@ -618,7 +618,7 @@ Lab에 제출한 본인 풀이를 날짜별로 다시 풉니다. 문제별 빈 J
 
 | 문제 | 시도 | 시간 | 메모리 |
 | --- | --- | ---: | ---: |
-| 1 | ✅ | - | - |
+| 1/3 | ❌ | - | - |
 | In-Place Sort | ❌ | - | - |
 | In-Place Sort가 될 가능성 | ✅ | - | - |
 | In-Place한 생각 | ❌ | - | - |
