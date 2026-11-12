@@ -41,6 +41,7 @@ def _git_log(format_str: str) -> list[str]:
             ["git", "log", f"--format={format_str}"],
             capture_output=True,
             text=True,
+            encoding="utf-8",  # 윈도우 기본값(cp949)으로는 한글 커밋 메시지를 못 읽는다
             cwd=config.ROOT,
             check=True,
         )
@@ -56,6 +57,7 @@ def auto_extract_swea_meta() -> dict[str, dict]:
             ["git", "log", "--diff-filter=A", "--reverse", "--name-only", "--format=COMMIT|%s"],
             capture_output=True,
             text=True,
+            encoding="utf-8",  # 윈도우 기본값(cp949)으로는 한글 커밋 메시지를 못 읽는다
             cwd=config.ROOT,
             check=True,
         )
