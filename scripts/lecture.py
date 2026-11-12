@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import html
+import json
 import os
 import re
 import subprocess
@@ -14,12 +15,28 @@ import sys
 import tempfile
 from pathlib import Path
 
-from prepare_ssafy_review import guide_dir
+from prepare_ssafy_review import guide_dir, ranges, short, span
 
 STYLE = ("body{font:15px/1.6 system-ui,'Malgun Gothic',sans-serif;max-width:960px;margin:24px auto;padding:0 16px}"
          "table{border-collapse:collapse;margin:8px 0}td,th{border:1px solid #d0d7de;padding:6px 12px}"
          "th{background:#f6f8fa}code{background:#eff1f3;padding:1px 5px;border-radius:4px}"
-         "h1,h2{border-bottom:1px solid #d0d7de;padding-bottom:4px}a{color:#0969da;text-decoration:none}")
+         "h1,h2{border-bottom:1px solid #d0d7de;padding-bottom:4px}a{color:#0969da;text-decoration:none}"
+         "details{margin-top:4px;font-size:13px}summary{cursor:pointer;color:#57606a}"
+         "details ul{margin:4px 0 0;padding-left:18px}")
+
+
+def subtitles(guide: Path) -> dict:
+    """장 링크 이름(Day12-3)마다 그 장의 소제목 (제목, 시작 쪽, 끝 쪽). 떠올린 뒤에 펼쳐 보는 칸에 쓴다."""
+    data = json.loads((guide.parent / "lectures.json").read_text(encoding="utf-8"))
+    out = {}
+    for lec in data["lectures"]:
+        chapter = None
+        for lv, title, a, b in ranges(lec):
+            if lv == 1:
+                chapter = out.setdefault(f"{short(lec)}-{a}", {"pdf": lec["pdf"], "items": []})
+            elif chapter:
+                chapter["items"].append((title, a, b))
+    return out
 
 
 def render(guide: Path) -> str:
@@ -27,6 +44,17 @@ def render(guide: Path) -> str:
     text = guide.read_text(encoding="utf-8")
     base = guide.parent.as_uri() + "/"
     refs = {k: v for k, v in re.findall(r"^\[([^\]]+)\]:\s*<(.+)>\s*$", text, re.M)}
+    subs = subtitles(guide)
+
+    def fold(cell):
+        """떠올리기 표의 쪽 칸([p3–12][Day12-3])이면 그 장의 소제목을 접힌 칸으로 만든다."""
+        m = re.fullmatch(r"\[[^\]]+\]\[([^\]]+)\]", cell)
+        sub = subs.get(m[1]) if m else None
+        if not sub or not sub["items"]:
+            return ""
+        items = "".join(f'<li>{html.escape(t)} <a href="{base}../{sub["pdf"]}#page={a}" target="_blank">{span(a, b)}</a></li>'
+                        for t, a, b in sub["items"])
+        return f"<details><summary>소제목 {len(sub['items'])}개</summary><ul>{items}</ul></details>"
 
     def inline(s):
         s = html.escape(s, quote=False).replace("&lt;br&gt;", "<br>")
@@ -59,7 +87,10 @@ def render(guide: Path) -> str:
                 close()
                 out.append("<table>")
                 mode = "table"
-            out.append("<tr>" + "".join(f"<{tag}>{inline(c)}</{tag}>" for c in cells) + "</tr>")
+            body = [inline(c) for c in cells]
+            if tag == "td" and len(cells) > 1:
+                body[0] += fold(cells[1])
+            out.append("<tr>" + "".join(f"<{tag}>{c}</{tag}>" for c in body) + "</tr>")
         elif re.match(r"\d+\. ", line):
             if mode != "ol":
                 close()
