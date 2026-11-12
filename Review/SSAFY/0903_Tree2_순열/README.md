@@ -6,7 +6,7 @@
 
 | 구분 | 문제 | 최근 결과 | 다음 복습 |
 | --- | --- | --- | --- |
-| WS | [SWEA_1210 · Ladder1](WS_SWEA_1210_0903/README.md) | 아직 안 풂 | - |
+| WS | [SWEA_1210 · Ladder1](WS_SWEA_1210_0903/README.md) | 힌트 사용 (11-13) | 11-16 |
 | HW | [SWEA_9229 · 한빈이와 Spot Mart](HW_SWEA_9229_0903/README.md) | 아직 안 풂 | - |
 
 <!-- END PROBLEMS -->

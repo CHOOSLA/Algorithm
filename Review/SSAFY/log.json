@@ -40,5 +40,12 @@
   "result": "solo",
   "minutes": null,
   "note": ""
+ },
+ {
+  "id": "2026:WS/src/algo_9:09-03:SWEA_1210",
+  "date": "2026-11-13",
+  "result": "hint",
+  "minutes": 29,
+  "note": "방향을 바꾼뒤에 이동시키는 과정이 없어서 무한 루프였음"
  }
 ]
