@@ -5,9 +5,10 @@
 #   make check        빌드 결과가 commit 된 readme.md 와 일치하는지 검증 (CI 와 동일)
 #   make verify ID=N  solved.ac 에서 특정 백준 문제 메타 조회
 #   make commit       바뀐 풀이를 문제별로 플랫폼 형식에 맞춰 커밋 (N=1 은 메시지만 출력)
+#   make lecture D=0909  그날 강의 가이드 열기 (D 없으면 목록)
 #   make help         사용법 출력
 
-.PHONY: build check verify help install-hooks uninstall-hooks lint-commit commit
+.PHONY: build check verify help install-hooks uninstall-hooks lint-commit commit lecture
 .DEFAULT_GOAL := build
 
 PY := python3
@@ -27,6 +28,9 @@ lint-commit:
 
 commit:
 	@$(PY) scripts/auto_commit.py $(if $(N),--dry-run)
+
+lecture:
+	@$(PY) scripts/lecture.py $(D)
 
 install-hooks:
 	@chmod +x scripts/hooks/*

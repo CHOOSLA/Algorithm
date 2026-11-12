@@ -11,7 +11,7 @@
     "source_repository": "HW/09-01",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWGsRbk6AQIDFAVW",
-    "folder": "2026-09-01/HW_SWEA_3499_0901"
+    "folder": "0901_Queue_LinkedList1/HW_SWEA_3499_0901"
   },
   {
     "id": "2026:WS/src/algo_9:08-31:SWEA_3260",
@@ -25,7 +25,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0831/SWEA_3260_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWBC1lOad9IDFAWr",
-    "folder": "2026-09-01/WS_SWEA_3260_0831"
+    "folder": "0831_Stack/WS_SWEA_3260_0831"
   },
   {
     "id": "2026:WS/src/algo_9:09-01:SWEA_1225",
@@ -39,7 +39,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0901/SWEA_1225_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14uWl6AF0CFAYD&categoryId=AV14uWl6AF0CFAYD&categoryType=CODE&problemTitle=1225&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1",
-    "folder": "2026-09-01/WS_SWEA_1225_0901"
+    "folder": "0901_Queue_LinkedList1/WS_SWEA_1225_0901"
   },
   {
     "id": "2026:HW/09-02:09-02:SWEA_1226",
@@ -53,7 +53,7 @@
     "source_repository": "HW/09-02",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14vXUqAGMCFAYD",
-    "folder": "2026-09-02/HW_SWEA_1226_0902"
+    "folder": "0902_LinkedList2_Tree1/HW_SWEA_1226_0902"
   },
   {
     "id": "2026:WS/src/algo_9:09-02:SWEA_1233",
@@ -67,7 +67,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0902/SWEA_1233_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV141176AIwCFAYD",
-    "folder": "2026-09-02/WS_SWEA_1233_0902"
+    "folder": "0902_LinkedList2_Tree1/WS_SWEA_1233_0902"
   },
   {
     "id": "2026:WS/src/algo_9:09-02:SWEA_2001",
@@ -81,7 +81,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0902/SWEA_2001_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PzOCKAigDFAUq",
-    "folder": "2026-09-02/WS_SWEA_2001_0902"
+    "folder": "0902_LinkedList2_Tree1/WS_SWEA_2001_0902"
   },
   {
     "id": "2026:HW/09-03:09-03:SWEA_9229",
@@ -95,7 +95,7 @@
     "source_repository": "HW/09-03",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AW8Wj7cqbY0DFAXN",
-    "folder": "2026-09-03/HW_SWEA_9229_0903"
+    "folder": "0903_Tree2_순열/HW_SWEA_9229_0903"
   },
   {
     "id": "2026:WS/src/algo_9:09-03:SWEA_1210",
@@ -109,7 +109,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0903/SWEA_1210_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14ABYKADACFAYh",
-    "folder": "2026-09-03/WS_SWEA_1210_0903"
+    "folder": "0903_Tree2_순열/WS_SWEA_1210_0903"
   },
   {
     "id": "2026:HW/09-07:09-07:SWEA_6808",
@@ -123,7 +123,7 @@
     "source_repository": "HW/09-07",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWgv9va6HnkDFAW0",
-    "folder": "2026-09-07/HW_SWEA_6808_0907"
+    "folder": "0907_조합_부분집합/HW_SWEA_6808_0907"
   },
   {
     "id": "2026:WS/src/algo_9:09-07:SWEA_5215",
@@ -137,7 +137,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0907/SWEA_5215_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWT-lPB6dHUDFAVT",
-    "folder": "2026-09-07/WS_SWEA_5215_0907"
+    "folder": "0907_조합_부분집합/WS_SWEA_5215_0907"
   },
   {
     "id": "2026:WS/src/algo_9:09-07:SWEA_8275",
@@ -151,7 +151,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0907/SWEA_8275_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWxQ310aOlQDFAWL",
-    "folder": "2026-09-07/WS_SWEA_8275_0907"
+    "folder": "0907_조합_부분집합/WS_SWEA_8275_0907"
   },
   {
     "id": "2026:HW/09-08:09-08:SWEA_3421",
@@ -165,7 +165,7 @@
     "source_repository": "HW/09-08",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWErcQmKy6kDFAXi",
-    "folder": "2026-09-08/HW_SWEA_3421_0908"
+    "folder": "0908_완전탐색응용_문제풀이/HW_SWEA_3421_0908"
   },
   {
     "id": "2026:WS/src/algo_9:09-08:SWEA_1873",
@@ -179,7 +179,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0908/SWEA_1873_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5LyE7KD2ADFAXc",
-    "folder": "2026-09-08/WS_SWEA_1873_0908"
+    "folder": "0908_완전탐색응용_문제풀이/WS_SWEA_1873_0908"
   },
   {
     "id": "2026:WS/src/algo_9:09-09:SWEA_1952",
@@ -193,7 +193,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0909/SWEA_1952_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpFQaAQMDFAUq",
-    "folder": "2026-09-09/WS_SWEA_1952_0909"
+    "folder": "0909_백트래킹_탐욕/WS_SWEA_1952_0909"
   },
   {
     "id": "2026:WS/src/algo_9:09-09:SWEA_2806",
@@ -207,7 +207,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0909/SWEA_2806_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV7GKs06AU0DFAXB",
-    "folder": "2026-09-09/WS_SWEA_2806_0909"
+    "folder": "0909_백트래킹_탐욕/WS_SWEA_2806_0909"
   },
   {
     "id": "2026:HW/09-09:09-09:SWEA_1767",
@@ -221,7 +221,7 @@
     "source_repository": "HW/09-09",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV4suNtaXFEDFAUf",
-    "folder": "2026-09-10/HW_SWEA_1767_0909"
+    "folder": "0909_백트래킹_탐욕/HW_SWEA_1767_0909"
   },
   {
     "id": "2026:HW/09-10:09-10:SWEA_1486",
@@ -235,7 +235,7 @@
     "source_repository": "HW/09-10",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV2b7Yf6ABcBBASw",
-    "folder": "2026-09-10/HW_SWEA_1486_0910"
+    "folder": "0910_분할정복_문제풀이/HW_SWEA_1486_0910"
   },
   {
     "id": "2026:WS/src/algo_9:09-10:SWEA_2805",
@@ -249,7 +249,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0910/SWEA_2805_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV7GLXqKAWYDFAXB",
-    "folder": "2026-09-10/WS_SWEA_2805_0910"
+    "folder": "0910_분할정복_문제풀이/WS_SWEA_2805_0910"
   },
   {
     "id": "2026:WS/src/algo_9:09-10:SWEA_4796",
@@ -263,7 +263,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0910/SWEA_4796_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWS2h6AKBCoDFAVT",
-    "folder": "2026-09-10/WS_SWEA_4796_0910"
+    "folder": "0910_분할정복_문제풀이/WS_SWEA_4796_0910"
   },
   {
     "id": "2026:WS/src/algo_9:09-15:SWEA_4008",
@@ -277,7 +277,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0915/SWEA_4008_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWIeRZV6kBUDFAVH",
-    "folder": "2026-09-16/WS_SWEA_4008_0915"
+    "folder": "0915_그래프2/WS_SWEA_4008_0915"
   },
   {
     "id": "2026:WS/src/algo_9:09-15:SWEA_7733",
@@ -291,7 +291,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0915/SWEA_7733_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWrDOdQqRCUDFARG",
-    "folder": "2026-09-16/WS_SWEA_7733_0915"
+    "folder": "0915_그래프2/WS_SWEA_7733_0915"
   },
   {
     "id": "2026:HW/09-15:09-15:SWEA_1868",
@@ -305,7 +305,7 @@
     "source_repository": "HW/09-15",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5LwsHaD1MDFAXc",
-    "folder": "2026-09-17/HW_SWEA_1868_0915"
+    "folder": "0915_그래프2/HW_SWEA_1868_0915"
   },
   {
     "id": "2026:HW/09-16:09-16:SWEA_1217",
@@ -319,7 +319,7 @@
     "source_repository": "HW/09-16",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14wL9KAGkCFAYD",
-    "folder": "2026-09-17/HW_SWEA_1227_0916"
+    "folder": "0916_그래프3/HW_SWEA_1227_0916"
   },
   {
     "id": "2026:HW/09-17:09-17:SWEA_5648",
@@ -333,7 +333,7 @@
     "source_repository": "HW/09-17",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWXRFInKex8DFAUo",
-    "folder": "2026-09-18/HW_SWEA_5648_0917"
+    "folder": "0917_서로소집합/HW_SWEA_5648_0917"
   },
   {
     "id": "2026:HW/09-18:09-18:SWEA_6782",
@@ -347,7 +347,7 @@
     "source_repository": "HW/09-18",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWgqsAlKr9sDFAW0",
-    "folder": "2026-09-18/HW_SWEA_6782_0918"
+    "folder": "0918_문제풀이/HW_SWEA_6782_0918"
   },
   {
     "id": "2026:HW/09-11:09-11:SWEA_7206",
@@ -361,7 +361,7 @@
     "source_repository": "HW/09-11",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/userProblem/userProblemDetail.do?contestProbId=AWlGyBQqaEgDFASG",
-    "folder": "2026-09-28/HW_SWEA_7206_0911"
+    "folder": "0911_그래프1/HW_SWEA_7206_0911"
   },
   {
     "id": "2026:WS/src/algo_9:09-16:SWEA_1267",
@@ -375,7 +375,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0916/SWEA_1267_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV18TrIqIwUCFAZN",
-    "folder": "2026-09-28/WS_SWEA_1267_0916"
+    "folder": "0916_그래프3/WS_SWEA_1267_0916"
   },
   {
     "id": "2026:WS/src/algo_9:09-16:SWEA_2105",
@@ -389,7 +389,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0916/SWEA_2105_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5VwAr6APYDFAWu",
-    "folder": "2026-09-28/WS_SWEA_2105_0916"
+    "folder": "0916_그래프3/WS_SWEA_2105_0916"
   },
   {
     "id": "2026:WS/src/algo_9:09-17:SWEA_3289",
@@ -403,7 +403,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0917/SWEA_3289_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWBJKA6qr2oDFAWr",
-    "folder": "2026-09-28/WS_SWEA_3289_0917"
+    "folder": "0917_서로소집합/WS_SWEA_3289_0917"
   },
   {
     "id": "2026:WS/src/algo_9:09-17:SWEA_7465",
@@ -417,7 +417,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0917/SWEA_7465_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWngfZVa9XwDFAQU",
-    "folder": "2026-09-28/WS_SWEA_7465_0917"
+    "folder": "0917_서로소집합/WS_SWEA_7465_0917"
   },
   {
     "id": "2026:WS/src/algo_9:09-18:SWEA_2115",
@@ -431,7 +431,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0918/SWEA_2115_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5V4A46AdIDFAWu",
-    "folder": "2026-09-28/WS_SWEA_2115_0918"
+    "folder": "0918_문제풀이/WS_SWEA_2115_0918"
   },
   {
     "id": "2026:WS/src/algo_9:09-18:SWEA_4130",
@@ -445,7 +445,7 @@
     "source_repository": "WS/src/algo_9",
     "source_file": "S_0918/SWEA_4130_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWJfhgr6DTQDFAXc",
-    "folder": "2026-09-28/WS_SWEA_4130_0918"
+    "folder": "0918_문제풀이/WS_SWEA_4130_0918"
   },
   {
     "id": "2026:WS/src2/algo2_10:10-06:SWEA_1251",
@@ -459,7 +459,7 @@
     "source_repository": "WS/src2/algo2_10",
     "source_file": "S_1006/SWEA_1251_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15StKqAQkCFAYD",
-    "folder": "2026-10-06/WS_SWEA_1251_1006"
+    "folder": "1006_최소신장트리1_최소신장트리2/WS_SWEA_1251_1006"
   },
   {
     "id": "2026:WS/src2/algo2_10:10-06:SWEA_3124",
@@ -473,7 +473,7 @@
     "source_repository": "WS/src2/algo2_10",
     "source_file": "S_1006/SWEA_3124_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV_mSnmKUckDFAWb",
-    "folder": "2026-10-06/WS_SWEA_3124_1006"
+    "folder": "1006_최소신장트리1_최소신장트리2/WS_SWEA_3124_1006"
   },
   {
     "id": "2026:HW/10-06:10-06:SWEA_1251",
@@ -487,7 +487,7 @@
     "source_repository": "HW/10-06",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15StKqAQkCFAYD",
-    "folder": "2026-10-07/HW_SWEA_1251_1006"
+    "folder": "1006_최소신장트리1_최소신장트리2/HW_SWEA_1251_1006"
   },
   {
     "id": "2026:HW/10-07:10-07:SWEA_1247",
@@ -501,7 +501,7 @@
     "source_repository": "HW/10-07",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15OZ4qAPICFAYD",
-    "folder": "2026-10-07/HW_SWEA_1247_1007"
+    "folder": "1007_최단경로1_최단경로2/HW_SWEA_1247_1007"
   },
   {
     "id": "2026:HW/10-12:10-12:SWEA_2117",
@@ -515,7 +515,7 @@
     "source_repository": "HW/10-12",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5V61LqAf8DFAWu",
-    "folder": "2026-10-12/HW_SWEA_2117_1012"
+    "folder": "1012_DP1/HW_SWEA_2117_1012"
   },
   {
     "id": "2026:WS/src2/algo2_10:10-12:SWEA_1952",
@@ -529,7 +529,7 @@
     "source_repository": "WS/src2/algo2_10",
     "source_file": "S_1012/SWEA_1952_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpFQaAQMDFAUq ",
-    "folder": "2026-10-12/WS_SWEA_1952_1012"
+    "folder": "1012_DP1/WS_SWEA_1952_1012"
   },
   {
     "id": "2026:WS/src2/algo2_10:10-12:막대색칠하기",
@@ -543,7 +543,7 @@
     "source_repository": "WS/src2/algo2_10",
     "source_file": "S_1012/막대색칠하기_추창우.java",
     "problem_url": null,
-    "folder": "2026-10-12/WS_막대색칠하기_1012"
+    "folder": "1012_DP1/WS_막대색칠하기_1012"
   },
   {
     "id": "2026:WS/src2/algo2_10:10-12:아파트색칠하기",
@@ -557,7 +557,7 @@
     "source_repository": "WS/src2/algo2_10",
     "source_file": "S_1012/아파트색칠하기_추창우.java",
     "problem_url": null,
-    "folder": "2026-10-12/WS_아파트색칠하기_1012"
+    "folder": "1012_DP1/WS_아파트색칠하기_1012"
   },
   {
     "id": "2026:HW/10-13:10-13:SWEA_3282",
@@ -571,7 +571,7 @@
     "source_repository": "HW/10-13",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWBJAVpqrzQDFAWr",
-    "folder": "2026-10-14/HW_SWEA_3282_1013"
+    "folder": "1013_DP2_Knapsack/HW_SWEA_3282_1013"
   },
   {
     "id": "2026:HW/10-14:10-14:SWEA_2112",
@@ -585,7 +585,7 @@
     "source_repository": "HW/10-14",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5V1SYKAaUDFAWu",
-    "folder": "2026-10-14/HW_SWEA_2112_1014"
+    "folder": "1014_최장증가부분수열/HW_SWEA_2112_1014"
   },
   {
     "id": "2026:WS/src2/algo2_10:10-14:SWEA_2477",
@@ -599,7 +599,7 @@
     "source_repository": "WS/src2/algo2_10",
     "source_file": "S_1014/SWEA_2477_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV6c6bgaIuoDFAXy",
-    "folder": "2026-10-14/WS_SWEA_2477_1014"
+    "folder": "1014_최장증가부분수열/WS_SWEA_2477_1014"
   },
   {
     "id": "2026:WS/src2/algo2_10:10-14:SWEA_5656",
@@ -613,7 +613,7 @@
     "source_repository": "WS/src2/algo2_10",
     "source_file": "S_1014/SWEA_5656_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWXRQm6qfL0DFAUo",
-    "folder": "2026-10-14/WS_SWEA_5656_1014"
+    "folder": "1014_최장증가부분수열/WS_SWEA_5656_1014"
   },
   {
     "id": "2026:HW/10-15:10-15:SWEA_5643",
@@ -627,7 +627,7 @@
     "source_repository": "HW/10-15",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWXQsLWKd5cDFAUo",
-    "folder": "2026-10-19/HW_SWEA_5643_1015"
+    "folder": "1015_관통/HW_SWEA_5643_1015"
   },
   {
     "id": "2026:HW/10-19:10-19:SWEA_1494",
@@ -641,7 +641,7 @@
     "source_repository": "HW/10-19",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV2b_WPaAEIBBASw",
-    "folder": "2026-10-19/HW_SWEA_1494_1019"
+    "folder": "1019_문자열_문제풀이/HW_SWEA_1494_1019"
   },
   {
     "id": "2026:WS/src2/algo2_10:10-15:SWEA_1263",
@@ -655,7 +655,7 @@
     "source_repository": "WS/src2/algo2_10",
     "source_file": "S_1015/SWEA_1263_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV18P2B6Iu8CFAZN",
-    "folder": "2026-10-19/WS_SWEA_1263_1015"
+    "folder": "1015_관통/WS_SWEA_1263_1015"
   },
   {
     "id": "2026:WS/src2/algo2_10:10-15:SWEA_4014",
@@ -669,7 +669,7 @@
     "source_repository": "WS/src2/algo2_10",
     "source_file": "S_1015/SWEA_4014_추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWIeW7FakkUDFAVH",
-    "folder": "2026-10-19/WS_SWEA_4014_1015"
+    "folder": "1015_관통/WS_SWEA_4014_1015"
   },
   {
     "id": "2026:WS/src2/algo2_10:10-20:SWEA_24528",
@@ -683,7 +683,7 @@
     "source_repository": "WS/src2/algo2_10",
     "source_file": "S_1020/SWEA_24528.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AZel1jGqmmTHBISV",
-    "folder": "2026-10-20/WS_SWEA_24528_1020"
+    "folder": "1020_컴퓨팅사고력/WS_SWEA_24528_1020"
   },
   {
     "id": "2026:WS/src2/algo2_10:10-20:SWEA_5607",
@@ -697,7 +697,7 @@
     "source_repository": "WS/src2/algo2_10",
     "source_file": "S_1020/SWEA_5607.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWXGKdbqczEDFAUo",
-    "folder": "2026-10-20/WS_SWEA_5607_1020"
+    "folder": "1020_컴퓨팅사고력/WS_SWEA_5607_1020"
   },
   {
     "id": "2026:HW/10-20:10-20:SWEA_14695",
@@ -711,6 +711,6 @@
     "source_repository": "HW/10-20",
     "source_file": "추창우.java",
     "problem_url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AYJW63G6lQ4DFASv",
-    "folder": "2026-10-21/HW_SWEA_14695_1020"
+    "folder": "1020_컴퓨팅사고력/HW_SWEA_14695_1020"
   }
 ]

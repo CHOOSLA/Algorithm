@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """바뀐 풀이 폴더를 찾아 플랫폼 형식대로 문제마다 커밋 하나씩 만든다.
 
-    Review/SSAFY/<날짜>/<문제>   [복습 09-01] SEA(D3): 3260. 두 수의 덧셈
+    Review/SSAFY/<과제날짜_강의>/<문제>   [복습 09-01] SEA(D3): 1225. 암호생성기
     SW Expert Academy/<번호>     SEA(D2): 1961. 숫자 배열 회전
     BaekJoon/<유형>/<번호>       [골드4] 인구 이동 - 백준
     Programmers/<번호>           [Lv2] 올바른 괄호 - 프로그래머스
@@ -209,7 +209,7 @@ def plan(kind, folder, meta, interactive):
     fix = "[수정] " if kind != "review" and is_tracked(folder) else ""
 
     if kind == "review":
-        tag = f"[복습 {parts[2][5:]}]"  # 2026-09-01 -> 09-01
+        tag = f"[복습 {parts[2][:2]}-{parts[2][2:4]}]"  # 0901_Queue_LinkedList1 -> 09-01
         if len(parts) == 3:
             return f"{tag} 날짜 메모", None
         record = meta.review.get(f"{parts[2]}/{parts[3]}")
