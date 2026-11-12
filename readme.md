@@ -12,15 +12,15 @@ Lab에 제출한 본인 풀이를 날짜별로 다시 풉니다. 문제별 빈 J
 
 ## 🌳 Codetree (메인 트랙)
 
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20261111T16070" alt="summary"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/summary.svg?v=20261112T00243" alt="summary"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20261111T16070" alt="streak"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/streak.svg?v=20261112T00243" alt="streak"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20261111T16070" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20261111T16070" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20261111T16070" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20261111T16070" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20261111T16070" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20261111T16070" alt="trail 5"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/course/0.svg?v=20261112T00243" alt="trail 0"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/1.svg?v=20261112T00243" alt="trail 1"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/2.svg?v=20261112T00243" alt="trail 2"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/3.svg?v=20261112T00243" alt="trail 3"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/4.svg?v=20261112T00243" alt="trail 4"/><img src="https://codetreemeta.duckdns.org/codetree/cards/course/5.svg?v=20261112T00243" alt="trail 5"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20261111T16070" alt="daily xp"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/xp.svg?v=20261112T00243" alt="daily xp"/></div>
 <br/>
-<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20261111T16070" alt="by type"/></div>
+<div align="center"><img src="https://codetreemeta.duckdns.org/codetree/cards/types.svg?v=20261112T00243" alt="by type"/></div>
 
 ## 📊 전체 현황
 
@@ -31,9 +31,9 @@ Lab에 제출한 본인 풀이를 날짜별로 다시 풉니다. 문제별 빈 J
 <div align="center"><img src="./assets/cards/attempts.svg" alt="toughest"/></div>
 
 > ### 📅 오늘의 복습 추천 문제 (Spaced Repetition)
-> **카드 정렬하기** (BaekJoon · Gold IV)
-> - **추천 사유**: 정기 학습 복습 및 망각 방지
-> - **풀이 코드**: [BaekJoon/1715](./BaekJoon/Greedy/1715)
+> **건망증** (Codetree · trail3)
+> - **추천 사유**: 이전 풀이 시도 이력 있음 (✅)
+> - **풀이 코드**: [Codetree/건망증](./Codetree/trail3/%EA%B1%B4%EB%A7%9D%EC%A6%9D)
 
 
 ## 폴더 구조
@@ -701,8 +701,8 @@ Lab에 제출한 본인 풀이를 날짜별로 다시 풉니다. 문제별 빈 J
 | 음주 코딩 | ❌ | - | - |
 | 이동 횟수 | ✅ | - | - |
 | 이중 연결 리스트 | ✅ | - | - |
-| 이진? 순차? | ✅ | - | - |
 | 이진탐색? | ✅ | - | - |
+| 이진? 순차? | ✅ | - | - |
 | 잘못된 코드 | ✅ | - | - |
 | 재귀함수의 시간복잡도 | ✅ | - | - |
 | 적합한 기수정렬 | ❌ | - | - |
