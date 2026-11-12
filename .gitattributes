@@ -1,2 +1,6 @@
 # 윈도우 cmd 는 LF 줄바꿈의 .cmd 를 잘못 읽을 수 있다
 *.cmd text eol=crlf
+
+# 스크립트가 만드는 복습 목록과 기록은 어느 기기에서 만들어도 줄바꿈이 같아야 한다
+Review/SSAFY/**/README.md text eol=lf
+Review/SSAFY/*.json text eol=lf

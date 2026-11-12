@@ -9,6 +9,7 @@
 README 생성기는 SEA 커밋 제목과 problems.toml 에서 문제 정보를 읽는다. 그래서 형식을 손으로
 맞추지 않게 하고, 백준·프로그래머스는 problems.toml 에 한 줄을 같은 커밋으로 넣는다.
 이미 커밋된 문제를 고치면 앞에 [수정] 을 붙여 풀이 수 집계에서 뺀다.
+복습 문제는 혼자 풀었는지와 막힌 지점을 물어 Review/SSAFY/log.json 에 적고 같은 커밋에 넣는다.
 제목·난이도는 저장소 기록과 공개 페이지에서 찾고, 못 찾으면 한 번 묻는다.
 코드트리는 사이트가 직접 커밋하므로 다루지 않는다.
 
@@ -21,6 +22,7 @@ from __future__ import annotations
 
 import argparse
 from collections import defaultdict
+from datetime import datetime
 import json
 from pathlib import Path
 import re
@@ -33,6 +35,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lib import config
 from lib.client import _fetch_solvedac_one, _load_solvedac_cache, _save_solvedac_cache
 from lib.extractor import auto_extract_swea_meta
+from prepare_ssafy_review import refresh
+import review_log as rlog
 
 ROOT = config.ROOT
 TOML = config.DATA_FILE
@@ -249,6 +253,38 @@ def plan(kind, folder, meta, interactive):
     return f"{fix}[Lv{difficulty.split()[1]}] {title} - 프로그래머스", entry
 
 
+def record(entry, paths):
+    """복습 문제의 풀이가 바뀌었으면 결과를 물어 log.json 에 적고 README 를 다시 만든다.
+    같은 커밋에 넣을 경로를 돌려준다. 묻지 못하는 창이거나 s 를 고르면 기록하지 않는다."""
+    if not any(p.endswith("Solution.java") for p in paths) or not sys.stdin.isatty():
+        return []
+    state = rlog.read_state()
+    mine = state.get("id") == entry["id"]  # review 로 시작한 문제면 시작 시각과 힌트 단계를 안다
+    level = state.get("hint", 0) if mine else 0
+    default = "1" if level == 0 else "3" if level >= 3 else "2"
+    try:
+        raw = input(f"  결과 (1 혼자 해결, 2 힌트 사용, 3 풀이 확인, s 기록 안 함, 엔터={default}): ").strip().lower() or default
+        if raw not in ("1", "2", "3"):
+            return []
+        note = input("  막힌 지점 한마디 (없으면 엔터): ").strip()
+    except EOFError:
+        return []
+    minutes = None
+    if mine:
+        spent = int((datetime.now(rlog.KST) - datetime.fromisoformat(state["started"])).total_seconds() // 60)
+        minutes = spent if 0 < spent <= 600 else None  # 창을 켜 둔 채 하루를 넘긴 시간은 버린다
+        rlog.clear_state()
+    result = ("solo", "hint", "solution")[int(raw) - 1]
+    rlog.add(entry["id"], result, minutes, note)
+    refresh()
+    when = rlog.due(rlog.load()[entry["id"]])
+    print(f"  다음 복습: {when.isoformat()}" if when else "  혼자 풀어서 이 문제는 복습을 마쳤습니다.")
+    if result == "solution":
+        print("  풀이를 봤다면 닫고 빈 파일에서 한 번 더 짜 보는 것까지가 한 번입니다.")
+    day = entry["folder"].split("/")[0]
+    return [f"{REVIEW}/log.json", f"{REVIEW}/README.md", f"{REVIEW}/{day}/README.md"]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="풀이를 문제별로 플랫폼 형식에 맞춰 커밋")
     parser.add_argument("-n", "--dry-run", action="store_true", help="메시지만 출력")
@@ -284,6 +320,9 @@ def main() -> int:
             print(f"[보류] {folder} - 커밋하지 않음")
             continue
         targets = [folder]
+        reviewed = meta.review.get("/".join(folder.split("/")[2:])) if kind == "review" else None
+        if reviewed:
+            targets += record(reviewed, groups[(kind, folder)])
         if entry:
             toml_add(*entry)
             targets.append(TOML_REL)

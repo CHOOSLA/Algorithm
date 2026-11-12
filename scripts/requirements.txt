@@ -1,0 +1,2 @@
+# review 화면에 쓰는 패키지. review 를 처음 띄울 때 저장소의 .venv 에만 설치된다.
+textual==8.2.8

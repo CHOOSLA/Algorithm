@@ -2,27 +2,15 @@
 
 [문제 열기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14uWl6AF0CFAYD&categoryId=AV14uWl6AF0CFAYD&categoryType=CODE&problemTitle=1225&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
 
-- 구분: WS / 과제 폴더 날짜: 09-01
-- 최초 본인 커밋 날짜(KST): 2026-09-01
+- 구분: WS / 과제 날짜: 09-01
+- 처음 제출한 날(KST): 2026-09-01
 - 원본 상대 경로: `99.Algorithm/WS/src/algo_9/S_0901/SWEA_1225_추창우.java`
 - 근거 커밋: `55b93c0052b5792b12fc3ab65482113ff923a0ea`
 
-기존 풀이를 열기 전에 빈 `Solution.java`에서 시작합니다. 입력 예시는 직접 `input.txt`에 넣고 `javac Solution.java` 다음 `java Solution < input.txt`로 실행할 수 있습니다.
+## 복습 기록
 
-## 재풀이 기록
+| 날짜 | 결과 | 걸린 시간 | 막힌 지점 |
+| --- | --- | --- | --- |
+| 2026-11-10 | 혼자 해결 | - | - |
 
-| 재풀이 날짜 | 결과 | 소요 시간 | 막힌 지점 / 다음에 확인할 것 | 다음 복습 |
-| --- | --- | --- | --- | --- |
-| — | 미시도 | — | — | — |
-
-결과: `독립 해결` / `힌트 사용` / `풀이 확인`. 정답 제출 여부도 함께 적습니다.
-
-## 풀기 전 생각
-
-- 접근과 시간복잡도:
-- 주의할 조건:
-
-## 풀고 난 뒤
-
-- 실패한 반례 또는 구현 실수:
-- 기존 풀이와 달라진 점:
+혼자 풀어서 복습을 마쳤습니다.

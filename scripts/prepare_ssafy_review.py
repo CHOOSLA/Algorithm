@@ -12,6 +12,8 @@ import re
 import subprocess
 from urllib.parse import quote
 
+import review_log as rlog
+
 ROOT = Path(__file__).resolve().parents[1]
 REVIEW = ROOT / "Review" / "SSAFY"
 KST = timezone(timedelta(hours=9))
@@ -114,7 +116,7 @@ def collect(source, gitdirs, author):
 def create_once(path, content):
     path.parent.mkdir(parents=True, exist_ok=True)
     if not path.exists():
-        path.write_text(content, encoding="utf-8")
+        path.write_text(content, encoding="utf-8", newline="\n")
 
 
 def lecture_folder(day, lectures):
@@ -236,27 +238,26 @@ def link_defs(text, lectures):
     return out
 
 
-def page_note(e, lectures, pages):
-    """문제와 이어지는 목차 항목. 강사 풀이, 제목이 같은 장, 본문에 번호가 나온 쪽 순서."""
-    notes, covered = [], []  # covered: 이미 적은 (pdf, 시작, 끝)
+def page_refs(e, lectures, pages):
+    """문제와 이어지는 목차 항목 (강의, 시작 쪽, 끝 쪽, 설명, 강사 풀이인지).
+    강사 풀이, 제목이 같은 장, 본문에 번호가 나온 쪽 순서."""
+    refs = []
     near = [l for l in lectures if in_window(l, e["assignment_day"])]
 
     def taken(pdf, p):
-        return any(c[0] == pdf and c[1] <= p <= c[2] for c in covered)
+        return any(r[0]["pdf"] == pdf and r[1] <= p <= r[2] for r in refs)
 
     for l in near:
         for lv, title, a, b in ranges(l):
             m = SOLVED.match(strip_no(title))
             if m and m[1] == e.get("number"):
-                covered.append((l["pdf"], a, b))
-                notes.append(f"{page_link(l, a, b)} 강사 풀이")
+                refs.append((l, a, b, "강사 풀이", True))
     key = norm(e["title"])
     for l in near:
         match = [it for it in ranges(l) if len(key) >= 3 and key in norm(it[1]) and not taken(l["pdf"], it[2])]
         if match:
             lv, title, a, b = min(match, key=lambda it: (it[0], it[2]))
-            covered.append((l["pdf"], a, b))
-            notes.append(f"{page_link(l, a, b)} {strip_no(title)}")
+            refs.append((l, a, b, strip_no(title), False))
     by_pdf = {l["pdf"]: l for l in near}
     for f in pages.get(e["id"], []):
         l = by_pdf.get(f["pdf"])
@@ -265,42 +266,41 @@ def page_note(e, lectures, pages):
             if taken(l["pdf"], p) or not before:
                 continue
             lv, title, a, b = max(before, key=lambda it: (it[2], it[0]))
-            covered.append((l["pdf"], a, b))
-            notes.append(f"{page_link(l, p, min(b, max(q for q in f['pages'] if q <= b)))} {strip_no(title)}")
-    return "<br>".join(notes)
+            refs.append((l, p, min(b, max(q for q in f["pages"] if q <= b)), strip_no(title), False))
+    return refs
+
+
+def page_note(e, lectures, pages):
+    return "<br>".join(f"{page_link(l, a, b)} {text}" for l, a, b, text, _ in page_refs(e, lectures, pages))
 
 
 GUIDE_START, GUIDE_END = "<!-- BEGIN LECTURE -->", "<!-- END LECTURE -->"
 
 
-def recall_tables(today):
-    lines = ["## 떠올리기", "",
-             "장 제목만 보고 `떠올린 것`을 먼저 채운 뒤, 쪽 번호를 눌러 그 장을 펴고 `빠뜨린 것`을 적습니다.", ""]
+def chapter_tables(today):
+    lines = ["## 장 목록", "", "장 이름 아래 접힌 칸을 펼치면 소제목마다 쪽이 걸려 있습니다.", ""]
     for l in today:
         rows = [(t, a, b) for lv, t, a, b in ranges(l) if lv == 1 and not SOLVED.match(strip_no(t))]
         lines += [f"### {label(l)}", ""]
         if not rows:
-            lines += ["이 강의는 문제 풀이만 있어서 떠올릴 장이 없습니다. 위 표의 강사 풀이 쪽을 봅니다.", ""]
+            lines += ["이 강의는 문제 풀이만 있습니다. 위 표의 강사 풀이 쪽을 봅니다.", ""]
             continue
-        lines += ["| 장 | 쪽 | 떠올린 것 | 빠뜨린 것 |", "| --- | --- | --- | --- |"]
-        lines += [f"| {t.replace('|', '/')} | {page_link(l, a, b, span(a, b))} | | |" for t, a, b in rows]
+        lines += ["| 장 | 쪽 |", "| --- | --- |"]
+        lines += [f"| {t.replace('|', '/')} | {page_link(l, a, b, span(a, b))} |" for t, a, b in rows]
         lines.append("")
     return lines
 
 
 def write_guide(out, day, rows, entries, lectures, pages):
-    """저장소 밖 가이드 한 장. 표는 매번 다시 쓰고, 떠올리기는 처음 한 번만 만든다."""
+    """저장소 밖 가이드 한 장. 막혔을 때 펴는 참고 자료라 적는 칸이 없고 매번 통째로 다시 쓴다."""
     today = sorted((l for l in lectures if l["date"] == day), key=lambda l: l["day"] or 99)
     path = out / f"{lecture_folder(day, lectures)}.md"
     head = [f"# {day} {' · '.join(l['title'] for l in today)}", ""]
-    steps = ["1. 맨 아래 `떠올리기` 표에서 장 제목만 보고, PDF를 열기 전에 떠오르는 개념과 코드 뼈대를 `떠올린 것`에 적습니다.",
-             "2. 쪽 번호를 눌러 그 장만 펴서 확인하고, 빠뜨린 내용을 `빠뜨린 것`에 적습니다."]
     if rows:
-        head += ["과제가 나온 날의 강의로 개념을 먼저 떠올리고, 그날 문제를 다시 풉니다. "
-                 f"풀이와 복습 기록은 저장소 `Review/SSAFY/{lecture_folder(day, lectures)}/`에 적습니다.", "", *steps,
-                 "3. WS부터 풀고 HW로 넘어갑니다. `강의에서 다룬 쪽`은 다 풀고 나서 폅니다. 미리 보면 어떤 기법을 쓰는지 알고 풀게 됩니다."]
+        head += ["문제를 풀다 막혔을 때 펴는 참고 자료입니다. 먼저 혼자 풀어 보고, 막히면 `review hint`로 "
+                 "기법 이름, 개념 쪽, 강사 풀이 순서로 한 단계씩 엽니다. `강의에서 다룬 쪽`을 미리 보면 어떤 기법을 쓰는지 알고 풀게 됩니다."]
     else:
-        head += ["이날은 과제가 없었습니다. 이 강의 내용은 뒤의 과제에서 쓰이므로 장마다 떠올리기만 합니다.", "", *steps]
+        head += ["이날은 과제가 없었습니다. 이 강의 내용은 뒤의 과제에서 쓰입니다."]
 
     block = ["", "## 강의", "", "| 강의 | 쪽수 | PDF |", "| --- | --- | --- |"]
     block += [f"| {label(l)} | {l.get('page_count', '-')} | [열기][{short(l)}] |" for l in today]
@@ -326,11 +326,9 @@ def write_guide(out, day, rows, entries, lectures, pages):
                   "이날 과제가 아니지만 강의 안에서 풀이를 보여준 문제입니다. 먼저 풀어 본 뒤 그 쪽을 폅니다.", "",
                   "| 쪽 | 문제 | 어디서 |", "| --- | --- | --- |", *extra]
 
-    tail = "\n\n" + "\n".join(recall_tables(today)).rstrip() + "\n"
-    if path.exists() and GUIDE_END in path.read_text(encoding="utf-8"):
-        tail = path.read_text(encoding="utf-8").split(GUIDE_END, 1)[1]  # 적어 둔 떠올리기는 보존
-    block += ["", *link_defs("\n".join(block) + tail, lectures)]
-    path.write_text("\n".join(head + ["", GUIDE_START, *block, "", GUIDE_END]) + tail, encoding="utf-8")
+    tail = "\n".join(chapter_tables(today)).rstrip()
+    block += ["", tail, "", *link_defs("\n".join(block) + tail, lectures)]
+    path.write_text("\n".join(head + ["", GUIDE_START, *block, "", GUIDE_END]) + "\n", encoding="utf-8", newline="\n")
 
 
 # ---- 저장소 안: 문제 목록과 복습 기록 ----
@@ -344,17 +342,26 @@ def day_title(folder):
     return f"{mmdd[:2]}-{mmdd[2:]} {' · '.join(names)}".strip()
 
 
-def write_daily(folder, rows, entries, folders):
+def last_result(attempts):
+    return f"{rlog.RESULTS[attempts[-1]['result']]} ({attempts[-1]['date'][5:]})" if attempts else "아직 안 풂"
+
+
+def next_review(attempts):
+    if not attempts:
+        return "-"
+    when = rlog.due(attempts)
+    return when.isoformat()[5:] if when else "끝"
+
+
+def write_daily(folder, rows, entries, folders, log):
     path = REVIEW / folder / "README.md"
     lines = [f"# {day_title(folder)}", "",
-             "과제가 나온 날의 강의 내용을 먼저 떠올리고, 그날 문제를 다시 풉니다.", "",
-             f"1. `make lecture D={folder[:4]}`로 그날 강의 가이드를 엽니다. 윈도우에서는 `lecture {folder[:4]}`입니다. 가이드에서 장마다 떠올린 것을 적습니다.",
-             "2. WS부터 풀고 HW로 넘어갑니다.",
-             "3. 다 푼 뒤 가이드의 `강의에서 다룬 쪽`과 비교합니다.", "",
-             "강의 가이드는 저장소 밖에 있어서 이 저장소에는 올라오지 않습니다.", "",
-             DAILY_START, "", "| 구분 | 문제 | 복습 기록 |", "| --- | --- | --- |"]
+             "과제가 나온 날의 문제를 빈 `Solution.java`에서 다시 풉니다. 표는 `commit`할 때 답한 내용으로 채워집니다.", "",
+             DAILY_START, "", "| 구분 | 문제 | 최근 결과 | 다음 복습 |", "| --- | --- | --- | --- |"]
     for e in sorted(rows, key=lambda e: (e["kind"] != "WS", e["problem"])):
-        lines.append(f"| {e['kind']} | {e['problem']} · {e['title'].replace('|', '/')} | [열기]({quote(Path(e['folder']).name)}/README.md) |")
+        tries = log.get(e["id"], [])
+        lines.append(f"| {e['kind']} | [{e['problem']} · {e['title'].replace('|', '/')}]({quote(Path(e['folder']).name)}/README.md) "
+                     f"| {last_result(tries)} | {next_review(tries)} |")
     again = {}
     for e in rows:
         other = sorted({o["assignment_day"] for o in entries if e.get("number")
@@ -366,66 +373,90 @@ def write_daily(folder, rows, entries, folders):
     for e, days in again.values():
         where = ", ".join(f"[{day_title(folders[d])}](../{quote(folders[d])}/README.md)" for d in days)
         lines.append(f"{e['problem']} {e['title']} 문제는 {where}에도 있습니다. 두 날 모두 풀고 나면 두 풀이를 비교합니다.")
-    path.write_text("\n".join(lines + ["", DAILY_END]) + "\n", encoding="utf-8")
+    path.write_text("\n".join(lines + ["", DAILY_END]) + "\n", encoding="utf-8", newline="\n")
+
+
+def problem_readme(e, attempts):
+    link = f"[문제 열기]({e['problem_url']})" if e["problem_url"] else f"문제 번호: {e['problem']} (원본 과제 자료에서 문제 링크 확인)"
+    lines = [f"# {e['problem']} · {e['title']}", "", link, "",
+             f"- 구분: {e['kind']} / 과제 날짜: {e['assignment_day']}",
+             f"- 처음 제출한 날(KST): {e['first_commit_date']}",
+             f"- 원본 상대 경로: `99.Algorithm/{e['source_repository']}/{e['source_file']}`",
+             f"- 근거 커밋: `{e['first_commit']}`", "",
+             "## 복습 기록", ""]
+    if not attempts:
+        return "\n".join(lines + ["아직 다시 풀지 않았습니다."]) + "\n"
+    lines += ["| 날짜 | 결과 | 걸린 시간 | 막힌 지점 |", "| --- | --- | --- | --- |"]
+    for a in attempts:
+        spent = f"{a['minutes']}분" if a.get("minutes") else "-"
+        lines.append(f"| {a['date']} | {rlog.RESULTS[a['result']]} | {spent} | {a.get('note', '').replace('|', '/') or '-'} |")
+    when = rlog.due(attempts)
+    lines += ["", f"다음 복습은 {when.isoformat()}입니다." if when else "혼자 풀어서 복습을 마쳤습니다."]
+    return "\n".join(lines) + "\n"
+
+
+def refresh():
+    """manifest.json과 log.json만으로 README를 다시 만든다. 커밋할 때 기록을 반영하는 데 쓴다."""
+    scaffold(json.loads((REVIEW / "manifest.json").read_text(encoding="utf-8")), [])
 
 
 def scaffold(entries, lectures):
+    log = rlog.load()
     folders = {e["assignment_day"]: Path(e["folder"]).parts[0] for e in entries if e.get("folder")}
     by_date = defaultdict(list)
     for e in entries:
-        day = e["first_commit_date"]
         if "folder" not in e:
             # 강의 목록을 볼 수 없는 기기에서는 날짜만으로 폴더를 만든다.
             top = folders.setdefault(e["assignment_day"], lecture_folder(e["assignment_day"], lectures))
             # 같은 날 같은 문제여도 과제 날짜와 HW/WS가 다르면 각각 보존한다.
             e["folder"] = f"{top}/{e['kind']}_{e['problem']}_{e['assignment_day'].replace('-', '')}"
         folder = REVIEW / e["folder"]
-        link = f"[문제 열기]({e['problem_url']})" if e["problem_url"] else f"문제 번호: {e['problem']} (원본 과제 자료에서 문제 링크 확인)"
-        create_once(folder / "Solution.java", "import java.io.*;\nimport java.util.*;\n\npublic class Solution {\n    public static void main(String[] args) throws Exception {\n        // TODO: 문제를 읽고 직접 풀이하기\n    }\n}\n")
-        create_once(folder / "README.md", f"# {e['problem']} · {e['title']}\n\n{link}\n\n"
-                    f"- 구분: {e['kind']} / 과제 폴더 날짜: {e['assignment_day']}\n"
-                    f"- 최초 본인 커밋 날짜(KST): {day}\n"
-                    f"- 원본 상대 경로: `99.Algorithm/{e['source_repository']}/{e['source_file']}`\n"
-                    f"- 근거 커밋: `{e['first_commit']}`\n\n"
-                    "기존 풀이를 열기 전에 빈 `Solution.java`에서 시작합니다. 입력 예시는 직접 `input.txt`에 넣고 `javac Solution.java` 다음 `java Solution < input.txt`로 실행할 수 있습니다.\n\n"
-                    "## 재풀이 기록\n\n| 재풀이 날짜 | 결과 | 소요 시간 | 막힌 지점 / 다음에 확인할 것 | 다음 복습 |\n"
-                    "| --- | --- | --- | --- | --- |\n| — | 미시도 | — | — | — |\n\n"
-                    "결과: `독립 해결` / `힌트 사용` / `풀이 확인`. 정답 제출 여부도 함께 적습니다.\n\n"
-                    "## 풀기 전 생각\n\n- 접근과 시간복잡도:\n- 주의할 조건:\n\n"
-                    "## 풀고 난 뒤\n\n- 실패한 반례 또는 구현 실수:\n- 기존 풀이와 달라진 점:\n")
+        create_once(folder / "Solution.java", rlog.TEMPLATE)
+        (folder / "README.md").write_text(problem_readme(e, log.get(e["id"], [])), encoding="utf-8", newline="\n")
         by_date[e["assignment_day"]].append(e)
 
     for day, rows in by_date.items():
-        write_daily(folders[day], rows, entries, folders)
+        write_daily(folders[day], rows, entries, folders, log)
 
-    table = ["", f"총 {len(by_date)}일 · {len(entries)}개 과제 기록입니다.", "",
+    done = sum(1 for e in entries if log.get(e["id"]) and rlog.due(log[e["id"]]) is None)
+    again = sum(1 for e in entries if rlog.due(log.get(e["id"], [])))
+    table = ["", f"총 {len(by_date)}일 · {len(entries)}문제입니다. 복습을 마친 문제 {done}개, 다시 풀 문제 {again}개, "
+                 f"아직 안 푼 문제 {len(entries) - done - again}개입니다.", "",
              "| 과제 날짜 | 강의 | 문제 |", "| --- | --- | --- |"]
     for day, rows in sorted(by_date.items()):
         links = " · ".join(f"[{e['kind']} {e['problem']}]({quote(e['folder'])}/README.md)"
                            for e in sorted(rows, key=lambda e: (e["kind"] != "WS", e["problem"])))
         table.append(f"| [{day}]({quote(folders[day])}/README.md) | {day_title(folders[day])[6:]} | {links} |")
-    # 안내문까지 매번 다시 쓴다. 사용자가 적는 곳은 문제별 README와 저장소 밖 강의 가이드다.
+    # 안내문까지 매번 다시 쓴다. 손으로 적는 파일은 없고 기록은 log.json에 쌓인다.
     (REVIEW / "README.md").write_text(
         "# SSAFY 알고리즘 다시 풀기\n\n"
-        "Lab에 제출했던 본인 풀이를 강의 날짜별로 다시 푸는 목록입니다. 과제가 나온 날의 강의 내용을 먼저 떠올린 뒤, 그날 문제를 빈 `Solution.java`에서 풉니다. 파일이 있다는 사실은 정답 판정을 뜻하지 않습니다.\n\n"
-        "폴더는 과제 날짜와 그날 강의 이름으로 묶었습니다. 늦게 제출한 과제도 과제가 나온 날의 강의에 들어갑니다. 같은 문제가 다른 과제에 다시 나오면 각각 남깁니다.\n\n"
-        "1. `make lecture D=0909`로 그날 강의 가이드를 열어 장마다 떠올린 것을 적습니다. 윈도우에서는 `lecture 0909`입니다.\n"
-        "2. 그날 문제를 빈 `Solution.java`에서 풀고, 문제별 README에 재풀이 날짜, 도움 사용 여부, 막힌 지점을 적습니다.\n"
-        "3. 다 푼 뒤 기존 코드, 가이드의 `강의에서 다룬 쪽`과 비교하고 다음 복습 날짜를 정합니다.\n\n"
+        "Lab에 제출했던 문제를 빈 `Solution.java`에서 다시 푸는 목록입니다. 폴더는 과제 날짜와 그날 강의 이름으로 묶었습니다. "
+        "늦게 제출한 과제도 과제가 나온 날에 들어가고, 같은 문제가 다른 과제에 다시 나오면 각각 남깁니다.\n\n"
+        "## 푸는 순서\n\n"
+        "1. `make review`로 오늘 풀 문제를 봅니다. 윈도우에서는 `review`입니다. 다시 풀 때가 된 문제가 먼저 나오고 그다음이 새 문제입니다. "
+        "화면에 쓰는 패키지는 처음 띄울 때 저장소의 `.venv`에만 설치됩니다.\n"
+        "2. 문제를 고르고 Enter를 누르면 문제 페이지와 이클립스의 `Solution.java`가 열리고 타이머가 돕니다. "
+        "혼자 붙잡고 있을 시간은 난이도로 정합니다. D3은 30분, D4는 40분, 모의 역량테스트는 50분이고 화면에서 `+`, `-`로 바꿉니다.\n"
+        "3. 막히면 화면에서 `h`를 누릅니다. 한 번에 한 단계씩 기법 이름, 개념 쪽, 강사 풀이 순서로 엽니다. 강의 자료가 있는 기기에서만 동작합니다.\n"
+        "4. 풀이를 봤으면 닫고 빈 파일에서 처음부터 다시 짭니다.\n"
+        "5. `make commit`을 실행하면 혼자 풀었는지와 막힌 지점을 묻고, 그 답을 기록합니다.\n\n"
+        "혼자 푼 문제는 복습을 마칩니다. 힌트를 봤으면 3일 뒤, 풀이를 봤으면 다음 날에 다시 나오고, 또 못 풀면 간격이 7일까지 늘어납니다. "
+        "다시 풀 때는 날짜와 강의 이름 없이 문제만 보여 줘서 어떤 기법을 쓸지부터 정하게 됩니다.\n\n"
+        "기록은 `log.json`에 시도마다 한 줄씩 쌓이고, 이 폴더의 README는 모두 거기서 만들어집니다. 손으로 고칠 파일은 없습니다. "
         "강의 가이드와 강의 자료는 저장소 밖에 있어서 이 저장소에는 올라오지 않습니다.\n\n"
         + "\n".join([START, *table, "", END]) + "\n\n"
         "## 푼 뒤 커밋하기\n\n"
         "저장소 맨 위에서 `make commit`을 실행합니다. 윈도우에서는 `commit.cmd`를 더블클릭하거나 cmd에서 `commit`을 입력합니다. "
-        "바뀐 문제마다 `[복습 09-01] SEA(D3): 1225. 암호생성기` 형식의 커밋을 하나씩 만듭니다.\n\n"
+        "바뀐 문제마다 결과를 묻고 `[복습 09-01] SEA(D3): 1225. 암호생성기` 형식의 커밋을 하나씩 만듭니다.\n\n"
         "```sh\nmake commit\ngit push origin HEAD:main\n```\n\n"
         "## 목록 갱신\n\n"
-        "Lab 자료와 외부 git-dir을 최신으로 받은 뒤 실행합니다. 원격에 접속하거나 push하지 않으며, 기존 풀이와 문제별 README의 기록은 보존합니다. "
+        "Lab 자료와 외부 git-dir을 최신으로 받은 뒤 실행합니다. 원격에 접속하거나 push하지 않으며, 기존 풀이와 복습 기록은 보존합니다. "
         "`--source`와 `--gitdirs`를 빼면 `manifest.json`만으로 목록과 README를 다시 만듭니다.\n\n"
         "```sh\npython3 scripts/prepare_ssafy_review.py --source ~/Dev/ssafy_study/99.Algorithm --gitdirs ~/Dev/algo-gitdirs\n```\n\n"
         "강의 가이드는 강의 자료가 있는 기기에서만 함께 갱신됩니다. 강의 자료가 바뀌면 `--pdfs`를 붙여 목차를 다시 읽습니다. 이때만 `pymupdf`가 필요합니다.\n\n"
         "최초 생성 근거는 `manifest.json`에 있습니다.\n",
-        encoding="utf-8")
-    (REVIEW / "manifest.json").write_text(json.dumps(entries, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        encoding="utf-8", newline="\n")
+    (REVIEW / "manifest.json").write_text(json.dumps(entries, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     return by_date
 
 
@@ -464,7 +495,7 @@ def main():
         guide.mkdir(exist_ok=True)
         git_config("review.guide", str(guide))
         data = read_pdfs(guide.parent, entries)
-        (guide / "lectures.json").write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        (guide / "lectures.json").write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
     elif guide:
         data = json.loads((guide / "lectures.json").read_text(encoding="utf-8"))
 

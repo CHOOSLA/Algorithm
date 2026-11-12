@@ -2,7 +2,6 @@
 """그날 강의 가이드를 연다. `lecture 0909`처럼 날짜를 주고, 날짜가 없으면 목록을 보여준다.
 
 브라우저에 보기 화면을 띄운다. 쪽 번호를 누르면 PDF가 그 쪽에서 열린다.
-`-e`를 붙이면 떠올린 것을 적을 수 있게 가이드 파일도 편집기로 연다.
 """
 from __future__ import annotations
 
@@ -47,7 +46,7 @@ def render(guide: Path) -> str:
     subs = subtitles(guide)
 
     def fold(cell):
-        """떠올리기 표의 쪽 칸([p3–12][Day12-3])이면 그 장의 소제목을 접힌 칸으로 만든다."""
+        """장 목록 표의 쪽 칸([p3–12][Day12-3])이면 그 장의 소제목을 접힌 칸으로 만든다."""
         m = re.fullmatch(r"\[[^\]]+\]\[([^\]]+)\]", cell)
         sub = subs.get(m[1]) if m else None
         if not sub or not sub["items"]:
@@ -104,6 +103,14 @@ def render(guide: Path) -> str:
     return f"<!doctype html><meta charset=utf-8><title>{html.escape(guide.stem)}</title><style>{STYLE}</style>" + "\n".join(out)
 
 
+def view(guide: Path) -> Path:
+    """가이드를 보기 화면으로 바꿔 임시 폴더에 두고 그 경로를 돌려준다."""
+    out = Path(tempfile.gettempdir()) / "lecture-guide" / f"{guide.stem}.html"
+    out.parent.mkdir(exist_ok=True)
+    out.write_text(render(guide), encoding="utf-8")
+    return out
+
+
 def start(path: Path):
     if os.name == "nt":
         os.startfile(str(path))
@@ -112,7 +119,7 @@ def start(path: Path):
 
 
 def main():
-    args = [a for a in sys.argv[1:] if a != "-e"]
+    args = sys.argv[1:]
     guide = guide_dir()
     if guide is None:
         print("강의 가이드 폴더를 찾지 못했습니다. 강의 자료가 동기화된 기기에서\n"
@@ -126,12 +133,7 @@ def main():
             print(f"'{key}'로 시작하는 가이드가 {len(hit)}개입니다.")
         print("\n".join(f"  {f.stem[:4]}  {' · '.join(f.stem.split('_')[1:])}" for f in files))
         return 1 if key else 0
-    view = Path(tempfile.gettempdir()) / "lecture-guide" / f"{hit[0].stem}.html"
-    view.parent.mkdir(exist_ok=True)
-    view.write_text(render(hit[0]), encoding="utf-8")
-    start(view)
-    if "-e" in sys.argv:
-        start(hit[0])
+    start(view(hit[0]))
     print(f"가이드: {hit[0]}")
     return 0
 
