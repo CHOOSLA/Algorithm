@@ -28,6 +28,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
+import time
 import webbrowser
 
 import review_log as rlog
@@ -100,7 +101,9 @@ def load_plan(entries):
     """시험 대비 계획(Review/A형/plan.json). 없거나 읽을 수 없으면 None.
 
     묶음마다 제목, 쓸 시간(분), 왜 하는지, 문제 이름 목록(items)이 있다. 여기서 문제 이름을 문제로 바꿔 entries 에 넣는다.
+    skim 이 붙은 묶음은 읽기만 하는 문제라 마친 수에 넣지 않는다.
     notes 는 외워 갈 틀이나 점검표 같은 읽을거리 (제목, 파일).
+    techniques 는 복습 목록에 있던 문제의 첫 힌트. 그런 문제는 과제 날짜의 강의 이름이 기법과 다를 수 있어 따로 적는다.
     """
     try:
         plan = json.loads(PLAN.read_text(encoding="utf-8"))
@@ -109,6 +112,9 @@ def load_plan(entries):
     by_name = {}
     for e in sorted(entries, key=rlog.order):
         by_name.setdefault(e["problem"], e)
+    for name, technique in plan.get("techniques", {}).items():
+        if name in by_name:
+            by_name[name].setdefault("technique", technique)
     for block in plan.get("blocks", []):
         block["entries"] = [by_name[name] for name in block.get("items", []) if name in by_name]
     return plan
@@ -138,6 +144,7 @@ def board(entries, log, plan=None):
     picks, dots, progress = [], {}, None
     if plan:
         since = plan.get("date", "")
+        counted = set()  # 읽기만 하는 묶음(skim)의 문제는 마친 수에 넣지 않는다
         for i, block in enumerate(plan.get("blocks", [])):
             titles[f"plan{i}"] = f"{block['title']} · {block.get('minutes', 0)}분"
             for e in block["entries"]:
@@ -145,7 +152,9 @@ def board(entries, log, plan=None):
                 dots[e["id"]] = "parked" if e["id"] in parked else "done" if tries else "todo"
                 note = left(e) if e["id"] in parked else rlog.RESULTS[tries[-1]["result"]] if tries else ""
                 picks.append((e, f"plan{i}", note))
-        progress = sum(1 for d in dots.values() if d == "done"), len(dots)
+                if not block.get("skim"):
+                    counted.add(e["id"])
+        progress = sum(1 for k in counted if dots[k] == "done"), len(counted)
     else:
         ready = sorted((e for e, s in marks if s == "again"), key=lambda e: rlog.due(log[e["id"]]))
         for e in ready:
@@ -198,7 +207,14 @@ def open_in_eclipse(e):
 def open_problem(e):
     if e.get("problem_url"):
         webbrowser.open(e["problem_url"])
-    return bool(e.get("problem_url"))
+        return True
+    # 사이트에 없는 문제는 이 클론에만 둔 문서를 연다 (.git/review-inputs/<문제 이름>.pdf)
+    local = rlog.ROOT / ".git" / "review-inputs" / f"{e['problem']}.pdf"
+    if local.is_file():
+        from lecture import start
+        start(local)
+        return True
+    return False
 
 
 def uncommitted(e):
@@ -209,8 +225,12 @@ def uncommitted(e):
 
 
 def sample_input(e):
-    """저장소에 있는 이 문제의 예제 입력. 복습 폴더에 없으면 예전에 풀던 폴더에서 찾는다. 없으면 None."""
-    spots = [REVIEW / e["folder"] / "input.txt", rlog.ROOT / "SW Expert Academy" / str(e.get("number")) / "input.txt"]
+    """이 문제의 예제 입력. 복습 폴더에 없으면 예전에 풀던 폴더, 그다음은 이 클론에만 둔 입력에서 찾는다. 없으면 None.
+
+    저장소에 올리지 않을 입력은 .git/review-inputs/<문제 이름>.txt 에 둔다.
+    """
+    spots = [REVIEW / e["folder"] / "input.txt", rlog.ROOT / "SW Expert Academy" / str(e.get("number")) / "input.txt",
+             rlog.ROOT / ".git" / "review-inputs" / f"{e['problem']}.txt"]
     return next((p for p in spots if p.is_file()), None)
 
 
@@ -242,6 +262,7 @@ def begin(e, tries):
     path = REVIEW / e["folder"] / "Solution.java"
     blank = rlog.TEMPLATE_MAIN if e.get("judge") == "boj" else rlog.TEMPLATE
     notes = []
+    began = time.time()
     if not path.exists():
         # 따로 고른 문제는 폴더를 미리 만들어 두지 않는다. 시작할 때 빈 틀을 놓는다
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -263,16 +284,41 @@ def begin(e, tries):
                 notes.append("지난 풀이는 git 기록에 남아 있습니다. Solution.java를 빈 틀로 바꿨습니다.")
         rlog.write_state({"id": e["id"], "started": datetime.now(rlog.KST).isoformat(timespec="seconds"), "hint": 0,
                           "goal": goal_of(e)})
+    # opened 는 이 문제를 실제로 편 시각. 그 뒤에 다른 문제의 파일이 바뀌면 엉뚱한 탭에 적고 있다는 뜻이다 (strays)
+    rlog.write_state({**rlog.read_state(), "opened": datetime.now(rlog.KST).isoformat(timespec="seconds")})
     if open_problem(e):
         notes.append("문제 페이지를 열었습니다.")
     # 이클립스에서 바로 실행되게 소스 폴더와 예제 입력을 이 문제로 맞춘 뒤에 파일을 연다
     import eclipse
     changed = eclipse.prepare(path.parent.relative_to(rlog.ROOT).as_posix())
     notes.append(swap_input(e))
+    exe = eclipse_path()
+    # 소스 폴더를 바꿨으면 이클립스가 그것을 읽고 빌드한 뒤에 연다. 먼저 열면 빌드 경로 밖의 파일로 열린다
+    built = eclipse.wait_for_build(began - 2) if exe and changed else True
     if open_in_eclipse(e):
         notes.append("이클립스에서 Solution.java를 열었습니다.")
-        notes += eclipse.notes(eclipse_path(), changed)
+        notes += eclipse.notes(exe, changed, built)
     return notes
+
+
+def strays(entries, state):
+    """지금 푸는 문제를 편 뒤에 바뀐 다른 문제의 Solution.java. 이클립스에서 다른 탭에 적고 있을 때 잡힌다.
+
+    탭 이름이 전부 Solution.java 라 헷갈리기 쉽다. 그런 문제의 이름 목록을 돌려준다.
+    """
+    if not state.get("id") or not state.get("opened"):
+        return []
+    since = datetime.fromisoformat(state["opened"]).timestamp() + 5
+    out = []
+    for e in entries:
+        if e["id"] == state["id"]:
+            continue
+        try:
+            if (REVIEW / e["folder"] / "Solution.java").stat().st_mtime > since:
+                out.append(rlog.name(e))
+        except OSError:
+            pass  # 아직 만들지 않은 문제
+    return out
 
 
 def lecture_pages(e, level):
@@ -369,8 +415,13 @@ def submit_current(entries, submit=True):
     if held:
         rlog.write_state({**rlog.toggle_pause(state), "hold": "judge"})
     ok, text = None, ""
+    source = read_source(REVIEW / e["folder"] / "Solution.java")
     try:
-        ok, text = swea.grade(e, read_source(REVIEW / e["folder"] / "Solution.java"), submit)
+        answer = local_answer(e)
+        if answer and submit:
+            ok, text = grade_locally(e, source, answer)
+        else:
+            ok, text = swea.grade(e, source, submit)
     except swea.SweaError as error:
         text = str(error)
     finally:
@@ -382,6 +433,55 @@ def submit_current(entries, submit=True):
                 state = {**state, "hold": "pass"} if ok and submit else rlog.toggle_pause(state)
             rlog.write_state(state)
     return ok, text
+
+
+def local_answer(e):
+    """채점할 사이트가 없는 문제의 정답 파일 (.git/review-inputs/<문제 이름>.answer.txt). SWEA 문제이거나 없으면 None."""
+    import swea
+    if swea.problem_id(e):
+        return None
+    path = rlog.ROOT / ".git" / "review-inputs" / f"{e['problem']}.answer.txt"
+    return path if path.is_file() else None
+
+
+def grade_locally(e, source, answer):
+    """이 컴퓨터에서 컴파일하고 같은 이름의 입력으로 돌려 정답 파일과 줄마다 맞춘다. (통과했는지, 보여 줄 말).
+
+    SWEA 처럼 '#번호 답' 줄을 테스트케이스 하나로 센다. 시간 제한은 넉넉히 10초다.
+    """
+    import tempfile
+    import swea
+    if not source.strip() or source in (rlog.TEMPLATE, rlog.TEMPLATE_MAIN):
+        raise swea.SweaError("Solution.java가 아직 빈 틀입니다.")
+    source, cut = swea.without_set_in(source)
+    note = " · System.setIn 줄은 빼고 돌림" if cut else ""
+    cls = "Main" if e.get("judge") == "boj" else "Solution"
+    feed = answer.with_name(answer.name.replace(".answer.txt", ".txt"))
+    with tempfile.TemporaryDirectory() as work:
+        (Path(work) / f"{cls}.java").write_text(source, encoding="utf-8")
+        try:
+            built = subprocess.run(["javac", "-encoding", "UTF-8", f"{cls}.java"], cwd=work, capture_output=True,
+                                   text=True, encoding="utf-8", errors="replace", timeout=60)
+        except FileNotFoundError:
+            raise swea.SweaError("javac 를 찾지 못했습니다. JDK 가 PATH 에 있어야 이 문제를 채점할 수 있습니다.") from None
+        if built.returncode:
+            lines = [line.strip() for line in built.stderr.splitlines() if line.strip()]
+            return False, "컴파일 오류  " + " / ".join(lines[:3])
+        try:
+            with feed.open("rb") as stdin:
+                ran = subprocess.run(["java", "-Xss256m", "-cp", work, cls], stdin=stdin, capture_output=True,
+                                     text=True, encoding="utf-8", errors="replace", timeout=10)
+        except subprocess.TimeoutExpired:
+            return False, "Fail  제한시간 초과 (10초)" + note
+    want = [line.split() for line in answer.read_text(encoding="utf-8").splitlines() if line.strip()]
+    got = [line.split() for line in ran.stdout.splitlines() if line.strip()]
+    right = sum(1 for i, line in enumerate(want) if i < len(got) and got[i] == line)
+    if ran.returncode:
+        error = (ran.stderr.strip().splitlines() or [""])[0][:80]
+        return False, f"Fail  {len(want)}개 중 {right}개 맞음 · 런타임 에러 {error}" + note
+    if right == len(want) and len(got) == len(want):
+        return True, f"Pass  {len(want)}개 모두 맞음 (이 컴퓨터에서 채점)" + note
+    return False, f"Fail  {len(want)}개 중 {right}개 맞음 (이 컴퓨터에서 채점)" + note
 
 
 def has_account():

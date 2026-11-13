@@ -11,6 +11,7 @@ from __future__ import annotations
 import os
 from pathlib import Path
 import re
+import time
 from urllib.parse import unquote, urlparse
 from urllib.request import url2pathname
 from xml.sax.saxutils import quoteattr
@@ -122,8 +123,27 @@ def same(a, b):
         return False
 
 
-def notes(exe, changed):
-    """문제를 시작한 뒤 알려 줄 말. changed 는 방금 소스 폴더를 바꿨는지."""
+def wait_for_build(since, timeout=6.0):
+    """이클립스가 바뀐 소스 폴더를 읽고 다시 빌드할 때까지 기다린다. 그 뒤에 파일을 열어야 빌드 경로 위의 파일로 열린다.
+
+    먼저 열면 이클립스가 아직 모르는 파일이라 바깥 파일로 열리고, 실행도 자동 완성도 되지 않는다.
+    출력 폴더에 since 뒤에 생긴 class 파일이 보이면 True. 이클립스가 스스로 새로 읽지 않는 설정이면 끝내 False 다.
+    """
+    found = re.search(r'kind="output"[^>]*\bpath="([^"]*)"', read(ROOT / ".classpath"))
+    out = ROOT / (found.group(1) if found else "bin")
+    end = time.time() + timeout
+    while time.time() < end:
+        try:
+            if any(p.stat().st_mtime >= since for p in out.glob("*.class")):
+                return True
+        except OSError:
+            pass  # 이클립스가 출력 폴더를 비우는 중
+        time.sleep(0.25)
+    return False
+
+
+def notes(exe, changed, built=True):
+    """문제를 시작한 뒤 알려 줄 말. changed 는 방금 소스 폴더를 바꿨는지, built 는 이클립스가 그것을 읽고 빌드했는지."""
     out = []
     try:
         workspace = recent_workspace(exe) if exe else None
@@ -137,7 +157,10 @@ def notes(exe, changed):
         if clash:
             text += f" 같은 이름의 프로젝트({clash})는 먼저 Delete 로 뺍니다. 디스크의 내용 삭제는 체크하지 않습니다."
         out.append(text)
+    elif changed and not built:
+        out.append("이클립스가 바뀐 소스 폴더를 아직 읽지 않았습니다. 이대로는 실행이 안 됩니다. 프로젝트를 골라 F5 를 누른 뒤 "
+                   "연 탭을 닫고 e 로 다시 엽니다. Preferences > General > Workspace 의 Refresh using native hooks or polling 을 "
+                   "켜 두면 다음부터는 알아서 읽습니다.")
     elif changed:
-        out.append("이클립스 소스 폴더를 이 문제로 바꿨습니다." +
-                   ("" if workspace and refreshes_itself(workspace) else " 프로젝트를 골라 F5 로 새로 고칩니다."))
+        out.append("이클립스가 이 문제 폴더로 다시 빌드했습니다.")
     return out

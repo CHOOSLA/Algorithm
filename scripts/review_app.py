@@ -414,8 +414,15 @@ class ReviewApp(App):
         dots.append(first or ("h 를 누르면 기법 이름부터 한 단계씩 엽니다." if level == 0 else ""), style=TEXT if first else MUTED)
         hint.update(Group(dots, Text("          " + second, style=MUTED)))
         last = state.get("judge")
+        self.ticks = getattr(self, "ticks", 0) + 1
+        if self.ticks % 5 == 1:
+            self.stray = review.strays(self.entries, state)  # 5초마다 본다
         if self.judging:
             judge.update(Text("SWEA에서 채점하는 중입니다.", style=MAUVE))
+        elif getattr(self, "stray", None):
+            # 탭 이름이 전부 Solution.java 라 다른 문제의 파일에 적는 일이 잦다. 채점 결과보다 먼저 알린다
+            judge.update(Text(f"다른 문제의 파일이 바뀌고 있습니다: {', '.join(self.stray[:2])}. 이클립스 창 제목의 폴더를 확인합니다.",
+                              style=f"bold {RED}"))
         elif last:
             judge.update(Text.assemble(("SWEA ", MUTED), (last["text"], GREEN if last["ok"] else RED),
                                        (f"   {last['at']}", MUTED)))
@@ -483,7 +490,9 @@ class ReviewApp(App):
         self.hint_text = ""
         self.reload(keep=e["id"])
         # 이클립스에서 할 일을 알려 줄 때는 읽을 시간을 더 준다
-        self.notify("\n".join(notes), title=f"시작: {rlog.name(e)}", timeout=20 if any("Import" in n for n in notes) else 8)
+        todo = any("Import" in n or "F5" in n for n in notes)
+        self.notify("\n".join(notes), title=f"시작: {rlog.name(e)}", timeout=25 if todo else 8,
+                    severity="warning" if todo else "information")
         if error:
             self.notify(error, title="로그인하지 못했습니다", severity="warning", timeout=10)
 
@@ -525,7 +534,7 @@ class ReviewApp(App):
             self.notify(f"{CONFIRM}초 안에 s 를 한 번 더 누르면 제출합니다.", title=rlog.name(e), timeout=CONFIRM)
             return
         self.armed = 0.0
-        if review.has_account():
+        if review.has_account() or review.local_answer(e):  # 정답 파일이 있는 문제는 이 컴퓨터에서 채점한다
             self.grade()
         else:
             keys = "비밀번호에서 Enter 로그인하고 제출 · Esc 취소"
