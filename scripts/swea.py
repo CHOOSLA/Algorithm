@@ -12,7 +12,7 @@ from http.cookiejar import MozillaCookieJar
 import json
 import re
 import time
-from urllib.parse import urlencode
+from urllib.parse import quote, urlencode
 from urllib.request import HTTPCookieProcessor, Request, build_opener
 
 import review_log as rlog
@@ -87,6 +87,7 @@ class Session:
             except OSError:
                 pass  # 깨진 파일이면 새로 로그인한다
         self.opener = build_opener(HTTPCookieProcessor(self.jar))
+        self.page = None  # 마지막으로 연 화면의 주소. 그 화면이 보내는 요청의 Referer 로 쓴다
 
     def keep(self):
         """세션을 다음 제출 때 다시 쓰게 적어 둔다. 나만 읽게 한다. 못 적으면 다음에 다시 로그인할 뿐이다."""
@@ -97,14 +98,24 @@ class Session:
             pass
 
     def open(self, path, data=None, ajax=False):
-        """(마지막 주소, 본문). data가 있으면 POST. ajax는 화면이 스크립트로 보내는 요청."""
-        headers = {"User-Agent": AGENT, **({"X-Requested-With": "XMLHttpRequest"} if ajax else {})}
+        """(마지막 주소, 본문). data가 있으면 POST. ajax는 화면이 스크립트로 보내는 요청.
+
+        컴파일과 제출은 풀이 화면에서 온 요청인지를 Referer 로 본다. 없으면 JSON 대신 System Error 한 줄이 온다.
+        """
+        headers = {"User-Agent": AGENT}
+        if ajax:
+            headers["X-Requested-With"] = "XMLHttpRequest"
+            if self.page:
+                headers["Referer"] = self.page
         body = urlencode(data).encode("utf-8") if data is not None else None
         try:
             with self.opener.open(Request(BASE + path, body, headers), timeout=TIMEOUT) as res:
-                return res.geturl(), res.read().decode("utf-8", "replace")
+                url, text = res.geturl(), res.read().decode("utf-8", "replace")
         except OSError as error:  # 연결 실패, 시간 초과, 4xx·5xx 응답
             raise SweaError(f"SWEA에 연결하지 못했습니다. ({getattr(error, 'reason', error)})") from None
+        if not ajax:
+            self.page = BASE + path
+        return url, text
 
     def call(self, path, data):
         """채점 서버에 보내고 JSON을 돌려준다."""
@@ -113,7 +124,7 @@ class Session:
             ret = json.loads(body)
         except ValueError:
             raise SweaError("로그인이 풀렸습니다. 다시 시도합니다." if "loginPage" in url
-                            else "SWEA가 알 수 없는 응답을 보냈습니다.") from None
+                            else f"SWEA가 알 수 없는 응답을 보냈습니다. ({' '.join(body.split())[:80]})") from None
         if ret.get("result") != "success":
             raise SweaError("SWEA 서버 오류로 처리하지 못했습니다.")
         return ret
@@ -162,6 +173,24 @@ def problem_id(e):
     return found.group(1) if found else None
 
 
+def sample_input(e):
+    """문제 화면에 걸린 input.txt 의 내용. 로그인한 세션으로만 받을 수 있다."""
+    prob = problem_id(e)
+    if not prob:
+        raise SweaError("SWEA 문제가 아닙니다.")
+    session = Session()
+    path = f"/common/contestProb/contestProbDown.do?downType=in&contestProbId={quote(prob)}"
+    url, text = session.open(path)
+    if "loginPage" in url:
+        session.login()
+        url, text = session.open(path)
+    # 파일이 없는 문제는 화면(HTML)이 대신 온다
+    if "loginPage" in url or not text.strip() or text.lstrip().startswith("<"):
+        raise SweaError("SWEA에서 예제 입력을 받지 못했습니다.")
+    session.keep()
+    return text
+
+
 def without_set_in(source):
     """내 컴퓨터의 input.txt 를 읽는 System.setIn 줄은 채점 서버에서 런타임 에러가 난다.
 
@@ -184,10 +213,15 @@ def compile_error(vo):
 def verdict(vo):
     """(통과했는지, 보여 줄 말). 문제 풀이 화면의 processSubmit 과 같은 순서로 본다."""
     passed = blank(vo.get("runError")) and blank(vo.get("timeOut")) and "Pass" in (vo.get("runValue") or "")
+    cases = str(vo.get("testCaseNo") or "0")  # 실제 응답에서는 숫자로 온다
     if passed:
-        return True, "Pass"
-    if not blank(vo.get("testCaseNo")) and vo.get("testCaseNo") != "0":
-        text = f"Fail  테스트케이스 {vo['testCaseNo']}개 중 {vo.get('correctedCases') or 0}개 맞음"
+        try:
+            took = f" · {float(vo.get('executionTime')):.2f}초"
+        except (TypeError, ValueError):
+            took = ""
+        return True, "Pass" + (f"  {cases}개 모두 맞음" if cases != "0" else "") + took
+    if cases != "0":
+        text = f"Fail  테스트케이스 {cases}개 중 {vo.get('correctedCases') or 0}개 맞음"
     else:
         text = f"Fail  {vo.get('usrScore') or 0} / 100"
     if not blank(vo.get("timeOut")):

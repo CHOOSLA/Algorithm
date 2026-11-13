@@ -10,8 +10,12 @@
     review login    화면 없이 SWEA 계정을 넣는다. 화면에서는 SWEA 문제를 처음 시작할 때 묻는다
 
 시작하면 문제 페이지를 열고, 이클립스 소스 폴더와 루트의 input.txt 를 그 문제로 맞춘 뒤 Solution.java를 열고 시간을 잰다.
-자리를 비울 때는 화면에서 p 로 시계를 멈춘다. 멈춘 동안은 푼 시간에 넣지 않는다.
-다 풀면 화면에서 제출하고 결과를 골라 기록한다. 화면 밖에서는 `commit`이 같은 것을 물어 기록한다.
+예제 입력이 저장소에 없으면 SWEA 문제 화면의 input.txt 를 받아 온다.
+자리를 비울 때는 화면에서 p 로 시계를 멈춘다. 멈춘 동안은 푼 시간에 넣지 않는다. 화면을 나가도 시계가 멈춘다.
+풀다 만 문제는 x 로 내려놓거나 다른 문제를 시작하면 푼 시간과 힌트 단계가 남는다. 다시 고르면 거기서 이어 간다.
+다 풀면 화면에서 제출하고 결과를 골라 기록한다. 화면 밖에서는 `commit`이 같은 것을 물어 기록한다. 올리는 것은 화면의 u 다.
+시험 대비 계획(Review/A형/plan.json)이 있으면 화면이 그 묶음 순서로 문제를 보여 준다. v 로 복습 목록과 오가고, t 로 외울 틀과 점검표를 본다.
+계획에만 있는 문제는 Review/SSAFY/extra.json 에 적고, 폴더와 빈 Solution.java 는 그 문제를 시작할 때 만든다.
 SWEA 계정은 기기마다 한 번 묻고 운영체제 보관함에만 넣는다. 힌트는 강의 자료가 있는 기기에서만 열린다.
 혼자 붙잡고 있을 시간은 난이도로 정한다 (D3 30분, D4 40분, 모의 역량테스트 50분). 화면에서 +, - 로 바꾼다.
 화면은 textual, 계정 보관은 keyring 패키지를 쓴다. 처음 띄울 때 저장소의 .venv 에만 설치하고 그 파이썬으로 돌린다.
@@ -38,12 +42,15 @@ GOAL_HARD, GOAL_UNKNOWN = 60, 50
 VENV = rlog.ROOT / ".venv"
 REQUIREMENTS = Path(__file__).with_name("requirements.txt")
 INPUT = rlog.ROOT / "input.txt"  # 이클립스에서 돌릴 때 System.setIn 으로 읽는 예제 입력. 저장소에는 올리지 않는다
+PLAN = rlog.ROOT / "Review" / "A형" / "plan.json"  # 시험 대비 계획. 있으면 화면이 계획 순서로 문제를 보여 준다
 _levels = None
 
 
 def level_of(e):
-    """SWEA 난이도 숫자. 저장소 기록(problems.toml, 예전 커밋 제목)에 없으면 빈 문자열."""
+    """SWEA 난이도 숫자. 문제에 적혀 있지 않고 저장소 기록(problems.toml, 예전 커밋 제목)에도 없으면 빈 문자열."""
     global _levels
+    if e.get("level"):
+        return str(e["level"])
     if _levels is None:
         from auto_commit import Meta
         meta = Meta()
@@ -52,8 +59,15 @@ def level_of(e):
 
 
 def goal_of(e):
+    if e.get("goal"):  # 따로 고른 문제는 목표 시간을 같이 적어 둔다
+        return e["goal"]
     level = level_of(e)
     return GOALS.get(level, GOAL_HARD) if level else GOAL_UNKNOWN
+
+
+def study_day(e):
+    """힌트에서 볼 강의 날짜. 따로 고른 문제는 과제 날짜가 없어서 그 기법을 배운 날을 적어 둔다."""
+    return e.get("lecture_day") or e["assignment_day"]
 
 
 def app_python():
@@ -79,7 +93,25 @@ def in_venv():
 
 
 def load_entries():
-    return json.loads((REVIEW / "manifest.json").read_text(encoding="utf-8"))
+    return rlog.entries()
+
+
+def load_plan(entries):
+    """시험 대비 계획(Review/A형/plan.json). 없거나 읽을 수 없으면 None.
+
+    묶음마다 제목, 쓸 시간(분), 왜 하는지, 문제 이름 목록(items)이 있다. 여기서 문제 이름을 문제로 바꿔 entries 에 넣는다.
+    notes 는 외워 갈 틀이나 점검표 같은 읽을거리 (제목, 파일).
+    """
+    try:
+        plan = json.loads(PLAN.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    by_name = {}
+    for e in sorted(entries, key=rlog.order):
+        by_name.setdefault(e["problem"], e)
+    for block in plan.get("blocks", []):
+        block["entries"] = [by_name[name] for name in block.get("items", []) if name in by_name]
+    return plan
 
 
 def status(tries, today):
@@ -92,21 +124,44 @@ def status(tries, today):
     return "again" if when <= today else "wait"
 
 
-def board(entries, log):
-    """화면에 올릴 것을 한 번에 모은다. picks는 고를 수 있는 (문제, 종류, 옆에 적을 말)."""
+def board(entries, log, plan=None):
+    """화면에 올릴 것을 한 번에 모은다. picks는 고를 수 있는 (문제, 종류, 옆에 적을 말).
+
+    titles 는 종류마다 목록에 적을 묶음 제목, dots 는 문제마다 점의 뜻 ('done', 'parked', 'again', 'todo').
+    plan 을 주면 다시 풀 차례 대신 계획의 묶음 순서로 보여 준다.
+    """
     today = rlog.today()
     marks = [(e, status(log.get(e["id"], []), today)) for e in sorted(entries, key=rlog.order)]
-    ready = sorted((e for e, s in marks if s == "again"), key=lambda e: rlog.due(log[e["id"]]))
-    picks = []
-    for e in ready:
-        last = log[e["id"]][-1]
-        ago = (today - datetime.fromisoformat(last["date"]).date()).days
-        # 날짜와 강의 이름은 일부러 감춘다. 어떤 기법을 쓸지부터 정하는 연습이다.
-        picks.append((e, "again", f"{ago}일 전 {rlog.RESULTS[last['result']]}"))
-    picks += [(e, "new", f"{e['assignment_day']} {e['kind']}") for e, s in marks if s == "new"][:NEW_SHOWN]
+    parked = rlog.parked()
+    left = lambda e: f"{parked[e['id']].get('spent', 0) // 60}분 풀다 둠"
+    titles = {"parked": "풀던 문제", "again": "다시 풀 문제", "new": "새 문제"}
+    picks, dots, progress = [], {}, None
+    if plan:
+        since = plan.get("date", "")
+        for i, block in enumerate(plan.get("blocks", [])):
+            titles[f"plan{i}"] = f"{block['title']} · {block.get('minutes', 0)}분"
+            for e in block["entries"]:
+                tries = [a for a in log.get(e["id"], []) if a["date"] >= since]  # 계획을 세운 뒤에 푼 것만 센다
+                dots[e["id"]] = "parked" if e["id"] in parked else "done" if tries else "todo"
+                note = left(e) if e["id"] in parked else rlog.RESULTS[tries[-1]["result"]] if tries else ""
+                picks.append((e, f"plan{i}", note))
+        progress = sum(1 for d in dots.values() if d == "done"), len(dots)
+    else:
+        ready = sorted((e for e, s in marks if s == "again"), key=lambda e: rlog.due(log[e["id"]]))
+        for e in ready:
+            last = log[e["id"]][-1]
+            ago = (today - datetime.fromisoformat(last["date"]).date()).days
+            # 날짜와 강의 이름은 일부러 감춘다. 어떤 기법을 쓸지부터 정하는 연습이다.
+            picks.append((e, "again", f"{ago}일 전 {rlog.RESULTS[last['result']]}"))
+        picks += [(e, "new", f"{e['assignment_day']} {e['kind']}") for e, s in marks if s == "new"][:NEW_SHOWN]
+        # 풀다가 내려놓은 문제는 맨 위에 따로 모은다. 고르면 그 시간과 힌트 단계에서 이어 간다
+        resumable = [(e, "parked", left(e)) for e, s in marks if e["id"] in parked and s != "done"]
+        picks = resumable + [p for p in picks if p[0]["id"] not in parked]
+        dots = {e["id"]: {"new": "todo"}.get(kind, kind) for e, kind, _ in picks}
     count = {s: sum(1 for _, x in marks if x == s) for s in ("done", "again", "wait", "new")}
     state = rlog.read_state()
-    return dict(picks=picks, marks=marks, count=count, total=len(entries),
+    return dict(picks=picks, marks=marks, count=count, total=len(entries), parked=parked, titles=titles, dots=dots,
+                progress=progress,
                 next=min((rlog.due(log[e["id"]]) for e, s in marks if s == "wait"), default=None),
                 current=next((e for e in entries if e["id"] == state.get("id")), None), state=state)
 
@@ -160,32 +215,60 @@ def sample_input(e):
 
 
 def swap_input(e):
-    """루트의 input.txt 를 이 문제의 예제 입력으로 바꾼다. 바꿨으면 True."""
+    """루트의 input.txt 를 이 문제의 예제 입력으로 바꾸고 한 일을 한 줄로 돌려준다.
+
+    저장소에 있으면 그것을 쓰고, 없으면 SWEA 문제 화면의 input.txt 를 받아 온다. 받은 것은 저장소에 넣지 않는다.
+    """
     sample = sample_input(e)
     if sample:
         shutil.copyfile(sample, INPUT)
-    return bool(sample)
+        return "input.txt 를 이 문제의 예제 입력으로 바꿨습니다."
+    import swea
+    why = ""
+    if swea.problem_id(e) and has_account():
+        try:
+            INPUT.write_text(swea.sample_input(e), encoding="utf-8", newline="")
+            return "input.txt 를 SWEA에서 받은 예제 입력으로 바꿨습니다."
+        except swea.SweaError as error:
+            why = f" ({error})"
+    return "이 문제의 예제 입력을 구하지 못해 input.txt 는 그대로입니다. 다른 문제의 입력일 수 있습니다." + why
 
 
 def begin(e, tries):
-    """문제를 시작하고, 한 일을 한 줄씩 돌려준다."""
+    """문제를 시작하고, 한 일을 한 줄씩 돌려준다.
+
+    풀던 다른 문제가 있으면 내려놓는다. 내려놓았던 문제를 다시 고르면 코드와 시간, 힌트 단계를 그대로 두고 이어 간다.
+    """
     path = REVIEW / e["folder"] / "Solution.java"
+    blank = rlog.TEMPLATE_MAIN if e.get("judge") == "boj" else rlog.TEMPLATE
     notes = []
-    if tries and path.read_text(encoding="utf-8") != rlog.TEMPLATE:
-        if uncommitted(e):
-            notes.append("커밋하지 않은 코드가 있어서 Solution.java는 그대로 둡니다.")
-        else:
-            path.write_text(rlog.TEMPLATE, encoding="utf-8", newline="\n")
-            notes.append("지난 풀이는 git 기록에 남아 있습니다. Solution.java를 빈 틀로 바꿨습니다.")
-    rlog.write_state({"id": e["id"], "started": datetime.now(rlog.KST).isoformat(timespec="seconds"), "hint": 0,
-                      "goal": goal_of(e)})
+    if not path.exists():
+        # 따로 고른 문제는 폴더를 미리 만들어 두지 않는다. 시작할 때 빈 틀을 놓는다
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(blank, encoding="utf-8", newline="\n")
+    state = rlog.read_state()
+    if state.get("id") and state["id"] != e["id"]:
+        rlog.park(state)
+        notes.append("풀던 문제는 내려놓았습니다. 다시 고르면 그 시간에서 이어 갑니다.")
+    saved = rlog.unpark(e["id"])
+    if saved:
+        rlog.resume(e["id"], saved)
+        notes.append(f"{saved.get('spent', 0) // 60}분 풀던 데서 이어 갑니다. 처음부터 재려면 r 을 누릅니다.")
+    else:
+        if tries and path.read_text(encoding="utf-8") != blank:
+            if uncommitted(e):
+                notes.append("커밋하지 않은 코드가 있어서 Solution.java는 그대로 둡니다.")
+            else:
+                path.write_text(blank, encoding="utf-8", newline="\n")
+                notes.append("지난 풀이는 git 기록에 남아 있습니다. Solution.java를 빈 틀로 바꿨습니다.")
+        rlog.write_state({"id": e["id"], "started": datetime.now(rlog.KST).isoformat(timespec="seconds"), "hint": 0,
+                          "goal": goal_of(e)})
     if open_problem(e):
         notes.append("문제 페이지를 열었습니다.")
     # 이클립스에서 바로 실행되게 소스 폴더와 예제 입력을 이 문제로 맞춘 뒤에 파일을 연다
     import eclipse
     changed = eclipse.prepare(path.parent.relative_to(rlog.ROOT).as_posix())
-    notes.append("input.txt 를 이 문제의 예제 입력으로 바꿨습니다." if swap_input(e) else
-                 "이 문제의 예제 입력이 저장소에 없어 input.txt 는 그대로입니다. 다른 문제의 입력일 수 있습니다.")
+    notes.append(swap_input(e))
     if open_in_eclipse(e):
         notes.append("이클립스에서 Solution.java를 열었습니다.")
         notes += eclipse.notes(eclipse_path(), changed)
@@ -204,6 +287,7 @@ def lecture_pages(e, level):
     if guide is None or level < 2:
         return []
     data = json.loads((guide / "lectures.json").read_text(encoding="utf-8"))
+    e = {**e, "assignment_day": study_day(e)}
     rows = [("solution", f"{label(l)}  {span(a, b)}", guide.parent / l["pdf"], a) if solved else
             ("concept", f"{text}  {short(l)} {span(a, b)}", guide.parent / l["pdf"], a)
             for l, a, b, text, solved in page_refs(e, data["lectures"], data["pages"]) if level >= 3 or not solved]
@@ -228,27 +312,34 @@ def next_hint(entries):
     e = next((x for x in entries if x["id"] == state.get("id")), None)
     if e is None:
         return 0, "지금 푸는 문제가 없습니다. 먼저 문제를 고릅니다."
-    guide = guide_dir()
-    if guide is None:
-        return 0, "이 기기에는 강의 자료가 없어서 힌트를 열 수 없습니다."
-    data = json.loads((guide / "lectures.json").read_text(encoding="utf-8"))
-    refs = page_refs(e, data["lectures"], data["pages"])
-    concept, solved = [r for r in refs if not r[4]], [r for r in refs if r[4]]
-    where = lambda rs: ", ".join(f"{label(r[0])} {span(r[1], r[2])}" for r in rs)
     step = min(state.get("hint", 0) + 1, 3)
-    if step == 1:
-        names = list(dict.fromkeys(r[3] for r in concept)) or \
-            [l["title"] for l in data["lectures"] if l["date"] == e["assignment_day"]]
-        text = f"기법은 {', '.join(names)}" if names else "강의 자료에서 기법을 찾지 못했습니다."
-    elif step == 2 and concept:
-        text = f"개념 쪽은 {where(concept)}"
-    elif step == 2:
-        text = "이 문제와 바로 이어지는 쪽은 찾지 못했습니다. 그날 강의의 장에서 고릅니다."
-    elif solved:
-        text = f"강사 풀이는 {where(solved)}\n다 읽었으면 닫고 빈 파일에서 다시 짭니다."
+    guide = guide_dir()
+    if step == 1 and e.get("technique"):
+        # 따로 고른 문제는 기법 이름을 같이 적어 두어서 강의 자료가 없는 기기에서도 첫 힌트는 열린다
+        text = f"기법은 {e['technique']}"
+    elif guide is None:
+        return 0, "이 기기에는 강의 자료가 없어서 힌트를 열 수 없습니다."
     else:
-        text = ("강의 자료에 강사 풀이가 없습니다. 처음 제출했던 코드를 봅니다.\n"
-                f"99.Algorithm/{e['source_repository']}/{e['source_file']}")
+        data = json.loads((guide / "lectures.json").read_text(encoding="utf-8"))
+        look = {**e, "assignment_day": study_day(e)}
+        refs = page_refs(look, data["lectures"], data["pages"])
+        concept, solved = [r for r in refs if not r[4]], [r for r in refs if r[4]]
+        where = lambda rs: ", ".join(f"{label(r[0])} {span(r[1], r[2])}" for r in rs)
+        if step == 1:
+            names = list(dict.fromkeys(r[3] for r in concept)) or \
+                [l["title"] for l in data["lectures"] if l["date"] == look["assignment_day"]]
+            text = f"기법은 {', '.join(names)}" if names else "강의 자료에서 기법을 찾지 못했습니다."
+        elif step == 2 and concept:
+            text = f"개념 쪽은 {where(concept)}"
+        elif step == 2:
+            text = "이 문제와 바로 이어지는 쪽은 찾지 못했습니다. 그날 강의의 장에서 고릅니다."
+        elif solved:
+            text = f"강사 풀이는 {where(solved)}\n다 읽었으면 닫고 빈 파일에서 다시 짭니다."
+        elif e.get("source_file"):
+            text = ("강의 자료에 강사 풀이가 없습니다. 처음 제출했던 코드를 봅니다.\n"
+                    f"99.Algorithm/{e['source_repository']}/{e['source_file']}")
+        else:
+            text = "강의 자료에 강사 풀이가 없습니다. 계획에 딸린 틀을 t 로 열어 봅니다."
     rlog.write_state({**state, "hint": step})
     return step, text
 
@@ -267,19 +358,29 @@ def submit_current(entries, submit=True):
 
     채점까지 가지 못했으면 통과 여부가 None 이다. submit=False 면 컴파일만 해 본다.
     채점 결과는 화면이 보여 주도록 풀던 문제 상태에 적는다.
+    채점을 기다리는 시간은 푼 시간이 아니라서 보내는 순간 시계를 멈춘다. 통과하면 멈춘 채로 두고, 아니면 다시 돌린다.
     """
     import swea
     state = rlog.read_state()
     e = next((x for x in entries if x["id"] == state.get("id")), None)
     if e is None:
         return None, "지금 푸는 문제가 없습니다. 먼저 문제를 고릅니다."
+    held = not state.get("paused")  # 손으로 멈춰 둔 시계는 건드리지 않는다
+    if held:
+        rlog.write_state({**rlog.toggle_pause(state), "hold": "judge"})
+    ok, text = None, ""
     try:
         ok, text = swea.grade(e, read_source(REVIEW / e["folder"] / "Solution.java"), submit)
     except swea.SweaError as error:
-        return None, str(error)
-    state = rlog.read_state()  # 채점하는 동안 바뀌었을 수 있다
-    if state.get("id") == e["id"]:
-        rlog.write_state({**state, "judge": {"ok": ok, "text": text, "at": datetime.now(rlog.KST).strftime("%H:%M")}})
+        text = str(error)
+    finally:
+        state = rlog.read_state()  # 채점하는 동안 바뀌었을 수 있다
+        if state.get("id") == e["id"]:
+            if ok is not None:
+                state["judge"] = {"ok": ok, "text": text, "at": datetime.now(rlog.KST).strftime("%H:%M")}
+            if held and state.get("hold") == "judge":
+                state = {**state, "hold": "pass"} if ok and submit else rlog.toggle_pause(state)
+            rlog.write_state(state)
     return ok, text
 
 
@@ -330,7 +431,7 @@ def print_list(b):
         print(f"풀던 문제: {rlog.name(b['current'])} ({rlog.spent(b['state']) // 60}분째"
               + (", 멈춰 둠)" if b["state"].get("paused") else ")"))
     for i, (e, kind, note) in enumerate(b["picks"], 1):
-        print(f"  {i}. {'다시' if kind == 'again' else '새로'}  {rlog.name(e)}   {note}")
+        print(f"  {i}. {dict(again='다시', new='새로', parked='이어')[kind]}  {rlog.name(e)}   {note}")
     if not b["picks"]:
         print("오늘 풀 문제가 없습니다.")
 
@@ -376,8 +477,10 @@ def main():
                 return code
             from review_app import ReviewApp
             ReviewApp().run()
-            if rlog.read_state().get("id"):
-                print("풀던 문제가 남아 있습니다. review 로 화면을 다시 띄워 s 로 제출하고 c 로 기록합니다.")
+            left = rlog.read_state()
+            if left.get("id"):
+                print("풀던 문제의 시계를 멈춰 두었습니다. review 를 다시 띄우면 이어서 잽니다." if left.get("away") else
+                      "풀던 문제가 남아 있습니다. review 로 화면을 다시 띄웁니다.")
             return 0
     print_list(b)
     if not args or args == ["list"]:

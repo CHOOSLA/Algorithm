@@ -13,12 +13,14 @@ import time
 
 from rich.cells import cell_len
 from rich.console import Group
+from rich.markdown import Markdown
 from rich.table import Table
 from rich.text import Text
 from textual import work
 from textual.app import App, ComposeResult
 from textual.binding import Binding
-from textual.containers import Horizontal, Vertical
+from textual.containers import Horizontal, Vertical, VerticalScroll
+from textual.highlight import highlight
 from textual.screen import ModalScreen
 from textual.widgets import Digits, Footer, Input, OptionList, ProgressBar, Static
 from textual.widgets.option_list import Option
@@ -31,6 +33,11 @@ GREEN, YELLOW, RED, BLUE, MAUVE, MUTED, TEXT, FAINT = (
 STATUS = {"done": (GREEN, "마침"), "again": (YELLOW, "다시 풀기"), "wait": (YELLOW, "다시 풀기"), "new": (FAINT, "남음")}
 RESULT_COLOR = {"solo": GREEN, "hint": YELLOW, "solution": RED}
 CONFIRM = 5  # 제출은 이 초 안에 s 를 한 번 더 눌러야 나간다
+# 시계가 멈춘 까닭(상태의 hold) -> 시계 옆에 적을 말
+WHY_STOPPED = {None: "멈춰 두었습니다. p 를 누르면 이어서 잽니다.", "judge": "채점을 기다리는 동안은 시간을 세지 않습니다.",
+               "pass": "통과해서 시계를 멈췄습니다. 더 풀려면 p 를 누릅니다."}
+# 목록에서 문제 앞에 찍는 점의 색 (review.board 의 dots)
+DOTS = {"done": GREEN, "parked": MAUVE, "again": YELLOW, "todo": FAINT}
 
 
 def clock(seconds):
@@ -147,6 +154,44 @@ class PagesScreen(ModalScreen):
             start(view(self.guide))
 
 
+class NotesScreen(ModalScreen):
+    """계획에 딸린 읽을거리를 보여 준다. 외워 갈 코드 틀과 시험장 점검표."""
+    BINDINGS = [Binding("escape", "dismiss", show=False), Binding("pagedown,space", "scroll(1)", show=False),
+                Binding("pageup", "scroll(-1)", show=False)]
+
+    def __init__(self, title, notes):
+        super().__init__()
+        self.heading, self.notes = title, notes  # notes 는 (제목, 파일 경로)
+
+    def compose(self) -> ComposeResult:
+        with Vertical(classes="dialog wide") as box:
+            box.border_title = self.heading
+            yield OptionList(*(Option(Text(title, style=TEXT), id=str(i)) for i, (title, _) in enumerate(self.notes)), id="notes")
+            with VerticalScroll(id="note-scroll"):
+                yield Static(id="note")
+            yield Static(Text("↑↓ 고르기 · Space, PageDown, PageUp 으로 내용 넘기기 · Esc 닫기", style=MUTED), classes="keys")
+
+    def on_mount(self):
+        self.query_one("#notes", OptionList).focus()
+
+    def on_option_list_option_highlighted(self, event: OptionList.OptionHighlighted):
+        event.stop()
+        _, path = self.notes[int(event.option.id)]
+        try:
+            text = path.read_text(encoding="utf-8")
+        except OSError:
+            text = f"{path.name} 파일을 읽지 못했습니다."
+        # 코드는 화면 테마의 색으로 칠한다. rich 의 Syntax 는 줄마다 바탕색을 깔아 창 바탕과 어긋난다
+        shown = (highlight(text, language="java") if path.suffix == ".java" else
+                 Markdown(text) if path.suffix == ".md" else Text(text))
+        self.query_one("#note", Static).update(shown)
+        self.query_one("#note-scroll").scroll_home(animate=False)
+
+    def action_scroll(self, direction):
+        box = self.query_one("#note-scroll")
+        box.scroll_page_down() if direction > 0 else box.scroll_page_up()
+
+
 class ReviewApp(App):
     CSS = """
     Screen { layout: vertical; }
@@ -156,7 +201,10 @@ class ReviewApp(App):
     .dialog Input { margin-top: 1; }
     .dialog .keys { margin-top: 1; }
     #result { height: auto; margin-top: 1; }
-    #head { height: 5; padding: 1 2 0 2; }
+    #head { height: auto; min-height: 5; padding: 1 2 0 2; }
+    .wide { width: 116; max-width: 96%; height: 90%; }
+    #notes { height: auto; max-height: 8; margin-bottom: 1; }
+    #note-scroll { height: 1fr; border: round $surface-lighten-2; padding: 0 1; }
     #body { height: 1fr; }
     #queue { width: 3fr; height: 100%; border: round $primary; border-title-color: $primary; padding: 0 1; background: $background; }
     OptionList > .option-list--option-highlighted { background: $primary 25%; text-style: bold; }
@@ -181,13 +229,16 @@ class ReviewApp(App):
         Binding("l", "pages", "강의"),
         Binding("s", "submit", "제출"),
         Binding("c", "finish", "기록"),
+        Binding("u", "push", "올리기"),
         Binding("p", "pause", "멈춤"),
-        Binding("o", "page", "문제"),
-        Binding("e", "eclipse", "이클립스"),
+        Binding("v", "view", "계획/복습"),
+        Binding("t", "notes", "틀"),
+        Binding("o", "page", show=False),     # 문제 페이지 다시 열기
+        Binding("e", "eclipse", show=False),  # 이클립스에서 다시 열기
         Binding("r", "restart", "다시 재기"),
         Binding("plus,equals_sign", "goal(10)", "목표 10분", key_display="+/-"),
         Binding("minus", "goal(-10)", show=False),
-        Binding("x", "stop", "그만"),
+        Binding("x", "stop", "내려놓기"),
         Binding("q", "quit", "나가기"),
         Binding("j", "down", show=False),
         Binding("k", "up", show=False),
@@ -210,13 +261,18 @@ class ReviewApp(App):
     def on_mount(self):
         self.theme = "catppuccin-macchiato"
         self.title = "SSAFY 알고리즘 복습"
-        self.query_one("#queue").border_title = "오늘 풀 문제"
         self.query_one("#detail").border_title = "문제"
         self.query_one("#session").border_title = "지금 푸는 문제"
         self.entries = review.load_entries()
+        self.plan = review.load_plan(self.entries)  # 시험 대비 계획. 있으면 그 순서로 먼저 보여 준다
+        self.view = "plan" if self.plan else "review"
         self.hint_text = ""
         self.judging = False
         self.armed = 0.0  # 제출하려고 s 를 처음 누른 때
+        state = rlog.read_state()
+        if state.pop("away", None) or state.get("hold") == "judge":
+            # 화면을 나갈 때 멈춰 둔 시계, 채점을 기다리다 화면이 꺼져 멈춘 채 남은 시계를 다시 돌린다
+            rlog.write_state(rlog.toggle_pause(state) if state.get("paused") else state)
         self.reload()
         self.set_interval(1, self.tick)
 
@@ -224,18 +280,23 @@ class ReviewApp(App):
 
     def reload(self, keep=None):
         self.log_rows = rlog.load()
-        self.board = b = review.board(self.entries, self.log_rows)
+        planned = self.plan if self.view == "plan" else None
+        self.board = b = review.board(self.entries, self.log_rows, planned)
+        self.query_one("#queue").border_title = planned["title"] if planned else "오늘 풀 문제"
         self.shown_state = b["state"].get("id"), b["state"].get("hint")
+        import auto_commit
+        self.waiting = auto_commit.unpushed()  # 커밋만 하고 아직 올리지 않은 수
         self.query_one("#head", Static).update(self.head())
         queue = self.query_one("#queue", OptionList)
         queue.clear_options()
-        wide = max((len(e.get("number") or "") for e, _, _ in b["picks"]), default=0)
+        wide = max((cell_len(rlog.label(e)) for e, _, _ in b["picks"]), default=0)
         longest = max((cell_len(e["title"]) for e, _, _ in b["picks"]), default=0)
         for kind, rows in groupby(b["picks"], key=lambda p: p[1]):
-            queue.add_option(Option(Text("다시 풀 문제" if kind == "again" else "새 문제", style=f"bold {MUTED}"), disabled=True))
+            queue.add_option(Option(Text(b["titles"][kind], style=f"bold {MUTED}"), disabled=True))
             for e, _, note in rows:
-                line = Text.assemble(("● ", YELLOW if kind == "again" else FAINT),
-                                     ((e.get("number") or "").ljust(wide + 2), MUTED), (e["title"], TEXT))
+                number = rlog.label(e)
+                line = Text.assemble(("● ", DOTS[b["dots"].get(e["id"], "todo")]),
+                                     (number + " " * (wide + 2 - cell_len(number)), MUTED), (e["title"], TEXT))
                 line.append(" " * (longest - cell_len(e["title"]) + 3) + note, style=MUTED)
                 queue.add_option(Option(line, id=e["id"]))
         if not b["picks"]:
@@ -265,6 +326,16 @@ class ReviewApp(App):
                                (f"다시 풀기 {c['again'] + c['wait']}   ", TEXT), ("▰ ", FAINT), (f"남음 {c['new']}", TEXT))
         if b["next"]:
             legend.append(f"      다음 다시 풀기 {b['next'].isoformat()[5:]}", style=MUTED)
+        if self.waiting:
+            legend.append(f"      올리지 않은 커밋 {self.waiting}개 · u 로 올립니다", style=MAUVE)
+        if b["progress"]:
+            done, total = b["progress"]
+            minutes = sum(block.get("minutes", 0) for block in self.plan["blocks"])
+            return Group(top, strip, legend, Text.assemble(
+                (f"{self.plan['title']}  ", f"bold {MAUVE}"), (f"{done} / {total} 마침", TEXT),
+                (f"   모두 {minutes // 60}시간 {minutes % 60}분 · v 복습 목록으로 · t 틀과 점검표", MUTED)))
+        if self.plan:
+            return Group(top, strip, legend, Text(f"v 를 누르면 {self.plan['title']} 으로 돌아갑니다.", style=MUTED))
         return Group(top, strip, legend)
 
     def show_detail(self, entry_id):
@@ -275,15 +346,18 @@ class ReviewApp(App):
             return
         e, kind, _ = pick
         tries = self.log_rows.get(e["id"], [])
-        parts = [Text(f"SWEA {e['number']}" if e.get("number") else e["kind"], style=MUTED),
+        parts = [Text(f"SWEA {e['number']}" if e.get("number") else e.get("tag") or e["kind"], style=MUTED),
                  Text(e["title"], style=f"bold {TEXT}"), Text()]
-        if kind == "again":
+        if tries:
             # 다시 풀 때는 어느 날 강의였는지 감춘다. 기법을 스스로 고르는 연습이다.
             parts += [Text(" 다시 풀기 ", style=f"bold #24273a on {YELLOW}"), Text("날짜와 강의 이름은 가려 둡니다.", style=MUTED)]
         else:
             parts.append(Text.assemble((" 새 문제 ", f"bold #24273a on {BLUE}"), (f"  {e['assignment_day']} · {e['kind']}", MUTED)))
         level = review.level_of(e)
         parts += [Text(f"{'D' + level if level else '난이도 기록 없음'} · 목표 {review.goal_of(e)}분", style=MUTED), Text()]
+        if kind.startswith("plan"):
+            block = self.plan["blocks"][int(kind[4:])]
+            parts += [Text(block["title"], style=f"bold {MAUVE}"), Text(block.get("why", ""), style=MUTED), Text()]
         if tries:
             table = Table(box=None, padding=(0, 3, 0, 0), header_style=MUTED)
             for name in ("날짜", "결과", "시간", "막힌 지점"):
@@ -294,9 +368,14 @@ class ReviewApp(App):
             parts += [table, Text()]
         else:
             parts.append(Text("아직 다시 풀지 않았습니다.", style=MUTED))
-        current = self.board["state"].get("id") == e["id"]
-        parts.append(Text("지금 푸는 문제입니다." if current else "Enter 를 누르면 문제 페이지와 이클립스를 열고 시간을 잽니다.",
-                          style=MAUVE if current else MUTED))
+        saved = self.board["parked"].get(e["id"])
+        if self.board["state"].get("id") == e["id"]:
+            parts.append(Text("지금 푸는 문제입니다.", style=MAUVE))
+        elif saved:
+            parts.append(Text(f"풀다가 내려놓은 문제입니다. {saved.get('spent', 0) // 60}분 풀었고 힌트는 {saved.get('hint', 0)}단계까지 "
+                              "열었습니다.\nEnter 를 누르면 코드와 시간을 그대로 두고 이어서 풉니다.", style=MAUVE))
+        else:
+            parts.append(Text("Enter 를 누르면 문제 페이지와 이클립스를 열고 시간을 잽니다.", style=MUTED))
         detail.update(Group(*parts))
 
     def tick(self):
@@ -326,7 +405,7 @@ class ReviewApp(App):
         now.update(Text.assemble((rlog.name(e), f"bold {TEXT}"),
                                  (f"   목표 {minutes}분" + ("을 넘겼습니다. 힌트를 열어도 됩니다." if over else ""),
                                   RED if over else MUTED),
-                                 ("   멈춰 두었습니다. p 를 누르면 이어서 잽니다." if paused else "", YELLOW)))
+                                 ("   " + WHY_STOPPED.get(state.get("hold"), WHY_STOPPED[None]) if paused else "", YELLOW)))
         level = state.get("hint", 0)
         dots = Text("힌트 ", style=MUTED)
         for i in range(3):
@@ -352,12 +431,26 @@ class ReviewApp(App):
     # ---- 키
 
     def check_action(self, action, parameters):
+        # 계획이 없는 저장소에서는 계획 키를 감춘다
+        if action in ("view", "notes") and not getattr(self, "plan", None):
+            return False
         # 창이 떠 있는 동안은 뒤 화면의 키가 먹지 않게 한다
         return len(self.screen_stack) == 1
 
     def on_option_list_option_highlighted(self, event: OptionList.OptionHighlighted):
         if event.option_list.id == "queue":
             self.show_detail(event.option.id)
+
+    def action_view(self):
+        self.view = "review" if self.view == "plan" else "plan"
+        self.reload(keep=self.selected())
+
+    def action_notes(self):
+        notes = [(n["title"], review.PLAN.parent / n["file"]) for n in self.plan.get("notes", [])]
+        if notes:
+            self.push_screen(NotesScreen(f"{self.plan['title']} · 틀과 점검표", notes))
+        else:
+            self.notify("이 계획에는 읽을거리가 없습니다.")
 
     def pick(self):
         return next((p[0] for p in self.board["picks"] if p[0]["id"] == self.selected()), None)
@@ -485,10 +578,34 @@ class ReviewApp(App):
             self.notify(f"{why.strip()[-300:]}\n기록은 남기지 않았습니다. 원인을 고치고 c 로 다시 합니다.",
                         title="커밋하지 못했습니다", severity="error", timeout=15)
         else:
-            self.notify(f"{message}\n" + (f"다음 복습 {when.isoformat()[5:]}" if when else "혼자 풀어서 이 문제는 복습을 마쳤습니다."),
-                        title="커밋했습니다", timeout=8)
+            self.notify(f"{message}\n" + (f"다음 복습 {when.isoformat()[5:]}" if when else "혼자 풀어서 이 문제는 복습을 마쳤습니다.")
+                        + "\nGitHub 에는 u 를 눌러 올립니다.", title="커밋했습니다", timeout=8)
         self.hint_text = ""
         self.reload()
+
+    def action_push(self):
+        if not self.waiting:
+            self.notify("올릴 커밋이 없습니다.")
+            return
+        self.notify("GitHub 에 올리는 중입니다.", timeout=3)
+        self.run_push()
+
+    @work(thread=True, exclusive=True, group="push")
+    def run_push(self):
+        import auto_commit
+        try:
+            count, error = auto_commit.push(), None
+        except Exception as failure:
+            count = 0
+            error = failure.stderr if isinstance(failure, subprocess.CalledProcessError) and failure.stderr else repr(failure)
+        self.call_from_thread(self.pushed, count, error)
+
+    def pushed(self, count, error):
+        if error:
+            self.notify(f"{error.strip()[-300:]}\n커밋은 그대로 있습니다.", title="올리지 못했습니다", severity="error", timeout=15)
+        else:
+            self.notify(f"커밋 {count}개를 올렸습니다." if count else "원격에 이미 올라가 있습니다.", title="GitHub")
+        self.reload(keep=self.selected())
 
     def action_pause(self):
         state = rlog.read_state()
@@ -511,11 +628,19 @@ class ReviewApp(App):
             self.tick()
 
     def action_stop(self):
-        if rlog.read_state().get("id"):
-            rlog.clear_state()
+        state = rlog.read_state()
+        if state.get("id"):
+            rlog.park(state)
             self.hint_text = ""
-            self.reload(keep=self.selected())
-            self.notify("풀던 문제를 내려놓았습니다. 기록은 남기지 않습니다.")
+            self.reload(keep=state["id"])
+            self.notify("풀던 문제를 내려놓았습니다. 코드와 푼 시간, 힌트 단계는 그대로 두니 다시 고르면 이어서 풉니다.")
+
+    async def action_quit(self):
+        # 화면을 닫은 동안은 푼 시간에 넣지 않는다. 다시 띄우면 이어서 잰다
+        state = rlog.read_state()
+        if state.get("id") and not state.get("paused"):
+            rlog.write_state({**rlog.toggle_pause(state), "away": True})
+        self.exit()
 
     def action_page(self):
         e = self.pick()

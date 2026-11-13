@@ -109,8 +109,7 @@ class Meta:
     def __init__(self):
         self.toml = tomllib.loads(TOML.read_text(encoding="utf-8"))
         self.swea_log = auto_extract_swea_meta()
-        manifest = ROOT / REVIEW / "manifest.json"
-        self.review = {r["folder"]: r for r in json.loads(manifest.read_text(encoding="utf-8"))}
+        self.review = {r["folder"]: r for r in rlog.entries()}
         self.solvedac = _load_solvedac_cache()
 
     def swea(self, num, interactive):
@@ -126,6 +125,8 @@ class Meta:
             category = m["category"]
         if not title:
             title = next((r["title"] for r in self.review.values() if r["number"] == num), "")
+        if not level:  # 따로 고른 문제는 난이도를 같이 적어 둔다
+            level = next((str(r["level"]) for r in self.review.values() if r["number"] == num and r.get("level")), "")
         if interactive and not title:
             title = ask(f"  SWEA {num} 제목 (건너뛰려면 엔터): ")
         while interactive and not level.isdigit():
@@ -220,7 +221,7 @@ def plan(kind, folder, meta, interactive):
         if record is None:
             return f"{tag} {parts[3]}", None
         if not record["number"]:
-            return f"{tag} {record['title']}", None
+            return f"{tag} {rlog.name(record)}", None  # 다른 사이트 문제는 '백준 4485 · 제목' 꼴
         title, level, _ = meta.swea(record["number"], interactive=False)
         sea = f"SEA(D{level})" if level else "SEA"
         return f"{tag} {sea}: {record['number']}. {record['title']}", None
@@ -280,16 +281,24 @@ def log_result(entry, result, note):
     """결과를 log.json 에 적고 README 를 다시 만든다. (같은 커밋에 넣을 경로, 다시 풀 날짜)를 돌려준다.
     혼자 풀어 끝난 문제는 날짜가 None 이다."""
     state = rlog.read_state()
+    left = rlog.unpark(entry["id"])  # 내려놓았던 문제면 그때까지 푼 시간을 안다
     minutes = None
     if state.get("id") == entry["id"]:  # review 로 시작한 문제면 시작 시각을 안다
         spent = rlog.spent(state) // 60  # 잠깐 멈춘 동안은 빠진다
         minutes = spent if 0 < spent <= 600 else None  # 창을 켜 둔 채 하루를 넘긴 시간은 버린다
         rlog.clear_state()
+    elif left:
+        minutes = left.get("spent", 0) // 60 or None
     rlog.add(entry["id"], result, minutes, note)
     refresh()
+    return recorded_paths(entry), rlog.due(rlog.load()[entry["id"]])
+
+
+def recorded_paths(entry):
+    """기록하면 바뀌는 파일. 따로 고른 문제의 날짜 폴더에는 README 가 없어서 있는 것만 넣는다."""
     day = entry["folder"].split("/")[0]
-    return ([f"{REVIEW}/log.json", f"{REVIEW}/README.md", f"{REVIEW}/{day}/README.md"],
-            rlog.due(rlog.load()[entry["id"]]))
+    readmes = [f"{REVIEW}/README.md", f"{REVIEW}/{day}/README.md"]
+    return [f"{REVIEW}/log.json", *(p for p in readmes if (ROOT / p).exists())]
 
 
 def finish(entry, result, note):
@@ -297,9 +306,8 @@ def finish(entry, result, note):
     커밋까지 가지 못하면 기록을 적기 전으로 되돌리고 오류를 그대로 올린다. 그대로 두면 다시 마칠 때 같은 기록이 두 번 남는다."""
     folder = f"{REVIEW}/{entry['folder']}"
     message, _ = plan("review", folder, Meta(), interactive=False)
-    day = entry["folder"].split("/")[0]
-    targets = [f"{REVIEW}/log.json", f"{REVIEW}/README.md", f"{REVIEW}/{day}/README.md"]
-    written = [ROOT / p for p in (*targets, f"{folder}/README.md")]
+    targets = recorded_paths(entry)
+    written = [*(ROOT / p for p in (*targets, f"{folder}/README.md")), rlog.PARKED]
     before, state = {p: p.read_bytes() for p in written if p.exists()}, rlog.read_state()
     try:
         _, when = log_result(entry, result, note)
@@ -313,6 +321,33 @@ def finish(entry, result, note):
             rlog.write_state(state)
         raise
     return message, when
+
+
+def unpushed():
+    """아직 올리지 않은 커밋 수. 올릴 곳이 정해지지 않은 브랜치면 0."""
+    try:
+        return int(git("rev-list", "--count", "@{upstream}..HEAD"))
+    except (subprocess.CalledProcessError, ValueError):
+        return 0
+
+
+def push():
+    """원격을 받아 그 위에 내 커밋을 얹고 올린다. 올린 커밋 수를 돌려준다.
+
+    push 하면 CI 가 README 를 맞추느라 마지막 커밋을 고쳐 다시 올린다. 그래서 다음에 올릴 때는 원격이 한 발 달라져 있다.
+    받아서 다시 얹으면 이미 올라간 커밋은 내용이 같아 빠지고 새 커밋만 남는다. 풀던 코드는 잠깐 치워 두었다가 되돌린다.
+    """
+    git("fetch", "-q")
+    if int(git("rev-list", "--count", "HEAD..@{upstream}")):
+        try:
+            git("pull", "-q", "--rebase", "--autostash")
+        except subprocess.CalledProcessError:
+            subprocess.run(["git", "-C", str(ROOT), "rebase", "--abort"], capture_output=True)  # 얹기 전으로 되돌린다
+            raise
+    count = unpushed()
+    if count:
+        git("push", "-q")
+    return count
 
 
 def main() -> int:
